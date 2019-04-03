@@ -43,7 +43,7 @@ public class Zone extends javax.swing.JPanel {
               Image img;
               try {
                   img = ImageIO.read(new File(path));
-                  g2.drawImage(img, 3, 3, this.getWidth()-3, this.getHeight()-3, this);
+                  g2.drawImage(img, 1, 1, this.getWidth()-1, this.getHeight()-1, this);
               } catch (IOException ex) {
                   Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
               }
