@@ -21,8 +21,33 @@ public class Gameplay extends javax.swing.JFrame {
         jail.setImage("src/Gameplay/img/jail.png", true);
         parking.setImage("src/Gameplay/img/free-parking.png", true);
         goToJail.setImage("src/Gameplay/img/go-to-jail.png", true);
+        
         MarvinGardens.setImage("src/Gameplay/img/Untitled-15.png", true);
+        //waterworks
         ventnor.setImage("src/Gameplay/img/Untitled-16.png", true);
+        Atlantic.setImage("src/Gameplay/img/Untitled-17.png", true);
+        //railroad
+        Illinois.setImage("src/Gameplay/img/Untitled-18.png", true);
+        Indiana.setImage("src/Gameplay/img/Untitled-19.png", true);
+        ChanceBlue.setImage("src/Gameplay/img/chance blue.png", true);
+        Kentucky.setImage("src/Gameplay/img/20.png", true);
+    
+    
+        Mediter_Ranean.setImage("src/Gameplay/img/Untitled-1.png", true);
+        Community_Chest.setImage("src/Gameplay/img/community-chest.png", true);
+        Baltic.setImage("src/Gameplay/img/Untitled-2.png", true);
+        //incometax.setImage();
+        //RailRoad.setImage();
+        Oriental.setImage("src/Gameplay/img/Untitled-3.png", true);
+        ChanceRed.setImage("src/Gameplay/img/chance-red.png", true);
+        Vermont.setImage("src/Gameplay/img/Untitled-4.png", true);
+        Connecticut.setImage("src/Gameplay/img/Untitled-5.png", true);
+    
+    
+    
+    
+    
+    
     }
     
     
@@ -42,17 +67,25 @@ public class Gameplay extends javax.swing.JFrame {
         goToJail = new GamePlay.Zone();
         MarvinGardens = new GamePlay.Zone();
         ventnor = new GamePlay.Zone();
-        waterWorks1 = new GamePlay.Zone();
-        waterWorks2 = new GamePlay.Zone();
-        zone1 = new GamePlay.Zone();
-        zone2 = new GamePlay.Zone();
-        zone3 = new GamePlay.Zone();
-        zone4 = new GamePlay.Zone();
-        zone5 = new GamePlay.Zone();
+        Atlantic = new GamePlay.Zone();
+        waterWorks = new GamePlay.Zone();
+        RailRoad = new GamePlay.Zone();
+        Illinois = new GamePlay.Zone();
+        Indiana = new GamePlay.Zone();
+        ChanceBlue = new GamePlay.Zone();
+        Kentucky = new GamePlay.Zone();
+        Mediter_Ranean = new GamePlay.Zone();
+        Community_Chest = new GamePlay.Zone();
+        Baltic = new GamePlay.Zone();
+        IncomeTax = new GamePlay.Zone();
+        RealRoad = new GamePlay.Zone();
+        Oriental = new GamePlay.Zone();
+        ChanceRed = new GamePlay.Zone();
+        Vermont = new GamePlay.Zone();
+        Connecticut = new GamePlay.Zone();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 800));
@@ -65,7 +98,7 @@ public class Gameplay extends javax.swing.JFrame {
         );
         goLayout.setVerticalGroup(
             goLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jailLayout = new javax.swing.GroupLayout(jail);
@@ -126,113 +159,231 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout waterWorks1Layout = new javax.swing.GroupLayout(waterWorks1);
-        waterWorks1.setLayout(waterWorks1Layout);
-        waterWorks1Layout.setHorizontalGroup(
-            waterWorks1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout AtlanticLayout = new javax.swing.GroupLayout(Atlantic);
+        Atlantic.setLayout(AtlanticLayout);
+        AtlanticLayout.setHorizontalGroup(
+            AtlanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
-        waterWorks1Layout.setVerticalGroup(
-            waterWorks1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        AtlanticLayout.setVerticalGroup(
+            AtlanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 120, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout waterWorks2Layout = new javax.swing.GroupLayout(waterWorks2);
-        waterWorks2.setLayout(waterWorks2Layout);
-        waterWorks2Layout.setHorizontalGroup(
-            waterWorks2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout waterWorksLayout = new javax.swing.GroupLayout(waterWorks);
+        waterWorks.setLayout(waterWorksLayout);
+        waterWorksLayout.setHorizontalGroup(
+            waterWorksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
-        waterWorks2Layout.setVerticalGroup(
-            waterWorks2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        waterWorksLayout.setVerticalGroup(
+            waterWorksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 120, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout zone1Layout = new javax.swing.GroupLayout(zone1);
-        zone1.setLayout(zone1Layout);
-        zone1Layout.setHorizontalGroup(
-            zone1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout RailRoadLayout = new javax.swing.GroupLayout(RailRoad);
+        RailRoad.setLayout(RailRoadLayout);
+        RailRoadLayout.setHorizontalGroup(
+            RailRoadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
-        zone1Layout.setVerticalGroup(
-            zone1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        RailRoadLayout.setVerticalGroup(
+            RailRoadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout zone2Layout = new javax.swing.GroupLayout(zone2);
-        zone2.setLayout(zone2Layout);
-        zone2Layout.setHorizontalGroup(
-            zone2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout IllinoisLayout = new javax.swing.GroupLayout(Illinois);
+        Illinois.setLayout(IllinoisLayout);
+        IllinoisLayout.setHorizontalGroup(
+            IllinoisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
-        zone2Layout.setVerticalGroup(
-            zone2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        IllinoisLayout.setVerticalGroup(
+            IllinoisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout zone3Layout = new javax.swing.GroupLayout(zone3);
-        zone3.setLayout(zone3Layout);
-        zone3Layout.setHorizontalGroup(
-            zone3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout IndianaLayout = new javax.swing.GroupLayout(Indiana);
+        Indiana.setLayout(IndianaLayout);
+        IndianaLayout.setHorizontalGroup(
+            IndianaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
-        zone3Layout.setVerticalGroup(
-            zone3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        IndianaLayout.setVerticalGroup(
+            IndianaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout zone4Layout = new javax.swing.GroupLayout(zone4);
-        zone4.setLayout(zone4Layout);
-        zone4Layout.setHorizontalGroup(
-            zone4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ChanceBlueLayout = new javax.swing.GroupLayout(ChanceBlue);
+        ChanceBlue.setLayout(ChanceBlueLayout);
+        ChanceBlueLayout.setHorizontalGroup(
+            ChanceBlueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
-        zone4Layout.setVerticalGroup(
-            zone4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ChanceBlueLayout.setVerticalGroup(
+            ChanceBlueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout zone5Layout = new javax.swing.GroupLayout(zone5);
-        zone5.setLayout(zone5Layout);
-        zone5Layout.setHorizontalGroup(
-            zone5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout KentuckyLayout = new javax.swing.GroupLayout(Kentucky);
+        Kentucky.setLayout(KentuckyLayout);
+        KentuckyLayout.setHorizontalGroup(
+            KentuckyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 77, Short.MAX_VALUE)
+        );
+        KentuckyLayout.setVerticalGroup(
+            KentuckyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout Mediter_RaneanLayout = new javax.swing.GroupLayout(Mediter_Ranean);
+        Mediter_Ranean.setLayout(Mediter_RaneanLayout);
+        Mediter_RaneanLayout.setHorizontalGroup(
+            Mediter_RaneanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
-        zone5Layout.setVerticalGroup(
-            zone5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        Mediter_RaneanLayout.setVerticalGroup(
+            Mediter_RaneanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout Community_ChestLayout = new javax.swing.GroupLayout(Community_Chest);
+        Community_Chest.setLayout(Community_ChestLayout);
+        Community_ChestLayout.setHorizontalGroup(
+            Community_ChestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        Community_ChestLayout.setVerticalGroup(
+            Community_ChestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout BalticLayout = new javax.swing.GroupLayout(Baltic);
+        Baltic.setLayout(BalticLayout);
+        BalticLayout.setHorizontalGroup(
+            BalticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        BalticLayout.setVerticalGroup(
+            BalticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout IncomeTaxLayout = new javax.swing.GroupLayout(IncomeTax);
+        IncomeTax.setLayout(IncomeTaxLayout);
+        IncomeTaxLayout.setHorizontalGroup(
+            IncomeTaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        IncomeTaxLayout.setVerticalGroup(
+            IncomeTaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout RealRoadLayout = new javax.swing.GroupLayout(RealRoad);
+        RealRoad.setLayout(RealRoadLayout);
+        RealRoadLayout.setHorizontalGroup(
+            RealRoadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        RealRoadLayout.setVerticalGroup(
+            RealRoadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout OrientalLayout = new javax.swing.GroupLayout(Oriental);
+        Oriental.setLayout(OrientalLayout);
+        OrientalLayout.setHorizontalGroup(
+            OrientalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        OrientalLayout.setVerticalGroup(
+            OrientalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout ChanceRedLayout = new javax.swing.GroupLayout(ChanceRed);
+        ChanceRed.setLayout(ChanceRedLayout);
+        ChanceRedLayout.setHorizontalGroup(
+            ChanceRedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        ChanceRedLayout.setVerticalGroup(
+            ChanceRedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout VermontLayout = new javax.swing.GroupLayout(Vermont);
+        Vermont.setLayout(VermontLayout);
+        VermontLayout.setHorizontalGroup(
+            VermontLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        VermontLayout.setVerticalGroup(
+            VermontLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout ConnecticutLayout = new javax.swing.GroupLayout(Connecticut);
+        Connecticut.setLayout(ConnecticutLayout);
+        ConnecticutLayout.setHorizontalGroup(
+            ConnecticutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 77, Short.MAX_VALUE)
+        );
+        ConnecticutLayout.setVerticalGroup(
+            ConnecticutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(parking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
-                .addComponent(zone5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(zone4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(zone3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(zone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(zone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(waterWorks1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(ventnor, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(waterWorks2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(MarvinGardens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(goToJail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(go, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Connecticut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Kentucky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ChanceBlue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Vermont, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(ChanceRed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(Oriental, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(RealRoad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(IncomeTax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(Baltic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(Community_Chest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(Mediter_Ranean, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(go, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Indiana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(Illinois, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(RailRoad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(Atlantic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(ventnor, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(waterWorks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(MarvinGardens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(goToJail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -242,18 +393,27 @@ public class Gameplay extends javax.swing.JFrame {
                     .addComponent(goToJail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(parking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(MarvinGardens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(waterWorks2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(waterWorks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ventnor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(waterWorks1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(zone1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(zone2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(zone3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(zone4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(zone5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Atlantic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(RailRoad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Illinois, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Indiana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ChanceBlue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Kentucky, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 528, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(go, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Mediter_Ranean, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Community_Chest, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Baltic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IncomeTax, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RealRoad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Oriental, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ChanceRed, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Vermont, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Connecticut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -261,8 +421,8 @@ public class Gameplay extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 496, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 881, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 449, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -308,19 +468,28 @@ public class Gameplay extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private GamePlay.Zone Atlantic;
+    private GamePlay.Zone Baltic;
+    private GamePlay.Zone ChanceBlue;
+    private GamePlay.Zone ChanceRed;
+    private GamePlay.Zone Community_Chest;
+    private GamePlay.Zone Connecticut;
+    private GamePlay.Zone Illinois;
+    private GamePlay.Zone IncomeTax;
+    private GamePlay.Zone Indiana;
+    private GamePlay.Zone Kentucky;
     private GamePlay.Zone MarvinGardens;
+    private GamePlay.Zone Mediter_Ranean;
+    private GamePlay.Zone Oriental;
+    private GamePlay.Zone RailRoad;
+    private GamePlay.Zone RealRoad;
+    private GamePlay.Zone Vermont;
     private GamePlay.Zone go;
     private GamePlay.Zone goToJail;
     private javax.swing.JPanel jPanel1;
     private GamePlay.Zone jail;
     private GamePlay.Zone parking;
     private GamePlay.Zone ventnor;
-    private GamePlay.Zone waterWorks1;
-    private GamePlay.Zone waterWorks2;
-    private GamePlay.Zone zone1;
-    private GamePlay.Zone zone2;
-    private GamePlay.Zone zone3;
-    private GamePlay.Zone zone4;
-    private GamePlay.Zone zone5;
+    private GamePlay.Zone waterWorks;
     // End of variables declaration//GEN-END:variables
 }

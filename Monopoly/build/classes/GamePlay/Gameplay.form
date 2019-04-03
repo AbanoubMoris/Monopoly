@@ -4,9 +4,6 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="undecorated" type="boolean" value="true"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1366, 768]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -29,7 +26,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" pref="870" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="496" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="460" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,33 +50,56 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="parking" max="32767" attributes="0"/>
                       <Component id="jail" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="zone5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="zone4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="zone3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="zone2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="zone1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="waterWorks1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="ventnor" min="-2" pref="70" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="waterWorks2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="MarvinGardens" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="goToJail" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="go" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="Connecticut" min="-2" max="-2" attributes="0"/>
+                      <Component id="Kentucky" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="ChanceBlue" max="32767" attributes="0"/>
+                      <Component id="Vermont" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="ChanceRed" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="Oriental" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="RealRoad" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="IncomeTax" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="Baltic" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="Community_Chest" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="Mediter_Ranean" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="go" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="Indiana" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="Illinois" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="RailRoad" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="Atlantic" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="ventnor" min="-2" pref="70" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="waterWorks" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="MarvinGardens" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="goToJail" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -92,19 +112,28 @@
                       <Component id="goToJail" max="32767" attributes="0"/>
                       <Component id="parking" max="32767" attributes="0"/>
                       <Component id="MarvinGardens" max="32767" attributes="0"/>
-                      <Component id="waterWorks2" max="32767" attributes="0"/>
+                      <Component id="waterWorks" max="32767" attributes="0"/>
                       <Component id="ventnor" max="32767" attributes="0"/>
-                      <Component id="waterWorks1" max="32767" attributes="0"/>
-                      <Component id="zone1" max="32767" attributes="0"/>
-                      <Component id="zone2" max="32767" attributes="0"/>
-                      <Component id="zone3" max="32767" attributes="0"/>
-                      <Component id="zone4" max="32767" attributes="0"/>
-                      <Component id="zone5" max="32767" attributes="0"/>
+                      <Component id="Atlantic" max="32767" attributes="0"/>
+                      <Component id="RailRoad" max="32767" attributes="0"/>
+                      <Component id="Illinois" max="32767" attributes="0"/>
+                      <Component id="Indiana" max="32767" attributes="0"/>
+                      <Component id="ChanceBlue" max="32767" attributes="0"/>
+                      <Component id="Kentucky" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="528" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="go" alignment="1" max="32767" attributes="0"/>
                       <Component id="jail" alignment="1" max="32767" attributes="0"/>
+                      <Component id="Mediter_Ranean" max="32767" attributes="0"/>
+                      <Component id="Community_Chest" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Baltic" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="IncomeTax" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="RealRoad" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Oriental" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="ChanceRed" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Vermont" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Connecticut" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -121,7 +150,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -209,7 +238,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="GamePlay.Zone" name="waterWorks1">
+        <Container class="GamePlay.Zone" name="Atlantic">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -224,7 +253,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="GamePlay.Zone" name="waterWorks2">
+        <Container class="GamePlay.Zone" name="waterWorks">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -239,7 +268,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="GamePlay.Zone" name="zone1">
+        <Container class="GamePlay.Zone" name="RailRoad">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -254,7 +283,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="GamePlay.Zone" name="zone2">
+        <Container class="GamePlay.Zone" name="Illinois">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -269,7 +298,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="GamePlay.Zone" name="zone3">
+        <Container class="GamePlay.Zone" name="Indiana">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -284,7 +313,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="GamePlay.Zone" name="zone4">
+        <Container class="GamePlay.Zone" name="ChanceBlue">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -299,7 +328,22 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="GamePlay.Zone" name="zone5">
+        <Container class="GamePlay.Zone" name="Kentucky">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="77" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="GamePlay.Zone" name="Mediter_Ranean">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -310,6 +354,126 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="GamePlay.Zone" name="Community_Chest">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="GamePlay.Zone" name="Baltic">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="GamePlay.Zone" name="IncomeTax">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="GamePlay.Zone" name="RealRoad">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="GamePlay.Zone" name="Oriental">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="GamePlay.Zone" name="ChanceRed">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="GamePlay.Zone" name="Vermont">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="GamePlay.Zone" name="Connecticut">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="77" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
