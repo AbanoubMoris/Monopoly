@@ -64,6 +64,10 @@ public class Zone extends javax.swing.JPanel {
       //  btn.setBounds(0, 0, 100, 100);
         
     }
+    
+    public JPanel getPanel(){
+        return this;
+    }
 
    
   

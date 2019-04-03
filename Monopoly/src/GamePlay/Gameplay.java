@@ -5,15 +5,39 @@
  */
 package GamePlay;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.Map;
+import java.util.Random;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 /**
  *
  * @author lap shop
  */
 public class Gameplay extends javax.swing.JFrame {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     public Gameplay() {
         initComponents();
@@ -61,7 +85,172 @@ public class Gameplay extends javax.swing.JFrame {
         orange.setImage("src/Gameplay/img/orange-CHANCE.png", false);
         bluetreasure.setImage("src/Gameplay/img/treasure.png", false);
         
-    
+        
+        // cards info mouse events
+        MarvinGardens.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/MarvinGardens.png");
+            }
+        });
+        
+        ventnor.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/VentorAvenue.png");
+            }
+        });
+        
+        Atlantic.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/AtlanticAvenue.png");
+            }
+        });
+       
+        
+        Illinois.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/IllinoisAvenue.png");
+            }
+        });
+        
+        Indiana.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/IndianaAvenue.png");
+            }
+        });
+        
+        Kentucky.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/KentuckyAvenue.png");
+            }
+        });
+        
+        Mediter_Ranean.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/MediteraneanAvenue.png");
+            }
+        });
+        
+        Baltic.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/BalticAvenue.png");
+            }
+        });
+        
+        
+        Oriental.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/OrientalAvenue.png");
+            }
+        });
+        
+        Vermont.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/VermontAvenue.png");
+            }
+        });
+        
+        Connecticut.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/ConnectCutAvenue.png");
+            }
+        });
+        
+        pacific.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/PacificAvenue.png");
+            }
+        });
+        
+        NorthCaro.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/NorthCarolina.png");
+            }
+        });
+        
+        pennsy.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/Pensylvania.png");
+            }
+        });
+        
+       
+        
+        ParkPlace.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/ParkPlace.png");
+            }
+        });
+        
+        NewYork.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/NewYorkAvenue.png");
+            }
+        });
+        
+        Tenss.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/TennesseeAvenue.png");
+            }
+        });
+        
+        stJames.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/StJamesPlace.png");
+            }
+        });
+        
+        
+        Virginnia.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/VirginiaAvenue.png");
+            }
+        });
+        
+        States.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/StatesAvenue.png");
+            }
+        });
     
     
     }
@@ -759,6 +948,8 @@ public class Gameplay extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+        
+      
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -781,12 +972,49 @@ public class Gameplay extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
+        
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Gameplay().setVisible(true);
             }
         });
+        
+        
+        
+    }
+    
+      private static void displayCardInfo(String Path) {
+        JOptionPane.showConfirmDialog(null,
+                        getCardInfoPanel(Path),
+                        "Card Info  ",
+                        JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.PLAIN_MESSAGE);
+    }
+
+    private static JPanel getCardInfoPanel(String Path) {
+        JPanel panel = new JPanel();
+
+        String path = Path;
+        Image img = null;
+        try {
+            File imgFile = new File(path);
+            img = ImageIO.read(imgFile);
+            panel.setBorder(new LineBorder(Color.black, 7));
+
+        } catch(MalformedURLException mue) {
+            mue.printStackTrace();
+        } catch(IOException ioe) {
+            ioe.printStackTrace();
+        } 
+
+        JLabel label = new JLabel(new ImageIcon(img));
+        panel.add(label);
+
+        return panel;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
