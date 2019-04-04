@@ -302,6 +302,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="MarvinGardens">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(24,48,120,360,850,1025,1200,150,150,280,&quot;Yellow&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -325,6 +328,9 @@
               <Dimension value="[90, 120]"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(22,44,110,330,800,975,1150,150,150,260,&quot;Yellow&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -340,6 +346,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="Atlantic">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(22,44,110,330,800,975,1150,150,150,260,&quot;Yellow&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -385,6 +394,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="Illinois">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(20,40,100,300,750,925,1100,150,150,240,&quot;Red&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -400,6 +412,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="Indiana">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(18,36,90,250,700,875,1050,150,150,220,&quot;Red&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -430,6 +445,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="Kentucky">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(18,36,90,250,700,875,1050,150,150,220,&quot;Red&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -445,6 +463,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="Mediter_Ranean">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(2,4,10,30,90,160,250,50,50,60,&quot;Brown&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -475,6 +496,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="Baltic">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(4,8,20,60,180,320,450,50,50,60,&quot;Brown&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -520,6 +544,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="Oriental">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(6,12,30,90,270,400,550,50,50,100,&quot;Light Blue&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -550,6 +577,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="Vermont">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(6,12,30,90,270,400,550,50,50,100,&quot;Light Blue&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -565,6 +595,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="Connecticut">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(8,16,40,100,300,450,600,50,50,100,&quot;Light Blue&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -580,6 +613,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="pacific">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(26,52,130,390,900,1100,1275,200,200,300,&quot;Green&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -595,6 +631,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="NorthCaro">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(26,52,130,390,900,1100,1275,200,200,300,&quot;Green&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -625,6 +664,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="pennsy">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(28,56,150,450,1000,1200,1400,200,200,320,&quot;Green&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -670,6 +712,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="ParkPlace">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(35,44,175,500,1100,1300,1500,200,200,350,&quot;Dark Blue&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -685,6 +730,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="NewYork">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(16,32,80,220,600,800,1000,50,50,200,&quot;Orange&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -715,6 +763,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="stJames">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(14,28,70,200,550,750,950,50,50,180,&quot;Orange&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -745,6 +796,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="Virginnia">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(12,24,60,180,500,700,900,100,100,160,&quot;Pink&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -760,6 +814,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="States">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(10,20,50,150,450,625,750,100,100,140,&quot;Pink&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -775,6 +832,9 @@
           </Layout>
         </Container>
         <Container class="GamePlay.Zone" name="Tenss">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GamePlay.Zone(14,28,70,200,550,750,950,50,50,180,&quot;Orange&quot;)"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">

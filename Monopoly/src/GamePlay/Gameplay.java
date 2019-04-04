@@ -252,7 +252,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
     
-    
+        
     }
     
     
@@ -270,38 +270,38 @@ public class Gameplay extends javax.swing.JFrame {
         jail = new GamePlay.Zone();
         parking = new GamePlay.Zone();
         goToJail = new GamePlay.Zone();
-        MarvinGardens = new GamePlay.Zone();
-        ventnor = new GamePlay.Zone();
-        Atlantic = new GamePlay.Zone();
+        MarvinGardens = new GamePlay.Zone(24,48,120,360,850,1025,1200,150,150,280,"Yellow");
+        ventnor = new GamePlay.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow");
+        Atlantic = new GamePlay.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow");
         waterWorks = new GamePlay.Zone();
         RailRoad = new GamePlay.Zone();
-        Illinois = new GamePlay.Zone();
-        Indiana = new GamePlay.Zone();
+        Illinois = new GamePlay.Zone(20,40,100,300,750,925,1100,150,150,240,"Red");
+        Indiana = new GamePlay.Zone(18,36,90,250,700,875,1050,150,150,220,"Red");
         ChanceBlue = new GamePlay.Zone();
-        Kentucky = new GamePlay.Zone();
-        Mediter_Ranean = new GamePlay.Zone();
+        Kentucky = new GamePlay.Zone(18,36,90,250,700,875,1050,150,150,220,"Red");
+        Mediter_Ranean = new GamePlay.Zone(2,4,10,30,90,160,250,50,50,60,"Brown");
         Community_Chest = new GamePlay.Zone();
-        Baltic = new GamePlay.Zone();
+        Baltic = new GamePlay.Zone(4,8,20,60,180,320,450,50,50,60,"Brown");
         IncomeTax = new GamePlay.Zone();
         RealRoad = new GamePlay.Zone();
-        Oriental = new GamePlay.Zone();
+        Oriental = new GamePlay.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue");
         ChanceRed = new GamePlay.Zone();
-        Vermont = new GamePlay.Zone();
-        Connecticut = new GamePlay.Zone();
-        pacific = new GamePlay.Zone();
-        NorthCaro = new GamePlay.Zone();
+        Vermont = new GamePlay.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue");
+        Connecticut = new GamePlay.Zone(8,16,40,100,300,450,600,50,50,100,"Light Blue");
+        pacific = new GamePlay.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green");
+        NorthCaro = new GamePlay.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green");
         communtityChestRight = new GamePlay.Zone();
-        pennsy = new GamePlay.Zone();
+        pennsy = new GamePlay.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green");
         shorLline = new GamePlay.Zone();
         OrangeChance = new GamePlay.Zone();
-        ParkPlace = new GamePlay.Zone();
-        NewYork = new GamePlay.Zone();
+        ParkPlace = new GamePlay.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue");
+        NewYork = new GamePlay.Zone(16,32,80,220,600,800,1000,50,50,200,"Orange");
         CCT = new GamePlay.Zone();
-        stJames = new GamePlay.Zone();
+        stJames = new GamePlay.Zone(14,28,70,200,550,750,950,50,50,180,"Orange");
         pennsyl = new GamePlay.Zone();
-        Virginnia = new GamePlay.Zone();
-        States = new GamePlay.Zone();
-        Tenss = new GamePlay.Zone();
+        Virginnia = new GamePlay.Zone(12,24,60,180,500,700,900,100,100,160,"Pink");
+        States = new GamePlay.Zone(10,20,50,150,450,625,750,100,100,140,"Pink");
+        Tenss = new GamePlay.Zone(14,28,70,200,550,750,950,50,50,180,"Orange");
         MONOMAN = new GamePlay.Zone();
         orange = new GamePlay.Zone();
         bluetreasure = new GamePlay.Zone();

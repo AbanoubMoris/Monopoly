@@ -30,8 +30,134 @@ import javax.swing.JPanel;
  */
 public class Zone extends javax.swing.JPanel {
    
+    private int m_rent;
+    private int m_rentWithColorSet;
+    private int m_rentWithOneHouse;
+    private int m_rentWithTwoHouses;
+    private int m_rentWithThreeHouses;
+    private int m_rentWithFourHouses;
+    private int m_rentWithHotel;
+    private int m_houseCost;
+    private int m_hotelCost;
+    private int m_zoneCost;
+    private String m_color;
+
+    public int getM_rent() {
+        return m_rent;
+    }
+
+    public void setM_rent(int m_rent) {
+        this.m_rent = m_rent;
+    }
+
+    public int getM_rentWithColorSet() {
+        return m_rentWithColorSet;
+    }
+
+    public void setM_rentWithColorSet(int m_rentWithColorSet) {
+        this.m_rentWithColorSet = m_rentWithColorSet;
+    }
+
+    public int getM_rentWithOneHouse() {
+        return m_rentWithOneHouse;
+    }
+
+    public void setM_rentWithOneHouse(int m_rentWithOneHouse) {
+        this.m_rentWithOneHouse = m_rentWithOneHouse;
+    }
+
+    public int getM_rentWithTwoHouses() {
+        return m_rentWithTwoHouses;
+    }
+
+    public void setM_rentWithTwoHouses(int m_rentWithTwoHouses) {
+        this.m_rentWithTwoHouses = m_rentWithTwoHouses;
+    }
+
+    public int getM_rentWithThreeHouses() {
+        return m_rentWithThreeHouses;
+    }
+
+    public void setM_rentWithThreeHouses(int m_rentWithThreeHouses) {
+        this.m_rentWithThreeHouses = m_rentWithThreeHouses;
+    }
+
+    public int getM_rentWithFourHouses() {
+        return m_rentWithFourHouses;
+    }
+
+    public void setM_rentWithFourHouses(int m_rentWithFourHouses) {
+        this.m_rentWithFourHouses = m_rentWithFourHouses;
+    }
+
+    public int getM_rentWithHotel() {
+        return m_rentWithHotel;
+    }
+
+    public void setM_rentWithHotel(int m_rentWithHotel) {
+        this.m_rentWithHotel = m_rentWithHotel;
+    }
+
+    public int getM_houseCost() {
+        return m_houseCost;
+    }
+
+    public void setM_houseCost(int m_houseCost) {
+        this.m_houseCost = m_houseCost;
+    }
+
+    public int getM_hotelCost() {
+        return m_hotelCost;
+    }
+
+    public void setM_hotelCost(int m_hotelCost) {
+        this.m_hotelCost = m_hotelCost;
+    }
+
+    public int getM_zoneCost() {
+        return m_zoneCost;
+    }
+
+    public void setM_zoneCost(int m_zoneCost) {
+        this.m_zoneCost = m_zoneCost;
+    }
+
+    public String getM_color() {
+        return m_color;
+    }
+
+    public void setM_color(String m_color) {
+        this.m_color = m_color;
+    }
+    
+    
     public Zone() {
-        
+        this.m_rent = 0;
+        this.m_rentWithColorSet = 0;
+        this.m_rentWithOneHouse = 0;
+        this.m_rentWithTwoHouses = 0;
+        this.m_rentWithThreeHouses = 0;
+        this.m_rentWithFourHouses = 0;
+        this.m_rentWithHotel = 0;
+        this.m_houseCost = 0;
+        this.m_hotelCost = 0;
+        this.m_zoneCost = 0;
+        this.m_color = null;
+    }
+    
+    public Zone(int m_rent , int m_rentWithColorSet , int m_rentWithOneHouse, int m_rentWithTwoHouses , int m_rentWithThreeHouses , int m_rentWithFourHouses , int m_rentWithHotel , int m_houseCost , int m_hotelCost , int m_zoneCost , String m_color)
+    {
+        this.m_rent = m_rent;
+        this.m_rentWithColorSet = m_rentWithColorSet;
+        this.m_rentWithOneHouse = m_rentWithOneHouse;
+        this.m_rentWithTwoHouses = m_rentWithTwoHouses;
+        this.m_rentWithThreeHouses = m_rentWithThreeHouses;
+        this.m_rentWithFourHouses = m_rentWithFourHouses;
+        this.m_rentWithHotel = m_rentWithHotel;
+        this.m_houseCost = m_houseCost;
+        this.m_hotelCost = m_hotelCost;
+        this.m_zoneCost = m_zoneCost;
+        this.m_color = m_color;
     }
   
     public void setImage(String path , boolean border){     
