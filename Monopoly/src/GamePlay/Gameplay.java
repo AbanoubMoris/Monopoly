@@ -265,7 +265,7 @@ public class Gameplay extends javax.swing.JFrame {
         DrawGamePlay();
         DisplayCiyInfo();
         JButton btn = new JButton();
-        btn.setBounds(0, 0, 100, 45);
+        btn.setBounds(55, 0, 65, 35);
         jPanel1.add(btn);
         
         
@@ -273,8 +273,8 @@ public class Gameplay extends javax.swing.JFrame {
 
             @Override
             public void run() {
-                for (int i=0;i<600;i++){
-                    btn.setBounds(i, 0, 100, 45);
+                for (int i=55;i<55+(70*9);i++){
+                    btn.setBounds(i, 0, 65, 35);
                     
                     try {
                         Thread.sleep(1);
@@ -283,7 +283,7 @@ public class Gameplay extends javax.swing.JFrame {
                         Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    parking.repaint();
+                   // parking.repaint();
                 }
                 
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -351,6 +351,11 @@ public class Gameplay extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 218, 242));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 800));
+        jPanel1.setLayout(null);
+
+        go.setMaximumSize(new java.awt.Dimension(120, 120));
+        go.setMinimumSize(new java.awt.Dimension(120, 120));
+        go.setPreferredSize(new java.awt.Dimension(120, 120));
 
         javax.swing.GroupLayout goLayout = new javax.swing.GroupLayout(go);
         go.setLayout(goLayout);
@@ -363,6 +368,9 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(go);
+        go.setBounds(750, 608, 120, 120);
+
         javax.swing.GroupLayout jailLayout = new javax.swing.GroupLayout(jail);
         jail.setLayout(jailLayout);
         jailLayout.setHorizontalGroup(
@@ -373,6 +381,9 @@ public class Gameplay extends javax.swing.JFrame {
             jailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        jPanel1.add(jail);
+        jail.setBounds(0, 608, 120, 120);
 
         javax.swing.GroupLayout parkingLayout = new javax.swing.GroupLayout(parking);
         parking.setLayout(parkingLayout);
@@ -385,6 +396,9 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(parking);
+        parking.setBounds(0, 0, 120, 120);
+
         javax.swing.GroupLayout goToJailLayout = new javax.swing.GroupLayout(goToJail);
         goToJail.setLayout(goToJailLayout);
         goToJailLayout.setHorizontalGroup(
@@ -393,8 +407,14 @@ public class Gameplay extends javax.swing.JFrame {
         );
         goToJailLayout.setVerticalGroup(
             goToJailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        jPanel1.add(goToJail);
+        goToJail.setBounds(750, 0, 120, 120);
+
+        MarvinGardens.setMaximumSize(new java.awt.Dimension(70, 120));
+        MarvinGardens.setMinimumSize(new java.awt.Dimension(70, 120));
 
         javax.swing.GroupLayout MarvinGardensLayout = new javax.swing.GroupLayout(MarvinGardens);
         MarvinGardens.setLayout(MarvinGardensLayout);
@@ -407,19 +427,28 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        ventnor.setMaximumSize(new java.awt.Dimension(90, 120));
-        ventnor.setMinimumSize(new java.awt.Dimension(90, 120));
+        jPanel1.add(MarvinGardens);
+        MarvinGardens.setBounds(680, 0, 70, 120);
+
+        ventnor.setMaximumSize(new java.awt.Dimension(70, 120));
+        ventnor.setMinimumSize(new java.awt.Dimension(70, 120));
 
         javax.swing.GroupLayout ventnorLayout = new javax.swing.GroupLayout(ventnor);
         ventnor.setLayout(ventnorLayout);
         ventnorLayout.setHorizontalGroup(
             ventnorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
         ventnorLayout.setVerticalGroup(
             ventnorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        jPanel1.add(ventnor);
+        ventnor.setBounds(540, 0, 70, 120);
+
+        Atlantic.setMaximumSize(new java.awt.Dimension(70, 120));
+        Atlantic.setMinimumSize(new java.awt.Dimension(70, 120));
 
         javax.swing.GroupLayout AtlanticLayout = new javax.swing.GroupLayout(Atlantic);
         Atlantic.setLayout(AtlanticLayout);
@@ -432,6 +461,12 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(Atlantic);
+        Atlantic.setBounds(470, 0, 70, 120);
+
+        waterWorks.setMaximumSize(new java.awt.Dimension(70, 120));
+        waterWorks.setMinimumSize(new java.awt.Dimension(70, 120));
+
         javax.swing.GroupLayout waterWorksLayout = new javax.swing.GroupLayout(waterWorks);
         waterWorks.setLayout(waterWorksLayout);
         waterWorksLayout.setHorizontalGroup(
@@ -442,6 +477,12 @@ public class Gameplay extends javax.swing.JFrame {
             waterWorksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        jPanel1.add(waterWorks);
+        waterWorks.setBounds(610, 0, 70, 120);
+
+        RailRoad.setMaximumSize(new java.awt.Dimension(70, 120));
+        RailRoad.setMinimumSize(new java.awt.Dimension(70, 120));
 
         javax.swing.GroupLayout RailRoadLayout = new javax.swing.GroupLayout(RailRoad);
         RailRoad.setLayout(RailRoadLayout);
@@ -454,6 +495,12 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(RailRoad);
+        RailRoad.setBounds(400, 0, 70, 120);
+
+        Illinois.setMaximumSize(new java.awt.Dimension(70, 120));
+        Illinois.setMinimumSize(new java.awt.Dimension(70, 120));
+
         javax.swing.GroupLayout IllinoisLayout = new javax.swing.GroupLayout(Illinois);
         Illinois.setLayout(IllinoisLayout);
         IllinoisLayout.setHorizontalGroup(
@@ -465,6 +512,12 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(Illinois);
+        Illinois.setBounds(330, 0, 70, 120);
+
+        Indiana.setMaximumSize(new java.awt.Dimension(70, 120));
+        Indiana.setMinimumSize(new java.awt.Dimension(70, 120));
+
         javax.swing.GroupLayout IndianaLayout = new javax.swing.GroupLayout(Indiana);
         Indiana.setLayout(IndianaLayout);
         IndianaLayout.setHorizontalGroup(
@@ -473,8 +526,14 @@ public class Gameplay extends javax.swing.JFrame {
         );
         IndianaLayout.setVerticalGroup(
             IndianaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
+
+        jPanel1.add(Indiana);
+        Indiana.setBounds(260, 0, 70, 120);
+
+        ChanceBlue.setMaximumSize(new java.awt.Dimension(70, 120));
+        ChanceBlue.setMinimumSize(new java.awt.Dimension(70, 120));
 
         javax.swing.GroupLayout ChanceBlueLayout = new javax.swing.GroupLayout(ChanceBlue);
         ChanceBlue.setLayout(ChanceBlueLayout);
@@ -487,16 +546,31 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(ChanceBlue);
+        ChanceBlue.setBounds(190, 0, 70, 120);
+
+        Kentucky.setMaximumSize(new java.awt.Dimension(70, 120));
+        Kentucky.setMinimumSize(new java.awt.Dimension(70, 120));
+        Kentucky.setName(""); // NOI18N
+        Kentucky.setPreferredSize(new java.awt.Dimension(70, 0));
+        Kentucky.setVerifyInputWhenFocusTarget(false);
+
         javax.swing.GroupLayout KentuckyLayout = new javax.swing.GroupLayout(Kentucky);
         Kentucky.setLayout(KentuckyLayout);
         KentuckyLayout.setHorizontalGroup(
             KentuckyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 77, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
         KentuckyLayout.setVerticalGroup(
             KentuckyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        jPanel1.add(Kentucky);
+        Kentucky.setBounds(120, 0, 70, 120);
+
+        Mediter_Ranean.setMaximumSize(new java.awt.Dimension(70, 120));
+        Mediter_Ranean.setMinimumSize(new java.awt.Dimension(70, 120));
 
         javax.swing.GroupLayout Mediter_RaneanLayout = new javax.swing.GroupLayout(Mediter_Ranean);
         Mediter_Ranean.setLayout(Mediter_RaneanLayout);
@@ -509,6 +583,12 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(Mediter_Ranean);
+        Mediter_Ranean.setBounds(680, 608, 70, 120);
+
+        Community_Chest.setMaximumSize(new java.awt.Dimension(70, 120));
+        Community_Chest.setMinimumSize(new java.awt.Dimension(70, 120));
+
         javax.swing.GroupLayout Community_ChestLayout = new javax.swing.GroupLayout(Community_Chest);
         Community_Chest.setLayout(Community_ChestLayout);
         Community_ChestLayout.setHorizontalGroup(
@@ -519,6 +599,12 @@ public class Gameplay extends javax.swing.JFrame {
             Community_ChestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 120, Short.MAX_VALUE)
         );
+
+        jPanel1.add(Community_Chest);
+        Community_Chest.setBounds(610, 608, 70, 120);
+
+        Baltic.setMaximumSize(new java.awt.Dimension(70, 120));
+        Baltic.setMinimumSize(new java.awt.Dimension(70, 120));
 
         javax.swing.GroupLayout BalticLayout = new javax.swing.GroupLayout(Baltic);
         Baltic.setLayout(BalticLayout);
@@ -531,6 +617,12 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 120, Short.MAX_VALUE)
         );
 
+        jPanel1.add(Baltic);
+        Baltic.setBounds(540, 608, 70, 120);
+
+        IncomeTax.setMaximumSize(new java.awt.Dimension(70, 120));
+        IncomeTax.setMinimumSize(new java.awt.Dimension(70, 120));
+
         javax.swing.GroupLayout IncomeTaxLayout = new javax.swing.GroupLayout(IncomeTax);
         IncomeTax.setLayout(IncomeTaxLayout);
         IncomeTaxLayout.setHorizontalGroup(
@@ -541,6 +633,12 @@ public class Gameplay extends javax.swing.JFrame {
             IncomeTaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 120, Short.MAX_VALUE)
         );
+
+        jPanel1.add(IncomeTax);
+        IncomeTax.setBounds(470, 608, 70, 120);
+
+        RealRoad.setMaximumSize(new java.awt.Dimension(70, 120));
+        RealRoad.setMinimumSize(new java.awt.Dimension(70, 120));
 
         javax.swing.GroupLayout RealRoadLayout = new javax.swing.GroupLayout(RealRoad);
         RealRoad.setLayout(RealRoadLayout);
@@ -553,6 +651,12 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 120, Short.MAX_VALUE)
         );
 
+        jPanel1.add(RealRoad);
+        RealRoad.setBounds(400, 608, 70, 120);
+
+        Oriental.setMaximumSize(new java.awt.Dimension(70, 120));
+        Oriental.setMinimumSize(new java.awt.Dimension(70, 120));
+
         javax.swing.GroupLayout OrientalLayout = new javax.swing.GroupLayout(Oriental);
         Oriental.setLayout(OrientalLayout);
         OrientalLayout.setHorizontalGroup(
@@ -563,6 +667,12 @@ public class Gameplay extends javax.swing.JFrame {
             OrientalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 120, Short.MAX_VALUE)
         );
+
+        jPanel1.add(Oriental);
+        Oriental.setBounds(330, 608, 70, 120);
+
+        ChanceRed.setMaximumSize(new java.awt.Dimension(70, 120));
+        ChanceRed.setMinimumSize(new java.awt.Dimension(70, 120));
 
         javax.swing.GroupLayout ChanceRedLayout = new javax.swing.GroupLayout(ChanceRed);
         ChanceRed.setLayout(ChanceRedLayout);
@@ -575,27 +685,45 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 120, Short.MAX_VALUE)
         );
 
+        jPanel1.add(ChanceRed);
+        ChanceRed.setBounds(260, 608, 70, 120);
+
+        Vermont.setMaximumSize(new java.awt.Dimension(70, 120));
+        Vermont.setMinimumSize(new java.awt.Dimension(70, 120));
+
         javax.swing.GroupLayout VermontLayout = new javax.swing.GroupLayout(Vermont);
         Vermont.setLayout(VermontLayout);
         VermontLayout.setHorizontalGroup(
             VermontLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
         VermontLayout.setVerticalGroup(
             VermontLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 120, Short.MAX_VALUE)
         );
 
+        jPanel1.add(Vermont);
+        Vermont.setBounds(190, 608, 70, 120);
+
+        Connecticut.setMaximumSize(new java.awt.Dimension(70, 120));
+        Connecticut.setMinimumSize(new java.awt.Dimension(70, 120));
+        Connecticut.setPreferredSize(new java.awt.Dimension(70, 120));
+
         javax.swing.GroupLayout ConnecticutLayout = new javax.swing.GroupLayout(Connecticut);
         Connecticut.setLayout(ConnecticutLayout);
         ConnecticutLayout.setHorizontalGroup(
             ConnecticutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 77, Short.MAX_VALUE)
+            .addGap(0, 70, Short.MAX_VALUE)
         );
         ConnecticutLayout.setVerticalGroup(
             ConnecticutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 120, Short.MAX_VALUE)
         );
+
+        jPanel1.add(Connecticut);
+        Connecticut.setBounds(120, 608, 70, 120);
+
+        pacific.setPreferredSize(new java.awt.Dimension(120, 70));
 
         javax.swing.GroupLayout pacificLayout = new javax.swing.GroupLayout(pacific);
         pacific.setLayout(pacificLayout);
@@ -608,6 +736,13 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 70, Short.MAX_VALUE)
         );
 
+        jPanel1.add(pacific);
+        pacific.setBounds(750, 120, 120, 70);
+
+        NorthCaro.setMaximumSize(new java.awt.Dimension(120, 70));
+        NorthCaro.setMinimumSize(new java.awt.Dimension(120, 70));
+        NorthCaro.setPreferredSize(new java.awt.Dimension(120, 70));
+
         javax.swing.GroupLayout NorthCaroLayout = new javax.swing.GroupLayout(NorthCaro);
         NorthCaro.setLayout(NorthCaroLayout);
         NorthCaroLayout.setHorizontalGroup(
@@ -618,6 +753,13 @@ public class Gameplay extends javax.swing.JFrame {
             NorthCaroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
+
+        jPanel1.add(NorthCaro);
+        NorthCaro.setBounds(750, 190, 120, 70);
+
+        communtityChestRight.setMaximumSize(new java.awt.Dimension(120, 70));
+        communtityChestRight.setMinimumSize(new java.awt.Dimension(120, 70));
+        communtityChestRight.setPreferredSize(new java.awt.Dimension(120, 70));
 
         javax.swing.GroupLayout communtityChestRightLayout = new javax.swing.GroupLayout(communtityChestRight);
         communtityChestRight.setLayout(communtityChestRightLayout);
@@ -630,6 +772,14 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 70, Short.MAX_VALUE)
         );
 
+        jPanel1.add(communtityChestRight);
+        communtityChestRight.setBounds(750, 260, 120, 70);
+
+        pennsy.setMaximumSize(new java.awt.Dimension(120, 70));
+        pennsy.setMinimumSize(new java.awt.Dimension(120, 70));
+        pennsy.setName(""); // NOI18N
+        pennsy.setPreferredSize(new java.awt.Dimension(120, 70));
+
         javax.swing.GroupLayout pennsyLayout = new javax.swing.GroupLayout(pennsy);
         pennsy.setLayout(pennsyLayout);
         pennsyLayout.setHorizontalGroup(
@@ -640,6 +790,13 @@ public class Gameplay extends javax.swing.JFrame {
             pennsyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
+
+        jPanel1.add(pennsy);
+        pennsy.setBounds(750, 330, 120, 70);
+
+        shorLline.setMaximumSize(new java.awt.Dimension(120, 70));
+        shorLline.setMinimumSize(new java.awt.Dimension(120, 70));
+        shorLline.setPreferredSize(new java.awt.Dimension(120, 70));
 
         javax.swing.GroupLayout shorLlineLayout = new javax.swing.GroupLayout(shorLline);
         shorLline.setLayout(shorLlineLayout);
@@ -652,6 +809,13 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 70, Short.MAX_VALUE)
         );
 
+        jPanel1.add(shorLline);
+        shorLline.setBounds(750, 400, 120, 70);
+
+        OrangeChance.setMaximumSize(new java.awt.Dimension(120, 70));
+        OrangeChance.setMinimumSize(new java.awt.Dimension(120, 70));
+        OrangeChance.setPreferredSize(new java.awt.Dimension(120, 70));
+
         javax.swing.GroupLayout OrangeChanceLayout = new javax.swing.GroupLayout(OrangeChance);
         OrangeChance.setLayout(OrangeChanceLayout);
         OrangeChanceLayout.setHorizontalGroup(
@@ -662,6 +826,13 @@ public class Gameplay extends javax.swing.JFrame {
             OrangeChanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
+
+        jPanel1.add(OrangeChance);
+        OrangeChance.setBounds(750, 470, 120, 70);
+
+        ParkPlace.setMaximumSize(new java.awt.Dimension(120, 70));
+        ParkPlace.setMinimumSize(new java.awt.Dimension(120, 70));
+        ParkPlace.setPreferredSize(new java.awt.Dimension(120, 70));
 
         javax.swing.GroupLayout ParkPlaceLayout = new javax.swing.GroupLayout(ParkPlace);
         ParkPlace.setLayout(ParkPlaceLayout);
@@ -674,16 +845,22 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(ParkPlace);
+        ParkPlace.setBounds(750, 540, 120, 70);
+
         javax.swing.GroupLayout NewYorkLayout = new javax.swing.GroupLayout(NewYork);
         NewYork.setLayout(NewYorkLayout);
         NewYorkLayout.setHorizontalGroup(
             NewYorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
         NewYorkLayout.setVerticalGroup(
             NewYorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
+
+        jPanel1.add(NewYork);
+        NewYork.setBounds(0, 118, 120, 70);
 
         javax.swing.GroupLayout CCTLayout = new javax.swing.GroupLayout(CCT);
         CCT.setLayout(CCTLayout);
@@ -696,6 +873,13 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(CCT);
+        CCT.setBounds(0, 258, 120, 70);
+
+        stJames.setMaximumSize(new java.awt.Dimension(120, 70));
+        stJames.setMinimumSize(new java.awt.Dimension(120, 70));
+        stJames.setPreferredSize(new java.awt.Dimension(120, 70));
+
         javax.swing.GroupLayout stJamesLayout = new javax.swing.GroupLayout(stJames);
         stJames.setLayout(stJamesLayout);
         stJamesLayout.setHorizontalGroup(
@@ -706,6 +890,13 @@ public class Gameplay extends javax.swing.JFrame {
             stJamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        jPanel1.add(stJames);
+        stJames.setBounds(0, 328, 120, 70);
+
+        pennsyl.setMaximumSize(new java.awt.Dimension(120, 70));
+        pennsyl.setMinimumSize(new java.awt.Dimension(120, 70));
+        pennsyl.setPreferredSize(new java.awt.Dimension(120, 70));
 
         javax.swing.GroupLayout pennsylLayout = new javax.swing.GroupLayout(pennsyl);
         pennsyl.setLayout(pennsylLayout);
@@ -718,27 +909,43 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(pennsyl);
+        pennsyl.setBounds(0, 398, 120, 70);
+
+        Virginnia.setMaximumSize(new java.awt.Dimension(120, 70));
+        Virginnia.setMinimumSize(new java.awt.Dimension(120, 70));
+        Virginnia.setPreferredSize(new java.awt.Dimension(120, 70));
+
         javax.swing.GroupLayout VirginniaLayout = new javax.swing.GroupLayout(Virginnia);
         Virginnia.setLayout(VirginniaLayout);
         VirginniaLayout.setHorizontalGroup(
             VirginniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
         VirginniaLayout.setVerticalGroup(
             VirginniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(Virginnia);
+        Virginnia.setBounds(0, 468, 120, 70);
+
+        States.setMaximumSize(new java.awt.Dimension(120, 70));
+        States.setMinimumSize(new java.awt.Dimension(120, 70));
+
         javax.swing.GroupLayout StatesLayout = new javax.swing.GroupLayout(States);
         States.setLayout(StatesLayout);
         StatesLayout.setHorizontalGroup(
             StatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
         StatesLayout.setVerticalGroup(
             StatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 70, Short.MAX_VALUE)
         );
+
+        jPanel1.add(States);
+        States.setBounds(0, 538, 120, 70);
 
         javax.swing.GroupLayout TenssLayout = new javax.swing.GroupLayout(Tenss);
         Tenss.setLayout(TenssLayout);
@@ -751,6 +958,9 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(Tenss);
+        Tenss.setBounds(0, 188, 120, 70);
+
         javax.swing.GroupLayout MONOMANLayout = new javax.swing.GroupLayout(MONOMAN);
         MONOMAN.setLayout(MONOMANLayout);
         MONOMANLayout.setHorizontalGroup(
@@ -761,6 +971,9 @@ public class Gameplay extends javax.swing.JFrame {
             MONOMANLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 228, Short.MAX_VALUE)
         );
+
+        jPanel1.add(MONOMAN);
+        MONOMAN.setBounds(281, 248, 281, 228);
 
         javax.swing.GroupLayout orangeLayout = new javax.swing.GroupLayout(orange);
         orange.setLayout(orangeLayout);
@@ -773,6 +986,9 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 139, Short.MAX_VALUE)
         );
 
+        jPanel1.add(orange);
+        orange.setBounds(600, 443, 137, 139);
+
         javax.swing.GroupLayout bluetreasureLayout = new javax.swing.GroupLayout(bluetreasure);
         bluetreasure.setLayout(bluetreasureLayout);
         bluetreasureLayout.setHorizontalGroup(
@@ -784,178 +1000,17 @@ public class Gameplay extends javax.swing.JFrame {
             .addGap(0, 133, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(parking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Connecticut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Kentucky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ChanceBlue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Vermont, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addComponent(ChanceRed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Oriental, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(RealRoad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(IncomeTax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Baltic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Community_Chest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Mediter_Ranean, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(go, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Indiana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(Illinois, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(RailRoad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(Atlantic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(ventnor, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(waterWorks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(MarvinGardens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(States, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Virginnia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pennsyl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CCT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(NewYork, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(stJames, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Tenss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(bluetreasure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(MONOMAN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(orange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(goToJail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pacific, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NorthCaro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(communtityChestRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pennsy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(shorLline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(OrangeChance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ParkPlace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(NewYork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(NorthCaro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(Tenss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(0, 0, 0)
-                                        .addComponent(communtityChestRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(70, 70, 70)
-                                        .addComponent(CCT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(0, 0, 0)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(pennsy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(stJames, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, 0)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(shorLline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(pennsyl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(0, 0, 0)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(OrangeChance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(Virginnia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(0, 0, 0)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(States, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(ParkPlace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(orange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(MONOMAN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(132, 132, 132))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(goToJail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(parking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(MarvinGardens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(waterWorks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ventnor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Atlantic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(RailRoad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Illinois, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Indiana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ChanceBlue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Kentucky, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pacific, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(bluetreasure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 337, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(go, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Mediter_Ranean, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Community_Chest, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Baltic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IncomeTax, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RealRoad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Oriental, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ChanceRed, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Vermont, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Connecticut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        jPanel1.add(bluetreasure);
+        bluetreasure.setBounds(138, 138, 133, 133);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(null);
 
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("CONTROLS");
         jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(242, 242, 242))
-        );
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(80, 310, 274, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
