@@ -14,8 +14,11 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Map;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -37,10 +40,9 @@ public class Gameplay extends javax.swing.JFrame {
     
     
     
-    
-
-    public Gameplay() {
-        initComponents();
+    public void DrawGamePlay(){
+            
+        
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         go.setImage("src/Gameplay/img/go.png", true);
         jail.setImage("src/Gameplay/img/jail.png", true);
@@ -85,6 +87,9 @@ public class Gameplay extends javax.swing.JFrame {
         orange.setImage("src/Gameplay/img/orange-CHANCE.png", false);
         bluetreasure.setImage("src/Gameplay/img/treasure.png", false);
         
+    
+    }
+    public void DisplayCiyInfo(){
         
         // cards info mouse events
         MarvinGardens.addMouseListener(new MouseAdapter() {
@@ -252,6 +257,39 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
     
+        //this.repaint();
+    }
+    
+    public Gameplay() {
+        initComponents();
+        DrawGamePlay();
+        DisplayCiyInfo();
+        JButton btn = new JButton();
+        btn.setBounds(0, 0, 100, 45);
+        jPanel1.add(btn);
+        
+        
+        new Thread ( new Runnable() {
+
+            @Override
+            public void run() {
+                for (int i=0;i<600;i++){
+                    btn.setBounds(i, 0, 100, 45);
+                    
+                    try {
+                        Thread.sleep(1);
+                        
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    parking.repaint();
+                }
+                
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        }).start();
+        
         
     }
     
