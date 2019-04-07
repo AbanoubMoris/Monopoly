@@ -267,7 +267,7 @@ public class Gameplay extends javax.swing.JFrame {
         DisplayCiyInfo();
         btn = new JButton();
         btn.setBackground(Color.red);
-        btn.setBounds(55, 0, 65, 35);
+        btn.setBounds(55, 20, 65, 35);
         jPanel1.add(btn);
         
 
@@ -278,8 +278,11 @@ public class Gameplay extends javax.swing.JFrame {
         
     }
     public void Movement(int NumOfSteps , int x ,int y){
-       int width = 65;
-       int height = 35;
+        
+       //int width = 65;
+       //int height = 35;
+        int width = 65;
+       int height = 20;
         s = new Thread ( new Runnable() {
             
             public void run() {
@@ -292,12 +295,14 @@ public class Gameplay extends javax.swing.JFrame {
                     int currentX = btn.getX();
                     int currentY = btn.getY();
                     
+                    
+                    //UP
                     if(currentX > x && currentX < jPanel1.getWidth() && currentY == y){
                     for (int i=btn.getX();i<currentX+70;i++){
-                    if(btn.getX()>goToJail.getX()+55){
+                    if(btn.getX()+x>goToJail.getX()){
                        // btn.setBounds(goToJail.getX()+85, 0, height, width);
-                        btn.setBounds(goToJail.getX() + (goToJail.getWidth()-height) , goToJail.getY()+go.getWidth()-width , height , width);
-                        cnt--;
+                        btn.setBounds(goToJail.getX() + (goToJail.getWidth()-height-x) , goToJail.getY()+goToJail.getWidth()-width , height , width);
+                      //  cnt--;
                         break;
                         
                     }
@@ -312,17 +317,21 @@ public class Gameplay extends javax.swing.JFrame {
                     } 
                 }
                    
-                    } // up
+                    } 
                     
                     //System.out.println(goToJail.getX());
                     
-                    
+                    //LEFT
                     if(currentY>=y && currentY<=jPanel1.getHeight() && currentX == x){
-                        System.out.println(currentY);
                         for (int i=btn.getY() ; i>currentY-70 ;i--){
-                            if(btn.getY()<=0) break;
+                            if(btn.getY()<=0) {
+                                btn.setBounds(parking.getX()+(parking.getWidth()-width), y, width , height);
+                                cnt--;
+                                break;
+                            }
+                            
                             else
-                                btn.setBounds(btn.getX(), i, 35, 65);
+                                btn.setBounds(btn.getX(), i, height, width);
                     
                             try {
                                 Thread.sleep(1);
@@ -330,15 +339,15 @@ public class Gameplay extends javax.swing.JFrame {
                                 Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);} 
                         }
                     }
+
+                   //RIGHT
                     
-                    
-                    //System.out.println(currentY + " " + (go.getY()+go.getHeight()) + " " + (go.getX()+(go.getWidth()-height)) + " " + currentX);
-                    if(currentY>=y && currentY<=go.getY()+go.getHeight() && currentX==go.getX()+(go.getWidth()-height)){
-                        
-                        
+                    if(currentY>=y && currentY<=go.getY()+go.getHeight() && currentX==go.getX()+(go.getWidth()-height-x)){
+                        System.out.println("dsfsdf");
                         for (int i=currentY ; i < currentY+70 ; i++){
-                            if(btn.getY()>go.getY()+55){
-                                btn.setBounds(go.getX(), go.getY()+(go.getWidth()-height), width, height);
+                            if(btn.getY()+y>go.getY()){
+                                btn.setBounds(go.getX(), go.getY()+(go.getWidth()-height-y), width, height);
+                               // cnt--;
                                 break;
                             }
                             btn.setBounds(currentX, i, height, width);
@@ -352,57 +361,35 @@ public class Gameplay extends javax.swing.JFrame {
                         }
                         
                     }
-                   // System.out.println(btn.getX());
+             
+               //Down
+                    System.out.println(currentX + " " + (go.getX()+go.getWidth()) + " " + (go.getY()+(go.getHeight()-height-y)) + " " + currentY);
+                    if (currentX>=0 && currentX<=(go.getX()+go.getWidth()) && currentY == (go.getY()+(go.getHeight()-height-y))){
+                       for (int i=currentX ; i>currentX-70 ; i--){
+                           if (btn.getX() <= 0){
+                               btn.setBounds(x, jail.getY() , height,width);
+                               cnt--;
+                               break;
+                           }
+                           else
+                           btn.setBounds(i, currentY, width,height);
+                           
+                                try {
+                        Thread.sleep(1);
+                        
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                           
+                       }
+                   }
+                    
 
                     cnt++;
                     if(cnt == NumOfSteps) break;
                     jPanel1.repaint();  
                 }
-                
-                
-                /*
-                for (int i=btn.getX();i<55+(70*NumOfSteps);i+=5){
-                    if(btn.getX()>goToJail.getX()+55){
-                        break;
-                        
-                    }
-                    else
-                        btn.setBounds(i, 0, 65, 35);
-                    
-                    try {
-                        Thread.sleep(1);
-                        
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    
-                }
-                jPanel1.repaint();
-                for (int i=btn.getY();i<55+(70*9);i+=5){
-                    if(btn.getY()>go.getY()+55) break;
-                    else
-                        btn.setBounds(goToJail.getX()+55+30, i, 35, 65);
-                    try {
-                        Thread.sleep(1);
-                        
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                jPanel1.repaint();
-                for (int i=btn.getX();i>0;i-=5){
-                    btn.setBounds(i, 690, 65, 35);
-                    try {
-                        Thread.sleep(1);
-                        
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    
-                }
-                */
+
       
                 // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
@@ -1173,7 +1160,7 @@ public class Gameplay extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Movement(5,0,0);
+        Movement(5,20,20);
         s.start();
     }//GEN-LAST:event_jButton2ActionPerformed
 
