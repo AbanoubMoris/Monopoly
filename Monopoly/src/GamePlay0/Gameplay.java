@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GamePlay;
+package GamePlay0;
 
 import java.awt.Color;
 import java.awt.Image;
@@ -259,22 +259,115 @@ public class Gameplay extends javax.swing.JFrame {
     
         //this.repaint();
     }
-    
+    Thread s;
+    JButton btn;
     public Gameplay() {
         initComponents();
         DrawGamePlay();
         DisplayCiyInfo();
-        JButton btn = new JButton();
+        btn = new JButton();
+        btn.setBackground(Color.red);
         btn.setBounds(55, 0, 65, 35);
         jPanel1.add(btn);
         
-        
-        new Thread ( new Runnable() {
 
-            @Override
+       
+       //btn.setBounds(0, jail.getY(), 35, 65);
+    
+        
+        
+    }
+    public void Movement(int NumOfSteps , int x ,int y){
+       int width = 65;
+       int height = 35;
+        s = new Thread ( new Runnable() {
+            
             public void run() {
-                for (int i=55;i<55+(70*9);i++){
-                    btn.setBounds(i, 0, 65, 35);
+                System.out.println("Running");
+                
+                
+                int cnt = 0;
+                
+                while(true){
+                    int currentX = btn.getX();
+                    int currentY = btn.getY();
+                    
+                    if(currentX > x && currentX < jPanel1.getWidth() && currentY == y){
+                    for (int i=btn.getX();i<currentX+70;i++){
+                    if(btn.getX()>goToJail.getX()+55){
+                       // btn.setBounds(goToJail.getX()+85, 0, height, width);
+                        btn.setBounds(goToJail.getX() + (goToJail.getWidth()-height) , goToJail.getY()+go.getWidth()-width , height , width);
+                        cnt--;
+                        break;
+                        
+                    }
+                    else
+                        btn.setBounds(i, y, width, height);
+                    
+                    try {
+                        Thread.sleep(1);
+                        
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                }
+                   
+                    } // up
+                    
+                    //System.out.println(goToJail.getX());
+                    
+                    
+                    if(currentY>=y && currentY<=jPanel1.getHeight() && currentX == x){
+                        System.out.println(currentY);
+                        for (int i=btn.getY() ; i>currentY-70 ;i--){
+                            if(btn.getY()<=0) break;
+                            else
+                                btn.setBounds(btn.getX(), i, 35, 65);
+                    
+                            try {
+                                Thread.sleep(1);
+                                } catch (InterruptedException ex) {
+                                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);} 
+                        }
+                    }
+                    
+                    
+                    //System.out.println(currentY + " " + (go.getY()+go.getHeight()) + " " + (go.getX()+(go.getWidth()-height)) + " " + currentX);
+                    if(currentY>=y && currentY<=go.getY()+go.getHeight() && currentX==go.getX()+(go.getWidth()-height)){
+                        
+                        
+                        for (int i=currentY ; i < currentY+70 ; i++){
+                            if(btn.getY()>go.getY()+55){
+                                btn.setBounds(go.getX(), go.getY()+(go.getWidth()-height), width, height);
+                                break;
+                            }
+                            btn.setBounds(currentX, i, height, width);
+                            
+                            try {
+                        Thread.sleep(1);
+                        
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                        }
+                        
+                    }
+                   // System.out.println(btn.getX());
+
+                    cnt++;
+                    if(cnt == NumOfSteps) break;
+                    jPanel1.repaint();  
+                }
+                
+                
+                /*
+                for (int i=btn.getX();i<55+(70*NumOfSteps);i+=5){
+                    if(btn.getX()>goToJail.getX()+55){
+                        break;
+                        
+                    }
+                    else
+                        btn.setBounds(i, 0, 65, 35);
                     
                     try {
                         Thread.sleep(1);
@@ -283,66 +376,86 @@ public class Gameplay extends javax.swing.JFrame {
                         Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                   // parking.repaint();
+                    
                 }
-                
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                jPanel1.repaint();
+                for (int i=btn.getY();i<55+(70*9);i+=5){
+                    if(btn.getY()>go.getY()+55) break;
+                    else
+                        btn.setBounds(goToJail.getX()+55+30, i, 35, 65);
+                    try {
+                        Thread.sleep(1);
+                        
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                jPanel1.repaint();
+                for (int i=btn.getX();i>0;i-=5){
+                    btn.setBounds(i, 690, 65, 35);
+                    try {
+                        Thread.sleep(1);
+                        
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    
+                }
+                */
+      
+                // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
-        }).start();
-        
-        
+        });
+           
     }
     
-    
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        go = new GamePlay.Zone();
-        jail = new GamePlay.Zone();
-        parking = new GamePlay.Zone();
-        goToJail = new GamePlay.Zone();
-        MarvinGardens = new GamePlay.Zone(24,48,120,360,850,1025,1200,150,150,280,"Yellow");
-        ventnor = new GamePlay.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow");
-        Atlantic = new GamePlay.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow");
-        waterWorks = new GamePlay.Zone();
-        RailRoad = new GamePlay.Zone();
-        Illinois = new GamePlay.Zone(20,40,100,300,750,925,1100,150,150,240,"Red");
-        Indiana = new GamePlay.Zone(18,36,90,250,700,875,1050,150,150,220,"Red");
-        ChanceBlue = new GamePlay.Zone();
-        Kentucky = new GamePlay.Zone(18,36,90,250,700,875,1050,150,150,220,"Red");
-        Mediter_Ranean = new GamePlay.Zone(2,4,10,30,90,160,250,50,50,60,"Brown");
-        Community_Chest = new GamePlay.Zone();
-        Baltic = new GamePlay.Zone(4,8,20,60,180,320,450,50,50,60,"Brown");
-        IncomeTax = new GamePlay.Zone();
-        RealRoad = new GamePlay.Zone();
-        Oriental = new GamePlay.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue");
-        ChanceRed = new GamePlay.Zone();
-        Vermont = new GamePlay.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue");
-        Connecticut = new GamePlay.Zone(8,16,40,100,300,450,600,50,50,100,"Light Blue");
-        pacific = new GamePlay.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green");
-        NorthCaro = new GamePlay.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green");
-        communtityChestRight = new GamePlay.Zone();
-        pennsy = new GamePlay.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green");
-        shorLline = new GamePlay.Zone();
-        OrangeChance = new GamePlay.Zone();
-        ParkPlace = new GamePlay.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue");
-        NewYork = new GamePlay.Zone(16,32,80,220,600,800,1000,50,50,200,"Orange");
-        CCT = new GamePlay.Zone();
-        stJames = new GamePlay.Zone(14,28,70,200,550,750,950,50,50,180,"Orange");
-        pennsyl = new GamePlay.Zone();
-        Virginnia = new GamePlay.Zone(12,24,60,180,500,700,900,100,100,160,"Pink");
-        States = new GamePlay.Zone(10,20,50,150,450,625,750,100,100,140,"Pink");
-        Tenss = new GamePlay.Zone(14,28,70,200,550,750,950,50,50,180,"Orange");
-        MONOMAN = new GamePlay.Zone();
-        orange = new GamePlay.Zone();
-        bluetreasure = new GamePlay.Zone();
+        go = new GamePlay0.Zone();
+        jail = new GamePlay0.Zone();
+        parking = new GamePlay0.Zone();
+        goToJail = new GamePlay0.Zone();
+        MarvinGardens = new GamePlay0.Zone(24,48,120,360,850,1025,1200,150,150,280,"Yellow");
+        ventnor = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow");
+        Atlantic = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow");
+        waterWorks = new GamePlay0.Zone();
+        RailRoad = new GamePlay0.Zone();
+        Illinois = new GamePlay0.Zone(20,40,100,300,750,925,1100,150,150,240,"Red");
+        Indiana = new GamePlay0.Zone(18,36,90,250,700,875,1050,150,150,220,"Red");
+        ChanceBlue = new GamePlay0.Zone();
+        Kentucky = new GamePlay0.Zone(18,36,90,250,700,875,1050,150,150,220,"Red");
+        Mediter_Ranean = new GamePlay0.Zone(2,4,10,30,90,160,250,50,50,60,"Brown");
+        Community_Chest = new GamePlay0.Zone();
+        Baltic = new GamePlay0.Zone(4,8,20,60,180,320,450,50,50,60,"Brown");
+        IncomeTax = new GamePlay0.Zone();
+        RealRoad = new GamePlay0.Zone();
+        Oriental = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue");
+        ChanceRed = new GamePlay0.Zone();
+        Vermont = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue");
+        Connecticut = new GamePlay0.Zone(8,16,40,100,300,450,600,50,50,100,"Light Blue");
+        pacific = new GamePlay0.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green");
+        NorthCaro = new GamePlay0.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green");
+        communtityChestRight = new GamePlay0.Zone();
+        pennsy = new GamePlay0.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green");
+        shorLline = new GamePlay0.Zone();
+        OrangeChance = new GamePlay0.Zone();
+        ParkPlace = new GamePlay0.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue");
+        NewYork = new GamePlay0.Zone(16,32,80,220,600,800,1000,50,50,200,"Orange");
+        CCT = new GamePlay0.Zone();
+        stJames = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange");
+        pennsyl = new GamePlay0.Zone();
+        Virginnia = new GamePlay0.Zone(12,24,60,180,500,700,900,100,100,160,"Pink");
+        States = new GamePlay0.Zone(10,20,50,150,450,625,750,100,100,140,"Pink");
+        Tenss = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange");
+        MONOMAN = new GamePlay0.Zone();
+        orange = new GamePlay0.Zone();
+        bluetreasure = new GamePlay0.Zone();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -1003,6 +1116,24 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel1.add(bluetreasure);
         bluetreasure.setBounds(138, 138, 133, 133);
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(590, 170, 73, 23);
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(480, 170, 73, 23);
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
@@ -1035,6 +1166,16 @@ public class Gameplay extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        s.stop();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Movement(5,0,0);
+        s.start();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1111,47 +1252,49 @@ public class Gameplay extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GamePlay.Zone Atlantic;
-    private GamePlay.Zone Baltic;
-    private GamePlay.Zone CCT;
-    private GamePlay.Zone ChanceBlue;
-    private GamePlay.Zone ChanceRed;
-    private GamePlay.Zone Community_Chest;
-    private GamePlay.Zone Connecticut;
-    private GamePlay.Zone Illinois;
-    private GamePlay.Zone IncomeTax;
-    private GamePlay.Zone Indiana;
-    private GamePlay.Zone Kentucky;
-    private GamePlay.Zone MONOMAN;
-    private GamePlay.Zone MarvinGardens;
-    private GamePlay.Zone Mediter_Ranean;
-    private GamePlay.Zone NewYork;
-    private GamePlay.Zone NorthCaro;
-    private GamePlay.Zone OrangeChance;
-    private GamePlay.Zone Oriental;
-    private GamePlay.Zone ParkPlace;
-    private GamePlay.Zone RailRoad;
-    private GamePlay.Zone RealRoad;
-    private GamePlay.Zone States;
-    private GamePlay.Zone Tenss;
-    private GamePlay.Zone Vermont;
-    private GamePlay.Zone Virginnia;
-    private GamePlay.Zone bluetreasure;
-    private GamePlay.Zone communtityChestRight;
-    private GamePlay.Zone go;
-    private GamePlay.Zone goToJail;
+    private GamePlay0.Zone Atlantic;
+    private GamePlay0.Zone Baltic;
+    private GamePlay0.Zone CCT;
+    private GamePlay0.Zone ChanceBlue;
+    private GamePlay0.Zone ChanceRed;
+    private GamePlay0.Zone Community_Chest;
+    private GamePlay0.Zone Connecticut;
+    private GamePlay0.Zone Illinois;
+    private GamePlay0.Zone IncomeTax;
+    private GamePlay0.Zone Indiana;
+    private GamePlay0.Zone Kentucky;
+    private GamePlay0.Zone MONOMAN;
+    private GamePlay0.Zone MarvinGardens;
+    private GamePlay0.Zone Mediter_Ranean;
+    private GamePlay0.Zone NewYork;
+    private GamePlay0.Zone NorthCaro;
+    private GamePlay0.Zone OrangeChance;
+    private GamePlay0.Zone Oriental;
+    private GamePlay0.Zone ParkPlace;
+    private GamePlay0.Zone RailRoad;
+    private GamePlay0.Zone RealRoad;
+    private GamePlay0.Zone States;
+    private GamePlay0.Zone Tenss;
+    private GamePlay0.Zone Vermont;
+    private GamePlay0.Zone Virginnia;
+    private GamePlay0.Zone bluetreasure;
+    private GamePlay0.Zone communtityChestRight;
+    private GamePlay0.Zone go;
+    private GamePlay0.Zone goToJail;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private GamePlay.Zone jail;
-    private GamePlay.Zone orange;
-    private GamePlay.Zone pacific;
-    private GamePlay.Zone parking;
-    private GamePlay.Zone pennsy;
-    private GamePlay.Zone pennsyl;
-    private GamePlay.Zone shorLline;
-    private GamePlay.Zone stJames;
-    private GamePlay.Zone ventnor;
-    private GamePlay.Zone waterWorks;
+    private GamePlay0.Zone jail;
+    private GamePlay0.Zone orange;
+    private GamePlay0.Zone pacific;
+    private GamePlay0.Zone parking;
+    private GamePlay0.Zone pennsy;
+    private GamePlay0.Zone pennsyl;
+    private GamePlay0.Zone shorLline;
+    private GamePlay0.Zone stJames;
+    private GamePlay0.Zone ventnor;
+    private GamePlay0.Zone waterWorks;
     // End of variables declaration//GEN-END:variables
 }
