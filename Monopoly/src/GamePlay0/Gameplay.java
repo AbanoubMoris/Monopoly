@@ -32,14 +32,6 @@ import javax.swing.border.LineBorder;
  */
 public class Gameplay extends javax.swing.JFrame {
     
-    
-    
-    
-    
-    
-    
-    
-    
     public void DrawGamePlay(){
             
         
@@ -87,8 +79,8 @@ public class Gameplay extends javax.swing.JFrame {
         orange.setImage("src/Gameplay/img/orange-CHANCE.png", false);
         bluetreasure.setImage("src/Gameplay/img/treasure.png", false);
         
-    dice1.setImage("src/GamePlay/img/1.PNG", false);
-    dice2.setImage("src/Gameplay/img/1.PNG", false);
+        dice1.setImage("src/GamePlay/img/1.PNG", false);
+        dice2.setImage("src/Gameplay/img/1.PNG", false);
    
     }
     public void DisplayCiyInfo(){
@@ -261,24 +253,36 @@ public class Gameplay extends javax.swing.JFrame {
     
         //this.repaint();
     }
-    Thread s;
-    JButton btn;
+    
+    private Thread s;
+    PlayerCurrentPostion pos;
+    
+    JButton btn1;
+    JButton btn2;
     public Gameplay() {
         initComponents();
         DrawGamePlay();
         DisplayCiyInfo();
-        btn = new JButton();
-        btn.setBackground(Color.red);
-        btn.setBounds(55, 20, 65, 35);
-        jPanel1.add(btn);
-       
+        
+        btn1 = new JButton();
+        btn1.setBackground(Color.red);
+      //  btn.setBounds(55, 20, 65, 35);
+        btn1.setBounds(go.getX(), go.getY()+(go.getWidth()-20-60), 60, 20);
+        jPanel1.add(btn1);
+        
+        btn2 = new JButton();
+        btn2.setBackground(Color.BLUE);
+      //  btn.setBounds(55, 20, 65, 35);
+        btn2.setBounds(go.getX(), go.getY()+(go.getWidth()-20-10), 60, 20);
+        jPanel1.add(btn2);
+        pos = new PlayerCurrentPostion();
     }
     
-    public void Movement(int NumOfSteps , int x ,int y){
+    public void Movement(int NumOfSteps , int x ,int y , JButton btn){
         
        //int width = 65;
        //int height = 35;
-        int width = 65;
+       int width = 65;
        int height = 20;
         s = new Thread ( new Runnable() {
             
@@ -294,12 +298,13 @@ public class Gameplay extends javax.swing.JFrame {
                     
                     
                     //UP
-                    if(currentX > x && currentX < jPanel1.getWidth() && currentY == y){
+                   // System.out.println(currentX + " " + x + " " + currentY + " " + y);
+                    if(currentX + (parking.getHeight() - currentX) > x && currentX < jPanel1.getWidth() && currentY == y){
                     for (int i=btn.getX();i<currentX+70;i++){
                     if(btn.getX()+x>goToJail.getX()){
                        // btn.setBounds(goToJail.getX()+85, 0, height, width);
                         btn.setBounds(goToJail.getX() + (goToJail.getWidth()-height-x) , goToJail.getY()+goToJail.getWidth()-width , height , width);
-                      //  cnt--;
+                        //cnt--;
                         break;
                         
                     }
@@ -321,9 +326,9 @@ public class Gameplay extends javax.swing.JFrame {
                     //LEFT
                     if(currentY>=y && currentY<=jPanel1.getHeight() && currentX == x){
                         for (int i=btn.getY() ; i>currentY-70 ;i--){
-                            if(btn.getY()<=0) {
+                            if(btn.getY()<=(parking.getWidth())) {
                                 btn.setBounds(parking.getX()+(parking.getWidth()-width), y, width , height);
-                                cnt--;
+                                //cnt--;
                                 break;
                             }
                             
@@ -339,8 +344,9 @@ public class Gameplay extends javax.swing.JFrame {
 
                    //RIGHT
                     
-                    if(currentY>=y && currentY<=go.getY()+go.getHeight() && currentX==go.getX()+(go.getWidth()-height-x)){
-                        System.out.println("dsfsdf");
+                 //System.out.println(currentY + " " + (go.getY()+go.getWidth()) + " " + (go.getX()+(go.getWidth()-height-x)) + " " + currentX);
+                    if(currentY + (goToJail.getWidth() - currentY )>=y && currentY<=go.getY()+go.getHeight() && currentX==go.getX()+(go.getWidth()-height-x)){
+                        
                         for (int i=currentY ; i < currentY+70 ; i++){
                             if(btn.getY()+y>go.getY()){
                                 btn.setBounds(go.getX(), go.getY()+(go.getWidth()-height-y), width, height);
@@ -360,10 +366,11 @@ public class Gameplay extends javax.swing.JFrame {
                     }
              
                //Down
-                    System.out.println(currentX + " " + (go.getX()+go.getWidth()) + " " + (go.getY()+(go.getHeight()-height-y)) + " " + currentY);
+                    
+                 //   System.out.println(currentX + " " + (go.getX()+go.getWidth()) + " " + (go.getY()+(go.getHeight()-height-y)) + " " + currentY);
                     if (currentX>=0 && currentX<=(go.getX()+go.getWidth()) && currentY == (go.getY()+(go.getHeight()-height-y))){
                        for (int i=currentX ; i>currentX-70 ; i--){
-                           if (btn.getX() <= 0){
+                           if (btn.getX() <= x){
                                btn.setBounds(x, jail.getY() , height,width);
                                cnt--;
                                break;
@@ -1193,12 +1200,17 @@ public class Gameplay extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        s.stop();
+        Movement(dice1.getDice_value()+ dice2.getDice_value(),10,10  , btn2);
+        pos.SetPlayer(1,dice1.getDice_value()+ dice2.getDice_value());
+         System.out.println(pos.getCurrentPos(1));
+        s.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Movement(dice1.getDice_value()+ dice2.getDice_value(),20,20);
+        Movement(dice1.getDice_value()+ dice2.getDice_value(),60,60 , btn1);
+        pos.SetPlayer(0,dice1.getDice_value()+ dice2.getDice_value());
+        System.out.println(pos.getCurrentPos(0));
         s.start();
         
     }//GEN-LAST:event_jButton2ActionPerformed
