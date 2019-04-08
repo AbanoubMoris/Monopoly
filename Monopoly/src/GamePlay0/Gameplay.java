@@ -1202,53 +1202,36 @@ public class Gameplay extends javax.swing.JFrame {
         s.start();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    public void roll_Dice(Dice d){
+         switch(d.getDice_value()){
+            case 1:
+                d.setImage("src/Gameplay/img/1.PNG", false);
+                break;
+            case 2:
+                d.setImage("src/Gameplay/img/2.PNG", false);
+                break;
+            case 3:
+                d.setImage("src/Gameplay/img/3.PNG", false);
+                break;
+            case 4:
+                d.setImage("src/Gameplay/img/4.PNG", false);
+                break;
+            case 5:
+                d.setImage("src/Gameplay/img/5.PNG", false);
+                break;
+            case 6:
+                d.setImage("src/Gameplay/img/6.PNG", false);
+                break;    
+        }
+    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        
         Random r = new Random();
         dice1.setDice_value(r.nextInt(6)+1);
         dice2.setDice_value(r.nextInt(6)+1);
-        
-        switch(dice1.getDice_value()){
-            case 1:
-                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\1.PNG", false);
-                break;
-            case 2:
-                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\2.PNG", false);
-                break;
-            case 3:
-                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\3.PNG", false);
-                break;
-            case 4:
-                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\4.PNG", false);
-                break;
-            case 5:
-                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\5.PNG", false);
-                break;
-            case 6:
-                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\6.PNG", false);
-                break;    
-        }
-        switch(dice2.getDice_value()){
-            case 1:
-                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\1.PNG", false);
-                break;
-            case 2:
-                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\2.PNG", false);
-                break;
-            case 3:
-                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\3.PNG", false);
-                break;
-            case 4:
-                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\4.PNG", false);
-                break;
-            case 5:
-                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\5.PNG", false);
-                break;
-            case 6:
-                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\6.PNG", false);
-                break;    
-        }
-        
+        roll_Dice(dice1);
+        roll_Dice(dice2);
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
