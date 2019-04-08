@@ -87,7 +87,9 @@ public class Gameplay extends javax.swing.JFrame {
         orange.setImage("src/Gameplay/img/orange-CHANCE.png", false);
         bluetreasure.setImage("src/Gameplay/img/treasure.png", false);
         
-    
+    dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\1.PNG", false);
+    dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\1.PNG", false);
+   
     }
     public void DisplayCiyInfo(){
         
@@ -270,13 +272,8 @@ public class Gameplay extends javax.swing.JFrame {
         btn.setBounds(55, 20, 65, 35);
         jPanel1.add(btn);
         
-
-       
-       //btn.setBounds(0, jail.getY(), 35, 65);
-    
-        
-        
     }
+    
     public void Movement(int NumOfSteps , int x ,int y){
         
        //int width = 65;
@@ -445,6 +442,9 @@ public class Gameplay extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        dice1 = new GamePlay0.Dice();
+        dice2 = new GamePlay0.Dice();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1130,6 +1130,44 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(jLabel1);
         jLabel1.setBounds(80, 310, 274, 40);
 
+        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton3.setText("Roll Dice");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3);
+        jButton3.setBounds(200, 700, 90, 30);
+
+        javax.swing.GroupLayout dice1Layout = new javax.swing.GroupLayout(dice1);
+        dice1.setLayout(dice1Layout);
+        dice1Layout.setHorizontalGroup(
+            dice1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        dice1Layout.setVerticalGroup(
+            dice1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(dice1);
+        dice1.setBounds(160, 630, 70, 60);
+
+        javax.swing.GroupLayout dice2Layout = new javax.swing.GroupLayout(dice2);
+        dice2.setLayout(dice2Layout);
+        dice2Layout.setHorizontalGroup(
+            dice2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        dice2Layout.setVerticalGroup(
+            dice2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(dice2);
+        dice2.setBounds(240, 630, 70, 60);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1137,13 +1175,13 @@ public class Gameplay extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 875, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 40, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -1163,6 +1201,55 @@ public class Gameplay extends javax.swing.JFrame {
         Movement(5,20,20);
         s.start();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       
+        Random r = new Random();
+        dice1.setDice_value(r.nextInt(6)+1);
+        dice2.setDice_value(r.nextInt(6)+1);
+        
+        switch(dice1.getDice_value()){
+            case 1:
+                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\1.PNG", false);
+                break;
+            case 2:
+                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\2.PNG", false);
+                break;
+            case 3:
+                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\3.PNG", false);
+                break;
+            case 4:
+                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\4.PNG", false);
+                break;
+            case 5:
+                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\5.PNG", false);
+                break;
+            case 6:
+                dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\6.PNG", false);
+                break;    
+        }
+        switch(dice2.getDice_value()){
+            case 1:
+                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\1.PNG", false);
+                break;
+            case 2:
+                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\2.PNG", false);
+                break;
+            case 3:
+                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\3.PNG", false);
+                break;
+            case 4:
+                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\4.PNG", false);
+                break;
+            case 5:
+                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\5.PNG", false);
+                break;
+            case 6:
+                dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\6.PNG", false);
+                break;    
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1266,10 +1353,13 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone Virginnia;
     private GamePlay0.Zone bluetreasure;
     private GamePlay0.Zone communtityChestRight;
+    private GamePlay0.Dice dice1;
+    private GamePlay0.Dice dice2;
     private GamePlay0.Zone go;
     private GamePlay0.Zone goToJail;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
