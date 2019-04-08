@@ -271,7 +271,7 @@ public class Gameplay extends javax.swing.JFrame {
         btn.setBackground(Color.red);
         btn.setBounds(55, 20, 65, 35);
         jPanel1.add(btn);
-        
+       
     }
     
     public void Movement(int NumOfSteps , int x ,int y){
@@ -1198,8 +1198,9 @@ public class Gameplay extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Movement(5,20,20);
+        Movement(dice1.getDice_value()+ dice2.getDice_value(),20,20);
         s.start();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void roll_Dice(Dice d){
