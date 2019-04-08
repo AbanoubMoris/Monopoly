@@ -87,8 +87,8 @@ public class Gameplay extends javax.swing.JFrame {
         orange.setImage("src/Gameplay/img/orange-CHANCE.png", false);
         bluetreasure.setImage("src/Gameplay/img/treasure.png", false);
         
-    dice1.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\1.PNG", false);
-    dice2.setImage("C:\\Users\\hs\\Documents\\GitHub\\Monopoly\\Monopoly\\src\\GamePlay\\img\\1.PNG", false);
+    dice1.setImage("src/GamePlay/img/1.PNG", false);
+    dice2.setImage("src/Gameplay/img/1.PNG", false);
    
     }
     public void DisplayCiyInfo(){
