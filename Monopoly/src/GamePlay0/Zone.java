@@ -28,7 +28,7 @@ import javax.swing.JPanel;
  *
  * @author lap shop
  */
-public class Zone extends javax.swing.JPanel {
+public class  Zone extends javax.swing.JPanel {
    
     private int m_rent;
     private int m_rentWithColorSet;
@@ -41,6 +41,7 @@ public class Zone extends javax.swing.JPanel {
     private int m_hotelCost;
     private int m_zoneCost;
     private String m_color;
+    private int m_index;
 
     public int getM_rent() {
         return m_rent;
@@ -129,7 +130,34 @@ public class Zone extends javax.swing.JPanel {
     public void setM_color(String m_color) {
         this.m_color = m_color;
     }
+
+    public int getM_index() {
+        return m_index;
+    }
+
+    public void setM_index(int m_index) {
+        this.m_index = m_index;
+    }
     
+    public Zone getDataFromIndex(int index)
+    {
+        return this;
+    }
+
+    public Zone(int index) {
+        this.m_rent = 0;
+        this.m_rentWithColorSet = 0;
+        this.m_rentWithOneHouse = 0;
+        this.m_rentWithTwoHouses = 0;
+        this.m_rentWithThreeHouses = 0;
+        this.m_rentWithFourHouses = 0;
+        this.m_rentWithHotel = 0;
+        this.m_houseCost = 0;
+        this.m_hotelCost = 0;
+        this.m_zoneCost = 0;
+        this.m_color = null;
+        this.m_index = index;
+    }
     
     public Zone() {
         this.m_rent = 0;
@@ -143,9 +171,10 @@ public class Zone extends javax.swing.JPanel {
         this.m_hotelCost = 0;
         this.m_zoneCost = 0;
         this.m_color = null;
+        this.m_index = -1;
     }
     
-    public Zone(int m_rent , int m_rentWithColorSet , int m_rentWithOneHouse, int m_rentWithTwoHouses , int m_rentWithThreeHouses , int m_rentWithFourHouses , int m_rentWithHotel , int m_houseCost , int m_hotelCost , int m_zoneCost , String m_color)
+    public Zone(int m_rent , int m_rentWithColorSet , int m_rentWithOneHouse, int m_rentWithTwoHouses , int m_rentWithThreeHouses , int m_rentWithFourHouses , int m_rentWithHotel , int m_houseCost , int m_hotelCost , int m_zoneCost , String m_color , int index)
     {
         this.m_rent = m_rent;
         this.m_rentWithColorSet = m_rentWithColorSet;
@@ -158,6 +187,7 @@ public class Zone extends javax.swing.JPanel {
         this.m_hotelCost = m_hotelCost;
         this.m_zoneCost = m_zoneCost;
         this.m_color = m_color;
+        this.m_index = index;
     }
   
     public void setImage(String path , boolean border){     

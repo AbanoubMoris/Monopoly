@@ -12,8 +12,10 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -30,7 +32,12 @@ import javax.swing.border.LineBorder;
  *
  * @author lap shop
  */
+
+
+
+
 public class Gameplay extends javax.swing.JFrame {
+
     
     public void DrawGamePlay(){
             
@@ -259,11 +266,61 @@ public class Gameplay extends javax.swing.JFrame {
     
     JButton btn1;
     JButton btn2;
+    Map<Integer,Zone> zoneMap;
+    public void zoneMapInitialization()
+    {
+        zoneMap = new HashMap<Integer, Zone>();
+        zoneMap.put(0, go);
+        zoneMap.put(1, Mediter_Ranean);
+        zoneMap.put(2, Community_Chest);
+        zoneMap.put(3, Baltic);
+        zoneMap.put(4, IncomeTax);
+        zoneMap.put(5, RealRoad);
+        zoneMap.put(6, Oriental);
+        zoneMap.put(7, ChanceRed);
+        zoneMap.put(8, Vermont);
+        zoneMap.put(9, Connecticut);
+        zoneMap.put(10, jail);
+        zoneMap.put(11, States);
+        zoneMap.put(12, Virginnia);
+        zoneMap.put(13, pennsyl);
+        zoneMap.put(14, stJames);
+        zoneMap.put(15, CCT);
+        zoneMap.put(16, Tenss);
+        zoneMap.put(17, NewYork);
+        zoneMap.put(18, parking);
+        zoneMap.put(19, Kentucky);
+        zoneMap.put(20, ChanceBlue);
+        zoneMap.put(21, Indiana);
+        zoneMap.put(22, Illinois);
+        zoneMap.put(23, RailRoad);
+        zoneMap.put(24, Atlantic);
+        zoneMap.put(25, ventnor);
+        zoneMap.put(26, waterWorks);
+        zoneMap.put(27, MarvinGardens);
+        zoneMap.put(28, goToJail);
+        zoneMap.put(29, pacific);
+        zoneMap.put(30, NorthCaro);
+        zoneMap.put(31, communtityChestRight);
+        zoneMap.put(32, pennsy);
+        zoneMap.put(33, shorLline);
+        zoneMap.put(34, OrangeChance);
+        zoneMap.put(35, ParkPlace);
+        
+    }
+    
+    
+    
     public Gameplay() {
         initComponents();
+        zoneMapInitialization();
         DrawGamePlay();
         DisplayCiyInfo();
         
+        
+        
+        
+        System.out.println();
         btn1 = new JButton();
         btn1.setBackground(Color.red);
       //  btn.setBounds(55, 20, 65, 35);
@@ -276,8 +333,11 @@ public class Gameplay extends javax.swing.JFrame {
         btn2.setBounds(go.getX(), go.getY()+(go.getWidth()-20-10), 60, 20);
         jPanel1.add(btn2);
         pos = new PlayerCurrentPostion();
+        
+        //System.out.println(pos.getCurrentPos(0));
     }
-    
+    int count;
+    boolean isMoving = true;
     public void Movement(int NumOfSteps , int x ,int y , JButton btn){
         
        //int width = 65;
@@ -390,58 +450,63 @@ public class Gameplay extends javax.swing.JFrame {
                     
 
                     cnt++;
-                    if(cnt == NumOfSteps) break;
+                    if(cnt == NumOfSteps)
+                    {
+                        count = cnt;
+                        break;
+                    }
                     jPanel1.repaint();  
                 }
 
-      
                 // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
-           
     }
+    
+    
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        go = new GamePlay0.Zone();
-        jail = new GamePlay0.Zone();
-        parking = new GamePlay0.Zone();
-        goToJail = new GamePlay0.Zone();
-        MarvinGardens = new GamePlay0.Zone(24,48,120,360,850,1025,1200,150,150,280,"Yellow");
-        ventnor = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow");
-        Atlantic = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow");
-        waterWorks = new GamePlay0.Zone();
-        RailRoad = new GamePlay0.Zone();
-        Illinois = new GamePlay0.Zone(20,40,100,300,750,925,1100,150,150,240,"Red");
-        Indiana = new GamePlay0.Zone(18,36,90,250,700,875,1050,150,150,220,"Red");
-        ChanceBlue = new GamePlay0.Zone();
-        Kentucky = new GamePlay0.Zone(18,36,90,250,700,875,1050,150,150,220,"Red");
-        Mediter_Ranean = new GamePlay0.Zone(2,4,10,30,90,160,250,50,50,60,"Brown");
-        Community_Chest = new GamePlay0.Zone();
-        Baltic = new GamePlay0.Zone(4,8,20,60,180,320,450,50,50,60,"Brown");
-        IncomeTax = new GamePlay0.Zone();
-        RealRoad = new GamePlay0.Zone();
-        Oriental = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue");
-        ChanceRed = new GamePlay0.Zone();
-        Vermont = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue");
-        Connecticut = new GamePlay0.Zone(8,16,40,100,300,450,600,50,50,100,"Light Blue");
-        pacific = new GamePlay0.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green");
-        NorthCaro = new GamePlay0.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green");
-        communtityChestRight = new GamePlay0.Zone();
-        pennsy = new GamePlay0.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green");
-        shorLline = new GamePlay0.Zone();
-        OrangeChance = new GamePlay0.Zone();
-        ParkPlace = new GamePlay0.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue");
-        NewYork = new GamePlay0.Zone(16,32,80,220,600,800,1000,50,50,200,"Orange");
-        CCT = new GamePlay0.Zone();
-        stJames = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange");
-        pennsyl = new GamePlay0.Zone();
-        Virginnia = new GamePlay0.Zone(12,24,60,180,500,700,900,100,100,160,"Pink");
-        States = new GamePlay0.Zone(10,20,50,150,450,625,750,100,100,140,"Pink");
-        Tenss = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange");
+        go = new GamePlay0.Zone(0);
+        jail = new GamePlay0.Zone(10);
+        parking = new GamePlay0.Zone(18);
+        goToJail = new GamePlay0.Zone(28);
+        MarvinGardens = new GamePlay0.Zone(24,48,120,360,850,1025,1200,150,150,280,"Yellow",27);
+        ventnor = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow",25);
+        Atlantic = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow",24);
+        waterWorks = new GamePlay0.Zone(26);
+        RailRoad = new GamePlay0.Zone(23);
+        Illinois = new GamePlay0.Zone(20,40,100,300,750,925,1100,150,150,240,"Red",22);
+        Indiana = new GamePlay0.Zone(18,36,90,250,700,875,1050,150,150,220,"Red",21);
+        ChanceBlue = new GamePlay0.Zone(20);
+        Kentucky = new GamePlay0.Zone(18,36,90,250,700,875,1050,150,150,220,"Red",19);
+        Mediter_Ranean = new GamePlay0.Zone(2,4,10,30,90,160,250,50,50,60,"Brown",1);
+        Community_Chest = new GamePlay0.Zone(2);
+        Baltic = new GamePlay0.Zone(4,8,20,60,180,320,450,50,50,60,"Brown",3);
+        IncomeTax = new GamePlay0.Zone(4);
+        RealRoad = new GamePlay0.Zone(5);
+        Oriental = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue",6);
+        ChanceRed = new GamePlay0.Zone(7);
+        Vermont = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue",8);
+        Connecticut = new GamePlay0.Zone(8,16,40,100,300,450,600,50,50,100,"Light Blue",9);
+        pacific = new GamePlay0.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green",29);
+        NorthCaro = new GamePlay0.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green",30);
+        communtityChestRight = new GamePlay0.Zone(31);
+        pennsy = new GamePlay0.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green",32);
+        shorLline = new GamePlay0.Zone(33);
+        OrangeChance = new GamePlay0.Zone(34);
+        ParkPlace = new GamePlay0.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue",35);
+        NewYork = new GamePlay0.Zone(16,32,80,220,600,800,1000,50,50,200,"Orange",17);
+        CCT = new GamePlay0.Zone(15);
+        stJames = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange",14);
+        pennsyl = new GamePlay0.Zone(13);
+        Virginnia = new GamePlay0.Zone(12,24,60,180,500,700,900,100,100,160,"Pink",12);
+        States = new GamePlay0.Zone(10,20,50,150,450,625,750,100,100,140,"Pink",11);
+        Tenss = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange",16);
         MONOMAN = new GamePlay0.Zone();
         orange = new GamePlay0.Zone();
         bluetreasure = new GamePlay0.Zone();
@@ -1117,7 +1182,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(590, 170, 73, 23);
+        jButton1.setBounds(590, 170, 79, 25);
 
         jButton2.setText("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -1126,7 +1191,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(480, 170, 73, 23);
+        jButton2.setBounds(480, 170, 79, 25);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
@@ -1198,12 +1263,28 @@ public class Gameplay extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    Cards card = new Cards();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Movement(dice1.getDice_value()+ dice2.getDice_value(),10,10  , btn2);
-        pos.SetPlayer(1,dice1.getDice_value()+ dice2.getDice_value());
-         System.out.println(pos.getCurrentPos(1));
+        //Movement(dice1.getDice_value()+ dice2.getDice_value(),10,10  , btn2);
+        Movement(2,10,10  , btn2);
+        //pos.SetPlayer(1,dice1.getDice_value()+ dice2.getDice_value());
+        pos.SetPlayer(1,2);
+        System.out.println(pos.getCurrentPos(1));
         s.start();
+        //TimeUnit.SECONDS.sleep(1);
+        if(true)
+        {
+           System.out.println("works");
+           if(pos.getCurrentPos(1)==2 || pos.getCurrentPos(1)==15 || pos.getCurrentPos(1)==31)
+            {
+              card.displayCommunityChestCards();
+            }
+           if(pos.getCurrentPos(1)==7 || pos.getCurrentPos(1)==20 || pos.getCurrentPos(1)==34)
+            {
+              card.displayChanceCards();
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1212,7 +1293,18 @@ public class Gameplay extends javax.swing.JFrame {
         pos.SetPlayer(0,dice1.getDice_value()+ dice2.getDice_value());
         System.out.println(pos.getCurrentPos(0));
         s.start();
-        
+        if(true)
+        {
+            System.out.println("asdfasdfasdfasf");
+           if(pos.getCurrentPos(0)==2 || pos.getCurrentPos(0)==15 || pos.getCurrentPos(0)==31)
+            {
+              card.displayCommunityChestCards();
+            }
+           if(pos.getCurrentPos(0)==7 || pos.getCurrentPos(0)==20 || pos.getCurrentPos(0)==34)
+            {
+              card.displayChanceCards();
+            }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void roll_Dice(Dice d){
