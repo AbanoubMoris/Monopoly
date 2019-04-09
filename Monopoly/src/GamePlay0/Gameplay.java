@@ -15,6 +15,7 @@ import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -336,8 +337,6 @@ public class Gameplay extends javax.swing.JFrame {
         
         //System.out.println(pos.getCurrentPos(0));
     }
-    int count;
-    boolean isMoving = true;
     public void Movement(int NumOfSteps , int x ,int y , JButton btn){
         
        //int width = 65;
@@ -452,7 +451,21 @@ public class Gameplay extends javax.swing.JFrame {
                     cnt++;
                     if(cnt == NumOfSteps)
                     {
-                        count = cnt;
+                        if (pos.getCurrentPos(1) == 2 || pos.getCurrentPos(1) == 15 || pos.getCurrentPos(1) == 31) {
+                            card.displayCommunityChestCards();
+                        }
+                        else if (pos.getCurrentPos(1) == 7 || pos.getCurrentPos(1) == 20 || pos.getCurrentPos(1) == 34) {
+                            card.displayChanceCards();
+                        }
+                        else if (pos.getCurrentPos(0) == 2 || pos.getCurrentPos(0) == 15 || pos.getCurrentPos(0) == 31) {
+                            card.displayCommunityChestCards();
+                        }
+                        else if (pos.getCurrentPos(0) == 7 || pos.getCurrentPos(0) == 20 || pos.getCurrentPos(0) == 34) {
+                            card.displayChanceCards();
+                        }
+                        
+                       System.out.println(pos.getCurrentPos(0));
+                       System.out.println(pos.getCurrentPos(1));
                         break;
                     }
                     jPanel1.repaint();  
@@ -1267,44 +1280,23 @@ public class Gameplay extends javax.swing.JFrame {
     Cards card = new Cards();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Movement(dice1.getDice_value()+ dice2.getDice_value(),10,10  , btn2);
-        Movement(2,10,10  , btn2);
+        Movement(dice1.getDice_value()+ dice2.getDice_value(),10,10  , btn2);
         //pos.SetPlayer(1,dice1.getDice_value()+ dice2.getDice_value());
-        pos.SetPlayer(1,2);
+        pos.SetPlayer(1,dice1.getDice_value()+ dice2.getDice_value());
         System.out.println(pos.getCurrentPos(1));
         s.start();
         //TimeUnit.SECONDS.sleep(1);
-        if(true)
-        {
-           System.out.println("works");
-           if(pos.getCurrentPos(1)==2 || pos.getCurrentPos(1)==15 || pos.getCurrentPos(1)==31)
-            {
-              card.displayCommunityChestCards();
-            }
-           if(pos.getCurrentPos(1)==7 || pos.getCurrentPos(1)==20 || pos.getCurrentPos(1)==34)
-            {
-              card.displayChanceCards();
-            }
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Movement(dice1.getDice_value()+ dice2.getDice_value(),60,60 , btn1);
         pos.SetPlayer(0,dice1.getDice_value()+ dice2.getDice_value());
         System.out.println(pos.getCurrentPos(0));
         s.start();
-        if(true)
-        {
-            System.out.println("asdfasdfasdfasf");
-           if(pos.getCurrentPos(0)==2 || pos.getCurrentPos(0)==15 || pos.getCurrentPos(0)==31)
-            {
-              card.displayCommunityChestCards();
-            }
-           if(pos.getCurrentPos(0)==7 || pos.getCurrentPos(0)==20 || pos.getCurrentPos(0)==34)
-            {
-              card.displayChanceCards();
-            }
-        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void roll_Dice(Dice d){
