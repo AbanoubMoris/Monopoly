@@ -139,7 +139,7 @@ public class  Zone extends javax.swing.JPanel {
         this.m_index = m_index;
     }
     
-    public Zone getDataFromIndex(int index)
+    public  Zone getData()
     {
         return this;
     }
