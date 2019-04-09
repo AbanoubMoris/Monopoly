@@ -15,6 +15,9 @@ import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
@@ -43,7 +46,7 @@ public class Gameplay extends javax.swing.JFrame {
     public void DrawGamePlay(){
             
         
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        this.setExtendedState(JFrame.NORMAL); 
         go.setImage("src/Gameplay/img/go.png", true);
         jail.setImage("src/Gameplay/img/jail.png", true);
         parking.setImage("src/Gameplay/img/free-parking.png", true);
@@ -337,7 +340,8 @@ public class Gameplay extends javax.swing.JFrame {
         
         //System.out.println(pos.getCurrentPos(0));
     }
-    public void Movement(int NumOfSteps , int x ,int y , JButton btn){
+     
+    public void Movement(int NumOfSteps , int x ,int y , JButton btn , int pl){
         
        //int width = 65;
        //int height = 35;
@@ -451,21 +455,19 @@ public class Gameplay extends javax.swing.JFrame {
                     cnt++;
                     if(cnt == NumOfSteps)
                     {
-                        if (pos.getCurrentPos(1) == 2 || pos.getCurrentPos(1) == 15 || pos.getCurrentPos(1) == 31) {
+                        if (pos.getCurrentPos(pl) == 2 || pos.getCurrentPos(pl) == 15 || pos.getCurrentPos(pl) == 31) {
                             card.displayCommunityChestCards();
                         }
-                        else if (pos.getCurrentPos(1) == 7 || pos.getCurrentPos(1) == 20 || pos.getCurrentPos(1) == 34) {
-                            card.displayChanceCards();
-                        }
-                        else if (pos.getCurrentPos(0) == 2 || pos.getCurrentPos(0) == 15 || pos.getCurrentPos(0) == 31) {
-                            card.displayCommunityChestCards();
-                        }
-                        else if (pos.getCurrentPos(0) == 7 || pos.getCurrentPos(0) == 20 || pos.getCurrentPos(0) == 34) {
+                        else if (pos.getCurrentPos(pl) == 7 || pos.getCurrentPos(pl) == 20 || pos.getCurrentPos(pl) == 34) {
                             card.displayChanceCards();
                         }
                         
+                        
                        System.out.println(pos.getCurrentPos(0));
                        System.out.println(pos.getCurrentPos(1));
+                        
+                              
+                             
                         break;
                     }
                     jPanel1.repaint();  
@@ -1279,21 +1281,18 @@ public class Gameplay extends javax.swing.JFrame {
     
     Cards card = new Cards();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Movement(dice1.getDice_value()+ dice2.getDice_value(),10,10  , btn2);
-        Movement(dice1.getDice_value()+ dice2.getDice_value(),10,10  , btn2);
-        //pos.SetPlayer(1,dice1.getDice_value()+ dice2.getDice_value());
         pos.SetPlayer(1,dice1.getDice_value()+ dice2.getDice_value());
+        Movement(dice1.getDice_value()+ dice2.getDice_value(),10,10  , btn2 ,1);
         System.out.println(pos.getCurrentPos(1));
         s.start();
-        //TimeUnit.SECONDS.sleep(1);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Movement(dice1.getDice_value()+ dice2.getDice_value(),60,60 , btn1);
         pos.SetPlayer(0,dice1.getDice_value()+ dice2.getDice_value());
+        Movement(dice1.getDice_value()+ dice2.getDice_value(),60,60 , btn1 ,0); 
         System.out.println(pos.getCurrentPos(0));
         s.start();
         
@@ -1455,3 +1454,7 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone waterWorks;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+
