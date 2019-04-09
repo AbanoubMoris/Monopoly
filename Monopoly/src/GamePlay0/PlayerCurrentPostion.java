@@ -39,16 +39,6 @@ public class PlayerCurrentPostion {
     }
 
     public int getCurrentPos(int playerID) {
-        return currentPos[playerID];
-        /*
-        int idx = 0;
-        for (int i=0;i<36;i++){
-            char []ch = Zones[i].toCharArray();
-            if (ch[playerID]=='1') {
-                idx = i;
-            }
-        }
-        return idx;
-                */
+        return currentPos[playerID];    
     }
 }

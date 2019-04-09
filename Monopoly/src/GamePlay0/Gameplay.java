@@ -12,14 +12,10 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -29,7 +25,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 /**
@@ -270,6 +265,9 @@ public class Gameplay extends javax.swing.JFrame {
     
     JButton btn1;
     JButton btn2;
+    int playerTurn;
+    Player p0 ;
+    Player p1;
     Map<Integer,Zone> zoneMap;
     public void zoneMapInitialization()
     {
@@ -320,11 +318,11 @@ public class Gameplay extends javax.swing.JFrame {
         zoneMapInitialization();
         DrawGamePlay();
         DisplayCiyInfo();
+        initializePlayer();
         
         
         
         
-        System.out.println();
         btn1 = new JButton();
         btn1.setBackground(Color.red);
       //  btn.setBounds(55, 20, 65, 35);
@@ -338,7 +336,6 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel1.add(btn2);
         pos = new PlayerCurrentPostion();
         
-        //System.out.println(pos.getCurrentPos(0));
     }
      
     public void Movement(int NumOfSteps , int x ,int y , JButton btn , int pl){
@@ -350,7 +347,6 @@ public class Gameplay extends javax.swing.JFrame {
         s = new Thread ( new Runnable() {
             
             public void run() {
-                System.out.println("Running");
                 
                 
                 int cnt = 0;
@@ -361,7 +357,6 @@ public class Gameplay extends javax.swing.JFrame {
                     
                     
                     //UP
-                   // System.out.println(currentX + " " + x + " " + currentY + " " + y);
                     if(currentX + (parking.getHeight() - currentX) > x && currentX < jPanel1.getWidth() && currentY == y){
                     for (int i=btn.getX();i<currentX+70;i++){
                     if(btn.getX()+x>goToJail.getX()){
@@ -384,7 +379,6 @@ public class Gameplay extends javax.swing.JFrame {
                    
                     } 
                     
-                    //System.out.println(goToJail.getX());
                     
                     //LEFT
                     if(currentY>=y && currentY<=jPanel1.getHeight() && currentX == x){
@@ -407,7 +401,6 @@ public class Gameplay extends javax.swing.JFrame {
 
                    //RIGHT
                     
-                 //System.out.println(currentY + " " + (go.getY()+go.getWidth()) + " " + (go.getX()+(go.getWidth()-height-x)) + " " + currentX);
                     if(currentY + (goToJail.getWidth() - currentY )>=y && currentY<=go.getY()+go.getHeight() && currentX==go.getX()+(go.getWidth()-height-x)){
                         
                         for (int i=currentY ; i < currentY+70 ; i++){
@@ -430,7 +423,6 @@ public class Gameplay extends javax.swing.JFrame {
              
                //Down
                     
-                 //   System.out.println(currentX + " " + (go.getX()+go.getWidth()) + " " + (go.getY()+(go.getHeight()-height-y)) + " " + currentY);
                     if (currentX>=0 && currentX<=(go.getX()+go.getWidth()) && currentY == (go.getY()+(go.getHeight()-height-y))){
                        for (int i=currentX ; i>currentX-70 ; i--){
                            if (btn.getX() <= x){
@@ -462,9 +454,7 @@ public class Gameplay extends javax.swing.JFrame {
                             card.displayChanceCards();
                         }
                         
-                        
-                       System.out.println(pos.getCurrentPos(0));
-                       System.out.println(pos.getCurrentPos(1));
+                      
                         
                               
                              
@@ -532,6 +522,15 @@ public class Gameplay extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         dice1 = new GamePlay0.Dice();
         dice2 = new GamePlay0.Dice();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1197,7 +1196,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(590, 170, 79, 25);
+        jButton1.setBounds(590, 170, 73, 23);
 
         jButton2.setText("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -1206,7 +1205,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(480, 170, 79, 25);
+        jButton2.setBounds(480, 170, 73, 23);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
@@ -1215,7 +1214,7 @@ public class Gameplay extends javax.swing.JFrame {
         jLabel1.setText("CONTROLS");
         jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(80, 310, 274, 40);
+        jLabel1.setBounds(90, 10, 274, 40);
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton3.setText("Roll Dice");
@@ -1255,6 +1254,85 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(dice2);
         dice2.setBounds(240, 630, 70, 60);
 
+        jLabel2.setText("Player1");
+
+        jLabel3.setText("jLabel3");
+
+        jLabel4.setText("Balance:");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)))
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)))
+        );
+
+        jPanel2.add(jPanel3);
+        jPanel3.setBounds(10, 80, 220, 250);
+
+        jLabel5.setText("Player2");
+
+        jLabel6.setText("jLabel3");
+
+        jLabel7.setText("Balance:");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)))
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)))
+        );
+
+        jPanel2.add(jPanel4);
+        jPanel4.setBounds(240, 80, 220, 250);
+
+        jButton4.setText("BuyCity");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton4);
+        jButton4.setBounds(10, 360, 69, 23);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1281,20 +1359,24 @@ public class Gameplay extends javax.swing.JFrame {
     
     Cards card = new Cards();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       playerTurn =1;
         pos.SetPlayer(1,dice1.getDice_value()+ dice2.getDice_value());
         Movement(dice1.getDice_value()+ dice2.getDice_value(),10,10  , btn2 ,1);
-        System.out.println(pos.getCurrentPos(1));
         s.start();
+                System.out.println(playerTurn);
+
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+       playerTurn = 0;
         pos.SetPlayer(0,dice1.getDice_value()+ dice2.getDice_value());
         Movement(dice1.getDice_value()+ dice2.getDice_value(),60,60 , btn1 ,0); 
-        System.out.println(pos.getCurrentPos(0));
         s.start();
+                System.out.println(playerTurn);
+
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1330,6 +1412,52 @@ public class Gameplay extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    ArrayList<Integer> zonesOwned = new ArrayList<>();
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        int currentPositionPlayer0 = pos.getCurrentPos(0);
+        int currentPositionPlayer1 = pos.getCurrentPos(1);
+        Zone temp = getZone();
+
+        if (!(p0.m_zonesOwnedIndexes.contains(temp.getM_index())) && !(p1.m_zonesOwnedIndexes.contains(temp.getM_index()))) {
+            if (currentPositionPlayer0 == temp.getM_index() && playerTurn == 0 && p0.getM_balance()>=temp.getM_zoneCost()) {
+                int newBalance = p0.getM_balance() - temp.getM_zoneCost();
+                p0.setM_balance(newBalance);
+                p0.m_zonesOwnedIndexes.add(temp.getM_index());
+                addPanel(String.valueOf(temp.getM_index()));
+            }
+        }
+        if (!(p1.m_zonesOwnedIndexes.contains(temp.getM_index())) && !(p0.m_zonesOwnedIndexes.contains(temp.getM_index())) ) {
+            if (currentPositionPlayer1 == temp.getM_index() && playerTurn == 1 && p0.getM_balance()>=temp.getM_zoneCost()) {
+                int newBalance = p1.getM_balance() - temp.getM_zoneCost();
+                p1.setM_balance(newBalance);
+                p1.m_zonesOwnedIndexes.add(temp.getM_index());
+
+            }
+        }
+        
+        updateBalance();
+    }//GEN-LAST:event_jButton4ActionPerformed
+int x=0,y=20;
+    public void addPanel(String name)
+    {
+        JPanel city = new JPanel();
+        JLabel cityName = new JLabel();
+        if(x == 180)
+        {
+            x = 0;
+            y += 50;
+        }
+        
+        cityName.setText(name);
+        city.setSize(70,50);
+        city.setLocation(x,y);
+        city.setBackground(Color.red);
+        city.add(cityName);
+        x+=60;
+        jPanel3.add(city);
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -1403,7 +1531,56 @@ public class Gameplay extends javax.swing.JFrame {
 
         return panel;
     }
+    
+    public void initializePlayer(){
+         p0 = new Player(0,Color.RED,1500,false,false);
+         p1 = new Player(1,Color.BLUE,1500,false,false);
+         updateBalance();
+         
+    }
+    public void updateBalance(){
+        String balanceP0 = String.valueOf(p0.getM_balance());
+         String balanceP1 = String.valueOf(p1.getM_balance());
+         if(Integer.parseInt(balanceP0) >=0)
+             jLabel3.setText(balanceP0);
+         if(Integer.parseInt(balanceP1) >=0)
+             jLabel6.setText(balanceP1);
+    }
 
+    
+    public Zone getZone(){
+             if((pos.getCurrentPos(0) == 1 && playerTurn == 0) || (pos.getCurrentPos(1) == 1 && playerTurn == 1 ))return  Mediter_Ranean.getData();
+        else if((pos.getCurrentPos(0) == 3 && playerTurn == 0) || (pos.getCurrentPos(1) == 3 && playerTurn == 1 ))return  Baltic.getData();
+        else if((pos.getCurrentPos(0) == 5 && playerTurn == 0) || (pos.getCurrentPos(1) == 5 && playerTurn == 1 ))return  RealRoad.getData();
+        else if((pos.getCurrentPos(0) == 6 && playerTurn == 0) || (pos.getCurrentPos(1) == 6 && playerTurn == 1 ))return  Oriental.getData();
+        else if((pos.getCurrentPos(0) == 8 && playerTurn == 0) || (pos.getCurrentPos(1) == 8 && playerTurn == 1 ))return  Vermont.getData();
+        else if((pos.getCurrentPos(0) == 9 && playerTurn == 0) || (pos.getCurrentPos(1) == 9 && playerTurn == 1 ))return  Connecticut.getData();
+        else if((pos.getCurrentPos(0) == 11 && playerTurn == 0) || (pos.getCurrentPos(1) == 11 && playerTurn == 1 ))return  States.getData();
+        else if((pos.getCurrentPos(0) == 12 && playerTurn == 0) || (pos.getCurrentPos(1) == 12 && playerTurn == 1 ))return  Virginnia.getData();
+        else if((pos.getCurrentPos(0) == 13 && playerTurn == 0) || (pos.getCurrentPos(1) == 13 && playerTurn == 1 ))return  pennsyl.getData();
+        else if((pos.getCurrentPos(0) == 14 && playerTurn == 0) || (pos.getCurrentPos(1) == 14 && playerTurn == 1 ))return  stJames.getData();
+        else if((pos.getCurrentPos(0) == 16 && playerTurn == 0) || (pos.getCurrentPos(1) == 16 && playerTurn == 1 ))return  Tenss.getData();
+        else if((pos.getCurrentPos(0) == 17 && playerTurn == 0) || (pos.getCurrentPos(1) == 17 && playerTurn == 1 ))return  NewYork.getData();
+        else if((pos.getCurrentPos(0) == 19 && playerTurn == 0) || (pos.getCurrentPos(1) == 19 && playerTurn == 1 ))return  Kentucky.getData();
+        else if((pos.getCurrentPos(0) == 21 && playerTurn == 0) || (pos.getCurrentPos(1) == 21 && playerTurn == 1 ))return  Indiana.getData();
+        else if((pos.getCurrentPos(0) == 22 && playerTurn == 0) || (pos.getCurrentPos(1) == 22 && playerTurn == 1 ))return  Illinois.getData();
+        else if((pos.getCurrentPos(0) == 23 && playerTurn == 0) || (pos.getCurrentPos(1) == 23 && playerTurn == 1 ))return  RailRoad.getData();
+        else if((pos.getCurrentPos(0) == 24 && playerTurn == 0) || (pos.getCurrentPos(1) == 24 && playerTurn == 1 ))return  Atlantic.getData();
+        else if((pos.getCurrentPos(0) == 25 && playerTurn == 0) || (pos.getCurrentPos(1) == 25 && playerTurn == 1 ))return  ventnor.getData();
+        else if((pos.getCurrentPos(0) == 26 && playerTurn == 0) || (pos.getCurrentPos(1) == 26 && playerTurn == 1 ))return  waterWorks.getData();
+        else if((pos.getCurrentPos(0) == 27 && playerTurn == 0) || (pos.getCurrentPos(1) == 27 && playerTurn == 1 ))return  MarvinGardens.getData();
+        else if((pos.getCurrentPos(0) == 29 && playerTurn == 0) || (pos.getCurrentPos(1) == 29 && playerTurn == 1 ))return  pacific.getData();
+        else if((pos.getCurrentPos(0) == 30 && playerTurn == 0) || (pos.getCurrentPos(1) == 30 && playerTurn == 1 ))return  NorthCaro.getData();
+        else if((pos.getCurrentPos(0) == 32 && playerTurn == 0) || (pos.getCurrentPos(1) == 32 && playerTurn == 1 ))return  pennsy.getData();
+        else if((pos.getCurrentPos(0) == 33 && playerTurn == 0) || (pos.getCurrentPos(1) == 33 && playerTurn == 1 ))return  shorLline.getData();
+        else if((pos.getCurrentPos(0) == 35 && playerTurn == 0) || (pos.getCurrentPos(1) == 35 && playerTurn == 1 ))return  ParkPlace.getData();
+        
+        
+        return go.getData();
+    }
+    
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GamePlay0.Zone Atlantic;
     private GamePlay0.Zone Baltic;
@@ -1439,9 +1616,18 @@ public class Gameplay extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private GamePlay0.Zone jail;
     private GamePlay0.Zone orange;
     private GamePlay0.Zone pacific;
