@@ -1439,11 +1439,11 @@ public class Gameplay extends javax.swing.JFrame {
         
         updateBalance();
     }//GEN-LAST:event_jButton4ActionPerformed
-int x1=0,y1=20 , x2=0 , y2=20;
+int x1=5,y1=20 , x2=5 , y2=20;
     public void addPanel(String name, JPanel panelName)
     {
-        JPanel city = new JPanel();
         JLabel cityName = new JLabel();
+        panelName.add(cityName);
         if (panelName == jPanel3) {
             if (x1 == 180) {
                 x1 = 0;
@@ -1451,11 +1451,11 @@ int x1=0,y1=20 , x2=0 , y2=20;
             }
 
             cityName.setText(name);
-            city.setSize(70, 50);
-            city.setLocation(x1, y1);
-            city.setBackground(Color.red);
-            city.add(cityName);
-            x1 += 60;
+            cityName.setBounds(x1, y1, 40, 15);
+            cityName.setBackground(Color.red);
+            cityName.setOpaque(true);
+            x1 += 50;
+            
         }
         else if(panelName == jPanel4){
             if (x2 == 180) {
@@ -1464,13 +1464,12 @@ int x1=0,y1=20 , x2=0 , y2=20;
             }
 
             cityName.setText(name);
-            city.setSize(70, 50);
-            city.setLocation(x2, y2);
-            city.setBackground(Color.CYAN);
-            city.add(cityName);
+            cityName.setLocation(x2, y2);
+            cityName.setBackground(Color.CYAN);
+            cityName.setOpaque(true);
             x2 += 60;
         }
-        panelName.add(city);
+        
         
     }
     /**

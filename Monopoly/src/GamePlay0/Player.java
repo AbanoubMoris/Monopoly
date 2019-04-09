@@ -24,13 +24,6 @@ public class Player {
     public Player() {
     }
 
-    public ArrayList<Integer> getM_zonesOwnedIndexes() {
-        return m_zonesOwnedIndexes;
-    }
-
-    public void setM_zonesOwnedIndexes(ArrayList<Integer> m_zonesOwnedIndexes) {
-        this.m_zonesOwnedIndexes = m_zonesOwnedIndexes;
-    }
 
     public Player(int m_id, Color m_color, int m_balance, boolean m_inJail, boolean m_passByGo) {
         this.m_id = m_id;
