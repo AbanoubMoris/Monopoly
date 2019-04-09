@@ -321,7 +321,8 @@ public class Gameplay extends javax.swing.JFrame {
         DrawGamePlay();
         DisplayCiyInfo();
         
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        
         
         System.out.println();
         btn1 = new JButton();
@@ -454,8 +455,6 @@ public class Gameplay extends javax.swing.JFrame {
                     cnt++;
                     if(cnt == NumOfSteps)
                     {
-                        
-                        
                         if (pos.getCurrentPos(pl) == 2 || pos.getCurrentPos(pl) == 15 || pos.getCurrentPos(pl) == 31) {
                             card.displayCommunityChestCards();
                         }
@@ -1198,7 +1197,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(590, 170, 73, 23);
+        jButton1.setBounds(590, 170, 79, 25);
 
         jButton2.setText("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -1207,7 +1206,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(480, 170, 73, 23);
+        jButton2.setBounds(480, 170, 79, 25);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
@@ -1328,7 +1327,6 @@ public class Gameplay extends javax.swing.JFrame {
         dice2.setDice_value(r.nextInt(6)+1);
         roll_Dice(dice1);
         roll_Dice(dice2);
-        
        
     }//GEN-LAST:event_jButton3ActionPerformed
 
