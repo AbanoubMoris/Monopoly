@@ -1424,7 +1424,7 @@ public class Gameplay extends javax.swing.JFrame {
                 int newBalance = p0.getM_balance() - temp.getM_zoneCost();
                 p0.setM_balance(newBalance);
                 p0.m_zonesOwnedIndexes.add(temp.getM_index());
-                addPanel(String.valueOf(temp.getM_index()));
+                addPanel(String.valueOf(temp.getM_index()),jPanel3);
             }
         }
         if (!(p1.m_zonesOwnedIndexes.contains(temp.getM_index())) && !(p0.m_zonesOwnedIndexes.contains(temp.getM_index())) ) {
@@ -1432,30 +1432,45 @@ public class Gameplay extends javax.swing.JFrame {
                 int newBalance = p1.getM_balance() - temp.getM_zoneCost();
                 p1.setM_balance(newBalance);
                 p1.m_zonesOwnedIndexes.add(temp.getM_index());
+                addPanel(String.valueOf(temp.getM_index()),jPanel4);
 
             }
         }
         
         updateBalance();
     }//GEN-LAST:event_jButton4ActionPerformed
-int x=0,y=20;
-    public void addPanel(String name)
+int x1=0,y1=20 , x2=0 , y2=20;
+    public void addPanel(String name, JPanel panelName)
     {
         JPanel city = new JPanel();
         JLabel cityName = new JLabel();
-        if(x == 180)
-        {
-            x = 0;
-            y += 50;
+        if (panelName == jPanel3) {
+            if (x1 == 180) {
+                x1 = 0;
+                y1 += 50;
+            }
+
+            cityName.setText(name);
+            city.setSize(70, 50);
+            city.setLocation(x1, y1);
+            city.setBackground(Color.red);
+            city.add(cityName);
+            x1 += 60;
         }
-        
-        cityName.setText(name);
-        city.setSize(70,50);
-        city.setLocation(x,y);
-        city.setBackground(Color.red);
-        city.add(cityName);
-        x+=60;
-        jPanel3.add(city);
+        else if(panelName == jPanel4){
+            if (x2 == 180) {
+                x2 = 0;
+                y2 += 50;
+            }
+
+            cityName.setText(name);
+            city.setSize(70, 50);
+            city.setLocation(x2, y2);
+            city.setBackground(Color.CYAN);
+            city.add(cityName);
+            x2 += 60;
+        }
+        panelName.add(city);
         
     }
     /**
