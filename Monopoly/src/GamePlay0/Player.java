@@ -18,10 +18,18 @@ public class Player {
     private int m_balance;
     private boolean m_inJail;
     private boolean m_passByGo;
-    private ArrayList<Integer> m_zonesOwnedIndexes;  
+    public ArrayList<Integer> m_zonesOwnedIndexes;  
     private Map<Integer, Integer> m_numberOfHousesOwned;
 
     public Player() {
+    }
+
+    public ArrayList<Integer> getM_zonesOwnedIndexes() {
+        return m_zonesOwnedIndexes;
+    }
+
+    public void setM_zonesOwnedIndexes(ArrayList<Integer> m_zonesOwnedIndexes) {
+        this.m_zonesOwnedIndexes = m_zonesOwnedIndexes;
     }
 
     public Player(int m_id, Color m_color, int m_balance, boolean m_inJail, boolean m_passByGo) {

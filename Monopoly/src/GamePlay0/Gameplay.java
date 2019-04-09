@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -1411,28 +1412,52 @@ public class Gameplay extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    ArrayList<Integer> zonesOwned = new ArrayList<>();
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         int currentPositionPlayer0 = pos.getCurrentPos(0);
         int currentPositionPlayer1 = pos.getCurrentPos(1);
         Zone temp = getZone();
-        System.out.println("p0: " + currentPositionPlayer0);
-        System.out.println("p1: " + currentPositionPlayer1);
-        System.out.println("zone: " + temp.getM_index());
 
+        if (!(p0.m_zonesOwnedIndexes.contains(temp.getM_index())) && !(p1.m_zonesOwnedIndexes.contains(temp.getM_index()))) {
+            if (currentPositionPlayer0 == temp.getM_index() && playerTurn == 0 && p0.getM_balance()>=temp.getM_zoneCost()) {
+                int newBalance = p0.getM_balance() - temp.getM_zoneCost();
+                p0.setM_balance(newBalance);
+                p0.m_zonesOwnedIndexes.add(temp.getM_index());
+                addPanel(String.valueOf(temp.getM_index()));
+            }
+        }
+        if (!(p1.m_zonesOwnedIndexes.contains(temp.getM_index())) && !(p0.m_zonesOwnedIndexes.contains(temp.getM_index())) ) {
+            if (currentPositionPlayer1 == temp.getM_index() && playerTurn == 1 && p0.getM_balance()>=temp.getM_zoneCost()) {
+                int newBalance = p1.getM_balance() - temp.getM_zoneCost();
+                p1.setM_balance(newBalance);
+                p1.m_zonesOwnedIndexes.add(temp.getM_index());
 
-
-        if(currentPositionPlayer0 == temp.getM_index() && playerTurn == 0){
-            int newBalance =  p0.getM_balance() - temp.getM_zoneCost();
-            p0.setM_balance(newBalance);
-        }else if(currentPositionPlayer1 == temp.getM_index() && playerTurn == 1){
-            int newBalance =  p1.getM_balance() - temp.getM_zoneCost();
-            p1.setM_balance(newBalance);
+            }
         }
         
         updateBalance();
     }//GEN-LAST:event_jButton4ActionPerformed
-
+int x=0,y=20;
+    public void addPanel(String name)
+    {
+        JPanel city = new JPanel();
+        JLabel cityName = new JLabel();
+        if(x == 180)
+        {
+            x = 0;
+            y += 50;
+        }
+        
+        cityName.setText(name);
+        city.setSize(70,50);
+        city.setLocation(x,y);
+        city.setBackground(Color.red);
+        city.add(cityName);
+        x+=60;
+        jPanel3.add(city);
+        
+    }
     /**
      * @param args the command line arguments
      */
