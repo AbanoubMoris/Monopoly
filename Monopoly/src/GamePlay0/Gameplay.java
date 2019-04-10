@@ -362,19 +362,6 @@ public class Gameplay extends javax.swing.JFrame {
         IntializePlayers(NumOfPlayers, player);
         
         
-        /*
-        btn1 = new JButton();
-        btn1.setBackground(Color.red);
-      //  btn.setBounds(55, 20, 65, 35);
-        btn1.setBounds(go.getX(), go.getY()+(go.getWidth()-20-60), 60, 20);
-        jPanel1.add(btn1);
-        
-        btn2 = new JButton();
-        btn2.setBackground(Color.BLUE);
-      //  btn.setBounds(55, 20, 65, 35);
-        btn2.setBounds(go.getX(), go.getY()+(go.getWidth()-20-10), 60, 20);
-        jPanel1.add(btn2);
-        */
         pos = new PlayerCurrentPostion();
         
     }
@@ -388,9 +375,7 @@ public class Gameplay extends javax.swing.JFrame {
         s = new Thread ( new Runnable() {
             
             public void run() {
-                    
 
-                
                 int cnt = 0;
                 
                 while(true){
@@ -496,7 +481,7 @@ public class Gameplay extends javax.swing.JFrame {
                             card.displayChanceCards();
                         }
                         playerTurn++;
-                        if (playerTurn>=NumbOfPlayers)playerTurn=0;
+                        playerTurn%=NumbOfPlayers;
                         
                               
                              
@@ -557,8 +542,6 @@ public class Gameplay extends javax.swing.JFrame {
         MONOMAN = new GamePlay0.Zone();
         orange = new GamePlay0.Zone();
         bluetreasure = new GamePlay0.Zone();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -1233,24 +1216,6 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel1.add(bluetreasure);
         bluetreasure.setBounds(138, 138, 133, 133);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(590, 170, 73, 23);
-
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(480, 170, 73, 23);
-
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
@@ -1413,29 +1378,7 @@ public class Gameplay extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     Cards card = new Cards();
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       playerTurn =1;
-        pos.SetPlayer(1,dice1.getDice_value()+ dice2.getDice_value());
-        Movement(dice1.getDice_value()+ dice2.getDice_value(),player[1].getM_carXY(),player[1].getM_carXY()  /*, Player_Car.get(1)*/ ,1);
-        
-        s.start();
-               // System.out.println(playerTurn);
-
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-       playerTurn = 0;
-        pos.SetPlayer(0,dice1.getDice_value()+ dice2.getDice_value());
-        Movement(dice1.getDice_value()+ dice2.getDice_value(),player[0].getM_carXY(),player[0].getM_carXY() /*, Player_Car.get(0)*/ ,0); 
-        s.start();
-        //System.out.println(playerTurn);
-
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     public void roll_Dice(Dice d){
          switch(d.getDice_value()){
             case 1:
@@ -1647,7 +1590,6 @@ int x1=5,y1=20 , x2=5 , y2=20;
              jLabel6.setText(balanceP1);
     }
 
-    
     public Zone getZone(){
              if((pos.getCurrentPos(0) == 1 && playerTurn == 0) || (pos.getCurrentPos(1) == 1 && playerTurn == 1 ))return  Mediter_Ranean.getData();
         else if((pos.getCurrentPos(0) == 3 && playerTurn == 0) || (pos.getCurrentPos(1) == 3 && playerTurn == 1 ))return  Baltic.getData();
@@ -1714,8 +1656,6 @@ int x1=5,y1=20 , x2=5 , y2=20;
     private GamePlay0.Dice dice2;
     private GamePlay0.Zone go;
     private GamePlay0.Zone goToJail;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
