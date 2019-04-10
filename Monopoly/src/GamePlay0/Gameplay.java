@@ -272,8 +272,8 @@ public class Gameplay extends javax.swing.JFrame {
     private Thread s;
     PlayerCurrentPostion pos;
     
-    JButton btn1;
-    JButton btn2;
+    //JButton btn1;
+    //JButton btn2;
     int playerTurn;
     Player p0 ;
     Player p1;
@@ -319,7 +319,7 @@ public class Gameplay extends javax.swing.JFrame {
         zoneMap.put(35, ParkPlace);
         
     }
-
+    
     public Map<Integer, Zone> getZoneMap() {
         return zoneMap;
     }
@@ -328,18 +328,41 @@ public class Gameplay extends javax.swing.JFrame {
         return pos;
     }
     
+    private int NumbOfPlayers;
+    private Player[] player;
+    private static ArrayList<JButton> Player_Car;
     
+    public void IntializePlayers(int NumOfPlayers , Player []player){
+        Player_Car = new ArrayList<>();
+        for (int i=0;i<NumOfPlayers;i++){
+            Player_Car.add(new JButton());
+            Player_Car.get(i).setBackground(player[i].getM_color());
+            int postion = (i)*20;
+            player[i].setM_carXY(postion);
+            Player_Car.get(i).setBounds(go.getX(), go.getY()+(go.getWidth()-20-postion), 60, 20);
+            jPanel1.add(Player_Car.get(i));
+        }
+    }
     
-    public Gameplay() {
+    public Gameplay(){
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+    }
+    public Gameplay(int NumOfPlayers , Player[] player ) {
+        initComponents();
+        
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        
         zoneMapInitialization();
         DrawGamePlay();
         DisplayCiyInfo();
         initializePlayer();
+        this.NumbOfPlayers = NumOfPlayers;
+        this.player = player;
+        IntializePlayers(NumOfPlayers, player);
         
         
-        
-        
+        /*
         btn1 = new JButton();
         btn1.setBackground(Color.red);
       //  btn.setBounds(55, 20, 65, 35);
@@ -351,12 +374,13 @@ public class Gameplay extends javax.swing.JFrame {
       //  btn.setBounds(55, 20, 65, 35);
         btn2.setBounds(go.getX(), go.getY()+(go.getWidth()-20-10), 60, 20);
         jPanel1.add(btn2);
+        */
         pos = new PlayerCurrentPostion();
         
     }
      
-    private void Movement(int NumOfSteps , int x ,int y , JButton btn , int pl){
-        
+    private void Movement(int NumOfSteps , int x ,int y /*, JButton btn*/ , int pl){
+        //Player_Car.get(pl).setBounds(100, 100, 500, 500);
        //int width = 65;
        //int height = 35;
        int width = 65;
@@ -370,21 +394,21 @@ public class Gameplay extends javax.swing.JFrame {
                 int cnt = 0;
                 
                 while(true){
-                    int currentX = btn.getX();
-                    int currentY = btn.getY();
+                    int currentX = Player_Car.get(pl).getX();
+                    int currentY = Player_Car.get(pl).getY();
                     
                     //UP
                     if(currentX + (parking.getHeight() - currentX) > x && currentX < jPanel1.getWidth() && currentY == y){
-                    for (int i=btn.getX();i<currentX+70;i++){
-                    if(btn.getX()+x>goToJail.getX()){
+                    for (int i=Player_Car.get(pl).getX();i<currentX+70;i++){
+                    if(Player_Car.get(pl).getX()+x>goToJail.getX()){
                        // btn.setBounds(goToJail.getX()+85, 0, height, width);
-                        btn.setBounds(goToJail.getX() + (goToJail.getWidth()-height-x) , goToJail.getY()+goToJail.getWidth()-width , height , width);
+                        Player_Car.get(pl).setBounds(goToJail.getX() + (goToJail.getWidth()-height-x) , goToJail.getY()+goToJail.getWidth()-width , height , width);
                         //cnt--;
                         break;
                         
                     }
                     else
-                        btn.setBounds(i, y, width, height);
+                        Player_Car.get(pl).setBounds(i, y, width, height);
                     
                     try {
                         Thread.sleep(1);
@@ -399,15 +423,15 @@ public class Gameplay extends javax.swing.JFrame {
                     
                     //LEFT
                     if(currentY>=y && currentY<=jPanel1.getHeight() && currentX == x){
-                        for (int i=btn.getY() ; i>currentY-70 ;i--){
-                            if(btn.getY()<=(parking.getWidth())) {
-                                btn.setBounds(parking.getX()+(parking.getWidth()-width), y, width , height);
+                        for (int i=Player_Car.get(pl).getY() ; i>currentY-70 ;i--){
+                            if(Player_Car.get(pl).getY()<=(parking.getWidth())) {
+                                Player_Car.get(pl).setBounds(parking.getX()+(parking.getWidth()-width), y, width , height);
                                 //cnt--;
                                 break;
                             }
                             
                             else
-                                btn.setBounds(btn.getX(), i, height, width);
+                                Player_Car.get(pl).setBounds(Player_Car.get(pl).getX(), i, height, width);
                     
                             try {
                                 Thread.sleep(1);
@@ -421,12 +445,12 @@ public class Gameplay extends javax.swing.JFrame {
                     if(currentY + (goToJail.getWidth() - currentY )>=y && currentY<=go.getY()+go.getHeight() && currentX==go.getX()+(go.getWidth()-height-x)){
                         
                         for (int i=currentY ; i < currentY+70 ; i++){
-                            if(btn.getY()+y>go.getY()){
-                                btn.setBounds(go.getX(), go.getY()+(go.getWidth()-height-y), width, height);
+                            if(Player_Car.get(pl).getY()+y>go.getY()){
+                                Player_Car.get(pl).setBounds(go.getX(), go.getY()+(go.getWidth()-height-y), width, height);
                                // cnt--;
                                 break;
                             }
-                            btn.setBounds(currentX, i, height, width);
+                            Player_Car.get(pl).setBounds(currentX, i, height, width);
                             
                             try {
                         Thread.sleep(1);
@@ -439,16 +463,17 @@ public class Gameplay extends javax.swing.JFrame {
                     }
              
                //Down
-                    
+                    System.out.println(currentX + " " + (go.getX()+go.getWidth()) + " " + currentY + " " + (go.getY()+(go.getHeight()-height-y)));
                     if (currentX>=0 && currentX<=(go.getX()+go.getWidth()) && currentY == (go.getY()+(go.getHeight()-height-y))){
                        for (int i=currentX ; i>currentX-70 ; i--){
-                           if (btn.getX() <= x){
-                               btn.setBounds(x, jail.getY() , height,width);
+                           System.out.println("dsffffff");
+                           if (Player_Car.get(pl).getX() <= x){
+                               Player_Car.get(pl).setBounds(x, jail.getY() , height,width);
                                cnt--;
                                break;
                            }
                            else
-                           btn.setBounds(i, currentY, width,height);
+                           Player_Car.get(pl).setBounds(i, currentY, width,height);
                            
                                 try {
                         Thread.sleep(1);
@@ -1391,7 +1416,8 @@ public class Gameplay extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        playerTurn =1;
         pos.SetPlayer(1,dice1.getDice_value()+ dice2.getDice_value());
-        Movement(dice1.getDice_value()+ dice2.getDice_value(),10,10  , btn2 ,1);
+        Movement(dice1.getDice_value()+ dice2.getDice_value(),player[1].getM_carXY(),player[1].getM_carXY()  /*, Player_Car.get(1)*/ ,1);
+        
         s.start();
                 System.out.println(playerTurn);
 
@@ -1403,7 +1429,7 @@ public class Gameplay extends javax.swing.JFrame {
         // TODO add your handling code here:
        playerTurn = 0;
         pos.SetPlayer(0,dice1.getDice_value()+ dice2.getDice_value());
-        Movement(dice1.getDice_value()+ dice2.getDice_value(),60,60 , btn1 ,0); 
+        Movement(dice1.getDice_value()+ dice2.getDice_value(),player[0].getM_carXY(),player[0].getM_carXY() /*, Player_Car.get(0)*/ ,0); 
         s.start();
         System.out.println(playerTurn);
 
@@ -1433,12 +1459,14 @@ public class Gameplay extends javax.swing.JFrame {
         }
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
+        
         Random r = new Random();
+        Random z = new Random();
         dice1.setDice_value(r.nextInt(6)+1);
         dice2.setDice_value(r.nextInt(6)+1);
         roll_Dice(dice1);
         roll_Dice(dice2);
+        
        
     }//GEN-LAST:event_jButton3ActionPerformed
 

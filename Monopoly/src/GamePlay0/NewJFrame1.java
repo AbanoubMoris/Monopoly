@@ -1,43 +1,19 @@
 package GamePlay0;
 import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.colorchooser.ColorSelectionModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author A.LoOotfy
- */
-class Create_player 
-{
-    private Color color ;
-    public Create_player(){
-       
-    }
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-}
 public class NewJFrame1 extends javax.swing.JFrame {
-
-    /**
-     * Creates new form NewJFrame1
-     */
-     Create_player[] p ;
+    private int NumOfPlayer;
+    private Player[] player ;
     public NewJFrame1() {
         initComponents();
-       p = new Create_player[6];
-       for (int i=0;i<6;i++){
-           p[i] = new Create_player();
-       }
+        player = new Player[6];
+        for (int i=0;i<6;i++){
+            player[i] = new Player();
+        }
+     
        noOFplayer_pnl.setVisible(false);
        jColorChooser1.setVisible(false);
         player1_btn.setVisible(false);
@@ -46,31 +22,35 @@ public class NewJFrame1 extends javax.swing.JFrame {
         player4_btn.setVisible(false);
         player5_btn.setVisible(false);
         player6_btn.setVisible(false);
-       pic1.setImage("src/monopoly.png", false);
-       pic2.setImage("src/hat.png", false);
-       pic3.setImage("src/hat.png", false);
-       pic4.setImage("src/hat.png", false);
-       pic5.setImage("src/hat.png", false);
-       pic6.setImage("src/hat.png", false);
-       pic7.setImage("src/hat.png", false);
-       pic8.setImage("src/hat.png", false);
-       pic9.setImage("src/hat.png", false);
-       pic10.setImage("src/hat.png", false);
-       pic11.setImage("src/hat.png", false);
-       pic12.setImage("src/hat.png", false);
-       pic13.setImage("src/hat.png", false);
-       pic14.setImage("src/hat.png", false);
-       pic15.setImage("src/hat.png", false);
-       pic16.setImage("src/hat.png", false);
-       pic17.setImage("src/hat.png", false);
-       pic18.setImage("src/hat.png", false);
-       pic19.setImage("src/hat.png", false);
-       pic20.setImage("src/hat.png", false);
-       pic21.setImage("src/hat.png", false);
+       pic1.setImage("src/Gameplay/img/monopoly.png", false);
+       pic2.setImage("src/Gameplay/img/hat.png", false);
+       pic3.setImage("src/Gameplay/img/hat.png", false);
+       pic4.setImage("src/Gameplay/img/hat.png", false);
+       pic5.setImage("src/Gameplay/img/hat.png", false);
+       pic6.setImage("src/Gameplay/img/hat.png", false);
+       pic7.setImage("src/Gameplay/img/hat.png", false);
+       pic8.setImage("src/Gameplay/img/hat.png", false);
+       pic9.setImage("src/Gameplay/img/hat.png", false);
+       pic10.setImage("src/Gameplay/img/hat.png", false);
+       pic11.setImage("src/Gameplay/img/hat.png", false);
+       pic12.setImage("src/Gameplay/img/hat.png", false);
+       pic13.setImage("src/Gameplay/img/hat.png", false);
+       pic14.setImage("src/Gameplay/img/hat.png", false);
+       pic15.setImage("src/Gameplay/img/hat.png", false);
+       pic16.setImage("src/Gameplay/img/hat.png", false);
+       pic17.setImage("src/Gameplay/img/hat.png", false);
+       pic18.setImage("src/Gameplay/img/hat.png", false);
+       pic19.setImage("src/Gameplay/img/hat.png", false);
+       pic20.setImage("src/Gameplay/img/hat.png", false);
+       pic21.setImage("src/Gameplay/img/hat.png", false);
        
       
-    }
+    }    
+    public int getNumOfPlayer() {
 
+        return NumOfPlayer;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -122,7 +102,6 @@ public class NewJFrame1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
 
         javax.swing.GroupLayout pic1Layout = new javax.swing.GroupLayout(pic1);
         pic1.setLayout(pic1Layout);
@@ -138,6 +117,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
         start_btn.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 18)); // NOI18N
         start_btn.setText("Start Game");
         start_btn.setPreferredSize(new java.awt.Dimension(80, 25));
+        start_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                start_btnActionPerformed(evt);
+            }
+        });
 
         NoOFplayer_btn.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 18)); // NOI18N
         NoOFplayer_btn.setText("Number of Players");
@@ -633,7 +617,6 @@ public class NewJFrame1 extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jRadioButton3)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jRadioButton4)
                 .addGap(18, 18, 18)
                 .addGroup(noOFplayer_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -737,14 +720,14 @@ public class NewJFrame1 extends javax.swing.JFrame {
          boolean choosed = false;
          while (i<6){
              
-             if(color.equals(p[i].getColor())){
+             if(color.equals(player[i].getM_color())){
                  Hint_lbl.setText("Please, Select anothor color !");
                 
                  choosed = true;
              }
              i++;
          }
-         if (choosed == false) p[idx].setColor(color);
+         if (choosed == false) player[idx].setM_color(color);
         
 
     }
@@ -752,7 +735,8 @@ public class NewJFrame1 extends javax.swing.JFrame {
     private void player1_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player1_btnActionPerformed
            // TODO add your handling code here:
             setplayerColor(0);
-            player1_btn.setBackground(p[0].getColor());
+            player1_btn.setBackground(player[0].getM_color());
+            player[0].setM_id(0);
            
         
     }//GEN-LAST:event_player1_btnActionPerformed
@@ -760,35 +744,40 @@ public class NewJFrame1 extends javax.swing.JFrame {
     private void player3_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player3_btnActionPerformed
         // TODO add your handling code here:
         setplayerColor(2);
-        player3_btn.setBackground(p[2].getColor());
+        player3_btn.setBackground(player[2].getM_color());
+        player[2].setM_id(2);
        
     }//GEN-LAST:event_player3_btnActionPerformed
 
     private void player5_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player5_btnActionPerformed
         // TODO add your handling code here:
         setplayerColor(4);
-        player5_btn.setBackground(p[4].getColor());
+        player5_btn.setBackground(player[4].getM_color());
+        player[4].setM_id(4);
        
     }//GEN-LAST:event_player5_btnActionPerformed
 
     private void player2_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player2_btnActionPerformed
         // TODO add your handling code here:
         setplayerColor(1);
-        player2_btn.setBackground(p[1].getColor());
+        player2_btn.setBackground(player[1].getM_color());
+        player[1].setM_id(1);
         
     }//GEN-LAST:event_player2_btnActionPerformed
 
     private void player4_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player4_btnActionPerformed
         // TODO add your handling code here:
         setplayerColor(3);
-        player4_btn.setBackground(p[3].getColor());
+        player4_btn.setBackground(player[3].getM_color());
+        player[3].setM_id(3);
        
     }//GEN-LAST:event_player4_btnActionPerformed
 
     private void player6_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player6_btnActionPerformed
         // TODO add your handling code here:
         setplayerColor(5);
-        player6_btn.setBackground(p[5].getColor());
+        player6_btn.setBackground(player[5].getM_color());
+        player[5].setM_id(5);
        
     }//GEN-LAST:event_player6_btnActionPerformed
 
@@ -814,6 +803,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
         player5_btn.setVisible(false);
         player6_btn.setVisible(false);
         jColorChooser1.setVisible(true);
+        NumOfPlayer = 4;
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -830,6 +820,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
         player5_btn.setVisible(false);
         player6_btn.setVisible(false);
         jColorChooser1.setVisible(true);
+        NumOfPlayer = 2;
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
@@ -846,6 +837,8 @@ public class NewJFrame1 extends javax.swing.JFrame {
         player5_btn.setVisible(false);
         player6_btn.setVisible(false);
         jColorChooser1.setVisible(true);
+        NumOfPlayer = 3;
+        
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
@@ -863,6 +856,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
         player6_btn.setVisible(false);
         
         jColorChooser1.setVisible(true);
+        NumOfPlayer = 5;
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
@@ -879,11 +873,20 @@ public class NewJFrame1 extends javax.swing.JFrame {
         player5_btn.setVisible(true);
         player6_btn.setVisible(true);
         jColorChooser1.setVisible(true);
+        NumOfPlayer = 6;
     }//GEN-LAST:event_jRadioButton6ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void start_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_start_btnActionPerformed
+        // TODO add your handling code here:
+
+        Gameplay g = new Gameplay(NumOfPlayer , player);
+        g.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        g.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_start_btnActionPerformed
+
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

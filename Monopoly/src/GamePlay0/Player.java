@@ -15,11 +15,14 @@ import java.util.HashMap;
 public class Player {
     private int m_id;
     private Color m_color;
+    private int m_carXY;  //postion of car
     private int m_balance;
     private boolean m_inJail;
     private boolean m_passByGo;
     public ArrayList<Integer> m_zonesOwnedIndexes;  
     private Map<Integer, Integer> m_numberOfHousesOwned;
+
+
 
     public Player() {
     }
@@ -34,6 +37,16 @@ public class Player {
         m_zonesOwnedIndexes = new ArrayList<Integer>();
         m_numberOfHousesOwned = new HashMap<Integer , Integer>();
     }
+
+    public int getM_carXY() {
+        return m_carXY;
+    }
+
+    public void setM_carXY(int m_carXY) {
+        this.m_carXY = m_carXY;
+    }
+
+
     
     public int getM_id() {
         return m_id;
