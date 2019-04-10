@@ -41,4 +41,8 @@ public class PlayerCurrentPostion {
     public int getCurrentPos(int playerID) {
         return currentPos[playerID];    
     }
+
+    Object getCurrentPos(Player p0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

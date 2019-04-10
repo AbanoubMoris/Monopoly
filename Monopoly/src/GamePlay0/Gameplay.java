@@ -87,6 +87,7 @@ public class Gameplay extends javax.swing.JFrame {
         
         dice1.setImage("src/GamePlay/img/1.PNG", false);
         dice2.setImage("src/Gameplay/img/1.PNG", false);
+        trade_pnl1.setVisible(false);
    
     }
     public void DisplayCiyInfo(){
@@ -259,6 +260,14 @@ public class Gameplay extends javax.swing.JFrame {
     
         //this.repaint();
     }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
     
     private Thread s;
     PlayerCurrentPostion pos;
@@ -310,6 +319,14 @@ public class Gameplay extends javax.swing.JFrame {
         zoneMap.put(35, ParkPlace);
         
     }
+
+    public Map<Integer, Zone> getZoneMap() {
+        return zoneMap;
+    }
+
+    public PlayerCurrentPostion getPos() {
+        return pos;
+    }
     
     
     
@@ -338,7 +355,7 @@ public class Gameplay extends javax.swing.JFrame {
         
     }
      
-    public void Movement(int NumOfSteps , int x ,int y , JButton btn , int pl){
+    private void Movement(int NumOfSteps , int x ,int y , JButton btn , int pl){
         
        //int width = 65;
        //int height = 35;
@@ -347,14 +364,14 @@ public class Gameplay extends javax.swing.JFrame {
         s = new Thread ( new Runnable() {
             
             public void run() {
-                
+                    
+
                 
                 int cnt = 0;
                 
                 while(true){
                     int currentX = btn.getX();
                     int currentY = btn.getY();
-                    
                     
                     //UP
                     if(currentX + (parking.getHeight() - currentX) > x && currentX < jPanel1.getWidth() && currentY == y){
@@ -531,6 +548,8 @@ public class Gameplay extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        Trade_btn = new javax.swing.JButton();
+        trade_pnl1 = new GamePlay0.trade_pnl();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1224,7 +1243,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton3);
-        jButton3.setBounds(200, 700, 90, 30);
+        jButton3.setBounds(200, 710, 90, 30);
 
         javax.swing.GroupLayout dice1Layout = new javax.swing.GroupLayout(dice1);
         dice1.setLayout(dice1Layout);
@@ -1238,7 +1257,7 @@ public class Gameplay extends javax.swing.JFrame {
         );
 
         jPanel2.add(dice1);
-        dice1.setBounds(160, 630, 70, 60);
+        dice1.setBounds(170, 640, 70, 60);
 
         javax.swing.GroupLayout dice2Layout = new javax.swing.GroupLayout(dice2);
         dice2.setLayout(dice2Layout);
@@ -1252,7 +1271,7 @@ public class Gameplay extends javax.swing.JFrame {
         );
 
         jPanel2.add(dice2);
-        dice2.setBounds(240, 630, 70, 60);
+        dice2.setBounds(250, 640, 70, 60);
 
         jLabel2.setText("Player1");
 
@@ -1333,6 +1352,17 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(jButton4);
         jButton4.setBounds(10, 360, 69, 23);
 
+        Trade_btn.setText("Trade");
+        Trade_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Trade_btnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Trade_btn);
+        Trade_btn.setBounds(90, 360, 73, 23);
+        jPanel2.add(trade_pnl1);
+        trade_pnl1.setBounds(60, 410, 355, 194);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1375,7 +1405,7 @@ public class Gameplay extends javax.swing.JFrame {
         pos.SetPlayer(0,dice1.getDice_value()+ dice2.getDice_value());
         Movement(dice1.getDice_value()+ dice2.getDice_value(),60,60 , btn1 ,0); 
         s.start();
-                System.out.println(playerTurn);
+        System.out.println(playerTurn);
 
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1433,12 +1463,37 @@ public class Gameplay extends javax.swing.JFrame {
                 p1.setM_balance(newBalance);
                 p1.m_zonesOwnedIndexes.add(temp.getM_index());
                 addPanel(String.valueOf(temp.getM_index()),jPanel4);
-
+                  
             }
         }
         
         updateBalance();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void Trade_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Trade_btnActionPerformed
+        // TODO add your handling code here:
+        trade_pnl trade_pnl1 = new trade_pnl();
+        if(playerTurn == 0){
+        trade_pnl1.setP_withdeal(p0);
+        trade_pnl1.setP(p1);
+        trade_pnl1.getId_lbl1().setText(String.valueOf(p0.getM_id()));
+        trade_pnl1.getId_lbl2().setText(String.valueOf(p1.getM_id()));
+        trade_pnl1.setZ(zoneMap.get(pos.getCurrentPos(0)));
+        Zone temp = getZone();
+        System.out.println(p0.m_zonesOwnedIndexes.contains(temp.getM_index()));
+        }
+        else if (playerTurn == 1)
+        {    trade_pnl1.setP_withdeal(p1);
+              trade_pnl1.setP(p0);
+              trade_pnl1.getId_lbl1().setText(String.valueOf(p0.getM_id()));
+               trade_pnl1.getId_lbl2().setText(String.valueOf(p1.getM_id()));
+                trade_pnl1.setZ(zoneMap.get(pos.getCurrentPos(1)));
+                 Zone temp = getZone();
+                  System.out.println(p1.m_zonesOwnedIndexes.contains(temp.getM_index()));
+        }
+        trade_pnl1.setVisible(true);
+      
+    }//GEN-LAST:event_Trade_btnActionPerformed
 int x1=5,y1=20 , x2=5 , y2=20;
     public void addPanel(String name, JPanel panelName)
     {
@@ -1502,6 +1557,7 @@ int x1=5,y1=20 , x2=5 , y2=20;
         //</editor-fold>
 
         
+                  
         
         
         
@@ -1619,6 +1675,7 @@ int x1=5,y1=20 , x2=5 , y2=20;
     private GamePlay0.Zone RealRoad;
     private GamePlay0.Zone States;
     private GamePlay0.Zone Tenss;
+    private javax.swing.JButton Trade_btn;
     private GamePlay0.Zone Vermont;
     private GamePlay0.Zone Virginnia;
     private GamePlay0.Zone bluetreasure;
@@ -1650,6 +1707,7 @@ int x1=5,y1=20 , x2=5 , y2=20;
     private GamePlay0.Zone pennsyl;
     private GamePlay0.Zone shorLline;
     private GamePlay0.Zone stJames;
+    private GamePlay0.trade_pnl trade_pnl1;
     private GamePlay0.Zone ventnor;
     private GamePlay0.Zone waterWorks;
     // End of variables declaration//GEN-END:variables
