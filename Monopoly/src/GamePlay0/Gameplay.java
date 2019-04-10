@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.time.Clock;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,10 +38,9 @@ import javax.swing.border.LineBorder;
 
 public class Gameplay extends javax.swing.JFrame {
 
-    
+    Player p0 ,p1 ,p2 ,p3 ,p4 ,p5 ;
     public void DrawGamePlay(){
             
-        
         this.setExtendedState(JFrame.NORMAL); 
         go.setImage("src/Gameplay/img/go.png", true);
         jail.setImage("src/Gameplay/img/jail.png", true);
@@ -88,6 +88,13 @@ public class Gameplay extends javax.swing.JFrame {
         dice1.setImage("src/GamePlay/img/1.PNG", false);
         dice2.setImage("src/Gameplay/img/1.PNG", false);
         trade_pnl1.setVisible(false);
+        player_pnl1.setVisible(false);
+        player_pnl2.setVisible(false);
+        player_pnl3.setVisible(false);
+        player_pnl4.setVisible(false);
+        player_pnl5.setVisible(false);
+        player_pnl6.setVisible(false);
+        
    
     }
     public void DisplayCiyInfo(){
@@ -275,8 +282,8 @@ public class Gameplay extends javax.swing.JFrame {
     //JButton btn1;
     //JButton btn2;
     int playerTurn;
-    Player p0 ;
-    Player p1;
+    
+    
     Map<Integer,Zone> zoneMap;
     public void zoneMapInitialization()
     {
@@ -356,15 +363,131 @@ public class Gameplay extends javax.swing.JFrame {
         zoneMapInitialization();
         DrawGamePlay();
         DisplayCiyInfo();
-        initializePlayer();
+     //   initializePlayer(NumbOfPlayers);          // error !!
+             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
+             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
+             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
+             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
+             p4 = new Player(player[4].getM_id(), player[4].getM_color(), 7000, false, false);
+             p5 = new Player(player[5].getM_id(), player[5].getM_color(), 7000, false, false);
+        DrawPlayers_pnl(NumOfPlayers);    
+        
         this.NumbOfPlayers = NumOfPlayers;
         this.player = player;
         IntializePlayers(NumOfPlayers, player);
-        
-        
         pos = new PlayerCurrentPostion();
         
     }
+     public void DrawPlayers_pnl(int NumOfPlayers){
+         if(NumOfPlayers == 2 ){
+            player_pnl1.setVisible(true);
+            player_pnl1.getBalance_lbl().setText(String.valueOf(p0.getM_balance()));
+            player_pnl1.getID_lbl().setText(String.valueOf( p0.getM_id()));
+            player_pnl1.getPlayercolor_pnl().setBackground(p0.getM_color());
+            
+            player_pnl2.setVisible(true);
+            player_pnl2.getBalance_lbl().setText(String.valueOf(p1.getM_balance()));
+            player_pnl2.getID_lbl().setText(String.valueOf( p1.getM_id()));
+            player_pnl2.getPlayercolor_pnl().setBackground(p1.getM_color());
+        }
+        else if(NumOfPlayers == 3){
+            player_pnl1.setVisible(true);
+            player_pnl1.getBalance_lbl().setText(String.valueOf(p0.getM_balance()));
+            player_pnl1.getID_lbl().setText(String.valueOf(p0.getM_id()));
+            player_pnl1.getPlayercolor_pnl().setBackground(p0.getM_color());
+           
+            player_pnl2.setVisible(true);
+            player_pnl2.getBalance_lbl().setText(String.valueOf( p1.getM_balance()));
+            player_pnl2.getID_lbl().setText(String.valueOf(p1.getM_id()));
+            player_pnl2.getPlayercolor_pnl().setBackground(p1.getM_color());
+            
+            player_pnl3.setVisible(true);
+            player_pnl3.getBalance_lbl().setText(String.valueOf( p2.getM_balance()));
+            player_pnl3.getID_lbl().setText(String.valueOf(p2.getM_id()));
+            player_pnl3.getPlayercolor_pnl().setBackground(p2.getM_color());
+        }
+         else if(NumOfPlayers == 4){
+            player_pnl1.setVisible(true);
+            player_pnl1.getBalance_lbl().setText(String.valueOf(p0.getM_balance()));
+            player_pnl1.getID_lbl().setText(String.valueOf(p0.getM_id()));
+            player_pnl1.getPlayercolor_pnl().setBackground(p0.getM_color());
+           
+            player_pnl2.setVisible(true);
+            player_pnl2.getBalance_lbl().setText(String.valueOf( p1.getM_balance()));
+            player_pnl2.getID_lbl().setText(String.valueOf(p1.getM_id()));
+            player_pnl2.getPlayercolor_pnl().setBackground(p1.getM_color());
+            
+            player_pnl3.setVisible(true);
+            player_pnl3.getBalance_lbl().setText(String.valueOf( p2.getM_balance()));
+            player_pnl3.getID_lbl().setText(String.valueOf(p2.getM_id()));
+            player_pnl3.getPlayercolor_pnl().setBackground(p2.getM_color());
+            
+            player_pnl4.setVisible(true);
+            player_pnl4.getBalance_lbl().setText(String.valueOf( p3.getM_balance()));
+            player_pnl4.getID_lbl().setText(String.valueOf(p3.getM_id()));
+            player_pnl4.getPlayercolor_pnl().setBackground(p3.getM_color());
+        }
+         else if(NumOfPlayers == 5){
+            player_pnl1.setVisible(true);
+            player_pnl1.getBalance_lbl().setText(String.valueOf(p0.getM_balance()));
+            player_pnl1.getID_lbl().setText(String.valueOf(p0.getM_id()));
+            player_pnl1.getPlayercolor_pnl().setBackground(p0.getM_color());
+           
+            player_pnl2.setVisible(true);
+            player_pnl2.getBalance_lbl().setText(String.valueOf( p1.getM_balance()));
+            player_pnl2.getID_lbl().setText(String.valueOf(p1.getM_id()));
+            player_pnl2.getPlayercolor_pnl().setBackground(p1.getM_color());
+            
+            player_pnl3.setVisible(true);
+            player_pnl3.getBalance_lbl().setText(String.valueOf( p2.getM_balance()));
+            player_pnl3.getID_lbl().setText(String.valueOf(p2.getM_id()));
+            player_pnl3.getPlayercolor_pnl().setBackground(p2.getM_color());
+            
+            player_pnl4.setVisible(true);
+            player_pnl4.getBalance_lbl().setText(String.valueOf( p3.getM_balance()));
+            player_pnl4.getID_lbl().setText(String.valueOf(p3.getM_id()));
+            player_pnl4.getPlayercolor_pnl().setBackground(p3.getM_color());
+            
+            player_pnl5.setVisible(true);
+            player_pnl5.getBalance_lbl().setText(String.valueOf( p4.getM_balance()));
+            player_pnl5.getID_lbl().setText(String.valueOf(p4.getM_id()));
+            player_pnl5.getPlayercolor_pnl().setBackground(p4.getM_color());
+        }
+         else if(NumOfPlayers == 6){
+              player_pnl1.setVisible(true);
+            player_pnl1.getBalance_lbl().setText(String.valueOf(p0.getM_balance()));
+            player_pnl1.getID_lbl().setText(String.valueOf(p0.getM_id()));
+            player_pnl1.getPlayercolor_pnl().setBackground(p0.getM_color());
+           
+            player_pnl2.setVisible(true);
+            player_pnl2.getBalance_lbl().setText(String.valueOf( p1.getM_balance()));
+            player_pnl2.getID_lbl().setText(String.valueOf(p1.getM_id()));
+            player_pnl2.getPlayercolor_pnl().setBackground(p1.getM_color());
+            
+            player_pnl3.setVisible(true);
+            player_pnl3.getBalance_lbl().setText(String.valueOf( p2.getM_balance()));
+            player_pnl3.getID_lbl().setText(String.valueOf(p2.getM_id()));
+            player_pnl3.getPlayercolor_pnl().setBackground(p2.getM_color());
+            
+            player_pnl4.setVisible(true);
+            player_pnl4.getBalance_lbl().setText(String.valueOf( p3.getM_balance()));
+            player_pnl4.getID_lbl().setText(String.valueOf(p3.getM_id()));
+            player_pnl4.getPlayercolor_pnl().setBackground(p3.getM_color());
+            
+            player_pnl5.setVisible(true);
+            player_pnl5.getBalance_lbl().setText(String.valueOf( p4.getM_balance()));
+            player_pnl5.getID_lbl().setText(String.valueOf(p4.getM_id()));
+            player_pnl5.getPlayercolor_pnl().setBackground(p4.getM_color());
+            
+            player_pnl6.setVisible(true);
+            player_pnl6.getBalance_lbl().setText(String.valueOf( p5.getM_balance()));
+            player_pnl6.getID_lbl().setText(String.valueOf(p5.getM_id()));
+            player_pnl6.getPlayercolor_pnl().setBackground(p5.getM_color());
+         }
+     }   
+        
+    
+        
      
     private void Movement(int NumOfSteps , int x ,int y , int pl){
         //Player_Car.get(pl).setBounds(100, 100, 500, 500);
@@ -388,7 +511,7 @@ public class Gameplay extends javax.swing.JFrame {
                     if(Player_Car.get(pl).getX()>=goToJail.getX()-10){
                        // btn.setBounds(goToJail.getX()+85, 0, height, width);
                         Player_Car.get(pl).setBounds(goToJail.getX() + (goToJail.getWidth()-height-x) , goToJail.getY()+goToJail.getWidth()-width , height , width);
-                        //cnt--;
+                        cnt--;
                         break;
                         
                     }
@@ -543,7 +666,6 @@ public class Gameplay extends javax.swing.JFrame {
         orange = new GamePlay0.Zone();
         bluetreasure = new GamePlay0.Zone();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -558,6 +680,12 @@ public class Gameplay extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         dice2 = new GamePlay0.Dice();
         dice1 = new GamePlay0.Dice();
+        player_pnl1 = new GamePlay0.Player_pnl();
+        player_pnl2 = new GamePlay0.Player_pnl();
+        player_pnl3 = new GamePlay0.Player_pnl();
+        player_pnl4 = new GamePlay0.Player_pnl();
+        player_pnl5 = new GamePlay0.Player_pnl();
+        player_pnl6 = new GamePlay0.Player_pnl();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1219,12 +1347,6 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("CONTROLS");
-        jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(90, 10, 274, 40);
-
         jLabel2.setText("Player1");
 
         jLabel3.setText("jLabel3");
@@ -1251,14 +1373,14 @@ public class Gameplay extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)))
         );
 
         jPanel2.add(jPanel3);
-        jPanel3.setBounds(10, 80, 220, 250);
+        jPanel3.setBounds(10, 10, 220, 40);
 
         jLabel5.setText("Player2");
 
@@ -1286,14 +1408,14 @@ public class Gameplay extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)))
         );
 
         jPanel2.add(jPanel4);
-        jPanel4.setBounds(240, 80, 220, 250);
+        jPanel4.setBounds(240, 10, 220, 40);
 
         jButton4.setText("BuyCity");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -1302,7 +1424,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton4);
-        jButton4.setBounds(10, 360, 69, 23);
+        jButton4.setBounds(10, 710, 69, 23);
 
         Trade_btn.setText("Trade");
         Trade_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -1311,9 +1433,9 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Trade_btn);
-        Trade_btn.setBounds(90, 360, 73, 23);
+        Trade_btn.setBounds(380, 710, 73, 23);
         jPanel2.add(trade_pnl1);
-        trade_pnl1.setBounds(60, 410, 355, 194);
+        trade_pnl1.setBounds(60, 440, 355, 194);
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton3.setText("Roll Dice");
@@ -1352,6 +1474,18 @@ public class Gameplay extends javax.swing.JFrame {
 
         jPanel2.add(dice1);
         dice1.setBounds(160, 640, 70, 60);
+        jPanel2.add(player_pnl1);
+        player_pnl1.setBounds(10, 60, 125, 150);
+        jPanel2.add(player_pnl2);
+        player_pnl2.setBounds(160, 60, 125, 150);
+        jPanel2.add(player_pnl3);
+        player_pnl3.setBounds(320, 60, 125, 150);
+        jPanel2.add(player_pnl4);
+        player_pnl4.setBounds(10, 250, 125, 150);
+        jPanel2.add(player_pnl5);
+        player_pnl5.setBounds(160, 250, 125, 150);
+        jPanel2.add(player_pnl6);
+        player_pnl6.setBounds(320, 250, 125, 150);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1420,7 +1554,7 @@ public class Gameplay extends javax.swing.JFrame {
     ArrayList<Integer> zonesOwned = new ArrayList<>();
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        int currentPositionPlayer0 = pos.getCurrentPos(0);
+     /*   int currentPositionPlayer0 = pos.getCurrentPos(0);
         int currentPositionPlayer1 = pos.getCurrentPos(1);
         Zone temp = getZone();
 
@@ -1442,7 +1576,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         }
         
-        updateBalance();
+//        updateBalance();*/
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void Trade_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Trade_btnActionPerformed
@@ -1575,11 +1709,45 @@ int x1=5,y1=20 , x2=5 , y2=20;
         return panel;
     }
     
-    public void initializePlayer(){
-         p0 = new Player(0,Color.RED,1500,false,false);
-         p1 = new Player(1,Color.BLUE,1500,false,false);
-         updateBalance();
-         
+    public void initializePlayer(int NumbOfPlayers){
+     
+        if(NumbOfPlayers == 2 ){
+             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
+             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
+             System.out.println("in 2");
+        } 
+        else if(NumbOfPlayers == 3){
+             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
+             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
+             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
+            System.out.println("in 3");
+        }
+        else if (NumbOfPlayers == 4){
+             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
+             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
+             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
+             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
+              System.out.println("in 4");
+        }
+        else if(NumbOfPlayers == 5){
+             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
+             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
+             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
+             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
+             p4 = new Player(player[4].getM_id(), player[4].getM_color(), 7000, false, false);
+              System.out.println("in 5");
+        }
+        else if(NumbOfPlayers == 6)
+        {
+             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
+             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
+             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
+             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
+             p4 = new Player(player[4].getM_id(), player[4].getM_color(), 7000, false, false);
+             p5 = new Player(player[5].getM_id(), player[5].getM_color(), 7000, false, false);
+              System.out.println("in 6");
+        }
+         //updateBalance();
     }
     public void updateBalance(){
         String balanceP0 = String.valueOf(p0.getM_balance());
@@ -1658,7 +1826,6 @@ int x1=5,y1=20 , x2=5 , y2=20;
     private GamePlay0.Zone goToJail;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1675,6 +1842,12 @@ int x1=5,y1=20 , x2=5 , y2=20;
     private GamePlay0.Zone parking;
     private GamePlay0.Zone pennsy;
     private GamePlay0.Zone pennsyl;
+    private GamePlay0.Player_pnl player_pnl1;
+    private GamePlay0.Player_pnl player_pnl2;
+    private GamePlay0.Player_pnl player_pnl3;
+    private GamePlay0.Player_pnl player_pnl4;
+    private GamePlay0.Player_pnl player_pnl5;
+    private GamePlay0.Player_pnl player_pnl6;
     private GamePlay0.Zone shorLline;
     private GamePlay0.Zone stJames;
     private GamePlay0.trade_pnl trade_pnl1;
