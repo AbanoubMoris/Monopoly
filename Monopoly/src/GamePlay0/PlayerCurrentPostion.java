@@ -26,7 +26,7 @@ public class PlayerCurrentPostion {
         chCurrrent[playerID] = '0';
         Zones[currentPos[playerID]] = String.valueOf(chCurrrent);
         
-        System.out.println(Zones[currentPos[playerID]]);
+        //System.out.println(Zones[currentPos[playerID]]);
         
         String nextpos = Zones[(NumOfSteps + currentPos[playerID])%36];
         char []chNext = nextpos.toCharArray();
@@ -35,7 +35,7 @@ public class PlayerCurrentPostion {
         Zones[(NumOfSteps + currentPos[playerID])%36] = String.valueOf(chNext);
         
         currentPos[playerID] = (NumOfSteps + currentPos[playerID])%36;
-        System.out.println(Zones[currentPos[playerID]]);
+        //System.out.println(Zones[currentPos[playerID]]);
     }
 
     public int getCurrentPos(int playerID) {

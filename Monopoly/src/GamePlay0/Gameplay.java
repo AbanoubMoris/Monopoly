@@ -379,7 +379,7 @@ public class Gameplay extends javax.swing.JFrame {
         
     }
      
-    private void Movement(int NumOfSteps , int x ,int y /*, JButton btn*/ , int pl){
+    private void Movement(int NumOfSteps , int x ,int y , int pl){
         //Player_Car.get(pl).setBounds(100, 100, 500, 500);
        //int width = 65;
        //int height = 35;
@@ -400,7 +400,7 @@ public class Gameplay extends javax.swing.JFrame {
                     //UP
                     if(currentX + (parking.getHeight() - currentX) > x && currentX < jPanel1.getWidth() && currentY == y){
                     for (int i=Player_Car.get(pl).getX();i<currentX+70;i++){
-                    if(Player_Car.get(pl).getX()+x>goToJail.getX()){
+                    if(Player_Car.get(pl).getX()>=goToJail.getX()-10){
                        // btn.setBounds(goToJail.getX()+85, 0, height, width);
                         Player_Car.get(pl).setBounds(goToJail.getX() + (goToJail.getWidth()-height-x) , goToJail.getY()+goToJail.getWidth()-width , height , width);
                         //cnt--;
@@ -445,7 +445,7 @@ public class Gameplay extends javax.swing.JFrame {
                     if(currentY + (goToJail.getWidth() - currentY )>=y && currentY<=go.getY()+go.getHeight() && currentX==go.getX()+(go.getWidth()-height-x)){
                         
                         for (int i=currentY ; i < currentY+70 ; i++){
-                            if(Player_Car.get(pl).getY()+y>go.getY()){
+                            if(Player_Car.get(pl).getY()>go.getY()-10){
                                 Player_Car.get(pl).setBounds(go.getX(), go.getY()+(go.getWidth()-height-y), width, height);
                                // cnt--;
                                 break;
@@ -463,10 +463,9 @@ public class Gameplay extends javax.swing.JFrame {
                     }
              
                //Down
-                    System.out.println(currentX + " " + (go.getX()+go.getWidth()) + " " + currentY + " " + (go.getY()+(go.getHeight()-height-y)));
+                   // System.out.println(currentX + " " + (go.getX()+go.getWidth()) + " " + currentY + " " + (go.getY()+(go.getHeight()-height-y)));
                     if (currentX>=0 && currentX<=(go.getX()+go.getWidth()) && currentY == (go.getY()+(go.getHeight()-height-y))){
                        for (int i=currentX ; i>currentX-70 ; i--){
-                           System.out.println("dsffffff");
                            if (Player_Car.get(pl).getX() <= x){
                                Player_Car.get(pl).setBounds(x, jail.getY() , height,width);
                                cnt--;
@@ -489,14 +488,15 @@ public class Gameplay extends javax.swing.JFrame {
                     cnt++;
                     if(cnt == NumOfSteps)
                     {
+                        System.out.println(pos.getCurrentPos(pl));
                         if (pos.getCurrentPos(pl) == 2 || pos.getCurrentPos(pl) == 15 || pos.getCurrentPos(pl) == 31) {
                             card.displayCommunityChestCards();
                         }
                         else if (pos.getCurrentPos(pl) == 7 || pos.getCurrentPos(pl) == 20 || pos.getCurrentPos(pl) == 34) {
                             card.displayChanceCards();
                         }
-                        
-                      
+                        playerTurn++;
+                        if (playerTurn>=NumbOfPlayers)playerTurn=0;
                         
                               
                              
@@ -561,9 +561,6 @@ public class Gameplay extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        dice1 = new GamePlay0.Dice();
-        dice2 = new GamePlay0.Dice();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -575,6 +572,9 @@ public class Gameplay extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         Trade_btn = new javax.swing.JButton();
         trade_pnl1 = new GamePlay0.trade_pnl();
+        jButton3 = new javax.swing.JButton();
+        dice2 = new GamePlay0.Dice();
+        dice1 = new GamePlay0.Dice();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1260,44 +1260,6 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(jLabel1);
         jLabel1.setBounds(90, 10, 274, 40);
 
-        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton3.setText("Roll Dice");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton3);
-        jButton3.setBounds(200, 710, 90, 30);
-
-        javax.swing.GroupLayout dice1Layout = new javax.swing.GroupLayout(dice1);
-        dice1.setLayout(dice1Layout);
-        dice1Layout.setHorizontalGroup(
-            dice1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        dice1Layout.setVerticalGroup(
-            dice1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(dice1);
-        dice1.setBounds(170, 640, 70, 60);
-
-        javax.swing.GroupLayout dice2Layout = new javax.swing.GroupLayout(dice2);
-        dice2.setLayout(dice2Layout);
-        dice2Layout.setHorizontalGroup(
-            dice2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        dice2Layout.setVerticalGroup(
-            dice2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(dice2);
-        dice2.setBounds(250, 640, 70, 60);
-
         jLabel2.setText("Player1");
 
         jLabel3.setText("jLabel3");
@@ -1388,6 +1350,44 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(trade_pnl1);
         trade_pnl1.setBounds(60, 410, 355, 194);
 
+        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton3.setText("Roll Dice");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3);
+        jButton3.setBounds(190, 710, 90, 30);
+
+        javax.swing.GroupLayout dice2Layout = new javax.swing.GroupLayout(dice2);
+        dice2.setLayout(dice2Layout);
+        dice2Layout.setHorizontalGroup(
+            dice2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        dice2Layout.setVerticalGroup(
+            dice2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(dice2);
+        dice2.setBounds(240, 640, 70, 60);
+
+        javax.swing.GroupLayout dice1Layout = new javax.swing.GroupLayout(dice1);
+        dice1.setLayout(dice1Layout);
+        dice1Layout.setHorizontalGroup(
+            dice1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        dice1Layout.setVerticalGroup(
+            dice1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(dice1);
+        dice1.setBounds(160, 640, 70, 60);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1419,7 +1419,7 @@ public class Gameplay extends javax.swing.JFrame {
         Movement(dice1.getDice_value()+ dice2.getDice_value(),player[1].getM_carXY(),player[1].getM_carXY()  /*, Player_Car.get(1)*/ ,1);
         
         s.start();
-                System.out.println(playerTurn);
+               // System.out.println(playerTurn);
 
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1431,7 +1431,7 @@ public class Gameplay extends javax.swing.JFrame {
         pos.SetPlayer(0,dice1.getDice_value()+ dice2.getDice_value());
         Movement(dice1.getDice_value()+ dice2.getDice_value(),player[0].getM_carXY(),player[0].getM_carXY() /*, Player_Car.get(0)*/ ,0); 
         s.start();
-        System.out.println(playerTurn);
+        //System.out.println(playerTurn);
 
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1466,8 +1466,12 @@ public class Gameplay extends javax.swing.JFrame {
         dice2.setDice_value(r.nextInt(6)+1);
         roll_Dice(dice1);
         roll_Dice(dice2);
-        
-       
+        //System.out.println(playerTurn);
+        pos.SetPlayer(playerTurn,dice1.getDice_value()+ dice2.getDice_value());
+        Movement(dice1.getDice_value()+ dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+        s.start();
+        //System.out.print("  " + playerTurn);
+  
     }//GEN-LAST:event_jButton3ActionPerformed
 
     ArrayList<Integer> zonesOwned = new ArrayList<>();
@@ -1555,9 +1559,7 @@ int x1=5,y1=20 , x2=5 , y2=20;
         
         
     }
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         
@@ -1600,7 +1602,7 @@ int x1=5,y1=20 , x2=5 , y2=20;
         
     }
     
-      private static void displayCardInfo(String Path) {
+    private static void displayCardInfo(String Path) {
         JOptionPane.showConfirmDialog(null,
                         getCardInfoPanel(Path),
                         "Card Info  ",
