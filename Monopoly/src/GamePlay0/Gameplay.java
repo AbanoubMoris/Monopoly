@@ -544,10 +544,10 @@ public class Gameplay extends javax.swing.JFrame {
                     //UP
                     if(currentX + (parking.getHeight() - currentX) > x && currentX < jPanel1.getWidth() && currentY == y){
                     for (int i=Player_Car.get(pl).getX();i<currentX+70;i++){
-                    if(Player_Car.get(pl).getX()>=goToJail.getX()-10){
+                    if(Player_Car.get(pl).getX()+10>=goToJail.getX()){
                        // btn.setBounds(goToJail.getX()+85, 0, height, width);
                         Player_Car.get(pl).setBounds(goToJail.getX() + (goToJail.getWidth()-height-x) , goToJail.getY()+goToJail.getWidth()-width , height , width);
-                        cnt--;
+                        //cnt--;
                         break;
                         
                     }
@@ -589,9 +589,9 @@ public class Gameplay extends javax.swing.JFrame {
                     if(currentY + (goToJail.getWidth() - currentY )>=y && currentY<=go.getY()+go.getHeight() && currentX==go.getX()+(go.getWidth()-height-x)){
                         
                         for (int i=currentY ; i < currentY+70 ; i++){
-                            if(Player_Car.get(pl).getY()>go.getY()-10){
+                            if(Player_Car.get(pl).getY()>go.getY()-5){
                                 Player_Car.get(pl).setBounds(go.getX(), go.getY()+(go.getWidth()-height-y), width, height);
-                               // cnt--;
+                                //cnt--;
                                 break;
                             }
                             Player_Car.get(pl).setBounds(currentX, i, height, width);
@@ -639,8 +639,10 @@ public class Gameplay extends javax.swing.JFrame {
                         else if (pos.getCurrentPos(pl) == 7 || pos.getCurrentPos(pl) == 20 || pos.getCurrentPos(pl) == 34) {
                             card.displayChanceCards();
                         }
+                        System.out.println(pos.getCurrentPos(playerTurn) + " --- " + playerTurn);
                         playerTurn++;
                         playerTurn%=NumbOfPlayers;
+                        
                         
                               
                              
