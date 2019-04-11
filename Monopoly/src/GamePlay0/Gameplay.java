@@ -27,6 +27,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+import java.lang.Math;
 
 /**
  *
@@ -281,7 +282,7 @@ public class Gameplay extends javax.swing.JFrame {
     
     //JButton btn1;
     //JButton btn2;
-    int playerTurn;
+    int playerTurn = -1;
     
     
     Map<Integer,Zone> zoneMap;
@@ -525,7 +526,7 @@ public class Gameplay extends javax.swing.JFrame {
     
         
      
-    private void Movement(int NumOfSteps , int x ,int y , int pl){
+    public void Movement(int NumOfSteps , int x ,int y , int pl){
         //Player_Car.get(pl).setBounds(100, 100, 500, 500);
        //int width = 65;
        //int height = 35;
@@ -633,15 +634,15 @@ public class Gameplay extends javax.swing.JFrame {
                     if(cnt == NumOfSteps)
                     {
                         System.out.println(pos.getCurrentPos(pl));
-                        if (pos.getCurrentPos(pl) == 2 || pos.getCurrentPos(pl) == 15 || pos.getCurrentPos(pl) == 31) {
-                            card.displayCommunityChestCards();
+                        if (pos.getCurrentPos(pl) == 2 || pos.getCurrentPos(pl) == 15 || pos.getCurrentPos(pl) == 31) 
+                        {
+                            DrawingCards("Community Chest");
                         }
                         else if (pos.getCurrentPos(pl) == 7 || pos.getCurrentPos(pl) == 20 || pos.getCurrentPos(pl) == 34) {
-                            card.displayChanceCards();
+                            DrawingCards("Chance");
                         }
                         System.out.println(pos.getCurrentPos(playerTurn) + " --- " + playerTurn);
-                        playerTurn++;
-                        playerTurn%=NumbOfPlayers;
+                        
                         
                         
                               
@@ -656,7 +657,119 @@ public class Gameplay extends javax.swing.JFrame {
         });
     }
     
+    private void DrawingCards(String cardType)
+    {
+        if(cardType == "Community Chest")
+        {
+            if(card.displayCommunityChestCards()>=-1)
+            {
+                int currentPos = pos.getCurrentPos(playerTurn);
+                int randomNumber = card.ApplyCardEffect("CommunityChest", player[playerTurn],playerTurn,pos,NumbOfPlayers , player);
+                if(randomNumber==1)
+                {
+                    pos.SetPlayer(playerTurn,(36-currentPos)%36);   
+                    Movement((36-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    s.start();
+                    //player[playerTurn].setM_balance(player[playerTurn].getM_balance()+200);
+                }
+                else if(randomNumber==7)
+                {
+                    pos.SetPlayer(playerTurn,(46-currentPos)%36);   
+                    Movement((46-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    player[playerTurn].setM_inJail(true);
+                    s.start();
+                }
+                updatePlayersBalance();
+            }
+        }
+        else if(cardType == "Chance")
+        {
+            if(card.displayChanceCards()>=-1)
+            {
+                int currentPos = pos.getCurrentPos(playerTurn);
+                int randomNumber = card.ApplyCardEffect("Chance", player[playerTurn],playerTurn,pos,NumbOfPlayers , player);
+                if(randomNumber==1)
+                {
+                    pos.SetPlayer(playerTurn,(36-currentPos)%36);   
+                    Movement((36-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    s.start();
+                    //player[playerTurn].setM_balance(player[playerTurn].getM_balance()+200);
+                }
+                else if(randomNumber==2)
+                {
+                    pos.SetPlayer(playerTurn,(58-currentPos)%36);   
+                    Movement((58-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    s.start();
+                }
+                else if(randomNumber==4 && currentPos == 7)
+                {
+                    pos.SetPlayer(playerTurn,(49-currentPos)%36);   
+                    Movement((49-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    s.start();
+                }
+                else if(randomNumber==4 && currentPos == 20)
+                {
+                    pos.SetPlayer(playerTurn,(59-currentPos)%36);   
+                    Movement((59-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    s.start();
+                }
+                else if(randomNumber==4 && currentPos == 34)
+                {
+                    pos.SetPlayer(playerTurn,(41-currentPos)%36);   
+                    Movement((41-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    s.start();
+                }
+                else if(randomNumber==6)
+                {
+                    pos.SetPlayer(playerTurn,(62-currentPos)%36);   
+                    Movement((62-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    s.start();
+                }
+                else if(randomNumber==9)
+                {
+                    pos.SetPlayer(playerTurn,(46-currentPos)%36);   
+                    Movement((46-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    player[playerTurn].setM_inJail(true);
+                    s.start();
+                }
+                else if(randomNumber==12 && currentPos == 7)
+                {
+                    pos.SetPlayer(playerTurn,(59-currentPos)%36);   
+                    Movement((59-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    s.start();
+                }
+                else if(randomNumber==12 && currentPos == 20)
+                {
+                    pos.SetPlayer(playerTurn,(41-currentPos)%36);   
+                    Movement((41-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    s.start();
+                }
+                else if(randomNumber==12 && currentPos == 34)
+                {
+                    pos.SetPlayer(playerTurn,(59-currentPos)%36);   
+                    Movement((59-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    s.start();
+                }
+                updatePlayersBalance();
+            }
+        }
+    }
     
+    private void updatePlayersBalance()
+    {
+        player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
+        player_pnl1.setBalance_lbl(player_pnl1.getBalance_lbl());
+        player_pnl2.getBalance_lbl().setText(String.valueOf(player[1].getM_balance()));
+        player_pnl2.setBalance_lbl(player_pnl2.getBalance_lbl());
+        player_pnl3.getBalance_lbl().setText(String.valueOf(player[2].getM_balance()));
+        player_pnl3.setBalance_lbl(player_pnl3.getBalance_lbl());
+        player_pnl4.getBalance_lbl().setText(String.valueOf(player[3].getM_balance()));
+        player_pnl4.setBalance_lbl(player_pnl4.getBalance_lbl());
+        player_pnl5.getBalance_lbl().setText(String.valueOf(player[4].getM_balance()));
+        player_pnl5.setBalance_lbl(player_pnl5.getBalance_lbl());
+        player_pnl6.getBalance_lbl().setText(String.valueOf(player[5].getM_balance()));
+        player_pnl6.setBalance_lbl(player_pnl6.getBalance_lbl());
+    }
     
     
     @SuppressWarnings("unchecked")
@@ -1575,6 +1688,8 @@ public class Gameplay extends javax.swing.JFrame {
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
+        playerTurn++;
+        playerTurn%=NumbOfPlayers;
         Random r = new Random();
         Random z = new Random();
         dice1.setDice_value(r.nextInt(6)+1);
@@ -1582,8 +1697,8 @@ public class Gameplay extends javax.swing.JFrame {
         roll_Dice(dice1);
         roll_Dice(dice2);
         //System.out.println(playerTurn);
-        pos.SetPlayer(playerTurn,dice1.getDice_value()+ dice2.getDice_value());
-        Movement(dice1.getDice_value()+ dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+        pos.SetPlayer(playerTurn,dice1.getDice_value()+dice2.getDice_value());
+        Movement(dice1.getDice_value()+dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
         s.start();
         //System.out.print("  " + playerTurn);
   

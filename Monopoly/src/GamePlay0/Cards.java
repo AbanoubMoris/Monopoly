@@ -132,6 +132,7 @@ class ChanceCards extends CardsDraw{
     CardsDraw card13 = new CardsDraw("13.jpg" ,0);
     CardsDraw card14 = new CardsDraw("14.jpg" ,150); //gain
     CardsDraw card15 = new CardsDraw("15.jpg"  ,50); //pay 50 for each player
+    CardsDraw card16 = new CardsDraw("16.jpg"  ,50); //pay 50 for each player
 
     public ChanceCards() {
         this.m_chanceCards = new HashMap<Integer,CardsDraw>();
@@ -151,7 +152,7 @@ class ChanceCards extends CardsDraw{
         this.m_chanceCards.put(13, card13);
         this.m_chanceCards.put(14, card14);
         this.m_chanceCards.put(15, card15);
-        
+        this.m_chanceCards.put(16, card16);
     }
 }
 
@@ -223,8 +224,8 @@ public class Cards extends javax.swing.JFrame {
     /**
      * Creates new form CardsDraws
      */
-    public void displayChanceCards() {
-        JOptionPane.showConfirmDialog(null,
+    public int displayChanceCards() {
+        return JOptionPane.showConfirmDialog(null,
                         getChanceCardsPanel(),
                         "Chance Card  ",
                         JOptionPane.DEFAULT_OPTION,
@@ -237,10 +238,19 @@ public class Cards extends javax.swing.JFrame {
         ChanceCards chanceCards = new ChanceCards();
         Map<Integer,CardsDraw> tmp = chanceCards.getM_chanceCards();
         Random r = new Random();
+        int randomNumber = 1+r.nextInt(16);
+        if(randomNumber==3 || randomNumber==5) // chance 3 makes the player advance to St.Charles which is not on our board and chance 5 is the same as chance 4
+        {
+            randomNumber = 4;
+        }
+        if(randomNumber == 13) // chance 3 makes the player advance to BoardWalk which is not on our board
+        {
+            randomNumber = 11;
+        }
         ImageIcon image = null;
         Image img = null;
         try {
-            File imgFile = new File(tmp.get(1+r.nextInt(15)).getM_imgPath());
+            File imgFile = new File(tmp.get(randomNumber).getM_imgPath());
             img = ImageIO.read(imgFile);
             panel.setBorder(new LineBorder(Color.black, 10));
 
@@ -249,6 +259,7 @@ public class Cards extends javax.swing.JFrame {
         } catch(IOException ioe) {
             ioe.printStackTrace();
         } 
+        cardsRandomNumber = randomNumber;
 
         JLabel label = new JLabel(new ImageIcon(img));
         panel.add(label);
@@ -297,9 +308,9 @@ public class Cards extends javax.swing.JFrame {
     
     
     
-    
-     public void displayCommunityChestCards() {
-        JOptionPane.showConfirmDialog(null,
+    int cardsRandomNumber;
+     public int displayCommunityChestCards() {
+       return JOptionPane.showConfirmDialog(null,
                         getCommunityChestCardsPanel(),
                         "Community Chest Card  ",
                         JOptionPane.DEFAULT_OPTION,
@@ -313,9 +324,10 @@ public class Cards extends javax.swing.JFrame {
         Map<Integer,CardsDraw> tmp = communityChestCards.getCardEffect();
         Random r = new Random();
         ImageIcon image = null;
+        int randomNumber = 1+r.nextInt(16);
         Image img = null;
         try {
-            File imgFile = new File(tmp.get(1+r.nextInt(16)).getM_imgPath());
+            File imgFile = new File(tmp.get(randomNumber).getM_imgPath());
             img = ImageIO.read(imgFile);
             panel.setBorder(new LineBorder(Color.black, 10));
 
@@ -324,14 +336,124 @@ public class Cards extends javax.swing.JFrame {
         } catch(IOException ioe) {
             ioe.printStackTrace();
         } 
-
         JLabel label = new JLabel(new ImageIcon(img));
         panel.add(label);
 
+        cardsRandomNumber = randomNumber;
         return panel;
     }
 
-   
+    public int ApplyCardEffect(String cardType ,Player player , int playerTurn , PlayerCurrentPostion pos , int numberOfPlayers , Player[] players)
+    {
+        //cardsRandomNumber = 14;
+        if(cardType == "CommunityChest")
+        {
+            if(cardsRandomNumber == 2)
+            {
+                player.setM_balance(player.getM_balance()+200);
+            }
+            else if(cardsRandomNumber == 3)
+            {
+                player.setM_balance(player.getM_balance()-50);
+            }
+            else if(cardsRandomNumber == 4)
+            {
+                int increase = 0;
+                for(int i=0; i<numberOfPlayers; i++)
+                {
+                    if(i!=playerTurn)
+                    {
+                        int change = (int)Math.round(players[i].getM_balance() *0.1);
+                        players[i].setM_balance(players[i].getM_balance() - change);
+                        increase+= change;
+                    }
+                }
+                player.setM_balance(player.getM_balance()+increase);
+            }
+            else if(cardsRandomNumber == 5)
+            {
+                player.setM_balance(player.getM_balance()+45);
+            }
+            else if(cardsRandomNumber == 6)
+            {
+                player.setM_getOutOfJailCards(player.getM_getOutOfJailCards()+1);
+            }
+            else if(cardsRandomNumber == 8)
+            {
+                for(int i=0; i<numberOfPlayers; i++)
+                {
+                    if(i!=playerTurn)
+                    {
+                        players[i].setM_balance(players[i].getM_balance() - 50);
+                    }
+                }
+                player.setM_balance(player.getM_balance()+(50*(numberOfPlayers-1)));
+            }
+            else if(cardsRandomNumber == 9)
+            {
+                player.setM_balance(player.getM_balance()+20);
+            }
+            else if(cardsRandomNumber == 10)
+            {
+                player.setM_balance(player.getM_balance()+100);
+            }
+            else if(cardsRandomNumber == 11)
+            {
+                player.setM_balance(player.getM_balance()-100);
+            }
+            else if(cardsRandomNumber == 12)
+            {
+                player.setM_balance(player.getM_balance()+25);
+            }
+            else if(cardsRandomNumber == 13)
+            {
+                player.setM_balance(player.getM_balance()+11);
+            }
+            else if(cardsRandomNumber == 14)
+            {
+                player.setM_balance(player.getM_balance()+100);
+            }
+            else if(cardsRandomNumber == 15)
+            {
+                player.setM_balance(player.getM_balance()+100);
+            }
+            else if(cardsRandomNumber == 16)
+            {
+                player.setM_balance(player.getM_balance()+50);
+            }
+        }
+        else if(cardType == "Chance")
+        {
+            if(cardsRandomNumber == 7)
+            {
+                player.setM_balance(player.getM_balance()+50);
+            }
+            else if(cardsRandomNumber == 8)
+            {
+                player.setM_getOutOfJailCards(player.getM_getOutOfJailCards()+1);
+            }
+            else if(cardsRandomNumber == 11)
+            {
+                player.setM_balance(player.getM_balance()- 150);
+            }
+            else if(cardsRandomNumber == 15)
+            {
+                player.setM_balance(player.getM_balance()+ 150);
+            }
+            else if(cardsRandomNumber == 16)
+            {
+                for(int i=0; i<numberOfPlayers; i++)
+                {
+                    if(i!=playerTurn)
+                    {
+                        players[i].setM_balance(players[i].getM_balance() + 50);
+                    }
+                }
+                player.setM_balance(player.getM_balance()-(50*(numberOfPlayers-1)));
+            }
+        }
+        return cardsRandomNumber;
+    }
     
     
 
