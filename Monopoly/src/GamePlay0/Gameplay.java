@@ -348,7 +348,49 @@ public class Gameplay extends javax.swing.JFrame {
             player[i].setM_carXY(postion);
             Player_Car.get(i).setBounds(go.getX(), go.getY()+(go.getWidth()-20-postion), 60, 20);
             jPanel1.add(Player_Car.get(i));
+            //player[i]= new Player(player[i].getM_id(), player[i].getM_color(), 7000, false, false); 
+            //player[i].setM_id(i);
+            player[i].setM_balance(7000);
+            player[i].setM_inJail(false);
+            player[i].setM_passByGo(false);
         }
+      /*  if(NumbOfPlayers == 2 ){
+             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
+             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
+             System.out.println("in 2");
+        } 
+        else if(NumbOfPlayers == 3){
+             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
+             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
+             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
+            System.out.println("in 3");
+        }
+        else if (NumbOfPlayers == 4){
+             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
+             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
+             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
+             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
+              System.out.println("in 4");
+        }
+        else if(NumbOfPlayers == 5){
+             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
+             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
+             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
+             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
+             p4 = new Player(player[4].getM_id(), player[4].getM_color(), 7000, false, false);
+              System.out.println("in 5");
+        }
+        else if(NumbOfPlayers == 6)
+        {
+             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
+             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
+             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
+             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
+             p4 = new Player(player[4].getM_id(), player[4].getM_color(), 7000, false, false);
+             p5 = new Player(player[5].getM_id(), player[5].getM_color(), 7000, false, false);
+              System.out.println("in 6");
+        }
+        */
     }
     
     public Gameplay(){
@@ -363,126 +405,120 @@ public class Gameplay extends javax.swing.JFrame {
         zoneMapInitialization();
         DrawGamePlay();
         DisplayCiyInfo();
-     //   initializePlayer(NumbOfPlayers);          // error !!
-             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
-             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
-             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
-             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
-             p4 = new Player(player[4].getM_id(), player[4].getM_color(), 7000, false, false);
-             p5 = new Player(player[5].getM_id(), player[5].getM_color(), 7000, false, false);
-        DrawPlayers_pnl(NumOfPlayers);    
-        
+       
+        IntializePlayers(NumOfPlayers, player);   
         this.NumbOfPlayers = NumOfPlayers;
         this.player = player;
-        IntializePlayers(NumOfPlayers, player);
         pos = new PlayerCurrentPostion();
+        DrawPlayers_pnl(NumOfPlayers);    
         
     }
      public void DrawPlayers_pnl(int NumOfPlayers){
+        
          if(NumOfPlayers == 2 ){
+            player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
+            player_pnl1.getID_lbl().setText(String.valueOf( player[0].getM_id()));
+            player_pnl1.getPlayercolor_pnl().setBackground(player[0].getM_color());
             player_pnl1.setVisible(true);
-            player_pnl1.getBalance_lbl().setText(String.valueOf(p0.getM_balance()));
-            player_pnl1.getID_lbl().setText(String.valueOf( p0.getM_id()));
-            player_pnl1.getPlayercolor_pnl().setBackground(p0.getM_color());
             
+            player_pnl2.getBalance_lbl().setText(String.valueOf(player[1].getM_balance()));
+            player_pnl2.getID_lbl().setText(String.valueOf( player[1].getM_id()));
+            player_pnl2.getPlayercolor_pnl().setBackground(player[1].getM_color());
             player_pnl2.setVisible(true);
-            player_pnl2.getBalance_lbl().setText(String.valueOf(p1.getM_balance()));
-            player_pnl2.getID_lbl().setText(String.valueOf( p1.getM_id()));
-            player_pnl2.getPlayercolor_pnl().setBackground(p1.getM_color());
         }
         else if(NumOfPlayers == 3){
+            player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
+            player_pnl1.getID_lbl().setText(String.valueOf(player[0].getM_id()));
+            player_pnl1.getPlayercolor_pnl().setBackground(player[0].getM_color());
             player_pnl1.setVisible(true);
-            player_pnl1.getBalance_lbl().setText(String.valueOf(p0.getM_balance()));
-            player_pnl1.getID_lbl().setText(String.valueOf(p0.getM_id()));
-            player_pnl1.getPlayercolor_pnl().setBackground(p0.getM_color());
            
+            player_pnl2.getBalance_lbl().setText(String.valueOf( player[1].getM_balance()));
+            player_pnl2.getID_lbl().setText(String.valueOf(player[1].getM_id()));
+            player_pnl2.getPlayercolor_pnl().setBackground(player[1].getM_color());
             player_pnl2.setVisible(true);
-            player_pnl2.getBalance_lbl().setText(String.valueOf( p1.getM_balance()));
-            player_pnl2.getID_lbl().setText(String.valueOf(p1.getM_id()));
-            player_pnl2.getPlayercolor_pnl().setBackground(p1.getM_color());
             
+            player_pnl3.getBalance_lbl().setText(String.valueOf( player[2].getM_balance()));
+            player_pnl3.getID_lbl().setText(String.valueOf(player[2].getM_id()));
+            player_pnl3.getPlayercolor_pnl().setBackground(player[2].getM_color());
             player_pnl3.setVisible(true);
-            player_pnl3.getBalance_lbl().setText(String.valueOf( p2.getM_balance()));
-            player_pnl3.getID_lbl().setText(String.valueOf(p2.getM_id()));
-            player_pnl3.getPlayercolor_pnl().setBackground(p2.getM_color());
         }
          else if(NumOfPlayers == 4){
+            player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
+            player_pnl1.getID_lbl().setText(String.valueOf(player[0].getM_id()));
+            player_pnl1.getPlayercolor_pnl().setBackground(player[0].getM_color());
             player_pnl1.setVisible(true);
-            player_pnl1.getBalance_lbl().setText(String.valueOf(p0.getM_balance()));
-            player_pnl1.getID_lbl().setText(String.valueOf(p0.getM_id()));
-            player_pnl1.getPlayercolor_pnl().setBackground(p0.getM_color());
            
+            player_pnl2.getBalance_lbl().setText(String.valueOf( player[1].getM_balance()));
+            player_pnl2.getID_lbl().setText(String.valueOf(player[1].getM_id()));
+            player_pnl2.getPlayercolor_pnl().setBackground(player[1].getM_color());
             player_pnl2.setVisible(true);
-            player_pnl2.getBalance_lbl().setText(String.valueOf( p1.getM_balance()));
-            player_pnl2.getID_lbl().setText(String.valueOf(p1.getM_id()));
-            player_pnl2.getPlayercolor_pnl().setBackground(p1.getM_color());
             
+            player_pnl3.getBalance_lbl().setText(String.valueOf( player[2].getM_balance()));
+            player_pnl3.getID_lbl().setText(String.valueOf(player[2].getM_id()));
+            player_pnl3.getPlayercolor_pnl().setBackground(player[2].getM_color());
             player_pnl3.setVisible(true);
-            player_pnl3.getBalance_lbl().setText(String.valueOf( p2.getM_balance()));
-            player_pnl3.getID_lbl().setText(String.valueOf(p2.getM_id()));
-            player_pnl3.getPlayercolor_pnl().setBackground(p2.getM_color());
             
+            player_pnl4.getBalance_lbl().setText(String.valueOf( player[3].getM_balance()));
+            player_pnl4.getID_lbl().setText(String.valueOf(player[3].getM_id()));
+            player_pnl4.getPlayercolor_pnl().setBackground(player[3].getM_color());
             player_pnl4.setVisible(true);
-            player_pnl4.getBalance_lbl().setText(String.valueOf( p3.getM_balance()));
-            player_pnl4.getID_lbl().setText(String.valueOf(p3.getM_id()));
-            player_pnl4.getPlayercolor_pnl().setBackground(p3.getM_color());
         }
          else if(NumOfPlayers == 5){
+            player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
+            player_pnl1.getID_lbl().setText(String.valueOf(player[0].getM_id()));
+            player_pnl1.getPlayercolor_pnl().setBackground(player[0].getM_color());
             player_pnl1.setVisible(true);
-            player_pnl1.getBalance_lbl().setText(String.valueOf(p0.getM_balance()));
-            player_pnl1.getID_lbl().setText(String.valueOf(p0.getM_id()));
-            player_pnl1.getPlayercolor_pnl().setBackground(p0.getM_color());
            
             player_pnl2.setVisible(true);
-            player_pnl2.getBalance_lbl().setText(String.valueOf( p1.getM_balance()));
-            player_pnl2.getID_lbl().setText(String.valueOf(p1.getM_id()));
-            player_pnl2.getPlayercolor_pnl().setBackground(p1.getM_color());
+            player_pnl2.getBalance_lbl().setText(String.valueOf( player[1].getM_balance()));
+            player_pnl2.getID_lbl().setText(String.valueOf(player[1].getM_id()));
+            player_pnl2.getPlayercolor_pnl().setBackground(player[1].getM_color());
             
+            player_pnl3.getBalance_lbl().setText(String.valueOf( player[2].getM_balance()));
+            player_pnl3.getID_lbl().setText(String.valueOf(player[2].getM_id()));
+            player_pnl3.getPlayercolor_pnl().setBackground(player[2].getM_color());
             player_pnl3.setVisible(true);
-            player_pnl3.getBalance_lbl().setText(String.valueOf( p2.getM_balance()));
-            player_pnl3.getID_lbl().setText(String.valueOf(p2.getM_id()));
-            player_pnl3.getPlayercolor_pnl().setBackground(p2.getM_color());
             
+            player_pnl4.getBalance_lbl().setText(String.valueOf( player[3].getM_balance()));
+            player_pnl4.getID_lbl().setText(String.valueOf(player[3].getM_id()));
+            player_pnl4.getPlayercolor_pnl().setBackground(player[3].getM_color());
             player_pnl4.setVisible(true);
-            player_pnl4.getBalance_lbl().setText(String.valueOf( p3.getM_balance()));
-            player_pnl4.getID_lbl().setText(String.valueOf(p3.getM_id()));
-            player_pnl4.getPlayercolor_pnl().setBackground(p3.getM_color());
             
+            player_pnl5.getBalance_lbl().setText(String.valueOf( player[4].getM_balance()));
+            player_pnl5.getID_lbl().setText(String.valueOf(player[4].getM_id()));
+            player_pnl5.getPlayercolor_pnl().setBackground(player[4].getM_color());
             player_pnl5.setVisible(true);
-            player_pnl5.getBalance_lbl().setText(String.valueOf( p4.getM_balance()));
-            player_pnl5.getID_lbl().setText(String.valueOf(p4.getM_id()));
-            player_pnl5.getPlayercolor_pnl().setBackground(p4.getM_color());
         }
          else if(NumOfPlayers == 6){
-              player_pnl1.setVisible(true);
-            player_pnl1.getBalance_lbl().setText(String.valueOf(p0.getM_balance()));
-            player_pnl1.getID_lbl().setText(String.valueOf(p0.getM_id()));
-            player_pnl1.getPlayercolor_pnl().setBackground(p0.getM_color());
+            player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
+            player_pnl1.getID_lbl().setText(String.valueOf(player[0].getM_id()));
+            player_pnl1.getPlayercolor_pnl().setBackground(player[0].getM_color());
+            player_pnl1.setVisible(true);
            
+            player_pnl2.getBalance_lbl().setText(String.valueOf( player[1].getM_balance()));
+            player_pnl2.getID_lbl().setText(String.valueOf(player[1].getM_id()));
+            player_pnl2.getPlayercolor_pnl().setBackground(player[1].getM_color());
             player_pnl2.setVisible(true);
-            player_pnl2.getBalance_lbl().setText(String.valueOf( p1.getM_balance()));
-            player_pnl2.getID_lbl().setText(String.valueOf(p1.getM_id()));
-            player_pnl2.getPlayercolor_pnl().setBackground(p1.getM_color());
             
+            player_pnl3.getBalance_lbl().setText(String.valueOf( player[2].getM_balance()));
+            player_pnl3.getID_lbl().setText(String.valueOf(player[2].getM_id()));
+            player_pnl3.getPlayercolor_pnl().setBackground(player[2].getM_color());
             player_pnl3.setVisible(true);
-            player_pnl3.getBalance_lbl().setText(String.valueOf( p2.getM_balance()));
-            player_pnl3.getID_lbl().setText(String.valueOf(p2.getM_id()));
-            player_pnl3.getPlayercolor_pnl().setBackground(p2.getM_color());
             
+            player_pnl4.getBalance_lbl().setText(String.valueOf( player[3].getM_balance()));
+            player_pnl4.getID_lbl().setText(String.valueOf(player[3].getM_id()));
+            player_pnl4.getPlayercolor_pnl().setBackground(player[3].getM_color());
             player_pnl4.setVisible(true);
-            player_pnl4.getBalance_lbl().setText(String.valueOf( p3.getM_balance()));
-            player_pnl4.getID_lbl().setText(String.valueOf(p3.getM_id()));
-            player_pnl4.getPlayercolor_pnl().setBackground(p3.getM_color());
             
+            player_pnl5.getBalance_lbl().setText(String.valueOf( player[4].getM_balance()));
+            player_pnl5.getID_lbl().setText(String.valueOf(player[4].getM_id()));
+            player_pnl5.getPlayercolor_pnl().setBackground(player[4].getM_color());
             player_pnl5.setVisible(true);
-            player_pnl5.getBalance_lbl().setText(String.valueOf( p4.getM_balance()));
-            player_pnl5.getID_lbl().setText(String.valueOf(p4.getM_id()));
-            player_pnl5.getPlayercolor_pnl().setBackground(p4.getM_color());
             
+            player_pnl6.getBalance_lbl().setText(String.valueOf( player[5].getM_balance()));
+            player_pnl6.getID_lbl().setText(String.valueOf(player[5].getM_id()));
+            player_pnl6.getPlayercolor_pnl().setBackground(player[5].getM_color());
             player_pnl6.setVisible(true);
-            player_pnl6.getBalance_lbl().setText(String.valueOf( p5.getM_balance()));
-            player_pnl6.getID_lbl().setText(String.valueOf(p5.getM_id()));
-            player_pnl6.getPlayercolor_pnl().setBackground(p5.getM_color());
          }
      }   
         
@@ -1709,46 +1745,7 @@ int x1=5,y1=20 , x2=5 , y2=20;
         return panel;
     }
     
-    public void initializePlayer(int NumbOfPlayers){
-     
-        if(NumbOfPlayers == 2 ){
-             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
-             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
-             System.out.println("in 2");
-        } 
-        else if(NumbOfPlayers == 3){
-             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
-             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
-             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
-            System.out.println("in 3");
-        }
-        else if (NumbOfPlayers == 4){
-             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
-             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
-             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
-             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
-              System.out.println("in 4");
-        }
-        else if(NumbOfPlayers == 5){
-             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
-             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
-             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
-             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
-             p4 = new Player(player[4].getM_id(), player[4].getM_color(), 7000, false, false);
-              System.out.println("in 5");
-        }
-        else if(NumbOfPlayers == 6)
-        {
-             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
-             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
-             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
-             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
-             p4 = new Player(player[4].getM_id(), player[4].getM_color(), 7000, false, false);
-             p5 = new Player(player[5].getM_id(), player[5].getM_color(), 7000, false, false);
-              System.out.println("in 6");
-        }
-         //updateBalance();
-    }
+   
     public void updateBalance(){
         String balanceP0 = String.valueOf(p0.getM_balance());
          String balanceP1 = String.valueOf(p1.getM_balance());
