@@ -1,5 +1,8 @@
 package GamePlay0;
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.colorchooser.ColorSelectionModel;
@@ -734,6 +737,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
     
     private void player1_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player1_btnActionPerformed
            // TODO add your handling code here:
+         try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
             setplayerColor(0);
             player1_btn.setBackground(player[0].getM_color());
             player[0].setM_id(0);
@@ -743,6 +751,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
 
     private void player3_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player3_btnActionPerformed
         // TODO add your handling code here:
+         try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setplayerColor(2);
         player3_btn.setBackground(player[2].getM_color());
         player[2].setM_id(2);
@@ -751,6 +764,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
 
     private void player5_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player5_btnActionPerformed
         // TODO add your handling code here:
+         try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setplayerColor(4);
         player5_btn.setBackground(player[4].getM_color());
         player[4].setM_id(4);
@@ -759,6 +777,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
 
     private void player2_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player2_btnActionPerformed
         // TODO add your handling code here:
+         try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setplayerColor(1);
         player2_btn.setBackground(player[1].getM_color());
         player[1].setM_id(1);
@@ -767,6 +790,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
 
     private void player4_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player4_btnActionPerformed
         // TODO add your handling code here:
+         try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setplayerColor(3);
         player4_btn.setBackground(player[3].getM_color());
         player[3].setM_id(3);
@@ -775,6 +803,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
 
     private void player6_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player6_btnActionPerformed
         // TODO add your handling code here:
+         try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setplayerColor(5);
         player6_btn.setBackground(player[5].getM_color());
         player[5].setM_id(5);
@@ -790,7 +823,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-        
+         try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
         jRadioButton2.setSelected(false);
         jRadioButton3.setSelected(false);
         jRadioButton4.setSelected(true);
@@ -807,6 +844,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         jRadioButton2.setSelected(true);
         jRadioButton3.setSelected(false);
@@ -824,7 +866,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-       
+        try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
         jRadioButton2.setSelected(false);
         jRadioButton3.setSelected(true);
         jRadioButton4.setSelected(false);
@@ -842,7 +888,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
-       
+        try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
         jRadioButton2.setSelected(false);
         jRadioButton3.setSelected(false);
         jRadioButton4.setSelected(false);
@@ -860,7 +910,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
-       
+        try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
         jRadioButton2.setSelected(false);
         jRadioButton3.setSelected(false);
         jRadioButton4.setSelected(false);

@@ -104,6 +104,11 @@ public class Gameplay extends javax.swing.JFrame {
         MarvinGardens.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/MarvinGardens.png");
             }
@@ -112,6 +117,11 @@ public class Gameplay extends javax.swing.JFrame {
         ventnor.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/VentorAvenue.png");
             }
@@ -120,6 +130,11 @@ public class Gameplay extends javax.swing.JFrame {
         Atlantic.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/AtlanticAvenue.png");
             }
@@ -129,6 +144,11 @@ public class Gameplay extends javax.swing.JFrame {
         Illinois.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/IllinoisAvenue.png");
             }
@@ -137,6 +157,11 @@ public class Gameplay extends javax.swing.JFrame {
         Indiana.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/IndianaAvenue.png");
             }
@@ -145,6 +170,11 @@ public class Gameplay extends javax.swing.JFrame {
         Kentucky.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/KentuckyAvenue.png");
             }
@@ -153,6 +183,11 @@ public class Gameplay extends javax.swing.JFrame {
         Mediter_Ranean.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/MediteraneanAvenue.png");
             }
@@ -161,6 +196,11 @@ public class Gameplay extends javax.swing.JFrame {
         Baltic.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/BalticAvenue.png");
             }
@@ -170,6 +210,11 @@ public class Gameplay extends javax.swing.JFrame {
         Oriental.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/OrientalAvenue.png");
             }
@@ -178,6 +223,11 @@ public class Gameplay extends javax.swing.JFrame {
         Vermont.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/VermontAvenue.png");
             }
@@ -186,6 +236,11 @@ public class Gameplay extends javax.swing.JFrame {
         Connecticut.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/ConnectCutAvenue.png");
             }
@@ -194,6 +249,11 @@ public class Gameplay extends javax.swing.JFrame {
         pacific.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/PacificAvenue.png");
             }
@@ -202,6 +262,11 @@ public class Gameplay extends javax.swing.JFrame {
         NorthCaro.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/NorthCarolina.png");
             }
@@ -210,6 +275,11 @@ public class Gameplay extends javax.swing.JFrame {
         pennsy.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/Pensylvania.png");
             }
@@ -220,6 +290,11 @@ public class Gameplay extends javax.swing.JFrame {
         ParkPlace.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/ParkPlace.png");
             }
@@ -228,6 +303,11 @@ public class Gameplay extends javax.swing.JFrame {
         NewYork.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/NewYorkAvenue.png");
             }
@@ -236,6 +316,11 @@ public class Gameplay extends javax.swing.JFrame {
         Tenss.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/TennesseeAvenue.png");
             }
@@ -244,6 +329,11 @@ public class Gameplay extends javax.swing.JFrame {
         stJames.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/StJamesPlace.png");
             }
@@ -253,6 +343,12 @@ public class Gameplay extends javax.swing.JFrame {
         Virginnia.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/VirginiaAvenue.png");
             }
@@ -261,6 +357,11 @@ public class Gameplay extends javax.swing.JFrame {
         States.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 displayCardInfo("src/Gameplay/img/cards/StatesAvenue.png");
             }
@@ -540,6 +641,11 @@ public class Gameplay extends javax.swing.JFrame {
                 int cnt = 0;
                 
                 while(true){
+                     try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_token_thimble_move.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                     int currentX = Player_Car.get(pl).getX();
                     int currentY = Player_Car.get(pl).getY();
                     
@@ -634,6 +740,11 @@ public class Gameplay extends javax.swing.JFrame {
                     cnt++;
                     if(cnt == NumOfSteps)
                     {
+                        try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_token_thimble_move.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                         System.out.println(pos.getCurrentPos(pl));
                         if (pos.getCurrentPos(pl) == 2 || pos.getCurrentPos(pl) == 15 || pos.getCurrentPos(pl) == 31) 
                         {
@@ -1694,7 +1805,7 @@ public class Gameplay extends javax.swing.JFrame {
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
-            SoundEffects.PlaySound("src/Gameplay/soundEffects/Dice.wav");
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
                     } catch (IOException ex) {
             Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
         }
