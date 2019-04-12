@@ -530,6 +530,7 @@ public class Gameplay extends javax.swing.JFrame {
         //Player_Car.get(pl).setBounds(100, 100, 500, 500);
        //int width = 65;
        //int height = 35;
+        jButton3.setEnabled(false);
        int width = 65;
        int height = 20;
         s = new Thread ( new Runnable() {
@@ -643,7 +644,7 @@ public class Gameplay extends javax.swing.JFrame {
                         }
                         System.out.println(pos.getCurrentPos(playerTurn) + " --- " + playerTurn);
                         
-                        
+                        jButton3.setEnabled(true);
                         
                               
                              
