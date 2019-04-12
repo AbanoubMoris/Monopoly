@@ -7,6 +7,7 @@ package GamePlay0;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -29,20 +31,14 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.lang.Math;
 
-/**
- *
- * @author lap shop
- */
-
 
 
 
 public class Gameplay extends javax.swing.JFrame {
 
-    Player p0 ,p1 ,p2 ,p3 ,p4 ,p5 ;
     public void DrawGamePlay(){
             
-        this.setExtendedState(JFrame.NORMAL); 
+        this.setExtendedState(JFrame.ABORT); 
         go.setImage("src/Gameplay/img/go.png", true);
         jail.setImage("src/Gameplay/img/jail.png", true);
         parking.setImage("src/Gameplay/img/free-parking.png", true);
@@ -370,13 +366,7 @@ public class Gameplay extends javax.swing.JFrame {
         //this.repaint();
     }
 
-    public JLabel getjLabel3() {
-        return jLabel3;
-    }
-
-    public JLabel getjLabel6() {
-        return jLabel6;
-    }
+   
     
     private Thread s;
     PlayerCurrentPostion pos;
@@ -505,6 +495,7 @@ public class Gameplay extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         
         zoneMapInitialization();
+        playerPanelMapInitialization();
         DrawGamePlay();
         DisplayCiyInfo();
        
@@ -745,7 +736,6 @@ public class Gameplay extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                        System.out.println(pos.getCurrentPos(pl));
                         if (pos.getCurrentPos(pl) == 2 || pos.getCurrentPos(pl) == 15 || pos.getCurrentPos(pl) == 31) 
                         {
                             DrawingCards("Community Chest");
@@ -753,7 +743,6 @@ public class Gameplay extends javax.swing.JFrame {
                         else if (pos.getCurrentPos(pl) == 7 || pos.getCurrentPos(pl) == 20 || pos.getCurrentPos(pl) == 34) {
                             DrawingCards("Chance");
                         }
-                        System.out.println(pos.getCurrentPos(playerTurn) + " --- " + playerTurn);
                         
                         jButton3.setEnabled(true);
                         
@@ -934,14 +923,6 @@ public class Gameplay extends javax.swing.JFrame {
         orange = new GamePlay0.Zone();
         bluetreasure = new GamePlay0.Zone();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         Trade_btn = new javax.swing.JButton();
         trade_pnl1 = new GamePlay0.trade_pnl();
@@ -1615,76 +1596,6 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
-        jLabel2.setText("Player1");
-
-        jLabel3.setText("jLabel3");
-
-        jLabel4.setText("Balance:");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)))
-                .addContainerGap(85, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)))
-        );
-
-        jPanel2.add(jPanel3);
-        jPanel3.setBounds(10, 10, 220, 40);
-
-        jLabel5.setText("Player2");
-
-        jLabel6.setText("jLabel3");
-
-        jLabel7.setText("Balance:");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)))
-                .addContainerGap(85, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)))
-        );
-
-        jPanel2.add(jPanel4);
-        jPanel4.setBounds(240, 10, 220, 40);
-
         jButton4.setText("BuyCity");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1803,6 +1714,7 @@ public class Gameplay extends javax.swing.JFrame {
                 break;    
         }
     }
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
@@ -1819,98 +1731,84 @@ public class Gameplay extends javax.swing.JFrame {
         roll_Dice(dice1);
         roll_Dice(dice2);
         //System.out.println(playerTurn);
-        pos.SetPlayer(playerTurn,dice1.getDice_value()+dice2.getDice_value());
-        Movement(dice1.getDice_value()+dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+        pos.SetPlayer(playerTurn,dice1.getDice_value() + dice2.getDice_value());
+        Movement(dice1.getDice_value() + dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
         s.start();
         //System.out.print("  " + playerTurn);
   
+        
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    ArrayList<Integer> zonesOwned = new ArrayList<>();
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-     /*   int currentPositionPlayer0 = pos.getCurrentPos(0);
-        int currentPositionPlayer1 = pos.getCurrentPos(1);
-        Zone temp = getZone();
-
-        if (!(p0.m_zonesOwnedIndexes.contains(temp.getM_index())) && !(p1.m_zonesOwnedIndexes.contains(temp.getM_index()))) {
-            if (currentPositionPlayer0 == temp.getM_index() && playerTurn == 0 && p0.getM_balance()>=temp.getM_zoneCost()) {
-                int newBalance = p0.getM_balance() - temp.getM_zoneCost();
-                p0.setM_balance(newBalance);
-                p0.m_zonesOwnedIndexes.add(temp.getM_index());
-                addPanel(String.valueOf(temp.getM_index()),jPanel3);
+        boolean isOwned = false;
+        int index = pos.getCurrentPos(playerTurn);
+        for(int i=0; i<NumbOfPlayers; i++)
+        {
+            if(player[i].m_zonesOwnedIndexes.contains(index))
+            {
+               System.out.println("owned");
+               isOwned = true; 
+               break;
             }
         }
-        if (!(p1.m_zonesOwnedIndexes.contains(temp.getM_index())) && !(p0.m_zonesOwnedIndexes.contains(temp.getM_index())) ) {
-            if (currentPositionPlayer1 == temp.getM_index() && playerTurn == 1 && p0.getM_balance()>=temp.getM_zoneCost()) {
-                int newBalance = p1.getM_balance() - temp.getM_zoneCost();
-                p1.setM_balance(newBalance);
-                p1.m_zonesOwnedIndexes.add(temp.getM_index());
-                addPanel(String.valueOf(temp.getM_index()),jPanel4);
-                  
+        if(!isOwned)
+        {
+            if(player[playerTurn].getM_balance() >= zoneMap.get(index).getM_zoneCost())
+            {
+                player[playerTurn].addZone(index);
+                player[playerTurn].setM_balance(player[playerTurn].getM_balance() - zoneMap.get(index).getM_zoneCost());
+                updatePlayersBalance();
+                addZoneToPanel(playerTurn, zoneMap.get(index).getName());
+
             }
         }
         
-//        updateBalance();*/
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    Map<Integer, Player_pnl> playerPanelMap = new HashMap<Integer, Player_pnl>();
+    private void playerPanelMapInitialization()
+    {
+        playerPanelMap.put(1, player_pnl1);
+        playerPanelMap.put(2, player_pnl2);
+        playerPanelMap.put(3, player_pnl3);
+        playerPanelMap.put(4, player_pnl4);
+        playerPanelMap.put(5, player_pnl5);
+        playerPanelMap.put(6, player_pnl6);
+    }
+    private void addZoneToPanel(int id,String cityName)
+    {
+       
+       
+    }
+    
+    
+    
     private void Trade_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Trade_btnActionPerformed
         // TODO add your handling code here:
-        trade_pnl trade_pnl1 = new trade_pnl();
-        if(playerTurn == 0){
-        trade_pnl1.setP_withdeal(p0);
-        trade_pnl1.setP(p1);
-        trade_pnl1.getId_lbl1().setText(String.valueOf(p0.getM_id()));
-        trade_pnl1.getId_lbl2().setText(String.valueOf(p1.getM_id()));
-        trade_pnl1.setZ(zoneMap.get(pos.getCurrentPos(0)));
-        Zone temp = getZone();
-        System.out.println(p0.m_zonesOwnedIndexes.contains(temp.getM_index()));
-        }
-        else if (playerTurn == 1)
-        {    trade_pnl1.setP_withdeal(p1);
-              trade_pnl1.setP(p0);
-              trade_pnl1.getId_lbl1().setText(String.valueOf(p0.getM_id()));
-               trade_pnl1.getId_lbl2().setText(String.valueOf(p1.getM_id()));
-                trade_pnl1.setZ(zoneMap.get(pos.getCurrentPos(1)));
-                 Zone temp = getZone();
-                  System.out.println(p1.m_zonesOwnedIndexes.contains(temp.getM_index()));
-        }
-        trade_pnl1.setVisible(true);
+//        trade_pnl trade_pnl1 = new trade_pnl();
+//        if(playerTurn == 0){
+//        trade_pnl1.setP_withdeal(p0);
+//        trade_pnl1.setP(p1);
+//        trade_pnl1.getId_lbl1().setText(String.valueOf(p0.getM_id()));
+//        trade_pnl1.getId_lbl2().setText(String.valueOf(p1.getM_id()));
+//        trade_pnl1.setZ(zoneMap.get(pos.getCurrentPos(0)));
+//        Zone temp = getZone();
+//        System.out.println(p0.m_zonesOwnedIndexes.contains(temp.getM_index()));
+//        }
+//        else if (playerTurn == 1)
+//        {    trade_pnl1.setP_withdeal(p1);
+//              trade_pnl1.setP(p0);
+//              trade_pnl1.getId_lbl1().setText(String.valueOf(p0.getM_id()));
+//               trade_pnl1.getId_lbl2().setText(String.valueOf(p1.getM_id()));
+//                trade_pnl1.setZ(zoneMap.get(pos.getCurrentPos(1)));
+//                 Zone temp = getZone();
+//                  System.out.println(p1.m_zonesOwnedIndexes.contains(temp.getM_index()));
+//        }
+//        trade_pnl1.setVisible(true);
       
     }//GEN-LAST:event_Trade_btnActionPerformed
-int x1=5,y1=20 , x2=5 , y2=20;
-    public void addPanel(String name, JPanel panelName)
-    {
-        JLabel cityName = new JLabel();
-        panelName.add(cityName);
-        if (panelName == jPanel3) {
-            if (x1 == 180) {
-                x1 = 0;
-                y1 += 50;
-            }
 
-            cityName.setText(name);
-            cityName.setBounds(x1, y1, 40, 15);
-            cityName.setBackground(Color.red);
-            cityName.setOpaque(true);
-            x1 += 50;
-            
-        }
-        else if(panelName == jPanel4){
-            if (x2 == 180) {
-                x2 = 0;
-                y2 += 50;
-            }
-
-            cityName.setText(name);
-            cityName.setLocation(x2, y2);
-            cityName.setBackground(Color.CYAN);
-            cityName.setOpaque(true);
-            x2 += 60;
-        }
-        
-        
-    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1938,11 +1836,6 @@ int x1=5,y1=20 , x2=5 , y2=20;
         }
         //</editor-fold>
 
-        
-                  
-        
-        
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1983,50 +1876,7 @@ int x1=5,y1=20 , x2=5 , y2=20;
 
         return panel;
     }
-    
    
-    public void updateBalance(){
-        String balanceP0 = String.valueOf(p0.getM_balance());
-         String balanceP1 = String.valueOf(p1.getM_balance());
-         if(Integer.parseInt(balanceP0) >=0)
-             jLabel3.setText(balanceP0);
-         if(Integer.parseInt(balanceP1) >=0)
-             jLabel6.setText(balanceP1);
-    }
-
-    public Zone getZone(){
-             if((pos.getCurrentPos(0) == 1 && playerTurn == 0) || (pos.getCurrentPos(1) == 1 && playerTurn == 1 ))return  Mediter_Ranean.getData();
-        else if((pos.getCurrentPos(0) == 3 && playerTurn == 0) || (pos.getCurrentPos(1) == 3 && playerTurn == 1 ))return  Baltic.getData();
-        else if((pos.getCurrentPos(0) == 5 && playerTurn == 0) || (pos.getCurrentPos(1) == 5 && playerTurn == 1 ))return  RealRoad.getData();
-        else if((pos.getCurrentPos(0) == 6 && playerTurn == 0) || (pos.getCurrentPos(1) == 6 && playerTurn == 1 ))return  Oriental.getData();
-        else if((pos.getCurrentPos(0) == 8 && playerTurn == 0) || (pos.getCurrentPos(1) == 8 && playerTurn == 1 ))return  Vermont.getData();
-        else if((pos.getCurrentPos(0) == 9 && playerTurn == 0) || (pos.getCurrentPos(1) == 9 && playerTurn == 1 ))return  Connecticut.getData();
-        else if((pos.getCurrentPos(0) == 11 && playerTurn == 0) || (pos.getCurrentPos(1) == 11 && playerTurn == 1 ))return  States.getData();
-        else if((pos.getCurrentPos(0) == 12 && playerTurn == 0) || (pos.getCurrentPos(1) == 12 && playerTurn == 1 ))return  Virginnia.getData();
-        else if((pos.getCurrentPos(0) == 13 && playerTurn == 0) || (pos.getCurrentPos(1) == 13 && playerTurn == 1 ))return  pennsyl.getData();
-        else if((pos.getCurrentPos(0) == 14 && playerTurn == 0) || (pos.getCurrentPos(1) == 14 && playerTurn == 1 ))return  stJames.getData();
-        else if((pos.getCurrentPos(0) == 16 && playerTurn == 0) || (pos.getCurrentPos(1) == 16 && playerTurn == 1 ))return  Tenss.getData();
-        else if((pos.getCurrentPos(0) == 17 && playerTurn == 0) || (pos.getCurrentPos(1) == 17 && playerTurn == 1 ))return  NewYork.getData();
-        else if((pos.getCurrentPos(0) == 19 && playerTurn == 0) || (pos.getCurrentPos(1) == 19 && playerTurn == 1 ))return  Kentucky.getData();
-        else if((pos.getCurrentPos(0) == 21 && playerTurn == 0) || (pos.getCurrentPos(1) == 21 && playerTurn == 1 ))return  Indiana.getData();
-        else if((pos.getCurrentPos(0) == 22 && playerTurn == 0) || (pos.getCurrentPos(1) == 22 && playerTurn == 1 ))return  Illinois.getData();
-        else if((pos.getCurrentPos(0) == 23 && playerTurn == 0) || (pos.getCurrentPos(1) == 23 && playerTurn == 1 ))return  RailRoad.getData();
-        else if((pos.getCurrentPos(0) == 24 && playerTurn == 0) || (pos.getCurrentPos(1) == 24 && playerTurn == 1 ))return  Atlantic.getData();
-        else if((pos.getCurrentPos(0) == 25 && playerTurn == 0) || (pos.getCurrentPos(1) == 25 && playerTurn == 1 ))return  ventnor.getData();
-        else if((pos.getCurrentPos(0) == 26 && playerTurn == 0) || (pos.getCurrentPos(1) == 26 && playerTurn == 1 ))return  waterWorks.getData();
-        else if((pos.getCurrentPos(0) == 27 && playerTurn == 0) || (pos.getCurrentPos(1) == 27 && playerTurn == 1 ))return  MarvinGardens.getData();
-        else if((pos.getCurrentPos(0) == 29 && playerTurn == 0) || (pos.getCurrentPos(1) == 29 && playerTurn == 1 ))return  pacific.getData();
-        else if((pos.getCurrentPos(0) == 30 && playerTurn == 0) || (pos.getCurrentPos(1) == 30 && playerTurn == 1 ))return  NorthCaro.getData();
-        else if((pos.getCurrentPos(0) == 32 && playerTurn == 0) || (pos.getCurrentPos(1) == 32 && playerTurn == 1 ))return  pennsy.getData();
-        else if((pos.getCurrentPos(0) == 33 && playerTurn == 0) || (pos.getCurrentPos(1) == 33 && playerTurn == 1 ))return  shorLline.getData();
-        else if((pos.getCurrentPos(0) == 35 && playerTurn == 0) || (pos.getCurrentPos(1) == 35 && playerTurn == 1 ))return  ParkPlace.getData();
-        
-        
-        return go.getData();
-    }
-    
-
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GamePlay0.Zone Atlantic;
     private GamePlay0.Zone Baltic;
@@ -2062,16 +1912,8 @@ int x1=5,y1=20 , x2=5 , y2=20;
     private GamePlay0.Zone goToJail;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private GamePlay0.Zone jail;
     private GamePlay0.Zone orange;
     private GamePlay0.Zone pacific;
@@ -2090,8 +1932,11 @@ int x1=5,y1=20 , x2=5 , y2=20;
     private GamePlay0.Zone ventnor;
     private GamePlay0.Zone waterWorks;
     // End of variables declaration//GEN-END:variables
-}
 
+
+
+
+}
 
 
 

@@ -26,6 +26,9 @@ public class Player {
 
 
     public Player() {
+        m_getOutOfJailCards = 0;
+        m_zonesOwnedIndexes = new ArrayList<Integer>();
+        m_numberOfHousesOwned = new HashMap<Integer , Integer>();
     }
 
 
@@ -111,5 +114,10 @@ public class Player {
         return false;
     }
     
+    public void addZone(int index)
+    {
+        if(!m_zonesOwnedIndexes.contains(index))
+           m_zonesOwnedIndexes.add(index);
+    }
 }
 
