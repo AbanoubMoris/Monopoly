@@ -661,6 +661,11 @@ public class Gameplay extends javax.swing.JFrame {
     {
         if(cardType == "Community Chest")
         {
+            try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/104207086-game-treasure-06.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
             if(card.displayCommunityChestCards()>=-1)
             {
                 int currentPos = pos.getCurrentPos(playerTurn);
@@ -1687,9 +1692,14 @@ public class Gameplay extends javax.swing.JFrame {
         }
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+        try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/Dice.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
         playerTurn++;
         playerTurn%=NumbOfPlayers;
+   
         Random r = new Random();
         Random z = new Random();
         dice1.setDice_value(r.nextInt(6)+1);
@@ -1698,7 +1708,7 @@ public class Gameplay extends javax.swing.JFrame {
         roll_Dice(dice2);
         //System.out.println(playerTurn);
         pos.SetPlayer(playerTurn,dice1.getDice_value()+dice2.getDice_value());
-        Movement(dice1.getDice_value()+dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+        Movement(dice1.getDice_value()+dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
         s.start();
         //System.out.print("  " + playerTurn);
   
