@@ -42,7 +42,25 @@ public class  Zone extends javax.swing.JPanel {
     private int m_zoneCost;
     private String m_color;
     private int m_index;
+    private int m_NumOFBuildedHouses;
+    private boolean hotelBuilded;
 
+    public void setHotelBuilded(boolean hotelBuilded) {
+        this.hotelBuilded = hotelBuilded;
+    }
+
+    public boolean isHotelBuilded() {
+        return hotelBuilded;
+    }
+
+    public int getM_NumOFBuildedHouses() {
+        return m_NumOFBuildedHouses;
+    }
+
+    public void setM_NumOFBuildedHouses(int m_NumOFBuildedHouses) {
+        this.m_NumOFBuildedHouses = m_NumOFBuildedHouses;
+    }
+    
     public int getM_rent() {
         return m_rent;
     }
@@ -143,22 +161,6 @@ public class  Zone extends javax.swing.JPanel {
     {
         return this;
     }
-
-    public Zone(int index) {
-        this.m_rent = 0;
-        this.m_rentWithColorSet = 0;
-        this.m_rentWithOneHouse = 0;
-        this.m_rentWithTwoHouses = 0;
-        this.m_rentWithThreeHouses = 0;
-        this.m_rentWithFourHouses = 0;
-        this.m_rentWithHotel = 0;
-        this.m_houseCost = 0;
-        this.m_hotelCost = 0;
-        this.m_zoneCost = 0;
-        this.m_color = null;
-        this.m_index = index;
-    }
-    
     public Zone() {
         this.m_rent = 0;
         this.m_rentWithColorSet = 0;
@@ -172,9 +174,19 @@ public class  Zone extends javax.swing.JPanel {
         this.m_zoneCost = 0;
         this.m_color = null;
         this.m_index = -1;
+        m_NumOFBuildedHouses = 0;
+        hotelBuilded = false;
+       
+    }
+    public Zone(int index) {
+        this();
+        this.m_index = index;
+    
     }
     
-    public Zone(int m_rent , int m_rentWithColorSet , int m_rentWithOneHouse, int m_rentWithTwoHouses , int m_rentWithThreeHouses , int m_rentWithFourHouses , int m_rentWithHotel , int m_houseCost , int m_hotelCost , int m_zoneCost , String m_color , int index)
+
+    
+    public Zone(int m_rent , int m_rentWithColorSet , int m_rentWithOneHouse, int m_rentWithTwoHouses , int m_rentWithThreeHouses , int m_rentWithFourHouses , int m_rentWithHotel , int m_houseCost , int m_hotelCost , int m_zoneCost , String m_color , int index )
     {
         this.m_rent = m_rent;
         this.m_rentWithColorSet = m_rentWithColorSet;

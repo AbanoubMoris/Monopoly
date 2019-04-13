@@ -31,6 +31,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.lang.Math;
+import static javafx.scene.paint.Color.rgb;
+import static javafx.scene.paint.Color.rgb;
+import static javafx.scene.paint.Color.rgb;
+import static javafx.scene.paint.Color.rgb;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 
@@ -448,43 +452,7 @@ public class Gameplay extends javax.swing.JFrame {
             player[i].setM_inJail(false);
             player[i].setM_passByGo(false);
         }
-      /*  if(NumbOfPlayers == 2 ){
-             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
-             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
-             System.out.println("in 2");
-        } 
-        else if(NumbOfPlayers == 3){
-             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
-             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
-             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
-            System.out.println("in 3");
-        }
-        else if (NumbOfPlayers == 4){
-             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
-             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
-             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
-             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
-              System.out.println("in 4");
-        }
-        else if(NumbOfPlayers == 5){
-             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
-             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
-             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
-             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
-             p4 = new Player(player[4].getM_id(), player[4].getM_color(), 7000, false, false);
-              System.out.println("in 5");
-        }
-        else if(NumbOfPlayers == 6)
-        {
-             p0 = new Player(player[0].getM_id(), player[0].getM_color(), 7000, false, false);
-             p1 = new Player(player[1].getM_id(), player[1].getM_color(), 7000, false, false);
-             p2 = new Player(player[2].getM_id(), player[2].getM_color(), 7000, false, false);
-             p3 = new Player(player[3].getM_id(), player[3].getM_color(), 7000, false, false);
-             p4 = new Player(player[4].getM_id(), player[4].getM_color(), 7000, false, false);
-             p5 = new Player(player[5].getM_id(), player[5].getM_color(), 7000, false, false);
-              System.out.println("in 6");
-        }
-        */
+
     }
     
     public Gameplay(){
@@ -493,9 +461,7 @@ public class Gameplay extends javax.swing.JFrame {
     }
     public Gameplay(int NumOfPlayers , Player[] player ) {
         initComponents();
-        
-
-       System.out.println(go.getClass().getName());
+        //this.setBackground(new Color(0,0,0,0));
 
         
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -511,7 +477,43 @@ public class Gameplay extends javax.swing.JFrame {
         pos = new PlayerCurrentPostion();
         DrawPlayers_pnl(NumOfPlayers);    
         
+        B1.setNumAndColor(3, Color.yellow , true);
+       
+       
+
+        IntializeBuildings();
+        
     }
+    private Map<Integer , Object> build = new HashMap<Integer,Object>();
+    
+    public void IntializeBuildings(){
+        build.put(1, B1);
+        build.put(3, B3);
+        build.put(5,B5 );
+        build.put(6,B6 );
+        build.put(8,B8 );
+        build.put(9,B9 );
+        build.put(11,B11 );
+        build.put(12,B12 );
+        build.put(13,B13 );
+        build.put(14,B14 );
+        build.put(16,B16 );
+        build.put(17,B17 );
+        build.put(19,B19 );
+        build.put(21,B21 );
+        build.put(22,B22 );
+        build.put(23,B23 );
+        build.put(24,B24 );
+        build.put(25,B25 );
+        build.put(27,B27 );
+        build.put(28,B28 );
+        build.put(29,B29 );
+        build.put(31,B31 );
+        build.put(32,B32 );
+        build.put(34,B34 );
+        
+    }
+    
      public void DrawPlayers_pnl(int NumOfPlayers){
         
          if(NumOfPlayers == 2 ){
@@ -894,37 +896,61 @@ public class Gameplay extends javax.swing.JFrame {
         parking = new GamePlay0.Zone(18);
         goToJail = new GamePlay0.Zone(28);
         MarvinGardens = new GamePlay0.Zone(24,48,120,360,850,1025,1200,150,150,280,"Yellow",27);
+        B27 = new GamePlay0.HBuildings();
         ventnor = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow",25);
+        B25 = new GamePlay0.HBuildings();
         Atlantic = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow",24);
+        B24 = new GamePlay0.HBuildings();
         waterWorks = new GamePlay0.Zone(26);
         RailRoad = new GamePlay0.Zone(23);
+        B23 = new GamePlay0.HBuildings();
         Illinois = new GamePlay0.Zone(20,40,100,300,750,925,1100,150,150,240,"Red",22);
+        B22 = new GamePlay0.HBuildings();
         Indiana = new GamePlay0.Zone(18,36,90,250,700,875,1050,150,150,220,"Red",21);
+        B21 = new GamePlay0.HBuildings();
         ChanceBlue = new GamePlay0.Zone(20);
         Kentucky = new GamePlay0.Zone(18,36,90,250,700,875,1050,150,150,220,"Red",19);
+        B19 = new GamePlay0.HBuildings();
         Mediter_Ranean = new GamePlay0.Zone(2,4,10,30,90,160,250,50,50,60,"Brown",1);
+        B1 = new GamePlay0.HBuildings();
         Community_Chest = new GamePlay0.Zone(2);
         Baltic = new GamePlay0.Zone(4,8,20,60,180,320,450,50,50,60,"Brown",3);
+        B3 = new GamePlay0.HBuildings();
         IncomeTax = new GamePlay0.Zone(4);
         RealRoad = new GamePlay0.Zone(5);
+        B5 = new GamePlay0.HBuildings();
         Oriental = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue",6);
+        B6 = new GamePlay0.HBuildings();
         ChanceRed = new GamePlay0.Zone(7);
         Vermont = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue",8);
+        B8 = new GamePlay0.HBuildings();
         Connecticut = new GamePlay0.Zone(8,16,40,100,300,450,600,50,50,100,"Light Blue",9);
+        B9 = new GamePlay0.HBuildings();
         pacific = new GamePlay0.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green",29);
+        B28 = new GamePlay0.VBuidings();
         NorthCaro = new GamePlay0.Zone(26,52,130,390,900,1100,1275,200,200,300,"Green",30);
+        B29 = new GamePlay0.VBuidings();
         communtityChestRight = new GamePlay0.Zone(31);
         pennsy = new GamePlay0.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green",32);
+        B31 = new GamePlay0.VBuidings();
         shorLline = new GamePlay0.Zone(33);
+        B32 = new GamePlay0.VBuidings();
         OrangeChance = new GamePlay0.Zone(34);
         ParkPlace = new GamePlay0.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue",35);
+        B34 = new GamePlay0.VBuidings();
         NewYork = new GamePlay0.Zone(16,32,80,220,600,800,1000,50,50,200,"Orange",17);
+        B17 = new GamePlay0.VBuidings();
         CCT = new GamePlay0.Zone(15);
         stJames = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange",14);
+        B14 = new GamePlay0.VBuidings();
         pennsyl = new GamePlay0.Zone(13);
+        B13 = new GamePlay0.VBuidings();
         Virginnia = new GamePlay0.Zone(12,24,60,180,500,700,900,100,100,160,"Pink",12);
+        B12 = new GamePlay0.VBuidings();
         States = new GamePlay0.Zone(10,20,50,150,450,625,750,100,100,140,"Pink",11);
+        B11 = new GamePlay0.VBuidings();
         Tenss = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange",16);
+        B16 = new GamePlay0.VBuidings();
         MONOMAN = new GamePlay0.Zone();
         orange = new GamePlay0.Zone();
         bluetreasure = new GamePlay0.Zone();
@@ -941,6 +967,7 @@ public class Gameplay extends javax.swing.JFrame {
         player_pnl4 = new GamePlay0.Player_pnl();
         player_pnl5 = new GamePlay0.Player_pnl();
         player_pnl6 = new GamePlay0.Player_pnl();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1011,137 +1038,67 @@ public class Gameplay extends javax.swing.JFrame {
 
         MarvinGardens.setMaximumSize(new java.awt.Dimension(70, 120));
         MarvinGardens.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout MarvinGardensLayout = new javax.swing.GroupLayout(MarvinGardens);
-        MarvinGardens.setLayout(MarvinGardensLayout);
-        MarvinGardensLayout.setHorizontalGroup(
-            MarvinGardensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        MarvinGardensLayout.setVerticalGroup(
-            MarvinGardensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        MarvinGardens.setLayout(null);
+        MarvinGardens.add(B27);
+        B27.setBounds(10, 110, 47, 12);
 
         jPanel1.add(MarvinGardens);
         MarvinGardens.setBounds(680, 0, 70, 120);
 
         ventnor.setMaximumSize(new java.awt.Dimension(70, 120));
         ventnor.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout ventnorLayout = new javax.swing.GroupLayout(ventnor);
-        ventnor.setLayout(ventnorLayout);
-        ventnorLayout.setHorizontalGroup(
-            ventnorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        ventnorLayout.setVerticalGroup(
-            ventnorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        ventnor.setLayout(null);
+        ventnor.add(B25);
+        B25.setBounds(10, 110, 47, 12);
 
         jPanel1.add(ventnor);
         ventnor.setBounds(540, 0, 70, 120);
 
         Atlantic.setMaximumSize(new java.awt.Dimension(70, 120));
         Atlantic.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout AtlanticLayout = new javax.swing.GroupLayout(Atlantic);
-        Atlantic.setLayout(AtlanticLayout);
-        AtlanticLayout.setHorizontalGroup(
-            AtlanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        AtlanticLayout.setVerticalGroup(
-            AtlanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        Atlantic.setLayout(null);
+        Atlantic.add(B24);
+        B24.setBounds(10, 110, 47, 12);
 
         jPanel1.add(Atlantic);
         Atlantic.setBounds(470, 0, 70, 120);
 
         waterWorks.setMaximumSize(new java.awt.Dimension(70, 120));
         waterWorks.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout waterWorksLayout = new javax.swing.GroupLayout(waterWorks);
-        waterWorks.setLayout(waterWorksLayout);
-        waterWorksLayout.setHorizontalGroup(
-            waterWorksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        waterWorksLayout.setVerticalGroup(
-            waterWorksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
+        waterWorks.setLayout(null);
         jPanel1.add(waterWorks);
         waterWorks.setBounds(610, 0, 70, 120);
 
         RailRoad.setMaximumSize(new java.awt.Dimension(70, 120));
         RailRoad.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout RailRoadLayout = new javax.swing.GroupLayout(RailRoad);
-        RailRoad.setLayout(RailRoadLayout);
-        RailRoadLayout.setHorizontalGroup(
-            RailRoadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        RailRoadLayout.setVerticalGroup(
-            RailRoadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        RailRoad.setLayout(null);
+        RailRoad.add(B23);
+        B23.setBounds(10, 110, 47, 12);
 
         jPanel1.add(RailRoad);
         RailRoad.setBounds(400, 0, 70, 120);
 
         Illinois.setMaximumSize(new java.awt.Dimension(70, 120));
         Illinois.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout IllinoisLayout = new javax.swing.GroupLayout(Illinois);
-        Illinois.setLayout(IllinoisLayout);
-        IllinoisLayout.setHorizontalGroup(
-            IllinoisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        IllinoisLayout.setVerticalGroup(
-            IllinoisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        Illinois.setLayout(null);
+        Illinois.add(B22);
+        B22.setBounds(10, 110, 47, 12);
 
         jPanel1.add(Illinois);
         Illinois.setBounds(330, 0, 70, 120);
 
         Indiana.setMaximumSize(new java.awt.Dimension(70, 120));
         Indiana.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout IndianaLayout = new javax.swing.GroupLayout(Indiana);
-        Indiana.setLayout(IndianaLayout);
-        IndianaLayout.setHorizontalGroup(
-            IndianaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        IndianaLayout.setVerticalGroup(
-            IndianaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
+        Indiana.setLayout(null);
+        Indiana.add(B21);
+        B21.setBounds(10, 110, 47, 12);
 
         jPanel1.add(Indiana);
         Indiana.setBounds(260, 0, 70, 120);
 
         ChanceBlue.setMaximumSize(new java.awt.Dimension(70, 120));
         ChanceBlue.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout ChanceBlueLayout = new javax.swing.GroupLayout(ChanceBlue);
-        ChanceBlue.setLayout(ChanceBlueLayout);
-        ChanceBlueLayout.setHorizontalGroup(
-            ChanceBlueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        ChanceBlueLayout.setVerticalGroup(
-            ChanceBlueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
+        ChanceBlue.setLayout(null);
         jPanel1.add(ChanceBlue);
         ChanceBlue.setBounds(190, 0, 70, 120);
 
@@ -1150,34 +1107,18 @@ public class Gameplay extends javax.swing.JFrame {
         Kentucky.setName(""); // NOI18N
         Kentucky.setPreferredSize(new java.awt.Dimension(70, 0));
         Kentucky.setVerifyInputWhenFocusTarget(false);
-
-        javax.swing.GroupLayout KentuckyLayout = new javax.swing.GroupLayout(Kentucky);
-        Kentucky.setLayout(KentuckyLayout);
-        KentuckyLayout.setHorizontalGroup(
-            KentuckyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        KentuckyLayout.setVerticalGroup(
-            KentuckyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        Kentucky.setLayout(null);
+        Kentucky.add(B19);
+        B19.setBounds(10, 110, 47, 12);
 
         jPanel1.add(Kentucky);
         Kentucky.setBounds(120, 0, 70, 120);
 
         Mediter_Ranean.setMaximumSize(new java.awt.Dimension(70, 120));
         Mediter_Ranean.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout Mediter_RaneanLayout = new javax.swing.GroupLayout(Mediter_Ranean);
-        Mediter_Ranean.setLayout(Mediter_RaneanLayout);
-        Mediter_RaneanLayout.setHorizontalGroup(
-            Mediter_RaneanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        Mediter_RaneanLayout.setVerticalGroup(
-            Mediter_RaneanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        Mediter_Ranean.setLayout(null);
+        Mediter_Ranean.add(B1);
+        B1.setBounds(10, 0, 47, 12);
 
         jPanel1.add(Mediter_Ranean);
         Mediter_Ranean.setBounds(680, 608, 70, 120);
@@ -1201,102 +1142,48 @@ public class Gameplay extends javax.swing.JFrame {
 
         Baltic.setMaximumSize(new java.awt.Dimension(70, 120));
         Baltic.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout BalticLayout = new javax.swing.GroupLayout(Baltic);
-        Baltic.setLayout(BalticLayout);
-        BalticLayout.setHorizontalGroup(
-            BalticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        BalticLayout.setVerticalGroup(
-            BalticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
+        Baltic.setLayout(null);
+        Baltic.add(B3);
+        B3.setBounds(10, 0, 47, 12);
 
         jPanel1.add(Baltic);
         Baltic.setBounds(540, 608, 70, 120);
 
         IncomeTax.setMaximumSize(new java.awt.Dimension(70, 120));
         IncomeTax.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout IncomeTaxLayout = new javax.swing.GroupLayout(IncomeTax);
-        IncomeTax.setLayout(IncomeTaxLayout);
-        IncomeTaxLayout.setHorizontalGroup(
-            IncomeTaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        IncomeTaxLayout.setVerticalGroup(
-            IncomeTaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-
+        IncomeTax.setLayout(null);
         jPanel1.add(IncomeTax);
         IncomeTax.setBounds(470, 608, 70, 120);
 
         RealRoad.setMaximumSize(new java.awt.Dimension(70, 120));
         RealRoad.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout RealRoadLayout = new javax.swing.GroupLayout(RealRoad);
-        RealRoad.setLayout(RealRoadLayout);
-        RealRoadLayout.setHorizontalGroup(
-            RealRoadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        RealRoadLayout.setVerticalGroup(
-            RealRoadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
+        RealRoad.setLayout(null);
+        RealRoad.add(B5);
+        B5.setBounds(10, 0, 47, 12);
 
         jPanel1.add(RealRoad);
         RealRoad.setBounds(400, 608, 70, 120);
 
         Oriental.setMaximumSize(new java.awt.Dimension(70, 120));
         Oriental.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout OrientalLayout = new javax.swing.GroupLayout(Oriental);
-        Oriental.setLayout(OrientalLayout);
-        OrientalLayout.setHorizontalGroup(
-            OrientalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        OrientalLayout.setVerticalGroup(
-            OrientalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
+        Oriental.setLayout(null);
+        Oriental.add(B6);
+        B6.setBounds(10, 0, 47, 12);
 
         jPanel1.add(Oriental);
         Oriental.setBounds(330, 608, 70, 120);
 
         ChanceRed.setMaximumSize(new java.awt.Dimension(70, 120));
         ChanceRed.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout ChanceRedLayout = new javax.swing.GroupLayout(ChanceRed);
-        ChanceRed.setLayout(ChanceRedLayout);
-        ChanceRedLayout.setHorizontalGroup(
-            ChanceRedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        ChanceRedLayout.setVerticalGroup(
-            ChanceRedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-
+        ChanceRed.setLayout(null);
         jPanel1.add(ChanceRed);
         ChanceRed.setBounds(260, 608, 70, 120);
 
         Vermont.setMaximumSize(new java.awt.Dimension(70, 120));
         Vermont.setMinimumSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout VermontLayout = new javax.swing.GroupLayout(Vermont);
-        Vermont.setLayout(VermontLayout);
-        VermontLayout.setHorizontalGroup(
-            VermontLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        VermontLayout.setVerticalGroup(
-            VermontLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
+        Vermont.setLayout(null);
+        Vermont.add(B8);
+        B8.setBounds(10, 0, 47, 12);
 
         jPanel1.add(Vermont);
         Vermont.setBounds(190, 608, 70, 120);
@@ -1304,33 +1191,17 @@ public class Gameplay extends javax.swing.JFrame {
         Connecticut.setMaximumSize(new java.awt.Dimension(70, 120));
         Connecticut.setMinimumSize(new java.awt.Dimension(70, 120));
         Connecticut.setPreferredSize(new java.awt.Dimension(70, 120));
-
-        javax.swing.GroupLayout ConnecticutLayout = new javax.swing.GroupLayout(Connecticut);
-        Connecticut.setLayout(ConnecticutLayout);
-        ConnecticutLayout.setHorizontalGroup(
-            ConnecticutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-        ConnecticutLayout.setVerticalGroup(
-            ConnecticutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
+        Connecticut.setLayout(null);
+        Connecticut.add(B9);
+        B9.setBounds(10, 0, 47, 12);
 
         jPanel1.add(Connecticut);
         Connecticut.setBounds(120, 608, 70, 120);
 
         pacific.setPreferredSize(new java.awt.Dimension(120, 70));
-
-        javax.swing.GroupLayout pacificLayout = new javax.swing.GroupLayout(pacific);
-        pacific.setLayout(pacificLayout);
-        pacificLayout.setHorizontalGroup(
-            pacificLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pacificLayout.setVerticalGroup(
-            pacificLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
+        pacific.setLayout(null);
+        pacific.add(B28);
+        B28.setBounds(0, 10, 12, 50);
 
         jPanel1.add(pacific);
         pacific.setBounds(750, 120, 120, 70);
@@ -1338,17 +1209,9 @@ public class Gameplay extends javax.swing.JFrame {
         NorthCaro.setMaximumSize(new java.awt.Dimension(120, 70));
         NorthCaro.setMinimumSize(new java.awt.Dimension(120, 70));
         NorthCaro.setPreferredSize(new java.awt.Dimension(120, 70));
-
-        javax.swing.GroupLayout NorthCaroLayout = new javax.swing.GroupLayout(NorthCaro);
-        NorthCaro.setLayout(NorthCaroLayout);
-        NorthCaroLayout.setHorizontalGroup(
-            NorthCaroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        NorthCaroLayout.setVerticalGroup(
-            NorthCaroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
+        NorthCaro.setLayout(null);
+        NorthCaro.add(B29);
+        B29.setBounds(0, 10, 12, 50);
 
         jPanel1.add(NorthCaro);
         NorthCaro.setBounds(750, 190, 120, 70);
@@ -1356,18 +1219,7 @@ public class Gameplay extends javax.swing.JFrame {
         communtityChestRight.setMaximumSize(new java.awt.Dimension(120, 70));
         communtityChestRight.setMinimumSize(new java.awt.Dimension(120, 70));
         communtityChestRight.setPreferredSize(new java.awt.Dimension(120, 70));
-
-        javax.swing.GroupLayout communtityChestRightLayout = new javax.swing.GroupLayout(communtityChestRight);
-        communtityChestRight.setLayout(communtityChestRightLayout);
-        communtityChestRightLayout.setHorizontalGroup(
-            communtityChestRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        communtityChestRightLayout.setVerticalGroup(
-            communtityChestRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-
+        communtityChestRight.setLayout(null);
         jPanel1.add(communtityChestRight);
         communtityChestRight.setBounds(750, 260, 120, 70);
 
@@ -1375,17 +1227,9 @@ public class Gameplay extends javax.swing.JFrame {
         pennsy.setMinimumSize(new java.awt.Dimension(120, 70));
         pennsy.setName(""); // NOI18N
         pennsy.setPreferredSize(new java.awt.Dimension(120, 70));
-
-        javax.swing.GroupLayout pennsyLayout = new javax.swing.GroupLayout(pennsy);
-        pennsy.setLayout(pennsyLayout);
-        pennsyLayout.setHorizontalGroup(
-            pennsyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pennsyLayout.setVerticalGroup(
-            pennsyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
+        pennsy.setLayout(null);
+        pennsy.add(B31);
+        B31.setBounds(0, 10, 12, 50);
 
         jPanel1.add(pennsy);
         pennsy.setBounds(750, 330, 120, 70);
@@ -1393,17 +1237,9 @@ public class Gameplay extends javax.swing.JFrame {
         shorLline.setMaximumSize(new java.awt.Dimension(120, 70));
         shorLline.setMinimumSize(new java.awt.Dimension(120, 70));
         shorLline.setPreferredSize(new java.awt.Dimension(120, 70));
-
-        javax.swing.GroupLayout shorLlineLayout = new javax.swing.GroupLayout(shorLline);
-        shorLline.setLayout(shorLlineLayout);
-        shorLlineLayout.setHorizontalGroup(
-            shorLlineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        shorLlineLayout.setVerticalGroup(
-            shorLlineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
+        shorLline.setLayout(null);
+        shorLline.add(B32);
+        B32.setBounds(0, 10, 12, 50);
 
         jPanel1.add(shorLline);
         shorLline.setBounds(750, 400, 120, 70);
@@ -1411,81 +1247,37 @@ public class Gameplay extends javax.swing.JFrame {
         OrangeChance.setMaximumSize(new java.awt.Dimension(120, 70));
         OrangeChance.setMinimumSize(new java.awt.Dimension(120, 70));
         OrangeChance.setPreferredSize(new java.awt.Dimension(120, 70));
-
-        javax.swing.GroupLayout OrangeChanceLayout = new javax.swing.GroupLayout(OrangeChance);
-        OrangeChance.setLayout(OrangeChanceLayout);
-        OrangeChanceLayout.setHorizontalGroup(
-            OrangeChanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        OrangeChanceLayout.setVerticalGroup(
-            OrangeChanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-
+        OrangeChance.setLayout(null);
         jPanel1.add(OrangeChance);
         OrangeChance.setBounds(750, 470, 120, 70);
 
         ParkPlace.setMaximumSize(new java.awt.Dimension(120, 70));
         ParkPlace.setMinimumSize(new java.awt.Dimension(120, 70));
         ParkPlace.setPreferredSize(new java.awt.Dimension(120, 70));
-
-        javax.swing.GroupLayout ParkPlaceLayout = new javax.swing.GroupLayout(ParkPlace);
-        ParkPlace.setLayout(ParkPlaceLayout);
-        ParkPlaceLayout.setHorizontalGroup(
-            ParkPlaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        ParkPlaceLayout.setVerticalGroup(
-            ParkPlaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        ParkPlace.setLayout(null);
+        ParkPlace.add(B34);
+        B34.setBounds(0, 10, 12, 50);
 
         jPanel1.add(ParkPlace);
         ParkPlace.setBounds(750, 540, 120, 70);
 
-        javax.swing.GroupLayout NewYorkLayout = new javax.swing.GroupLayout(NewYork);
-        NewYork.setLayout(NewYorkLayout);
-        NewYorkLayout.setHorizontalGroup(
-            NewYorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-        NewYorkLayout.setVerticalGroup(
-            NewYorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
+        NewYork.setLayout(null);
+        NewYork.add(B17);
+        B17.setBounds(110, 10, 12, 50);
 
         jPanel1.add(NewYork);
         NewYork.setBounds(0, 118, 120, 70);
 
-        javax.swing.GroupLayout CCTLayout = new javax.swing.GroupLayout(CCT);
-        CCT.setLayout(CCTLayout);
-        CCTLayout.setHorizontalGroup(
-            CCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        CCTLayout.setVerticalGroup(
-            CCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
+        CCT.setLayout(null);
         jPanel1.add(CCT);
         CCT.setBounds(0, 258, 120, 70);
 
         stJames.setMaximumSize(new java.awt.Dimension(120, 70));
         stJames.setMinimumSize(new java.awt.Dimension(120, 70));
         stJames.setPreferredSize(new java.awt.Dimension(120, 70));
-
-        javax.swing.GroupLayout stJamesLayout = new javax.swing.GroupLayout(stJames);
-        stJames.setLayout(stJamesLayout);
-        stJamesLayout.setHorizontalGroup(
-            stJamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        stJamesLayout.setVerticalGroup(
-            stJamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        stJames.setLayout(null);
+        stJames.add(B14);
+        B14.setBounds(110, 10, 12, 50);
 
         jPanel1.add(stJames);
         stJames.setBounds(0, 328, 120, 70);
@@ -1493,17 +1285,9 @@ public class Gameplay extends javax.swing.JFrame {
         pennsyl.setMaximumSize(new java.awt.Dimension(120, 70));
         pennsyl.setMinimumSize(new java.awt.Dimension(120, 70));
         pennsyl.setPreferredSize(new java.awt.Dimension(120, 70));
-
-        javax.swing.GroupLayout pennsylLayout = new javax.swing.GroupLayout(pennsyl);
-        pennsyl.setLayout(pennsylLayout);
-        pennsylLayout.setHorizontalGroup(
-            pennsylLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pennsylLayout.setVerticalGroup(
-            pennsylLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        pennsyl.setLayout(null);
+        pennsyl.add(B13);
+        B13.setBounds(110, 10, 12, 50);
 
         jPanel1.add(pennsyl);
         pennsyl.setBounds(0, 398, 120, 70);
@@ -1511,48 +1295,25 @@ public class Gameplay extends javax.swing.JFrame {
         Virginnia.setMaximumSize(new java.awt.Dimension(120, 70));
         Virginnia.setMinimumSize(new java.awt.Dimension(120, 70));
         Virginnia.setPreferredSize(new java.awt.Dimension(120, 70));
-
-        javax.swing.GroupLayout VirginniaLayout = new javax.swing.GroupLayout(Virginnia);
-        Virginnia.setLayout(VirginniaLayout);
-        VirginniaLayout.setHorizontalGroup(
-            VirginniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-        VirginniaLayout.setVerticalGroup(
-            VirginniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        Virginnia.setLayout(null);
+        Virginnia.add(B12);
+        B12.setBounds(110, 10, 12, 50);
 
         jPanel1.add(Virginnia);
         Virginnia.setBounds(0, 468, 120, 70);
 
         States.setMaximumSize(new java.awt.Dimension(120, 70));
         States.setMinimumSize(new java.awt.Dimension(120, 70));
-
-        javax.swing.GroupLayout StatesLayout = new javax.swing.GroupLayout(States);
-        States.setLayout(StatesLayout);
-        StatesLayout.setHorizontalGroup(
-            StatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-        StatesLayout.setVerticalGroup(
-            StatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
+        States.setLayout(null);
+        States.add(B11);
+        B11.setBounds(110, 10, 12, 50);
 
         jPanel1.add(States);
         States.setBounds(0, 538, 120, 70);
 
-        javax.swing.GroupLayout TenssLayout = new javax.swing.GroupLayout(Tenss);
-        Tenss.setLayout(TenssLayout);
-        TenssLayout.setHorizontalGroup(
-            TenssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        TenssLayout.setVerticalGroup(
-            TenssLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        Tenss.setLayout(null);
+        Tenss.add(B16);
+        B16.setBounds(110, 10, 12, 50);
 
         jPanel1.add(Tenss);
         Tenss.setBounds(0, 188, 120, 70);
@@ -1672,6 +1433,15 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(player_pnl6);
         player_pnl6.setBounds(320, 250, 130, 150);
 
+        jButton1.setText("Build");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1);
+        jButton1.setBounds(10, 660, 55, 23);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1765,6 +1535,7 @@ public class Gameplay extends javax.swing.JFrame {
                 player[playerTurn].setM_balance(player[playerTurn].getM_balance() - zoneMap.get(index).getM_zoneCost());
                 updatePlayersBalance();
                 addZoneToPanel(playerTurn, zoneMap.get(index).getM_index());
+                
 
             }
         }
@@ -1830,6 +1601,57 @@ public class Gameplay extends javax.swing.JFrame {
 //        trade_pnl1.setVisible(true);
       
     }//GEN-LAST:event_Trade_btnActionPerformed
+    //Build Houses
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        for (int i=0;i<player[playerTurn].m_zonesOwnedIndexes.size();i++){
+            if (pos.getCurrentPos(playerTurn) == player[playerTurn].m_zonesOwnedIndexes.get(i)){
+                int Cityidx = player[playerTurn].m_zonesOwnedIndexes.get(i);
+                int idx = pos.getCurrentPos(playerTurn);
+                int ToBeBuild = zoneMap.get(Cityidx).getM_NumOFBuildedHouses() + 1;
+                if ( ((idx >0 && idx <10) || (idx >18 && idx <28)) && (!zoneMap.get(Cityidx).isHotelBuilded())){
+                    HBuildings HB = (HBuildings)build.get(idx);
+                    
+                    if(ToBeBuild<=4){
+                        zoneMap.get(Cityidx).setM_NumOFBuildedHouses((zoneMap.get(Cityidx).getM_NumOFBuildedHouses())+1);
+                        HB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
+                    }
+                    else if (ToBeBuild == 5 &&  !zoneMap.get(Cityidx).isHotelBuilded()){
+                         HB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), true);
+                         zoneMap.get(Cityidx).setHotelBuilded(true);
+                         
+                    }
+                    HB.setVisible(true);
+                    build.replace(idx, HB);
+                    int currentBalance = player[playerTurn].getM_balance();
+                    player[playerTurn].setM_balance(currentBalance - zoneMap.get(Cityidx).getM_houseCost());
+                    
+                }   
+                else {
+                    if (!zoneMap.get(Cityidx).isHotelBuilded()){
+                    VBuidings VB = (VBuidings)build.get(idx);
+                    if(ToBeBuild<=4){
+                        zoneMap.get(Cityidx).setM_NumOFBuildedHouses((zoneMap.get(Cityidx).getM_NumOFBuildedHouses())+1);
+                        VB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
+                    }
+                    else if (ToBeBuild == 5 &&  !zoneMap.get(Cityidx).isHotelBuilded()){
+                         VB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), true);
+                         zoneMap.get(Cityidx).setHotelBuilded(true);
+                    }
+                    VB.setVisible(true);
+                    build.replace(idx, VB);
+                    
+                    int currentBalance = player[playerTurn].getM_balance();
+                    player[playerTurn].setM_balance(currentBalance - zoneMap.get(Cityidx).getM_houseCost());
+                    
+                }
+                }
+                 updatePlayersBalance();
+                 repaint();
+            }
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     public static void main(String args[]) {
@@ -1901,6 +1723,30 @@ public class Gameplay extends javax.swing.JFrame {
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GamePlay0.Zone Atlantic;
+    private GamePlay0.HBuildings B1;
+    private GamePlay0.VBuidings B11;
+    private GamePlay0.VBuidings B12;
+    private GamePlay0.VBuidings B13;
+    private GamePlay0.VBuidings B14;
+    private GamePlay0.VBuidings B16;
+    private GamePlay0.VBuidings B17;
+    private GamePlay0.HBuildings B19;
+    private GamePlay0.HBuildings B21;
+    private GamePlay0.HBuildings B22;
+    private GamePlay0.HBuildings B23;
+    private GamePlay0.HBuildings B24;
+    private GamePlay0.HBuildings B25;
+    private GamePlay0.HBuildings B27;
+    private GamePlay0.VBuidings B28;
+    private GamePlay0.VBuidings B29;
+    private GamePlay0.HBuildings B3;
+    private GamePlay0.VBuidings B31;
+    private GamePlay0.VBuidings B32;
+    private GamePlay0.VBuidings B34;
+    private GamePlay0.HBuildings B5;
+    private GamePlay0.HBuildings B6;
+    private GamePlay0.HBuildings B8;
+    private GamePlay0.HBuildings B9;
     private GamePlay0.Zone Baltic;
     private GamePlay0.Zone CCT;
     private GamePlay0.Zone ChanceBlue;
@@ -1932,6 +1778,7 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Dice dice2;
     private GamePlay0.Zone go;
     private GamePlay0.Zone goToJail;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
