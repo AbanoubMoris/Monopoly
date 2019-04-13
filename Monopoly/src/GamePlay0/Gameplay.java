@@ -1658,6 +1658,12 @@ public class Gameplay extends javax.swing.JFrame {
             if (pos.getCurrentPos(playerTurn) == player[playerTurn].m_zonesOwnedIndexes.get(i)){
                 
                 if (player[playerTurn].getM_balance() > zoneMap.get(pos.getCurrentPos(playerTurn)).getM_houseCost()){
+                    
+                    try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/zapsplat_impacts_wood.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 int Cityidx = player[playerTurn].m_zonesOwnedIndexes.get(i);
                 
                 System.out.println(Cityidx);
