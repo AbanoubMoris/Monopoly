@@ -481,8 +481,7 @@ public class Gameplay extends javax.swing.JFrame {
         IntializeBuildings();
         
  
-     
-        SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+    
         
         
         
@@ -970,9 +969,11 @@ public class Gameplay extends javax.swing.JFrame {
         player_pnl5 = new GamePlay0.Player_pnl();
         player_pnl6 = new GamePlay0.Player_pnl();
         jButton1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(204, 218, 242));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 800));
@@ -1362,7 +1363,11 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel1.add(bluetreasure);
         bluetreasure.setBounds(138, 138, 133, 133);
 
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 40, 875, 728);
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 102, 0), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 102, 102), new java.awt.Color(204, 0, 102)));
         jPanel2.setLayout(null);
 
         jButton4.setText("BuyCity");
@@ -1372,7 +1377,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton4);
-        jButton4.setBounds(10, 710, 69, 23);
+        jButton4.setBounds(10, 680, 69, 23);
 
         Trade_btn.setText("Trade");
         Trade_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -1381,9 +1386,9 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Trade_btn);
-        Trade_btn.setBounds(380, 710, 73, 23);
+        Trade_btn.setBounds(380, 680, 73, 23);
         jPanel2.add(trade_pnl1);
-        trade_pnl1.setBounds(60, 440, 355, 194);
+        trade_pnl1.setBounds(60, 410, 355, 194);
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton3.setText("Roll Dice");
@@ -1393,7 +1398,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton3);
-        jButton3.setBounds(190, 710, 90, 30);
+        jButton3.setBounds(190, 680, 90, 30);
 
         javax.swing.GroupLayout dice2Layout = new javax.swing.GroupLayout(dice2);
         dice2.setLayout(dice2Layout);
@@ -1407,7 +1412,7 @@ public class Gameplay extends javax.swing.JFrame {
         );
 
         jPanel2.add(dice2);
-        dice2.setBounds(240, 640, 70, 60);
+        dice2.setBounds(240, 610, 70, 60);
 
         javax.swing.GroupLayout dice1Layout = new javax.swing.GroupLayout(dice1);
         dice1.setLayout(dice1Layout);
@@ -1421,19 +1426,19 @@ public class Gameplay extends javax.swing.JFrame {
         );
 
         jPanel2.add(dice1);
-        dice1.setBounds(160, 640, 70, 60);
+        dice1.setBounds(160, 610, 70, 60);
         jPanel2.add(player_pnl1);
-        player_pnl1.setBounds(10, 60, 130, 150);
+        player_pnl1.setBounds(10, 10, 120, 150);
         jPanel2.add(player_pnl2);
-        player_pnl2.setBounds(160, 60, 130, 150);
+        player_pnl2.setBounds(160, 10, 130, 150);
         jPanel2.add(player_pnl3);
-        player_pnl3.setBounds(320, 60, 130, 150);
+        player_pnl3.setBounds(320, 10, 120, 150);
         jPanel2.add(player_pnl4);
-        player_pnl4.setBounds(10, 250, 130, 150);
+        player_pnl4.setBounds(10, 200, 120, 150);
         jPanel2.add(player_pnl5);
-        player_pnl5.setBounds(160, 250, 130, 150);
+        player_pnl5.setBounds(160, 200, 120, 150);
         jPanel2.add(player_pnl6);
-        player_pnl6.setBounds(320, 250, 130, 150);
+        player_pnl6.setBounds(320, 200, 120, 150);
 
         jButton1.setText("Build");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -1442,28 +1447,26 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(10, 660, 80, 23);
+        jButton1.setBounds(10, 630, 80, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 875, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
-                .addContainerGap())
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(893, 40, 463, 717);
+
+        jPanel3.setBackground(new java.awt.Color(255, 153, 0));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1370, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 40, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 0, 1370, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1880,6 +1883,7 @@ public class Gameplay extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private GamePlay0.Zone jail;
     private GamePlay0.Zone orange;
     private GamePlay0.Zone pacific;
