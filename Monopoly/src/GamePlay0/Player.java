@@ -11,6 +11,9 @@ package GamePlay0;
 import java.util.Map;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 public class Player {
     private int m_id;
@@ -118,6 +121,7 @@ public class Player {
     {
         if(!m_zonesOwnedIndexes.contains(index))
            m_zonesOwnedIndexes.add(index);
+        Collections.sort(m_zonesOwnedIndexes);
     }
 }
 

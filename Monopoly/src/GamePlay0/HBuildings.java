@@ -39,7 +39,10 @@ public class HBuildings extends javax.swing.JPanel {
         Rent3 = new javax.swing.JPanel();
         Rent4 = new javax.swing.JPanel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
         Rent1.setBackground(new java.awt.Color(153, 0, 51));
+        Rent1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Rent1.setMinimumSize(new java.awt.Dimension(12, 12));
         Rent1.setPreferredSize(new java.awt.Dimension(8, 12));
 
@@ -51,10 +54,11 @@ public class HBuildings extends javax.swing.JPanel {
         );
         Rent1Layout.setVerticalGroup(
             Rent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
+            .addGap(0, 8, Short.MAX_VALUE)
         );
 
         Rent2.setBackground(new java.awt.Color(153, 0, 51));
+        Rent2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Rent2.setMinimumSize(new java.awt.Dimension(10, 12));
         Rent2.setPreferredSize(new java.awt.Dimension(8, 12));
 
@@ -66,10 +70,11 @@ public class HBuildings extends javax.swing.JPanel {
         );
         Rent2Layout.setVerticalGroup(
             Rent2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
+            .addGap(0, 8, Short.MAX_VALUE)
         );
 
         Rent3.setBackground(new java.awt.Color(153, 0, 51));
+        Rent3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Rent3.setMinimumSize(new java.awt.Dimension(10, 12));
         Rent3.setPreferredSize(new java.awt.Dimension(8, 12));
 
@@ -81,10 +86,11 @@ public class HBuildings extends javax.swing.JPanel {
         );
         Rent3Layout.setVerticalGroup(
             Rent3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
+            .addGap(0, 8, Short.MAX_VALUE)
         );
 
         Rent4.setBackground(new java.awt.Color(153, 0, 51));
+        Rent4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Rent4.setMinimumSize(new java.awt.Dimension(10, 12));
         Rent4.setPreferredSize(new java.awt.Dimension(8, 12));
 
@@ -96,7 +102,7 @@ public class HBuildings extends javax.swing.JPanel {
         );
         Rent4Layout.setVerticalGroup(
             Rent4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
+            .addGap(0, 8, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
