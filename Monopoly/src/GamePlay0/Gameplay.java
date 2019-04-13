@@ -459,7 +459,7 @@ public class Gameplay extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
     }
-    public Gameplay(int NumOfPlayers , Player[] player ) {
+    public Gameplay(int NumOfPlayers , Player[] player ) throws IOException {
         initComponents();
         //this.setBackground(new Color(0,0,0,0));
 
@@ -479,6 +479,10 @@ public class Gameplay extends javax.swing.JFrame {
         
         B1.setNumAndColor(3, Color.yellow , true);
         IntializeBuildings();
+        
+ 
+     
+        SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
         
         
         
@@ -1038,7 +1042,7 @@ public class Gameplay extends javax.swing.JFrame {
         MarvinGardens.setMinimumSize(new java.awt.Dimension(70, 120));
         MarvinGardens.setLayout(null);
         MarvinGardens.add(B27);
-        B27.setBounds(10, 110, 47, 12);
+        B27.setBounds(10, 110, 51, 16);
 
         jPanel1.add(MarvinGardens);
         MarvinGardens.setBounds(680, 0, 70, 120);
@@ -1047,7 +1051,7 @@ public class Gameplay extends javax.swing.JFrame {
         ventnor.setMinimumSize(new java.awt.Dimension(70, 120));
         ventnor.setLayout(null);
         ventnor.add(B25);
-        B25.setBounds(10, 110, 47, 12);
+        B25.setBounds(10, 110, 51, 16);
 
         jPanel1.add(ventnor);
         ventnor.setBounds(540, 0, 70, 120);
@@ -1056,7 +1060,7 @@ public class Gameplay extends javax.swing.JFrame {
         Atlantic.setMinimumSize(new java.awt.Dimension(70, 120));
         Atlantic.setLayout(null);
         Atlantic.add(B24);
-        B24.setBounds(10, 110, 47, 12);
+        B24.setBounds(10, 110, 51, 16);
 
         jPanel1.add(Atlantic);
         Atlantic.setBounds(470, 0, 70, 120);
@@ -1071,7 +1075,7 @@ public class Gameplay extends javax.swing.JFrame {
         RailRoad.setMinimumSize(new java.awt.Dimension(70, 120));
         RailRoad.setLayout(null);
         RailRoad.add(B23);
-        B23.setBounds(10, 110, 47, 12);
+        B23.setBounds(10, 110, 51, 16);
 
         jPanel1.add(RailRoad);
         RailRoad.setBounds(400, 0, 70, 120);
@@ -1080,7 +1084,7 @@ public class Gameplay extends javax.swing.JFrame {
         Illinois.setMinimumSize(new java.awt.Dimension(70, 120));
         Illinois.setLayout(null);
         Illinois.add(B22);
-        B22.setBounds(10, 110, 47, 12);
+        B22.setBounds(10, 110, 51, 16);
 
         jPanel1.add(Illinois);
         Illinois.setBounds(330, 0, 70, 120);
@@ -1089,7 +1093,7 @@ public class Gameplay extends javax.swing.JFrame {
         Indiana.setMinimumSize(new java.awt.Dimension(70, 120));
         Indiana.setLayout(null);
         Indiana.add(B21);
-        B21.setBounds(10, 110, 47, 12);
+        B21.setBounds(10, 110, 51, 16);
 
         jPanel1.add(Indiana);
         Indiana.setBounds(260, 0, 70, 120);
@@ -1107,7 +1111,7 @@ public class Gameplay extends javax.swing.JFrame {
         Kentucky.setVerifyInputWhenFocusTarget(false);
         Kentucky.setLayout(null);
         Kentucky.add(B19);
-        B19.setBounds(10, 110, 47, 12);
+        B19.setBounds(10, 110, 51, 16);
 
         jPanel1.add(Kentucky);
         Kentucky.setBounds(120, 0, 70, 120);
@@ -1116,7 +1120,7 @@ public class Gameplay extends javax.swing.JFrame {
         Mediter_Ranean.setMinimumSize(new java.awt.Dimension(70, 120));
         Mediter_Ranean.setLayout(null);
         Mediter_Ranean.add(B1);
-        B1.setBounds(10, 0, 47, 12);
+        B1.setBounds(10, 0, 51, 16);
 
         jPanel1.add(Mediter_Ranean);
         Mediter_Ranean.setBounds(680, 608, 70, 120);
@@ -1142,7 +1146,7 @@ public class Gameplay extends javax.swing.JFrame {
         Baltic.setMinimumSize(new java.awt.Dimension(70, 120));
         Baltic.setLayout(null);
         Baltic.add(B3);
-        B3.setBounds(10, 0, 47, 12);
+        B3.setBounds(10, 0, 51, 16);
 
         jPanel1.add(Baltic);
         Baltic.setBounds(540, 608, 70, 120);
@@ -1157,7 +1161,7 @@ public class Gameplay extends javax.swing.JFrame {
         RealRoad.setMinimumSize(new java.awt.Dimension(70, 120));
         RealRoad.setLayout(null);
         RealRoad.add(B5);
-        B5.setBounds(10, 0, 47, 12);
+        B5.setBounds(10, 0, 51, 16);
 
         jPanel1.add(RealRoad);
         RealRoad.setBounds(400, 608, 70, 120);
@@ -1166,7 +1170,7 @@ public class Gameplay extends javax.swing.JFrame {
         Oriental.setMinimumSize(new java.awt.Dimension(70, 120));
         Oriental.setLayout(null);
         Oriental.add(B6);
-        B6.setBounds(10, 0, 47, 12);
+        B6.setBounds(10, 0, 51, 16);
 
         jPanel1.add(Oriental);
         Oriental.setBounds(330, 608, 70, 120);
@@ -1181,7 +1185,7 @@ public class Gameplay extends javax.swing.JFrame {
         Vermont.setMinimumSize(new java.awt.Dimension(70, 120));
         Vermont.setLayout(null);
         Vermont.add(B8);
-        B8.setBounds(10, 0, 47, 12);
+        B8.setBounds(10, 0, 51, 16);
 
         jPanel1.add(Vermont);
         Vermont.setBounds(190, 608, 70, 120);
@@ -1191,7 +1195,7 @@ public class Gameplay extends javax.swing.JFrame {
         Connecticut.setPreferredSize(new java.awt.Dimension(70, 120));
         Connecticut.setLayout(null);
         Connecticut.add(B9);
-        B9.setBounds(10, 0, 47, 12);
+        B9.setBounds(10, 0, 51, 16);
 
         jPanel1.add(Connecticut);
         Connecticut.setBounds(120, 608, 70, 120);
@@ -1199,7 +1203,7 @@ public class Gameplay extends javax.swing.JFrame {
         pacific.setPreferredSize(new java.awt.Dimension(120, 70));
         pacific.setLayout(null);
         pacific.add(B29);
-        B29.setBounds(0, 10, 12, 50);
+        B29.setBounds(0, 10, 16, 54);
 
         jPanel1.add(pacific);
         pacific.setBounds(750, 120, 120, 70);
@@ -1209,7 +1213,7 @@ public class Gameplay extends javax.swing.JFrame {
         NorthCaro.setPreferredSize(new java.awt.Dimension(120, 70));
         NorthCaro.setLayout(null);
         NorthCaro.add(B30);
-        B30.setBounds(0, 10, 12, 50);
+        B30.setBounds(0, 10, 16, 54);
 
         jPanel1.add(NorthCaro);
         NorthCaro.setBounds(750, 190, 120, 70);
@@ -1227,7 +1231,7 @@ public class Gameplay extends javax.swing.JFrame {
         pennsy.setPreferredSize(new java.awt.Dimension(120, 70));
         pennsy.setLayout(null);
         pennsy.add(B32);
-        B32.setBounds(0, 10, 12, 50);
+        B32.setBounds(0, 10, 16, 54);
 
         jPanel1.add(pennsy);
         pennsy.setBounds(750, 330, 120, 70);
@@ -1237,7 +1241,7 @@ public class Gameplay extends javax.swing.JFrame {
         shorLline.setPreferredSize(new java.awt.Dimension(120, 70));
         shorLline.setLayout(null);
         shorLline.add(B33);
-        B33.setBounds(0, 10, 12, 50);
+        B33.setBounds(0, 10, 16, 54);
 
         jPanel1.add(shorLline);
         shorLline.setBounds(750, 400, 120, 70);
@@ -1254,14 +1258,14 @@ public class Gameplay extends javax.swing.JFrame {
         ParkPlace.setPreferredSize(new java.awt.Dimension(120, 70));
         ParkPlace.setLayout(null);
         ParkPlace.add(B35);
-        B35.setBounds(0, 10, 12, 50);
+        B35.setBounds(0, 10, 16, 54);
 
         jPanel1.add(ParkPlace);
         ParkPlace.setBounds(750, 540, 120, 70);
 
         NewYork.setLayout(null);
         NewYork.add(B17);
-        B17.setBounds(110, 10, 12, 50);
+        B17.setBounds(110, 10, 16, 54);
 
         jPanel1.add(NewYork);
         NewYork.setBounds(0, 118, 120, 70);
@@ -1275,7 +1279,7 @@ public class Gameplay extends javax.swing.JFrame {
         stJames.setPreferredSize(new java.awt.Dimension(120, 70));
         stJames.setLayout(null);
         stJames.add(B14);
-        B14.setBounds(110, 10, 12, 50);
+        B14.setBounds(110, 10, 16, 54);
 
         jPanel1.add(stJames);
         stJames.setBounds(0, 328, 120, 70);
@@ -1285,7 +1289,7 @@ public class Gameplay extends javax.swing.JFrame {
         pennsyl.setPreferredSize(new java.awt.Dimension(120, 70));
         pennsyl.setLayout(null);
         pennsyl.add(B13);
-        B13.setBounds(110, 10, 12, 50);
+        B13.setBounds(110, 10, 16, 54);
 
         jPanel1.add(pennsyl);
         pennsyl.setBounds(0, 398, 120, 70);
@@ -1295,7 +1299,7 @@ public class Gameplay extends javax.swing.JFrame {
         Virginnia.setPreferredSize(new java.awt.Dimension(120, 70));
         Virginnia.setLayout(null);
         Virginnia.add(B12);
-        B12.setBounds(110, 10, 12, 50);
+        B12.setBounds(110, 10, 16, 54);
 
         jPanel1.add(Virginnia);
         Virginnia.setBounds(0, 468, 120, 70);
@@ -1304,14 +1308,14 @@ public class Gameplay extends javax.swing.JFrame {
         States.setMinimumSize(new java.awt.Dimension(120, 70));
         States.setLayout(null);
         States.add(B11);
-        B11.setBounds(110, 10, 12, 50);
+        B11.setBounds(110, 10, 16, 54);
 
         jPanel1.add(States);
         States.setBounds(0, 538, 120, 70);
 
         Tenss.setLayout(null);
         Tenss.add(B16);
-        B16.setBounds(110, 10, 12, 50);
+        B16.setBounds(110, 10, 16, 54);
 
         jPanel1.add(Tenss);
         Tenss.setBounds(0, 188, 120, 70);
@@ -1514,6 +1518,7 @@ public class Gameplay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        
         boolean isOwned = false;
         int index = pos.getCurrentPos(playerTurn);
         for(int i=0; i<NumbOfPlayers; i++)
@@ -1529,6 +1534,11 @@ public class Gameplay extends javax.swing.JFrame {
         {
             if(zoneMap.get(index).getM_zoneCost()!=0 && player[playerTurn].getM_balance() >= zoneMap.get(index).getM_zoneCost() )
             {
+                try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/Cash Register.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 player[playerTurn].addZone(index);
                 player[playerTurn].setM_balance(player[playerTurn].getM_balance() - zoneMap.get(index).getM_zoneCost());
                 updatePlayersBalance();
