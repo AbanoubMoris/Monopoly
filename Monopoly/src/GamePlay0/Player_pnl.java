@@ -78,7 +78,7 @@ public class Player_pnl extends javax.swing.JPanel {
 
         city.setLayout(null);
         add(city);
-        city.setBounds(0, 30, 120, 90);
+        city.setBounds(0, 40, 120, 80);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Player ID:");
