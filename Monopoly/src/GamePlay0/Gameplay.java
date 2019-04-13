@@ -448,7 +448,7 @@ public class Gameplay extends javax.swing.JFrame {
             jPanel1.add(Player_Car.get(i));
             //player[i]= new Player(player[i].getM_id(), player[i].getM_color(), 7000, false, false); 
             //player[i].setM_id(i);
-            player[i].setM_balance(7000);
+            player[i].setM_balance(200);
             player[i].setM_inJail(false);
             player[i].setM_passByGo(false);
         }
@@ -1536,6 +1536,13 @@ public class Gameplay extends javax.swing.JFrame {
                 
 
             }
+            else {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/you dont have enouph money.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         
         
@@ -1646,8 +1653,11 @@ public class Gameplay extends javax.swing.JFrame {
 //Build Houses
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         for (int i=0;i<player[playerTurn].m_zonesOwnedIndexes.size();i++){
             if (pos.getCurrentPos(playerTurn) == player[playerTurn].m_zonesOwnedIndexes.get(i)){
+                
+                if (player[playerTurn].getM_balance() > zoneMap.get(pos.getCurrentPos(playerTurn)).getM_houseCost()){
                 int Cityidx = player[playerTurn].m_zonesOwnedIndexes.get(i);
                 
                 System.out.println(Cityidx);
@@ -1675,7 +1685,9 @@ public class Gameplay extends javax.swing.JFrame {
                     HB.setVisible(true);
                     build.replace(idx, HB);
                     int currentBalance = player[playerTurn].getM_balance();
+                    
                     player[playerTurn].setM_balance(currentBalance - zoneMap.get(Cityidx).getM_houseCost());
+
                     
                 }   
                 else {
@@ -1698,14 +1710,27 @@ public class Gameplay extends javax.swing.JFrame {
                     build.replace(idx, VB);
                     
                     int currentBalance = player[playerTurn].getM_balance();
+
                     player[playerTurn].setM_balance(currentBalance - zoneMap.get(Cityidx).getM_houseCost());
+
                     
                 }
                 }
                  updatePlayersBalance();
                  repaint();
             }
+          else 
+          try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/you dont have enouph money.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            break;
         }
+        }
+        
+        
+
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
