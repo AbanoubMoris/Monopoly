@@ -8,6 +8,7 @@ package GamePlay0;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.List;
+import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -30,6 +31,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.lang.Math;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 
 
@@ -492,6 +494,16 @@ public class Gameplay extends javax.swing.JFrame {
     public Gameplay(int NumOfPlayers , Player[] player ) {
         initComponents();
         
+      
+     
+      // player_pnl1.repaint();
+      
+       
+       //playerPanelMap.get(id).add(lbl);
+       
+       this.repaint();
+        
+        
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         
         zoneMapInitialization();
@@ -929,6 +941,8 @@ public class Gameplay extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         dice2 = new GamePlay0.Dice();
         dice1 = new GamePlay0.Dice();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         player_pnl1 = new GamePlay0.Player_pnl();
         player_pnl2 = new GamePlay0.Player_pnl();
         player_pnl3 = new GamePlay0.Player_pnl();
@@ -1653,18 +1667,46 @@ public class Gameplay extends javax.swing.JFrame {
 
         jPanel2.add(dice1);
         dice1.setBounds(160, 640, 70, 60);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel3);
+        jPanel3.setBounds(330, 290, 110, 70);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel4);
+        jPanel4.setBounds(20, 100, 110, 70);
         jPanel2.add(player_pnl1);
-        player_pnl1.setBounds(10, 60, 125, 150);
+        player_pnl1.setBounds(10, 60, 130, 150);
         jPanel2.add(player_pnl2);
-        player_pnl2.setBounds(160, 60, 125, 150);
+        player_pnl2.setBounds(160, 60, 130, 150);
         jPanel2.add(player_pnl3);
-        player_pnl3.setBounds(320, 60, 125, 150);
+        player_pnl3.setBounds(320, 60, 130, 150);
         jPanel2.add(player_pnl4);
-        player_pnl4.setBounds(10, 250, 125, 150);
+        player_pnl4.setBounds(10, 250, 130, 150);
         jPanel2.add(player_pnl5);
-        player_pnl5.setBounds(160, 250, 125, 150);
+        player_pnl5.setBounds(160, 250, 130, 150);
         jPanel2.add(player_pnl6);
-        player_pnl6.setBounds(320, 250, 125, 150);
+        player_pnl6.setBounds(320, 250, 130, 150);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1758,7 +1800,7 @@ public class Gameplay extends javax.swing.JFrame {
                 player[playerTurn].addZone(index);
                 player[playerTurn].setM_balance(player[playerTurn].getM_balance() - zoneMap.get(index).getM_zoneCost());
                 updatePlayersBalance();
-                addZoneToPanel(playerTurn, zoneMap.get(index).getName());
+                addZoneToPanel(playerTurn, zoneMap.get(index).getM_index());
 
             }
         }
@@ -1766,18 +1808,34 @@ public class Gameplay extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    Map<Integer, Player_pnl> playerPanelMap = new HashMap<Integer, Player_pnl>();
+    Map<Integer, Panel> playerPanelMap = new HashMap<Integer, Panel>();
     private void playerPanelMapInitialization()
     {
-        playerPanelMap.put(1, player_pnl1);
-        playerPanelMap.put(2, player_pnl2);
-        playerPanelMap.put(3, player_pnl3);
-        playerPanelMap.put(4, player_pnl4);
-        playerPanelMap.put(5, player_pnl5);
-        playerPanelMap.put(6, player_pnl6);
+        
+        playerPanelMap.put(0, player_pnl1.getCity());
+        playerPanelMap.put(1, player_pnl2.getCity());
+        playerPanelMap.put(2, player_pnl3.getCity());
+        playerPanelMap.put(3, player_pnl4.getCity());
+        playerPanelMap.put(4, player_pnl5.getCity());
+        playerPanelMap.put(5, player_pnl6.getCity());
+   
     }
-    private void addZoneToPanel(int id,String cityName)
-    {
+    private void addZoneToPanel(int id, int city)
+    {  
+       
+       
+       //lbl.setBackground(Color.red);
+      
+       Panel p = playerPanelMap.get(id);
+       JLabel lbl = new JLabel(String.valueOf(city)); //Lma geet a7ot city name kan btb3 null 3shan hya fadya 
+       p.add(lbl);
+       
+       lbl.setBounds(0, 0, 100, 20);
+       lbl.setOpaque(true);
+   
+       playerPanelMap.get(id).add(lbl);
+
+       this.repaint();
        
        
     }
@@ -1914,6 +1972,8 @@ public class Gameplay extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private GamePlay0.Zone jail;
     private GamePlay0.Zone orange;
     private GamePlay0.Zone pacific;
