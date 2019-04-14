@@ -11,7 +11,16 @@ public class HBuildings extends javax.swing.JPanel {
         setVisible(false);
         
     }
-    
+    public void RemoveBuidings(){
+        NumOfHouses=0;
+        setOpaque(false);
+        setVisible(false);
+        isHotel = false; 
+        Rent1.setVisible(false);
+        Rent2.setVisible(false);
+        Rent3.setVisible(false); 
+        Rent4.setVisible(false); 
+    }
     public void setNumAndColor(int NumOfHouses , Color color , boolean ISHotel){
         this.NumOfHouses = NumOfHouses;
         this.isHotel = ISHotel;

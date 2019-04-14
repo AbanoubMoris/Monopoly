@@ -383,8 +383,7 @@ public class Gameplay extends javax.swing.JFrame {
     
     
     Map<Integer,Zone> zoneMap;
-    public void zoneMapInitialization()
-    {
+    public void zoneMapInitialization(){
         zoneMap = new HashMap<Integer, Zone>();
         zoneMap.put(0, go);
         zoneMap.put(1, Mediter_Ranean);
@@ -448,7 +447,7 @@ public class Gameplay extends javax.swing.JFrame {
             jPanel1.add(Player_Car.get(i));
             //player[i]= new Player(player[i].getM_id(), player[i].getM_color(), 7000, false, false); 
             //player[i].setM_id(i);
-            player[i].setM_balance(200);
+            player[i].setM_balance(2000);
             player[i].setM_inJail(false);
             player[i].setM_passByGo(false);
         }
@@ -513,7 +512,11 @@ public class Gameplay extends javax.swing.JFrame {
         build.put(32,B32 );
         build.put(33,B33 );
         build.put(35,B35 );
-
+        
+        /*
+        VBuidings vb =  (VBuidings)build.get(32); 
+        vb.getNumOfHouses();
+        */
         
     }
     
@@ -955,6 +958,7 @@ public class Gameplay extends javax.swing.JFrame {
         MONOMAN = new GamePlay0.Zone();
         orange = new GamePlay0.Zone();
         bluetreasure = new GamePlay0.Zone();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         Trade_btn = new javax.swing.JButton();
@@ -991,7 +995,7 @@ public class Gameplay extends javax.swing.JFrame {
         );
         goLayout.setVerticalGroup(
             goLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
 
         jPanel1.add(go);
@@ -1001,11 +1005,11 @@ public class Gameplay extends javax.swing.JFrame {
         jail.setLayout(jailLayout);
         jailLayout.setHorizontalGroup(
             jailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
         jailLayout.setVerticalGroup(
             jailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
 
         jPanel1.add(jail);
@@ -1019,7 +1023,7 @@ public class Gameplay extends javax.swing.JFrame {
         );
         parkingLayout.setVerticalGroup(
             parkingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
 
         jPanel1.add(parking);
@@ -1033,7 +1037,7 @@ public class Gameplay extends javax.swing.JFrame {
         );
         goToJailLayout.setVerticalGroup(
             goToJailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
 
         jPanel1.add(goToJail);
@@ -1363,6 +1367,15 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel1.add(bluetreasure);
         bluetreasure.setBounds(138, 138, 133, 133);
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(480, 170, 73, 23);
+
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 40, 875, 728);
 
@@ -1663,7 +1676,29 @@ public class Gameplay extends javax.swing.JFrame {
    }
     
     
-//Build Houses
+    public void UpdateBuildings(){
+        for (Map.Entry<Integer, Zone> entry : zoneMap.entrySet()) {
+        int key = entry.getKey();
+        Object value = entry.getValue();
+            if ((key>0 && key<10) || (key>18&&key<28)){
+                if (build.containsKey(key) ){
+                    HBuildings HB = (HBuildings)build.get(key);
+                    HB.setNumAndColor(zoneMap.get(key).getM_NumOFBuildedHouses(), null, false);
+                    HB.setVisible(false);
+                    
+                } 
+            }
+            else {
+                if (build.containsKey(key) ){
+                    VBuidings VB = (VBuidings)build.get(key);
+                    VB.setNumAndColor(zoneMap.get(key).getM_NumOFBuildedHouses(), null, false);
+                    VB.setVisible(false);
+                } 
+            }
+        }
+
+    }
+    //Build Houses
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
@@ -1679,10 +1714,12 @@ public class Gameplay extends javax.swing.JFrame {
                 }
                 int Cityidx = player[playerTurn].m_zonesOwnedIndexes.get(i);
                 
-                System.out.println(Cityidx);
+           
                 
                 int idx = pos.getCurrentPos(playerTurn);
+                
                 int ToBeBuild = zoneMap.get(Cityidx).getM_NumOFBuildedHouses() + 1;
+                
                 if ( ((idx >0 && idx <10) || (idx >18 && idx <28)) && (!zoneMap.get(Cityidx).isHotelBuilded())){
                     HBuildings HB = (HBuildings)build.get(idx);
                     
@@ -1753,6 +1790,14 @@ public class Gameplay extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        zoneMap.get(8).setM_NumOFBuildedHouses(0);
+        zoneMap.get(9).setM_NumOFBuildedHouses(0);
+        zoneMap.get(11).setM_NumOFBuildedHouses(0);
+        UpdateBuildings();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1879,6 +1924,7 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone go;
     private GamePlay0.Zone goToJail;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
