@@ -106,14 +106,12 @@ public class Player {
         this.m_passByGo = m_passByGo;
     }
     
-    //check that player have money and other player have this city
-   
-    
     public void addZone(int index)
     {
         if(!m_zonesOwnedIndexes.contains(index))
            m_zonesOwnedIndexes.add(index);
         Collections.sort(m_zonesOwnedIndexes);
     }
+    
+   
 }
-

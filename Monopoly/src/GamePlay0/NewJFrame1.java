@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.colorchooser.ColorSelectionModel;
 
 public class NewJFrame1 extends javax.swing.JFrame {
-    private int NumOfPlayer;
+    private int NumOfPlayer ;
     private Player[] player ;
     
     
@@ -864,7 +864,8 @@ public class NewJFrame1 extends javax.swing.JFrame {
 
     private void start_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_start_btnActionPerformed
         // TODO add your handling code here:
-
+        if(!jRadioButton2.isSelected()&&!jRadioButton3.isSelected()&&!jRadioButton4.isSelected()&&!jRadioButton5.isSelected()&&!jRadioButton6.isSelected())
+            NumOfPlayer = 2 ;
         
         try {
            Gameplay g = new Gameplay(NumOfPlayer , player);
@@ -874,7 +875,8 @@ public class NewJFrame1 extends javax.swing.JFrame {
             Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
         }
        
-        this.dispose();
+      
+            this.dispose();
     }//GEN-LAST:event_start_btnActionPerformed
 
     
