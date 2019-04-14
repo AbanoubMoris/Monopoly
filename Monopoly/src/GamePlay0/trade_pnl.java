@@ -6,6 +6,7 @@
 package GamePlay0;
 
 import java.awt.Color;
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JButton;
@@ -29,6 +30,7 @@ public class trade_pnl extends javax.swing.JPanel {
     private   Zone z;
     private Player p;
     private Player p_withdeal;
+   
     public trade_pnl() {
         initComponents();
         z = new Zone();
@@ -92,21 +94,6 @@ public class trade_pnl extends javax.swing.JPanel {
         return money_txt;
     }
     
-     public boolean trade(Player p_withtrade , Player p , Zone z){
-         // System.out.println(z.getM_rent());
-          Map<Integer,Zone> zoneMap = new HashMap<Integer,Zone>();
-        // Gameplay g = new Gameplay();
-         //zoneMap = g.getZoneMap();
-          System.out.println(p.m_zonesOwnedIndexes.contains(z.getM_index()));
-       
-        if(p.m_zonesOwnedIndexes.contains(z.getM_index())){
-            if(p_withtrade.getM_balance() >=  Integer.valueOf(money_txt.getText())){
-               return true;
-            }
-        }
-        return false;
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -217,23 +204,22 @@ public class trade_pnl extends javax.swing.JPanel {
     private void Deal_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Deal_btnActionPerformed
         // TODO add your handling code here:
        
-        System.out.println(p.getM_id());
-         Map<Integer,Zone> zoneMap = new HashMap<Integer,Zone>();
-        // Gameplay g = new Gameplay();
-        // zoneMap = g.getZoneMap();
-        
      
-        if(trade(p_withdeal, p, z)){
+        // Map<Integer,Zone> zoneMap = new HashMap<Integer,Zone>();
+        
+      if(p.m_zonesOwnedIndexes.contains(z.getM_index())){
+            if(p_withdeal.getM_balance() >=  Integer.valueOf(money_txt.getText())){
             p.setM_balance(p.getM_balance() + Integer.valueOf(money_txt.getText()));
             p_withdeal.setM_balance(p_withdeal.getM_balance() - Integer.valueOf(money_txt.getText()));
-              //PlayerCurrentPostion x = g.getPos();
-            // z = zoneMap.get(x.getCurrentPos(p_withdeal));
+             int cityindex =0;
+             for(int i=0;i<p.m_zonesOwnedIndexes.size();i++){
+                 if(p.m_zonesOwnedIndexes.contains(z.getM_index()))
+                     cityindex = i ;
+             }
+            p.m_zonesOwnedIndexes.remove(cityindex);
             p_withdeal.m_zonesOwnedIndexes.add(z.getM_index());
-            p.m_zonesOwnedIndexes.remove(0);
-           // g.getjLabel3().setText(String.valueOf( p.getM_balance()));
-           // g.getjLabel6().setText(String.valueOf( p_withdeal.getM_balance()));
-         //  g.updateBalance();
-            System.out.println("done");
+            }
+            
         }
          
     

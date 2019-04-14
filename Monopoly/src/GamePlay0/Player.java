@@ -107,15 +107,7 @@ public class Player {
     }
     
     //check that player have money and other player have this city
-    public boolean trade(Player p_withtrade , Player p , Zone z){
-        trade_pnl pnl = new trade_pnl();
-        if(p.m_zonesOwnedIndexes.contains(z.getM_index())){
-            if(p_withtrade.getM_balance() >=  Integer.valueOf(pnl.getMoney_txt().getText())){
-               return true;
-            }
-        }
-        return false;
-    }
+   
     
     public void addZone(int index)
     {

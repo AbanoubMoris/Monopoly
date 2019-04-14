@@ -44,7 +44,15 @@ public class  Zone extends javax.swing.JPanel {
     private int m_index;
     private int m_NumOFBuildedHouses;
     private boolean hotelBuilded;
+    private Player player_zone;
 
+    public Player getPlayer_zone() {
+        return player_zone;
+    }
+
+    public void setPlayer_zone(Player player_zone) {
+        this.player_zone = player_zone;
+    }
     public void setHotelBuilded(boolean hotelBuilded) {
         this.hotelBuilded = hotelBuilded;
     }

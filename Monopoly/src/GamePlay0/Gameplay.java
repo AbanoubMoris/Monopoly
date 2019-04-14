@@ -31,6 +31,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.lang.Math;
+import java.lang.reflect.Field;
 import static javafx.scene.paint.Color.rgb;
 import static javafx.scene.paint.Color.rgb;
 import static javafx.scene.paint.Color.rgb;
@@ -97,7 +98,7 @@ public class Gameplay extends javax.swing.JFrame {
         player_pnl4.setVisible(false);
         player_pnl5.setVisible(false);
         player_pnl6.setVisible(false);
-        
+      //  Deal_btn.setVisible(false);
    
     }
     public void DisplayCiyInfo(){
@@ -380,6 +381,10 @@ public class Gameplay extends javax.swing.JFrame {
     //JButton btn1;
     //JButton btn2;
     int playerTurn = -1;
+
+    public int getPlayerTurn() {
+        return playerTurn;
+    }
     
     
     Map<Integer,Zone> zoneMap;
@@ -421,6 +426,7 @@ public class Gameplay extends javax.swing.JFrame {
         zoneMap.put(33, shorLline);
         zoneMap.put(34, OrangeChance);
         zoneMap.put(35, ParkPlace);
+        
         
     }
     
@@ -478,11 +484,6 @@ public class Gameplay extends javax.swing.JFrame {
         
         B1.setNumAndColor(3, Color.yellow , true);
         IntializeBuildings();
-        
- 
-    
-        
-        
         
     }
     private Map<Integer , Object> build = new HashMap<Integer,Object>();
@@ -1374,7 +1375,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(480, 170, 73, 23);
+        jButton2.setBounds(310, 140, 73, 23);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 40, 875, 728);
@@ -1525,8 +1526,10 @@ public class Gameplay extends javax.swing.JFrame {
         roll_Dice(dice1);
         roll_Dice(dice2);
         //System.out.println(playerTurn);
-        pos.SetPlayer(playerTurn,dice1.getDice_value() + dice2.getDice_value());
-        Movement(dice1.getDice_value() + dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+        /////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        pos.SetPlayer(playerTurn,/*dice1.getDice_value() + dice2.getDice_value()*/ 1);
+        Movement(/*dice1.getDice_value() + dice2.getDice_value()*/1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
         s.start();
         System.out.print("  " + playerTurn);
   
@@ -1541,6 +1544,7 @@ public class Gameplay extends javax.swing.JFrame {
         {
             if(player[i].m_zonesOwnedIndexes.contains(index))
             {
+                
                System.out.println("owned");
                isOwned = true; 
                break;
@@ -1559,7 +1563,7 @@ public class Gameplay extends javax.swing.JFrame {
                 player[playerTurn].setM_balance(player[playerTurn].getM_balance() - zoneMap.get(index).getM_zoneCost());
                 updatePlayersBalance();
                 addZoneToPanel(playerTurn, zoneMap.get(index).getM_index());
-                
+                zoneMap.get(index).setPlayer_zone(player[playerTurn]);
 
             }
             else {
@@ -1606,29 +1610,33 @@ public class Gameplay extends javax.swing.JFrame {
     
     private void Trade_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Trade_btnActionPerformed
         // TODO add your handling code here:
-//        trade_pnl trade_pnl1 = new trade_pnl();
-//        if(playerTurn == 0){
-//        trade_pnl1.setP_withdeal(p0);
-//        trade_pnl1.setP(p1);
-//        trade_pnl1.getId_lbl1().setText(String.valueOf(p0.getM_id()));
-//        trade_pnl1.getId_lbl2().setText(String.valueOf(p1.getM_id()));
-//        trade_pnl1.setZ(zoneMap.get(pos.getCurrentPos(0)));
-//        Zone temp = getZone();
-//        System.out.println(p0.m_zonesOwnedIndexes.contains(temp.getM_index()));
-//        }
-//        else if (playerTurn == 1)
-//        {    trade_pnl1.setP_withdeal(p1);
-//              trade_pnl1.setP(p0);
-//              trade_pnl1.getId_lbl1().setText(String.valueOf(p0.getM_id()));
-//               trade_pnl1.getId_lbl2().setText(String.valueOf(p1.getM_id()));
-//                trade_pnl1.setZ(zoneMap.get(pos.getCurrentPos(1)));
-//                 Zone temp = getZone();
-//                  System.out.println(p1.m_zonesOwnedIndexes.contains(temp.getM_index()));
-//        }
-//        trade_pnl1.setVisible(true);
-      
+        trade_pnl trade_pnl1 = new trade_pnl();
+        
+      for(int i=0 ;i <NumbOfPlayers ; i++){
+            if(playerTurn == i && !player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn]))){
+              trade_pnl1.setP_withdeal(player[playerTurn]);
+              Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn]));
+              trade_pnl1.setP(z.getPlayer_zone());
+              trade_pnl1.setZ(z);
+              
+              //trade_pnl1.trade(player[playerTurn],z.getPlayer_zone() ,z);
+             
+              trade_pnl1.getId_lbl1().setText((String.valueOf(player[playerTurn].getM_id())));
+              trade_pnl1.getId_lbl2().setText((String.valueOf(z.getPlayer_zone().getM_id())));
+            /* Color color;
+             try{
+                 Field f = Class.forName("java.awt.color").getField(z.getM_color());
+                 color = (Color)f.get(null);
+             } catch(Exception e){
+                 color =null;
+                 
+             }
+             trade_pnl1.getCityname_lbl().setBackground(color);*/
+                }         
     }//GEN-LAST:event_Trade_btnActionPerformed
-   
+            System.out.println("done");
+               trade_pnl1.setVisible(true);
+    }
     public boolean BuidHotel(int playerTurn ){
        for (int i=0;i<player[playerTurn].m_zonesOwnedIndexes.size();i++){
            try {
@@ -1681,7 +1689,7 @@ public class Gameplay extends javax.swing.JFrame {
         int key = entry.getKey();
         Object value = entry.getValue();
             if ((key>0 && key<10) || (key>18&&key<28)){
-                if (build.containsKey(key) ){
+                if (build.containsKey(key) && zoneMap.get(key).getM_NumOFBuildedHouses()== 0){
                     HBuildings HB = (HBuildings)build.get(key);
                     HB.setNumAndColor(zoneMap.get(key).getM_NumOFBuildedHouses(), null, false);
                     HB.setVisible(false);
@@ -1689,7 +1697,7 @@ public class Gameplay extends javax.swing.JFrame {
                 } 
             }
             else {
-                if (build.containsKey(key) ){
+                if (build.containsKey(key)&& zoneMap.get(key).getM_NumOFBuildedHouses()== 0 ){
                     VBuidings VB = (VBuidings)build.get(key);
                     VB.setNumAndColor(zoneMap.get(key).getM_NumOFBuildedHouses(), null, false);
                     VB.setVisible(false);
@@ -1953,6 +1961,23 @@ public class Gameplay extends javax.swing.JFrame {
 
 
 }
+/* // Map<Integer,Zone> zoneMap = new HashMap<Integer,Zone>();
 
+        if(p.m_zonesOwnedIndexes.contains(z.getM_index())){
+            if(p_withdeal.getM_balance() >=  Integer.valueOf(money_txt.getText())){
+
+                p.setM_balance(p.getM_balance() + Integer.valueOf(money_txt.getText()));
+                p_withdeal.setM_balance(p_withdeal.getM_balance() - Integer.valueOf(money_txt.getText()));
+                int cityindex=0;
+
+                for(int i=0 ; i<p.m_zonesOwnedIndexes.size();i++){
+                    if(p.m_zonesOwnedIndexes.contains(z.getM_index()))
+                    cityindex=i;
+                }
+                p.m_zonesOwnedIndexes.remove(cityindex);
+
+                p_withdeal.m_zonesOwnedIndexes.add(z.getM_index());
+            }
+            System.out.println("done");*/
 
 
