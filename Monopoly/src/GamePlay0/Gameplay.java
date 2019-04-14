@@ -1657,6 +1657,13 @@ public class Gameplay extends javax.swing.JFrame {
            } catch (Exception e) {
            }
            try {
+              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==11 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==12){
+                  if (pos.getCurrentPos(playerTurn) == 11 || pos.getCurrentPos(playerTurn) == 12)
+                  return true;}
+
+           } catch (Exception e) {
+           }
+           try {
              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==14 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==16 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==17){
                  if (pos.getCurrentPos(playerTurn) == 14 || pos.getCurrentPos(playerTurn) == 16 || pos.getCurrentPos(playerTurn) == 17)
                  return true;}
