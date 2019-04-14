@@ -1637,59 +1637,79 @@ public class Gameplay extends javax.swing.JFrame {
             System.out.println("done");
                trade_pnl1.setVisible(true);
     }
+    
     public boolean BuidHotel(int playerTurn ){
        for (int i=0;i<player[playerTurn].m_zonesOwnedIndexes.size();i++){
            try {
-              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==1 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==3)return true;
+              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==1 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==3){
+                  if (pos.getCurrentPos(playerTurn) == 1 || pos.getCurrentPos(playerTurn) == 3)
+                  return true;
+              }
+              
 
            } catch (Exception e) {
            }
            try {
-              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==6 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==8 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==9)return true;
+              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==6 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==8 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==9){
+                  if (pos.getCurrentPos(playerTurn) == 6 || pos.getCurrentPos(playerTurn) == 8 || pos.getCurrentPos(playerTurn) == 9)
+                  return true;}
 
            } catch (Exception e) {
            }
            try {
-             if (player[playerTurn].m_zonesOwnedIndexes.get(i)==14 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==16 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==17)return true;
+             if (player[playerTurn].m_zonesOwnedIndexes.get(i)==14 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==16 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==17){
+                 if (pos.getCurrentPos(playerTurn) == 14 || pos.getCurrentPos(playerTurn) == 16 || pos.getCurrentPos(playerTurn) == 17)
+                 return true;}
 
            } catch (Exception e) {
            }
            try {
-               if (player[playerTurn].m_zonesOwnedIndexes.get(i)==19 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==21 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==22)return true;
+               if (player[playerTurn].m_zonesOwnedIndexes.get(i)==19 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==21 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==22){
+                   if (pos.getCurrentPos(playerTurn) == 19 || pos.getCurrentPos(playerTurn) == 21 || pos.getCurrentPos(playerTurn) == 22)
+                   return true;}
 
            } catch (Exception e) {
            }
            try {
-                if (player[playerTurn].m_zonesOwnedIndexes.get(i)==24 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==25 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==27)return true;
+                if (player[playerTurn].m_zonesOwnedIndexes.get(i)==24 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==25 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==27){
+                    if (pos.getCurrentPos(playerTurn) == 24 || pos.getCurrentPos(playerTurn) == 25 || pos.getCurrentPos(playerTurn) == 27)
+                    return true;}
 
            } catch (Exception e) {
            }
            try {
-              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==29 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==30 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==32)return true;
+              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==29 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==30 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==32){
+                  if (pos.getCurrentPos(playerTurn) == 29 || pos.getCurrentPos(playerTurn) == 30 || pos.getCurrentPos(playerTurn) == 32)
+                  return true;}
 
            } catch (Exception e) {
            }
            try {
-              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==35)return true;
+              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==35){
+                  if (pos.getCurrentPos(playerTurn) == 35)
+                  return true;}
 
            } catch (Exception e) {
            }
            try {
-              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==5 || player[playerTurn].m_zonesOwnedIndexes.get(i)==13 || player[playerTurn].m_zonesOwnedIndexes.get(i)==23 || player[playerTurn].m_zonesOwnedIndexes.get(i)==33)return true;
+              if ((player[playerTurn].m_zonesOwnedIndexes.get(i)==5&&pos.getCurrentPos(playerTurn) == 5) ||
+                      (player[playerTurn].m_zonesOwnedIndexes.get(i)==13 && pos.getCurrentPos(playerTurn) == 13)||
+                      (player[playerTurn].m_zonesOwnedIndexes.get(i)==23 && pos.getCurrentPos(playerTurn) == 23)||
+                      (player[playerTurn].m_zonesOwnedIndexes.get(i)==33 && pos.getCurrentPos(playerTurn) == 33)){
+                  
+                  return true;}
 
            } catch (Exception e) {
            }
        } 
        return false;
    }
-    
-    
     public void UpdateBuildings(){
         for (Map.Entry<Integer, Zone> entry : zoneMap.entrySet()) {
         int key = entry.getKey();
         Object value = entry.getValue();
             if ((key>0 && key<10) || (key>18&&key<28)){
-                if (build.containsKey(key) && zoneMap.get(key).getM_NumOFBuildedHouses()== 0){
+                if (build.containsKey(key) ){
                     HBuildings HB = (HBuildings)build.get(key);
                     HB.setNumAndColor(zoneMap.get(key).getM_NumOFBuildedHouses(), null, false);
                     HB.setVisible(false);
@@ -1697,7 +1717,7 @@ public class Gameplay extends javax.swing.JFrame {
                 } 
             }
             else {
-                if (build.containsKey(key)&& zoneMap.get(key).getM_NumOFBuildedHouses()== 0 ){
+                if (build.containsKey(key) ){
                     VBuidings VB = (VBuidings)build.get(key);
                     VB.setNumAndColor(zoneMap.get(key).getM_NumOFBuildedHouses(), null, false);
                     VB.setVisible(false);
@@ -1706,98 +1726,89 @@ public class Gameplay extends javax.swing.JFrame {
         }
 
     }
-    //Build Houses
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
         for (int i=0;i<player[playerTurn].m_zonesOwnedIndexes.size();i++){
-            if (pos.getCurrentPos(playerTurn) == player[playerTurn].m_zonesOwnedIndexes.get(i)){
-                
-                if (player[playerTurn].getM_balance() > zoneMap.get(pos.getCurrentPos(playerTurn)).getM_houseCost()){
-                    
-                    try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/zapsplat_impacts_wood.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                int Cityidx = player[playerTurn].m_zonesOwnedIndexes.get(i);
-                
-           
-                
-                int idx = pos.getCurrentPos(playerTurn);
-                
+            int currentBalance = player[playerTurn].getM_balance();
+            int HouseCost = zoneMap.get(pos.getCurrentPos(playerTurn)).getM_houseCost();
+            int Cityidx = player[playerTurn].m_zonesOwnedIndexes.get(i);
+            int idx = pos.getCurrentPos(playerTurn);
+            
+            if (idx == Cityidx){
+                if ((currentBalance > HouseCost ) && BuidHotel(playerTurn)){
+
                 int ToBeBuild = zoneMap.get(Cityidx).getM_NumOFBuildedHouses() + 1;
                 
                 if ( ((idx >0 && idx <10) || (idx >18 && idx <28)) && (!zoneMap.get(Cityidx).isHotelBuilded())){
                     HBuildings HB = (HBuildings)build.get(idx);
                     
-                    if(ToBeBuild<=4){
+                    if(ToBeBuild<=5 && BuidHotel(playerTurn)){
+                         try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/zapsplat_impacts_wood.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                        
                         zoneMap.get(Cityidx).setM_NumOFBuildedHouses((zoneMap.get(Cityidx).getM_NumOFBuildedHouses())+1);
-                        HB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
+                        if (ToBeBuild<=4)
+                            HB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
+                        else{
+                            HB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), true);
+                            zoneMap.get(Cityidx).setHotelBuilded(true);
+                        }
+                        HB.setVisible(true);
+                        build.replace(idx, HB);
+                        player[playerTurn].setM_balance(currentBalance - zoneMap.get(Cityidx).getM_houseCost());
+                        break;
                     }
-                    if (BuidHotel(playerTurn) && ToBeBuild == 5){
-                        HB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), true);
-                        zoneMap.get(Cityidx).setHotelBuilded(true);
-                    }
-                    /*
-                    
-                    else if (ToBeBuild == 5 &&  !zoneMap.get(Cityidx).isHotelBuilded()){
-                         HB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), true);
-                         zoneMap.get(Cityidx).setHotelBuilded(true);
-                         
-                    }*/
-                    HB.setVisible(true);
-                    build.replace(idx, HB);
-                    int currentBalance = player[playerTurn].getM_balance();
-                    
-                    player[playerTurn].setM_balance(currentBalance - zoneMap.get(Cityidx).getM_houseCost());
-
-                    
                 }   
                 else {
                     if (!zoneMap.get(Cityidx).isHotelBuilded()){
+                        
+                        
                     VBuidings VB = (VBuidings)build.get(idx);
-                    if(ToBeBuild<=4){
+                    if(ToBeBuild<=5 && BuidHotel(playerTurn) == true){
+                         try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/zapsplat_impacts_wood.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                        
                         zoneMap.get(Cityidx).setM_NumOFBuildedHouses((zoneMap.get(Cityidx).getM_NumOFBuildedHouses())+1);
-                        VB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
+                        if(ToBeBuild<=4) VB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
+                        else {
+                            VB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), true);
+                            zoneMap.get(Cityidx).setHotelBuilded(true);
+                        }
+                        VB.setVisible(true);
+                        build.replace(idx, VB);
+                        player[playerTurn].setM_balance(currentBalance - zoneMap.get(Cityidx).getM_houseCost());
+                        break;
                     }
-                    if (BuidHotel(playerTurn) && ToBeBuild == 5){
-                        VB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), true);
-                        zoneMap.get(Cityidx).setHotelBuilded(true);
-                    }
-                    /*
-                    else if (ToBeBuild == 5 &&  !zoneMap.get(Cityidx).isHotelBuilded()){
-                         VB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), true);
-                         zoneMap.get(Cityidx).setHotelBuilded(true);
-                    }*/
-                    VB.setVisible(true);
-                    build.replace(idx, VB);
-                    
-                    int currentBalance = player[playerTurn].getM_balance();
-
-                    player[playerTurn].setM_balance(currentBalance - zoneMap.get(Cityidx).getM_houseCost());
-
                     
                 }
                 }
-                 updatePlayersBalance();
-                 repaint();
             }
-          else 
-          try {
+          else if (currentBalance < HouseCost){
+                try {
                     SoundEffects.PlaySound("src/Gameplay/soundEffects/you dont have enouph money.wav");
                 } catch (IOException ex) {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            break;
+                 break;
+          }
         }
         }
         
         
-
-        
+    updatePlayersBalance();
+    repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         zoneMap.get(8).setM_NumOFBuildedHouses(0);
