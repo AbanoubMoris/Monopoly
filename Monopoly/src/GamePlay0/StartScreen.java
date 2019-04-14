@@ -27,26 +27,25 @@ public class StartScreen extends javax.swing.JFrame {
                 ProgressBar.setValue(i);    
                 i++; 
                 try {
-                    s.sleep(40);
+                    s.sleep(20);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(StartScreen.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if (i==100) {
+                if (i>100) {
                     try {
                         NewJFrame1 NF =  new NewJFrame1();
                         NF.setVisible(true);
+                        
+                        
                     } catch (InterruptedException ex) {
                         Logger.getLogger(StartScreen.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                   
                 }
                 
        
             }
-             }});
-            
-        
-        
-                
+             }});  
     }
 
 

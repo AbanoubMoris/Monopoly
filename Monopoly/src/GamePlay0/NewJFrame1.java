@@ -10,11 +10,10 @@ import javax.swing.colorchooser.ColorSelectionModel;
 public class NewJFrame1 extends javax.swing.JFrame {
     private int NumOfPlayer;
     private Player[] player ;
-
+    
     
     public NewJFrame1() throws InterruptedException {
         initComponents();
-
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         player = new Player[6];
