@@ -192,6 +192,16 @@ public class  Zone extends javax.swing.JPanel {
     
     }
     
+    public Zone(int m_rent , int m_rentWithTwoRailRoads , int m_rentWithThreeRailRoads , int m_rentWithFourRailRoads , int m_zoneCost,int m_index)
+    {
+        this.m_rent = m_rent;
+        this.m_rentWithColorSet = m_rentWithTwoRailRoads;
+        this.m_rentWithOneHouse = m_rentWithThreeRailRoads;
+        this.m_rentWithTwoHouses = m_rentWithFourRailRoads;
+        this.m_zoneCost = m_zoneCost;
+        this.m_index = m_index;
+    }
+    
 
     
     public Zone(int m_rent , int m_rentWithColorSet , int m_rentWithOneHouse, int m_rentWithTwoHouses , int m_rentWithThreeHouses , int m_rentWithFourHouses , int m_rentWithHotel , int m_houseCost , int m_hotelCost , int m_zoneCost , String m_color , int index )

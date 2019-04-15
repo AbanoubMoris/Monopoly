@@ -4,23 +4,18 @@
  * and open the template in the editor.
  */
 package GamePlay0;
-import java.util.Arrays;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Image;
-import java.awt.List;
 import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.time.Clock;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -31,13 +26,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
-import java.lang.Math;
-import java.lang.reflect.Field;
-import static javafx.scene.paint.Color.rgb;
-import static javafx.scene.paint.Color.rgb;
-import static javafx.scene.paint.Color.rgb;
-import static javafx.scene.paint.Color.rgb;
-import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 
 
@@ -895,7 +883,7 @@ public class Gameplay extends javax.swing.JFrame {
     
     
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -910,7 +898,7 @@ public class Gameplay extends javax.swing.JFrame {
         Atlantic = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow",24);
         B24 = new GamePlay0.HBuildings();
         waterWorks = new GamePlay0.Zone(26);
-        RailRoad = new GamePlay0.Zone(23);
+        RailRoad = new GamePlay0.Zone(25,50,100,200,200,23);
         B23 = new GamePlay0.HBuildings();
         Illinois = new GamePlay0.Zone(20,40,100,300,750,925,1100,150,150,240,"Red",22);
         B22 = new GamePlay0.HBuildings();
@@ -925,7 +913,7 @@ public class Gameplay extends javax.swing.JFrame {
         Baltic = new GamePlay0.Zone(4,8,20,60,180,320,450,50,50,60,"Brown",3);
         B3 = new GamePlay0.HBuildings();
         IncomeTax = new GamePlay0.Zone(4);
-        RealRoad = new GamePlay0.Zone(5);
+        RealRoad = new GamePlay0.Zone(25,50,100,200,200,5);
         B5 = new GamePlay0.HBuildings();
         Oriental = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue",6);
         B6 = new GamePlay0.HBuildings();
@@ -941,7 +929,7 @@ public class Gameplay extends javax.swing.JFrame {
         communtityChestRight = new GamePlay0.Zone(31);
         pennsy = new GamePlay0.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green",32);
         B32 = new GamePlay0.VBuidings();
-        shorLline = new GamePlay0.Zone(33);
+        shorLline = new GamePlay0.Zone(25,50,100,200,200,33);
         B33 = new GamePlay0.VBuidings();
         OrangeChance = new GamePlay0.Zone(34);
         ParkPlace = new GamePlay0.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue",35);
@@ -951,7 +939,7 @@ public class Gameplay extends javax.swing.JFrame {
         CCT = new GamePlay0.Zone(15);
         stJames = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange",14);
         B14 = new GamePlay0.VBuidings();
-        pennsyl = new GamePlay0.Zone(13);
+        pennsyl = new GamePlay0.Zone(25,50,100,200,200,13);
         B13 = new GamePlay0.VBuidings();
         Virginnia = new GamePlay0.Zone(12,24,60,180,500,700,900,100,100,160,"Pink",12);
         B12 = new GamePlay0.VBuidings();
@@ -1520,7 +1508,7 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel3.setBounds(0, 0, 1370, 40);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
     
     Cards card = new Cards();
     
@@ -1546,6 +1534,12 @@ public class Gameplay extends javax.swing.JFrame {
                 break;    
         }
     }
+    //go to jail , pay 200 income tax
+    private void someConditions()
+    {
+        if(pos.getCurrentPos(player[playerTurn].getM_id()) == 4)player[playerTurn].setM_balance(player[playerTurn].getM_balance()- 200);
+        updatePlayersBalance();
+    }
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
@@ -1565,10 +1559,12 @@ public class Gameplay extends javax.swing.JFrame {
         //System.out.println(playerTurn);
         /////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
-        pos.SetPlayer(playerTurn,/*dice1.getDice_value() + dice2.getDice_value()*/ 1);
-        Movement(/*dice1.getDice_value() + dice2.getDice_value()*/1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+        pos.SetPlayer(playerTurn,dice1.getDice_value() + dice2.getDice_value());
+        Movement(dice1.getDice_value() + dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
         s.start();
         System.out.print("  " + playerTurn);
+        someConditions();
+        
   
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -1632,74 +1628,74 @@ public class Gameplay extends javax.swing.JFrame {
       int y[] = new int [6];
       public void initializeArray(){
           for(int i=0;i<6;i++){
-              x[i]=0;
-              y[i]=0;
+              x[i]=5;
+              y[i]=5;
           }
       }
     private void addZoneToPanel(int id, int city){  
-    //   Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn]));
         
-       //Panel p = playerPanelMap.get(id);
        lbl = new JLabel(String.valueOf(city)); //Lma geet a7ot city name kan btb3 null 3shan hya fadya 
-        //p.add(lbl);
         playerPanelMap.get(id).add(lbl);
+        for(int i=0; i<6; i++)
+            if(playerPanelMap.get(i).getComponentCount() == 1)x[i] = 5;
+        
+        lbl.setBounds(x[id], y[id], 100, 20);
+       lbl.setOpaque(true);
+       this.repaint();
         switch (id) {
             case 0:
-                if (x[0] < 120) {
+                if (x[0] < 95) {
                     x[0] += 20;
                 } else {
                     y[0] = 20;
-                    x[0] = 0;
+                    x[0] = 5;
                 }
                  break;
             case 1:
-                if (x[1] < 120) {
+                if (x[1] < 95) {
                     x[1] += 20;
                 } else {
                     y[1] = 20;
-                    x[1] = 0;
+                    x[1] = 5;
                 }
                  break;
             case 2:
-                if (x[2] < 120) {
+                if (x[2] < 95) {
                     x[2] += 20;
                 } else {
                     y[2] = 20;
-                    x[2] = 0;
+                    x[2] = 5;
                 }
                 break;
             case 3:
-                if (x[3] < 120) {
+                if (x[3] < 95) {
                     x[3] += 20;
                 } else {
                     y[3] = 20;
-                    x[3] = 0;
+                    x[3] = 5;
                 }
                 break;
             case 4:
-                if (x[4] < 120) {
+                if (x[4] < 95) {
                     x[4] += 20;
                 } else {
                     y[4] = 20;
-                    x[4] = 0;
+                    x[4] = 5;
                 }
                 break;
             case 5:
-                if (x[5] < 120) {
+                if (x[5] < 95) {
                     x[5] += 20;
                 } else {
                     y[5] = 20;
-                    x[5] = 0;
+                    x[5] = 5;
                 }
                  break;
         }
       // lbl.setBackground(z.getM_color());
       
        
-       lbl.setBounds(x[id], y[id], 100, 20);
-       lbl.setOpaque(true);
-   
-       this.repaint();
+       
        
       
     }
@@ -1707,9 +1703,8 @@ public class Gameplay extends javax.swing.JFrame {
         //ab2a zabt deh ya3m el leader
         playerPanelMap.get(id).removeAll();
         for (int i=0 ; i<player[id].m_zonesOwnedIndexes.size();i++){
-            if(player[id].m_zonesOwnedIndexes.get(id) !=city){
-                addZoneToPanel(id, city);
-            }
+                addZoneToPanel(id, player[id].m_zonesOwnedIndexes.get(i));
+            
         }
         
   /*      
@@ -1977,11 +1972,14 @@ public class Gameplay extends javax.swing.JFrame {
           else 
                player[playerTurn].setM_balance(player[playerTurn].getM_balance()+  +z.getM_zoneCost());
         int cityindex =0;
+        
                     for(int i=0;i<player[playerTurn].m_zonesOwnedIndexes.size();i++){
-                        if(player[playerTurn].m_zonesOwnedIndexes.contains(z.getM_index()))
+                        if(player[playerTurn].m_zonesOwnedIndexes.contains(i))
                             cityindex = i ;
                     }
                      player[playerTurn].m_zonesOwnedIndexes.remove(cityindex);
+                     
+                     System.out.println(cityindex);
         updatePlayersBalance();
         removeZonefromPanel(player[playerTurn].getM_id(), cityindex);
         z.setPlayer_zone(null);
@@ -1989,9 +1987,11 @@ public class Gameplay extends javax.swing.JFrame {
       z.setM_NumOFBuildedHouses(0);
       
       UpdateBuildings();
+        
+     
+        
     }//GEN-LAST:event_SellActionPerformed
-           
-           
+            
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
