@@ -628,6 +628,8 @@ public class Gameplay extends javax.swing.JFrame {
         //Player_Car.get(pl).setBounds(100, 100, 500, 500);
        //int width = 65;
        //int height = 35;
+        
+
         jButton3.setEnabled(false);
        int width = 65;
        int height = 20;
@@ -749,11 +751,13 @@ public class Gameplay extends javax.swing.JFrame {
                         else if (pos.getCurrentPos(pl) == 7 || pos.getCurrentPos(pl) == 20 || pos.getCurrentPos(pl) == 34) {
                             DrawingCards("Chance");
                         }
+                        else if (pos.getCurrentPos(pl)==28){
+                            System.out.println(pl + " -- " + pos.getCurrentPos(pl));
+                             GoToJail();
+                        }
                         
                         jButton3.setEnabled(true);
-                        
-                              
-                             
+ 
                         break;
                     }
                     jPanel1.repaint();  
@@ -762,6 +766,13 @@ public class Gameplay extends javax.swing.JFrame {
                 // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
+    }
+    private void GoToJail(){
+        //int currentPos = pos.getCurrentPos(playerTurn);
+        pos.SetPlayer(playerTurn,18); 
+        System.out.println(playerTurn + " -- " + pos.getCurrentPos(playerTurn));
+        Movement(18,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+        s.start();
     }
     
     private void DrawingCards(String cardType){
@@ -1556,12 +1567,17 @@ public class Gameplay extends javax.swing.JFrame {
         dice2.setDice_value(r.nextInt(6)+1);
         roll_Dice(dice1);
         roll_Dice(dice2);
-        //System.out.println(playerTurn);
-        /////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////
-        pos.SetPlayer(playerTurn,dice1.getDice_value() + dice2.getDice_value());
-        Movement(dice1.getDice_value() + dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+        
+        
+
+        //pos.SetPlayer(playerTurn,dice1.getDice_value() + dice2.getDice_value());
+        //Movement(dice1.getDice_value() + dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+        //s.start();
+        
+        pos.SetPlayer(playerTurn,1);
+        Movement(1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
         s.start();
+        
         System.out.print("  " + playerTurn);
         someConditions();
         
