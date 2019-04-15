@@ -25,10 +25,20 @@ public class Player {
     private int m_getOutOfJailCards;
     public ArrayList<Integer> m_zonesOwnedIndexes;  
     private Map<Integer, Integer> m_numberOfHousesOwned;
+    private int inJail;
+    
+    public int getInJail() {
+        return inJail;
+    }
+
+    public void setInJail(int inJail) {
+        this.inJail = inJail;
+    }
 
 
 
     public Player() {
+        inJail=0;
         m_getOutOfJailCards = 0;
         m_zonesOwnedIndexes = new ArrayList<Integer>();
         m_numberOfHousesOwned = new HashMap<Integer , Integer>();
@@ -36,6 +46,7 @@ public class Player {
 
 
     public Player(int m_id, Color m_color, int m_balance, boolean m_inJail, boolean m_passByGo) {
+        inJail=0;
         this.m_id = m_id;
         this.m_color = m_color;
         this.m_balance = m_balance;

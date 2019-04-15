@@ -31,7 +31,6 @@ import javax.swing.border.LineBorder;
 
 
 public class Gameplay extends javax.swing.JFrame {
-
     public void DrawGamePlay(){
             
         this.setExtendedState(JFrame.ABORT); 
@@ -627,6 +626,13 @@ public class Gameplay extends javax.swing.JFrame {
         player[playerTurn].setM_balance(player[playerTurn].getM_balance()+200);
         updatePlayersBalance();
     } 
+    private void GoToJail(){
+        //int currentPos = pos.getCurrentPos(playerTurn);
+        pos.SetPlayer(playerTurn,18); 
+        player[playerTurn].setInJail(2);
+        Movement(18,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+        s.start();
+    }
      
     public void Movement(int NumOfSteps , int x ,int y , int pl){
 
@@ -648,16 +654,11 @@ public class Gameplay extends javax.swing.JFrame {
                 }
                     int currentX = Player_Car.get(pl).getX();
                     int currentY = Player_Car.get(pl).getY();
-                    
-                   
-                        
-                    
-                    
+
                     //UP
                     if(currentX + (parking.getHeight() - currentX) > x && currentX < jPanel1.getWidth() && currentY == y){
                     for (int i=Player_Car.get(pl).getX();i<currentX+70;i++){
                     if(Player_Car.get(pl).getX()+10>=goToJail.getX()){
-                       // btn.setBounds(goToJail.getX()+85, 0, height, width);
                         Player_Car.get(pl).setBounds(goToJail.getX() + (goToJail.getWidth()-height-x) , goToJail.getY()+goToJail.getWidth()-width , height , width);
                         //cnt--;
                         break;
@@ -685,7 +686,6 @@ public class Gameplay extends javax.swing.JFrame {
                                 //cnt--;
                                 break;
                             }
-                            
                             else
                                 Player_Car.get(pl).setBounds(Player_Car.get(pl).getX(), i, height, width);
                     
@@ -695,9 +695,7 @@ public class Gameplay extends javax.swing.JFrame {
                                 Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);} 
                         }
                     }
-
                    //RIGHT
-                    
                     if(currentY + (goToJail.getWidth() - currentY )>=y && currentY<=go.getY()+go.getHeight() && currentX==go.getX()+(go.getWidth()-height-x)){
                         
                         for (int i=currentY ; i < currentY+70 ; i++){
@@ -717,7 +715,6 @@ public class Gameplay extends javax.swing.JFrame {
                         }
                         
                     }
-             
                //Down
                    // System.out.println(currentX + " " + (go.getX()+go.getWidth()) + " " + currentY + " " + (go.getY()+(go.getHeight()-height-y)));
                     if (currentX>=0 && currentX<=(go.getX()+go.getWidth()) && currentY == (go.getY()+(go.getHeight()-height-y))){
@@ -744,9 +741,6 @@ public class Gameplay extends javax.swing.JFrame {
                     cnt++;
                      //if pass by go
                     if ((pos.getCurrentPos(pl)-cnt)%36==0) {
-                         System.out.println();
-                         System.out.println();
-                        System.out.println(pos.getCurrentPos(pl)+" <--> "+cnt + " - gooooooooooooooooooooo -- " + player[pl].getM_balance());
                         PassByGo();
                     }
                     
@@ -764,8 +758,9 @@ public class Gameplay extends javax.swing.JFrame {
                         else if (pos.getCurrentPos(pl) == 7 || pos.getCurrentPos(pl) == 20 || pos.getCurrentPos(pl) == 34) {
                             DrawingCards("Chance");
                         }
+                        else if (pos.getCurrentPos(pl)==10) player[playerTurn].setInJail(2);
                         else if (pos.getCurrentPos(pl)==28){
-                            System.out.println(pl + " -- " + pos.getCurrentPos(pl));
+                            //System.out.println(pl + " -- " + pos.getCurrentPos(pl));
                              GoToJail();
                         }
                         
@@ -780,13 +775,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
     }
-    private void GoToJail(){
-        //int currentPos = pos.getCurrentPos(playerTurn);
-        pos.SetPlayer(playerTurn,18); 
-        System.out.println(playerTurn + " -- " + pos.getCurrentPos(playerTurn));
-        Movement(18,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
-        s.start();
-    }
+
     
     private void DrawingCards(String cardType){
         if(cardType == "Community Chest")
@@ -1580,20 +1569,17 @@ public class Gameplay extends javax.swing.JFrame {
         dice2.setDice_value(r.nextInt(6)+1);
         roll_Dice(dice1);
         roll_Dice(dice2);
-        
-        
-
+        //in jail
+        if(player[playerTurn].getInJail()>0){
+            player[playerTurn].setInJail(player[playerTurn].getInJail()-1);
+            playerTurn++;
+            playerTurn%=NumbOfPlayers;
+        }
         pos.SetPlayer(playerTurn,dice1.getDice_value() + dice2.getDice_value());
+        
         Movement(dice1.getDice_value() + dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
         s.start();
         
-        //pos.SetPlayer(playerTurn,1);
-        
-        //Movement(1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
-        //s.start();
-        
-        
-        System.out.print("  " + playerTurn);
         someConditions();
         
   
@@ -2009,8 +1995,6 @@ public class Gameplay extends javax.swing.JFrame {
                             cityindex = i ;
                     }
                      player[playerTurn].m_zonesOwnedIndexes.remove(cityindex);
-                     
-                     System.out.println(cityindex);
         updatePlayersBalance();
         removeZonefromPanel(player[playerTurn].getM_id(), cityindex);
         z.setPlayer_zone(null);
