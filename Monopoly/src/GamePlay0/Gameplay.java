@@ -1705,6 +1705,15 @@ public class Gameplay extends javax.swing.JFrame {
     }
     private void removeZonefromPanel(int id, int city){
         //ab2a zabt deh ya3m el leader
+        playerPanelMap.get(id).removeAll();
+        for (int i=0 ; i<player[id].m_zonesOwnedIndexes.size();i++){
+            if(player[id].m_zonesOwnedIndexes.get(id) !=city){
+                addZoneToPanel(id, city);
+            }
+        }
+        
+  /*      
+        
         for (Component c : playerPanelMap.get(id).getComponents()) {
             if (c instanceof JLabel && ((JLabel)c).getText().equals(String.valueOf(city))) {
                 
@@ -1715,7 +1724,7 @@ public class Gameplay extends javax.swing.JFrame {
                 //((JLabel)c).setText("");
             }
 }   
-
+*/
          playerPanelMap.get(id).revalidate();
          playerPanelMap.get(id).repaint();
     }
