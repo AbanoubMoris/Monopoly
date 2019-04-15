@@ -623,12 +623,12 @@ public class Gameplay extends javax.swing.JFrame {
         
     
         
+    private void PassByGo(){
+        player[playerTurn].setM_balance(player[playerTurn].getM_balance()+200);
+        updatePlayersBalance();
+    } 
      
     public void Movement(int NumOfSteps , int x ,int y , int pl){
-        //Player_Car.get(pl).setBounds(100, 100, 500, 500);
-       //int width = 65;
-       //int height = 35;
-        
 
         jButton3.setEnabled(false);
        int width = 65;
@@ -640,6 +640,7 @@ public class Gameplay extends javax.swing.JFrame {
                 int cnt = 0;
                 
                 while(true){
+                    
                      try {
                     SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_token_thimble_move.wav");
                 } catch (IOException ex) {
@@ -647,6 +648,10 @@ public class Gameplay extends javax.swing.JFrame {
                 }
                     int currentX = Player_Car.get(pl).getX();
                     int currentY = Player_Car.get(pl).getY();
+                    
+                   
+                        
+                    
                     
                     //UP
                     if(currentX + (parking.getHeight() - currentX) > x && currentX < jPanel1.getWidth() && currentY == y){
@@ -737,6 +742,14 @@ public class Gameplay extends javax.swing.JFrame {
                     
 
                     cnt++;
+                     //if pass by go
+                    if ((pos.getCurrentPos(pl)-cnt)%36==0) {
+                         System.out.println();
+                         System.out.println();
+                        System.out.println(pos.getCurrentPos(pl)+" <--> "+cnt + " - gooooooooooooooooooooo -- " + player[pl].getM_balance());
+                        PassByGo();
+                    }
+                    
                     if(cnt == NumOfSteps)
                     {
                         try {
@@ -757,7 +770,7 @@ public class Gameplay extends javax.swing.JFrame {
                         }
                         
                         jButton3.setEnabled(true);
- 
+                        cnt=0;
                         break;
                     }
                     jPanel1.repaint();  
@@ -1570,13 +1583,15 @@ public class Gameplay extends javax.swing.JFrame {
         
         
 
-        //pos.SetPlayer(playerTurn,dice1.getDice_value() + dice2.getDice_value());
-        //Movement(dice1.getDice_value() + dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+        pos.SetPlayer(playerTurn,dice1.getDice_value() + dice2.getDice_value());
+        Movement(dice1.getDice_value() + dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+        s.start();
+        
+        //pos.SetPlayer(playerTurn,1);
+        
+        //Movement(1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
         //s.start();
         
-        pos.SetPlayer(playerTurn,1);
-        Movement(1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
-        s.start();
         
         System.out.print("  " + playerTurn);
         someConditions();
