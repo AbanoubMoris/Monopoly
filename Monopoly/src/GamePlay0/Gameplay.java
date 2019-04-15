@@ -6,6 +6,7 @@
 package GamePlay0;
 import java.util.Arrays;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.List;
 import java.awt.Panel;
@@ -1638,10 +1639,10 @@ public class Gameplay extends javax.swing.JFrame {
     private void addZoneToPanel(int id, int city){  
     //   Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn]));
         
-       Panel p = playerPanelMap.get(id);
+       //Panel p = playerPanelMap.get(id);
        lbl = new JLabel(String.valueOf(city)); //Lma geet a7ot city name kan btb3 null 3shan hya fadya 
-        p.add(lbl);
-      //  playerPanelMap.get(id).add(lbl);
+        //p.add(lbl);
+        playerPanelMap.get(id).add(lbl);
         switch (id) {
             case 0:
                 if (x[0] < 120) {
@@ -1703,16 +1704,27 @@ public class Gameplay extends javax.swing.JFrame {
       
     }
     private void removeZonefromPanel(int id, int city){
-         Panel p = playerPanelMap.get(id);
-       
-                p.remove(lbl);
-           
-       
-         p.revalidate();
-         p.repaint();
+        //ab2a zabt deh ya3m el leader
+        for (Component c : playerPanelMap.get(id).getComponents()) {
+            if (c instanceof JLabel && ((JLabel)c).getText().equals(String.valueOf(city))) {
+                
+                //if (((JLabel)c).getText().equals(String.valueOf(city))){
+                    System.out.println("remove -- " + ((JLabel)c).getText() + "  ");
+                    playerPanelMap.get(id).remove(((JLabel)c));
+               // }
+                //((JLabel)c).setText("");
+            }
+}   
+
+         playerPanelMap.get(id).revalidate();
+         playerPanelMap.get(id).repaint();
     }
     private void Trade_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Trade_btnActionPerformed
         // TODO add your handling code here:
+
+    
+        if (zoneMap.get(pos.getCurrentPos(playerTurn)).getPlayer_zone() != null &&!player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))  ){
+            //Trade_btn.setEnabled(false);
         Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn].getM_id()));
               Player p = z.getPlayer_zone();
          trade_pnl1.setVisible(true);
@@ -1723,7 +1735,8 @@ public class Gameplay extends javax.swing.JFrame {
              trade_pnl1.getId_lbl1().setBackground(player[playerTurn].getM_color());
              trade_pnl1.getId_lbl2().setBackground(p.getM_color());
           trade_pnl1.validate();
-          trade_pnl1.repaint();            
+          trade_pnl1.repaint();
+        }
     }//GEN-LAST:event_Trade_btnActionPerformed
             
     
@@ -1907,18 +1920,15 @@ public class Gameplay extends javax.swing.JFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        zoneMap.get(8).setM_NumOFBuildedHouses(0);
-        zoneMap.get(9).setM_NumOFBuildedHouses(0);
-        zoneMap.get(11).setM_NumOFBuildedHouses(0);
-        UpdateBuildings();
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void Deal_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Deal_btnActionPerformed
         // TODO add your handling code here:
               Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn].getM_id()));
               Player p = z.getPlayer_zone();
-              
-             
+   
         if(!player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))){
             if(p.m_zonesOwnedIndexes.contains(z.getM_index())){
                 if(player[playerTurn].getM_balance() >=  Integer.valueOf(trade_pnl1.getMoney_txt().getText())){
@@ -1938,6 +1948,8 @@ public class Gameplay extends javax.swing.JFrame {
                      addZoneToPanel(playerTurn, zoneMap.get(pos.getCurrentPos(playerTurn)).getM_index());
         }    
            trade_pnl1.setVisible(false);
+           Deal_btn.setVisible(false);
+           NoDeal_btn.setVisible(false);
     }//GEN-LAST:event_Deal_btnActionPerformed
             
     private void NoDeal_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoDeal_btnActionPerformed
@@ -1951,7 +1963,10 @@ public class Gameplay extends javax.swing.JFrame {
         // TODO add your handling code here:
         Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn].getM_id()));
       if(player[playerTurn].m_zonesOwnedIndexes.contains(z.getM_index())){
-        player[playerTurn].setM_balance(player[playerTurn].getM_balance()+ z.getM_zoneCost());
+          if (z.getM_NumOFBuildedHouses()!=0)
+            player[playerTurn].setM_balance(player[playerTurn].getM_balance()+ (z.getM_NumOFBuildedHouses() * z.getM_houseCost()) +z.getM_zoneCost() );
+          else 
+               player[playerTurn].setM_balance(player[playerTurn].getM_balance()+  +z.getM_zoneCost());
         int cityindex =0;
                     for(int i=0;i<player[playerTurn].m_zonesOwnedIndexes.size();i++){
                         if(player[playerTurn].m_zonesOwnedIndexes.contains(z.getM_index()))
@@ -1960,7 +1975,11 @@ public class Gameplay extends javax.swing.JFrame {
                      player[playerTurn].m_zonesOwnedIndexes.remove(cityindex);
         updatePlayersBalance();
         removeZonefromPanel(player[playerTurn].getM_id(), cityindex);
-        }        
+        z.setPlayer_zone(null);
+        }
+      z.setM_NumOFBuildedHouses(0);
+      
+      UpdateBuildings();
     }//GEN-LAST:event_SellActionPerformed
            
            

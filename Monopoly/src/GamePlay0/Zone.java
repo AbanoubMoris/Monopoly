@@ -44,7 +44,7 @@ public class  Zone extends javax.swing.JPanel {
     private int m_index;
     private int m_NumOFBuildedHouses;
     private boolean hotelBuilded;
-    private Player player_zone;
+    private Player player_zone = null;
 
     public Player getPlayer_zone() {
         return player_zone;
