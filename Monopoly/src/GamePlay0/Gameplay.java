@@ -632,7 +632,7 @@ public class Gameplay extends javax.swing.JFrame {
     private void GoToJail(){
         //int currentPos = pos.getCurrentPos(playerTurn);
         pos.SetPlayer(playerTurn,18); 
-        player[playerTurn].setInJail(3);
+        player[playerTurn].setInJail(2);
         Movement(18,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
         s.start();
     }
@@ -765,7 +765,7 @@ public class Gameplay extends javax.swing.JFrame {
                         else if (pos.getCurrentPos(pl) == 7 || pos.getCurrentPos(pl) == 20 || pos.getCurrentPos(pl) == 34) {
                             DrawingCards("Chance");
                         }
-                        else if (pos.getCurrentPos(pl)==10) player[playerTurn].setInJail(3);
+                        else if (pos.getCurrentPos(pl)==10) player[playerTurn].setInJail(2);
                         else if (pos.getCurrentPos(pl)==28){
                              GoToJail();
                         }
@@ -807,7 +807,7 @@ public class Gameplay extends javax.swing.JFrame {
                     pos.SetPlayer(playerTurn,(46-currentPos)%36);   
                     Movement((46-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
                     //player[playerTurn].setM_inJail(true);
-                    player[playerTurn].setInJail(3);
+                    player[playerTurn].setInJail(2);
                     s.start();
                 }
                 updatePlayersBalance();
@@ -860,7 +860,7 @@ public class Gameplay extends javax.swing.JFrame {
                     pos.SetPlayer(playerTurn,(46-currentPos)%36);   
                     Movement((46-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
                     //player[playerTurn].setM_inJail(true);
-                    player[playerTurn].setInJail(3);
+                    player[playerTurn].setInJail(2);
                     s.start();
                 }
                 else if(randomNumber==12 && currentPos == 7)
@@ -1570,8 +1570,6 @@ public class Gameplay extends javax.swing.JFrame {
     
     private void showJailPanel()
     {
-        if(player[playerTurn].getInJail()>0)
-            {
                 UIManager.put("OptionPane.cancelButtonText", "Skip Turn");
                 UIManager.put("OptionPane.noButtonText", "Use Card");
                 UIManager.put("OptionPane.yesButtonText", "Pay 50$");
@@ -1622,9 +1620,7 @@ public class Gameplay extends javax.swing.JFrame {
             UIManager.put("OptionPane.yesButtonText", "Yes");
             
            // playerTurn++;
-           // playerTurn%=NumbOfPlayers;
-                
-            }
+           // playerTurn%=NumbOfPlayers;   
     }
     
     private void turnIndicator()
@@ -1651,7 +1647,6 @@ public class Gameplay extends javax.swing.JFrame {
         //in jail
         if(player[playerTurn].getInJail()>0)
         {
-            player[playerTurn].setInJail(player[playerTurn].getInJail()-1);
             showJailPanel();
         }
         
@@ -1667,6 +1662,9 @@ public class Gameplay extends javax.swing.JFrame {
             Movement(dice1.getDice_value()+dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
             s.start();
             //dice1.getDice_value()+dice2.getDice_value()
+        }
+        else{
+             player[playerTurn].setInJail(player[playerTurn].getInJail()-1);
         }
   
         
