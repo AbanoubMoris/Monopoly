@@ -361,6 +361,57 @@ public class Gameplay extends javax.swing.JFrame {
                 displayCardInfo("src/Gameplay/img/cards/StatesAvenue.png");
             }
         });
+        
+        RealRoad.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/RR.png");
+            }
+        });
+        
+        pennsyl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/PR.png");
+            }
+        });
+        
+        shorLline.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/SL.png");
+            }
+        });
+        waterWorks.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/WW.png");
+            }
+        });
     
         //this.repaint();
     }
@@ -917,7 +968,7 @@ public class Gameplay extends javax.swing.JFrame {
         B25 = new GamePlay0.HBuildings();
         Atlantic = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow",24);
         B24 = new GamePlay0.HBuildings();
-        waterWorks = new GamePlay0.Zone(26);
+        waterWorks = new GamePlay0.Zone(4,150,26);
         RailRoad = new GamePlay0.Zone(23);
         B23 = new GamePlay0.HBuildings();
         Illinois = new GamePlay0.Zone(20,40,100,300,750,925,1100,150,150,240,"Red",22);
@@ -933,7 +984,7 @@ public class Gameplay extends javax.swing.JFrame {
         Baltic = new GamePlay0.Zone(4,8,20,60,180,320,450,50,50,60,"Brown",3);
         B3 = new GamePlay0.HBuildings();
         IncomeTax = new GamePlay0.Zone(4);
-        RealRoad = new GamePlay0.Zone(5);
+        RealRoad = new GamePlay0.Zone(25,50,100,200,200,5);
         B5 = new GamePlay0.HBuildings();
         Oriental = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue",6);
         B6 = new GamePlay0.HBuildings();
@@ -949,7 +1000,7 @@ public class Gameplay extends javax.swing.JFrame {
         communtityChestRight = new GamePlay0.Zone(31);
         pennsy = new GamePlay0.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green",32);
         B32 = new GamePlay0.VBuidings();
-        shorLline = new GamePlay0.Zone(33);
+        shorLline = new GamePlay0.Zone(25,50,100,200,200,33);
         B33 = new GamePlay0.VBuidings();
         OrangeChance = new GamePlay0.Zone(34);
         ParkPlace = new GamePlay0.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue",35);
@@ -959,7 +1010,7 @@ public class Gameplay extends javax.swing.JFrame {
         CCT = new GamePlay0.Zone(15);
         stJames = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange",14);
         B14 = new GamePlay0.VBuidings();
-        pennsyl = new GamePlay0.Zone(13);
+        pennsyl = new GamePlay0.Zone(25,50,100,200,200,13);
         B13 = new GamePlay0.VBuidings();
         Virginnia = new GamePlay0.Zone(12,24,60,180,500,700,900,100,100,160,"Pink",12);
         B12 = new GamePlay0.VBuidings();
@@ -2262,33 +2313,35 @@ public class Gameplay extends javax.swing.JFrame {
             {  
                 int totalBuildings = zoneMap.get(position).getM_NumOFBuildedHouses();
                 int totalRent = 0;
-                
-                switch(totalBuildings)
-                {
-                    case 0:
-                        totalRent = zoneMap.get(position).getM_rent();
-                        if(BuidHotel(i))totalRent = zoneMap.get(position).getM_rentWithColorSet();
-                        break;
-                    case 1:
-                        totalRent = zoneMap.get(position).getM_rentWithOneHouse();
-                        break;
-                    case 2:
-                        totalRent = zoneMap.get(position).getM_rentWithTwoHouses();
-                        break;
-                        
-                    case 3:
-                        totalRent = zoneMap.get(position).getM_rentWithThreeHouses();
-                        break;
-                        
-                    case 4:
-                        totalRent = zoneMap.get(position).getM_rentWithThreeHouses();
-                        break;
-                        
-                    case 5:
-                        totalRent = zoneMap.get(position).getM_rentWithHotel();
-                        break;
-                    
-                }
+                if (pos.getCurrentPos(player[id].getM_id()) != 28) {
+                    switch (totalBuildings) {
+                        case 0:
+                            totalRent = zoneMap.get(position).getM_rent();
+                            if (BuidHotel(i)) {
+                                totalRent = zoneMap.get(position).getM_rentWithColorSet();
+                            }
+                            break;
+                        case 1:
+                            totalRent = zoneMap.get(position).getM_rentWithOneHouse();
+                            break;
+                        case 2:
+                            totalRent = zoneMap.get(position).getM_rentWithTwoHouses();
+                            break;
+
+                        case 3:
+                            totalRent = zoneMap.get(position).getM_rentWithThreeHouses();
+                            break;
+
+                        case 4:
+                            totalRent = zoneMap.get(position).getM_rentWithThreeHouses();
+                            break;
+
+                        case 5:
+                            totalRent = zoneMap.get(position).getM_rentWithHotel();
+                            break;
+
+                    }
+                }else if(pos.getCurrentPos(player[id].getM_id()) == 28)totalRent = zoneMap.get(position).getM_rent()*(dice1.getDice_value() + dice2.getDice_value());
                 player[i].setM_balance(player[i].getM_balance() + totalRent);
                 player[id].setM_balance(player[id].getM_balance() - totalRent);
                 updatePlayersBalance();

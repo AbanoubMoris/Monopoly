@@ -191,6 +191,11 @@ public class  Zone extends javax.swing.JPanel {
         this.m_index = index;
     
     }
+    public Zone(int m_rent , int m_zoneCost , int m_index){
+        this.m_rent = m_index;
+        this.m_zoneCost = m_zoneCost;
+        this.m_index = m_index;
+    }
     
     public Zone(int m_rent , int m_rentWithTwoRailRoads , int m_rentWithThreeRailRoads , int m_rentWithFourRailRoads , int m_zoneCost,int m_index)
     {
