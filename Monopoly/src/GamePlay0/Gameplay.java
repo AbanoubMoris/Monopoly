@@ -2322,7 +2322,7 @@ public class Gameplay extends javax.swing.JFrame {
     private void checkIfZoneIsOwned(int position, int id) {
         for(int i=0; i<NumbOfPlayers; i++)
         {
-            if(player[i].m_zonesOwnedIndexes.contains(position) && (pos.getCurrentPos(player[id].getM_id()) == pos.getCurrentPos(player[i].getM_id())))
+            if(player[i].m_zonesOwnedIndexes.contains(position))
             {  
                 int totalBuildings = zoneMap.get(position).getM_NumOFBuildedHouses();
                 int totalRent = 0;
@@ -2346,7 +2346,7 @@ public class Gameplay extends javax.swing.JFrame {
                             break;
 
                         case 4:
-                            totalRent = zoneMap.get(position).getM_rentWithThreeHouses();
+                            totalRent = zoneMap.get(position).getM_rentWithFourHouses();
                             break;
 
                         case 5:
