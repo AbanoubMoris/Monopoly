@@ -1629,7 +1629,7 @@ public class Gameplay extends javax.swing.JFrame {
         {
             playerPanelAccessMap.get(i).setBorder(null);
         }
-        playerPanelAccessMap.get(playerTurn).setBorder(BorderFactory.createLineBorder(Color.RED,2));
+        playerPanelAccessMap.get(playerTurn).setBorder(BorderFactory.createLineBorder(Color.RED,3));
     }
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

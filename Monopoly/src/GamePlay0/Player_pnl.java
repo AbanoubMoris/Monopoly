@@ -78,7 +78,7 @@ public class Player_pnl extends javax.swing.JPanel {
 
         city.setLayout(null);
         add(city);
-        city.setBounds(0, 40, 120, 80);
+        city.setBounds(4, 40, 110, 80);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Player ID:");
@@ -93,14 +93,14 @@ public class Player_pnl extends javax.swing.JPanel {
         Playercolor_pnlLayout.setHorizontalGroup(
             Playercolor_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Playercolor_pnlLayout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
             .addGroup(Playercolor_pnlLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ID_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(ID_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
         );
         Playercolor_pnlLayout.setVerticalGroup(
@@ -116,7 +116,7 @@ public class Player_pnl extends javax.swing.JPanel {
         );
 
         add(Playercolor_pnl);
-        Playercolor_pnl.setBounds(-10, 0, 140, 33);
+        Playercolor_pnl.setBounds(4, 5, 112, 33);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Balance:");
