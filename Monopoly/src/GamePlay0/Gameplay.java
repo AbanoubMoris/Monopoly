@@ -1648,8 +1648,8 @@ public class Gameplay extends javax.swing.JFrame {
             dice2.setDice_value(r.nextInt(6)+1);
             roll_Dice(dice1);
             roll_Dice(dice2);
-            pos.SetPlayer(playerTurn,dice1.getDice_value()+dice2.getDice_value());
-            Movement(dice1.getDice_value()+dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+            pos.SetPlayer(playerTurn,/*dice1.getDice_value()+dice2.getDice_value()*/1);
+            Movement(/*dice1.getDice_value()+dice2.getDice_value()*/1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
             s.start();
             //dice1.getDice_value()+dice2.getDice_value()
         }
@@ -2165,6 +2165,7 @@ public class Gameplay extends javax.swing.JFrame {
 
         JLabel label = new JLabel(new ImageIcon(img));
         panel.add(label);
+        
 
         return panel;
     }
@@ -2254,35 +2255,37 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone waterWorks;
     // End of variables declaration//GEN-END:variables
 
-    private void checkIfZoneIsOwned(int pos, int id) {
+    private void checkIfZoneIsOwned(int position, int id) {
         for(int i=0; i<NumbOfPlayers; i++)
         {
-            if(player[i].m_zonesOwnedIndexes.contains(pos))
+            if(player[i].m_zonesOwnedIndexes.contains(position) && (pos.getCurrentPos(player[id].getM_id()) == pos.getCurrentPos(player[i].getM_id())))
             {  
-                int totalBuildings = zoneMap.get(pos).getM_NumOFBuildedHouses();
+                int totalBuildings = zoneMap.get(position).getM_NumOFBuildedHouses();
                 int totalRent = 0;
+                
                 switch(totalBuildings)
                 {
                     case 0:
-                        totalRent = zoneMap.get(pos).getM_rent();
+                        totalRent = zoneMap.get(position).getM_rent();
+                        if(BuidHotel(i))totalRent = zoneMap.get(position).getM_rentWithColorSet();
                         break;
                     case 1:
-                        totalRent = zoneMap.get(pos).getM_rentWithOneHouse();
+                        totalRent = zoneMap.get(position).getM_rentWithOneHouse();
                         break;
                     case 2:
-                        totalRent = zoneMap.get(pos).getM_rentWithTwoHouses();
+                        totalRent = zoneMap.get(position).getM_rentWithTwoHouses();
                         break;
                         
                     case 3:
-                        totalRent = zoneMap.get(pos).getM_rentWithThreeHouses();
+                        totalRent = zoneMap.get(position).getM_rentWithThreeHouses();
                         break;
                         
                     case 4:
-                        totalRent = zoneMap.get(pos).getM_rentWithThreeHouses();
+                        totalRent = zoneMap.get(position).getM_rentWithThreeHouses();
                         break;
                         
                     case 5:
-                        totalRent = zoneMap.get(pos).getM_rentWithHotel();
+                        totalRent = zoneMap.get(position).getM_rentWithHotel();
                         break;
                     
                 }
