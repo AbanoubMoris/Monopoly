@@ -19,12 +19,14 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
 
@@ -371,7 +373,7 @@ public class Gameplay extends javax.swing.JFrame {
     //JButton btn1;
     //JButton btn2;
     int playerTurn = -1;
-
+    int turn = 0;
     public int getPlayerTurn() {
         return playerTurn;
     }
@@ -442,7 +444,7 @@ public class Gameplay extends javax.swing.JFrame {
             Player_Car.get(i).setBounds(go.getX(), go.getY()+(go.getWidth()-20-postion), 60, 20);
             jPanel1.add(Player_Car.get(i));
             
-            player[i].setM_balance(7000);
+            player[i].setM_balance(1500);
             player[i].setM_inJail(false);
             player[i].setM_passByGo(false);
         }
@@ -462,6 +464,7 @@ public class Gameplay extends javax.swing.JFrame {
         
         zoneMapInitialization();
         playerPanelMapInitialization();
+        playerPanelAccsessMapInitialization();
         DrawGamePlay();
         DisplayCiyInfo();
         initializeArray();
@@ -629,14 +632,14 @@ public class Gameplay extends javax.swing.JFrame {
     private void GoToJail(){
         //int currentPos = pos.getCurrentPos(playerTurn);
         pos.SetPlayer(playerTurn,18); 
-        player[playerTurn].setInJail(2);
+        player[playerTurn].setInJail(3);
         Movement(18,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
         s.start();
     }
      
     public void Movement(int NumOfSteps , int x ,int y , int pl){
 
-        jButton3.setEnabled(false);
+       jButton3.setEnabled(false);
        int width = 65;
        int height = 20;
         s = new Thread ( new Runnable() {
@@ -739,10 +742,14 @@ public class Gameplay extends javax.swing.JFrame {
                     
 
                     cnt++;
+                    
                      //if pass by go
-                    if ((pos.getCurrentPos(pl)-cnt)%36==0) {
+                    //(pos.getCurrentPos(pl)-cnt)%36==0
+                    if ((pos.getCurrentPos(pl)-cnt)%36==0 && (turn-1)!=playerTurn && player[playerTurn].getInJail()==0)
+                    {
                         PassByGo();
                     }
+                    
                     
                     if(cnt == NumOfSteps)
                     {
@@ -758,12 +765,12 @@ public class Gameplay extends javax.swing.JFrame {
                         else if (pos.getCurrentPos(pl) == 7 || pos.getCurrentPos(pl) == 20 || pos.getCurrentPos(pl) == 34) {
                             DrawingCards("Chance");
                         }
-                        else if (pos.getCurrentPos(pl)==10) player[playerTurn].setInJail(2);
+                        else if (pos.getCurrentPos(pl)==10) player[playerTurn].setInJail(3);
                         else if (pos.getCurrentPos(pl)==28){
-                            //System.out.println(pl + " -- " + pos.getCurrentPos(pl));
                              GoToJail();
                         }
-                        
+                        someConditions();
+                        //System.out.println(pl + " -- " + pos.getCurrentPos(pl));
                         jButton3.setEnabled(true);
                         cnt=0;
                         break;
@@ -794,13 +801,13 @@ public class Gameplay extends javax.swing.JFrame {
                     pos.SetPlayer(playerTurn,(36-currentPos)%36);   
                     Movement((36-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
                     s.start();
-                    //player[playerTurn].setM_balance(player[playerTurn].getM_balance()+200);
                 }
                 else if(randomNumber==7)
                 {
                     pos.SetPlayer(playerTurn,(46-currentPos)%36);   
                     Movement((46-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
-                    player[playerTurn].setM_inJail(true);
+                    //player[playerTurn].setM_inJail(true);
+                    player[playerTurn].setInJail(3);
                     s.start();
                 }
                 updatePlayersBalance();
@@ -817,7 +824,6 @@ public class Gameplay extends javax.swing.JFrame {
                     pos.SetPlayer(playerTurn,(36-currentPos)%36);   
                     Movement((36-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
                     s.start();
-                    //player[playerTurn].setM_balance(player[playerTurn].getM_balance()+200);
                 }
                 else if(randomNumber==2)
                 {
@@ -853,7 +859,8 @@ public class Gameplay extends javax.swing.JFrame {
                 {
                     pos.SetPlayer(playerTurn,(46-currentPos)%36);   
                     Movement((46-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
-                    player[playerTurn].setM_inJail(true);
+                    //player[playerTurn].setM_inJail(true);
+                    player[playerTurn].setInJail(3);
                     s.start();
                 }
                 else if(randomNumber==12 && currentPos == 7)
@@ -1554,34 +1561,113 @@ public class Gameplay extends javax.swing.JFrame {
         updatePlayersBalance();
     }
     
+    private JPanel jailPanel()
+    {
+        JPanel panel = new JPanel();
+        panel.setBorder(new LineBorder(Color.black, 10));
+        return panel;
+    }
+    
+    private void showJailPanel()
+    {
+        if(player[playerTurn].getInJail()>0)
+            {
+                UIManager.put("OptionPane.cancelButtonText", "Skip Turn");
+                UIManager.put("OptionPane.noButtonText", "Use Card");
+                UIManager.put("OptionPane.yesButtonText", "Pay 50$");
+                while(true)
+                {
+                    int input = JOptionPane.showConfirmDialog(jailPanel(),"Pay 50$ to get out of jail or Use a \"Get Out of Jail\" card or Skip your turn" ,"You Are In Jail!" , JOptionPane.YES_NO_CANCEL_OPTION , JOptionPane.PLAIN_MESSAGE);
+
+                    if(input==0)
+                    {
+                        if(player[playerTurn].getM_balance()>=50)
+                        {
+                            player[playerTurn].setInJail(0);
+                            player[playerTurn].setM_balance(player[playerTurn].getM_balance()-50);
+                            updatePlayersBalance();
+                            break;
+                        }
+                        else
+                        {
+                            try {
+                            SoundEffects.PlaySound("src/Gameplay/soundEffects/you dont have enouph money.wav");
+                        } catch (IOException ex) {
+                            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        }
+                    }
+                    else if(input==1)
+                    {
+                        if(player[playerTurn].getM_getOutOfJailCards()>0)
+                        {
+                            player[playerTurn].setInJail(0);
+                            player[playerTurn].setM_getOutOfJailCards(player[playerTurn].getM_getOutOfJailCards()-1);
+                            break;
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "You Dont Have Cards");
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                
+                }
+            // return them to default
+            UIManager.put("OptionPane.cancelButtonText", "Cancel");
+            UIManager.put("OptionPane.noButtonText", "No");
+            UIManager.put("OptionPane.yesButtonText", "Yes");
+            
+           // playerTurn++;
+           // playerTurn%=NumbOfPlayers;
+                
+            }
+    }
+    
+    private void turnIndicator()
+    {
+        for(int i=0; i<NumbOfPlayers; i++)
+        {
+            playerPanelAccessMap.get(i).setBorder(null);
+        }
+        playerPanelAccessMap.get(playerTurn).setBorder(BorderFactory.createLineBorder(Color.RED,2));
+    }
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
                     } catch (IOException ex) {
             Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        turn++;
         playerTurn++;
         playerTurn%=NumbOfPlayers;
-   
-        Random r = new Random();
-        Random z = new Random();
-        dice1.setDice_value(r.nextInt(6)+1);
-        dice2.setDice_value(r.nextInt(6)+1);
-        roll_Dice(dice1);
-        roll_Dice(dice2);
+        turnIndicator();
+        
         //in jail
-        if(player[playerTurn].getInJail()>0){
+        if(player[playerTurn].getInJail()>0)
+        {
             player[playerTurn].setInJail(player[playerTurn].getInJail()-1);
-            playerTurn++;
-            playerTurn%=NumbOfPlayers;
+            showJailPanel();
         }
-        pos.SetPlayer(playerTurn,dice1.getDice_value() + dice2.getDice_value());
         
-        Movement(dice1.getDice_value() + dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
-        s.start();
-        
-        someConditions();
-        
+        if(player[playerTurn].getInJail()==0)
+        {
+            Random r = new Random();
+            Random z = new Random();
+            dice1.setDice_value(r.nextInt(6)+1);
+            dice2.setDice_value(r.nextInt(6)+1);
+            roll_Dice(dice1);
+            roll_Dice(dice2);
+            pos.SetPlayer(playerTurn,dice1.getDice_value()+dice2.getDice_value());
+            Movement(dice1.getDice_value()+dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+            s.start();
+            //dice1.getDice_value()+dice2.getDice_value()
+        }
   
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -1640,6 +1726,19 @@ public class Gameplay extends javax.swing.JFrame {
    
     }
      
+    
+    Map<Integer , Player_pnl>playerPanelAccessMap = new HashMap<Integer, Player_pnl>();
+    private void playerPanelAccsessMapInitialization(){
+        
+        playerPanelAccessMap.put(0, player_pnl1);
+        playerPanelAccessMap.put(1, player_pnl2);
+        playerPanelAccessMap.put(2, player_pnl3);
+        playerPanelAccessMap.put(3, player_pnl4);
+        playerPanelAccessMap.put(4, player_pnl5);
+        playerPanelAccessMap.put(5, player_pnl6);
+   
+    }
+    
       JLabel lbl;
       int x[] = new int [6];
       int y[] = new int [6];

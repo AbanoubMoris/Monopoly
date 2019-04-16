@@ -25,7 +25,25 @@ public class Player {
     private int m_getOutOfJailCards;
     public ArrayList<Integer> m_zonesOwnedIndexes;  
     private Map<Integer, Integer> m_numberOfHousesOwned;
+    private int m_numberOfHouses;
+    private int m_numberOFHotels;
     private int inJail;
+
+    public int getM_numberOfHouses() {
+        return m_numberOfHouses;
+    }
+
+    public void setM_numberOfHouses(int m_numberOfHouses) {
+        this.m_numberOfHouses = m_numberOfHouses;
+    }
+
+    public int getM_numberOFHotels() {
+        return m_numberOFHotels;
+    }
+
+    public void setM_numberOFHotels(int m_numberOFHotels) {
+        this.m_numberOFHotels = m_numberOFHotels;
+    }
     
     public int getInJail() {
         return inJail;
@@ -40,8 +58,11 @@ public class Player {
     public Player() {
         inJail=0;
         m_getOutOfJailCards = 0;
+        m_inJail = false;
         m_zonesOwnedIndexes = new ArrayList<Integer>();
         m_numberOfHousesOwned = new HashMap<Integer , Integer>();
+        m_numberOfHouses = 0;
+        m_numberOFHotels = 0;
     }
 
 
@@ -55,6 +76,8 @@ public class Player {
         m_getOutOfJailCards = 0;
         m_zonesOwnedIndexes = new ArrayList<Integer>();
         m_numberOfHousesOwned = new HashMap<Integer , Integer>();
+        m_numberOfHouses = 0;
+        m_numberOFHotels = 0;
     }
 
     public int getM_getOutOfJailCards() {
