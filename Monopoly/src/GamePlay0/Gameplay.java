@@ -1648,8 +1648,8 @@ public class Gameplay extends javax.swing.JFrame {
             dice2.setDice_value(r.nextInt(6)+1);
             roll_Dice(dice1);
             roll_Dice(dice2);
-            pos.SetPlayer(playerTurn,/*dice1.getDice_value()+dice2.getDice_value()*/1);
-            Movement(/*dice1.getDice_value()+dice2.getDice_value()*/1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+            pos.SetPlayer(playerTurn,dice1.getDice_value()+dice2.getDice_value());
+            Movement(dice1.getDice_value()+dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
             s.start();
             //dice1.getDice_value()+dice2.getDice_value()
         }
