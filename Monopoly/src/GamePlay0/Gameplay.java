@@ -903,7 +903,7 @@ public class Gameplay extends javax.swing.JFrame {
     
     
     @SuppressWarnings("unchecked")
-    
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -918,7 +918,7 @@ public class Gameplay extends javax.swing.JFrame {
         Atlantic = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow",24);
         B24 = new GamePlay0.HBuildings();
         waterWorks = new GamePlay0.Zone(26);
-        RailRoad = new GamePlay0.Zone(25,50,100,200,200,23);
+        RailRoad = new GamePlay0.Zone(23);
         B23 = new GamePlay0.HBuildings();
         Illinois = new GamePlay0.Zone(20,40,100,300,750,925,1100,150,150,240,"Red",22);
         B22 = new GamePlay0.HBuildings();
@@ -933,7 +933,7 @@ public class Gameplay extends javax.swing.JFrame {
         Baltic = new GamePlay0.Zone(4,8,20,60,180,320,450,50,50,60,"Brown",3);
         B3 = new GamePlay0.HBuildings();
         IncomeTax = new GamePlay0.Zone(4);
-        RealRoad = new GamePlay0.Zone(25,50,100,200,200,5);
+        RealRoad = new GamePlay0.Zone(5);
         B5 = new GamePlay0.HBuildings();
         Oriental = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue",6);
         B6 = new GamePlay0.HBuildings();
@@ -949,7 +949,7 @@ public class Gameplay extends javax.swing.JFrame {
         communtityChestRight = new GamePlay0.Zone(31);
         pennsy = new GamePlay0.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green",32);
         B32 = new GamePlay0.VBuidings();
-        shorLline = new GamePlay0.Zone(25,50,100,200,200,33);
+        shorLline = new GamePlay0.Zone(33);
         B33 = new GamePlay0.VBuidings();
         OrangeChance = new GamePlay0.Zone(34);
         ParkPlace = new GamePlay0.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue",35);
@@ -959,7 +959,7 @@ public class Gameplay extends javax.swing.JFrame {
         CCT = new GamePlay0.Zone(15);
         stJames = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange",14);
         B14 = new GamePlay0.VBuidings();
-        pennsyl = new GamePlay0.Zone(25,50,100,200,200,13);
+        pennsyl = new GamePlay0.Zone(13);
         B13 = new GamePlay0.VBuidings();
         Virginnia = new GamePlay0.Zone(12,24,60,180,500,700,900,100,100,160,"Pink",12);
         B12 = new GamePlay0.VBuidings();
@@ -1458,7 +1458,7 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(player_pnl1);
         player_pnl1.setBounds(10, 10, 120, 150);
         jPanel2.add(player_pnl2);
-        player_pnl2.setBounds(160, 10, 130, 150);
+        player_pnl2.setBounds(160, 10, 120, 150);
         jPanel2.add(player_pnl3);
         player_pnl3.setBounds(320, 10, 120, 150);
         jPanel2.add(player_pnl4);
@@ -1528,8 +1528,7 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel3.setBounds(0, 0, 1370, 40);
 
         pack();
-    }
-    
+    }// </editor-fold>//GEN-END:initComponents
     Cards card = new Cards();
     
     public void roll_Dice(Dice d){

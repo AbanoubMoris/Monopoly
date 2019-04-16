@@ -1285,7 +1285,7 @@
         <Component class="GamePlay0.Player_pnl" name="player_pnl2">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="160" y="10" width="130" height="-1"/>
+              <AbsoluteConstraints x="160" y="10" width="120" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
