@@ -981,7 +981,7 @@ public class Gameplay extends javax.swing.JFrame {
         B25 = new GamePlay0.HBuildings();
         Atlantic = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow",24);
         B24 = new GamePlay0.HBuildings();
-        waterWorks = new GamePlay0.Zone(4,150,26);
+        waterWorks = new GamePlay0.Zone(26);
         RailRoad = new GamePlay0.Zone(23);
         B23 = new GamePlay0.HBuildings();
         Illinois = new GamePlay0.Zone(20,40,100,300,750,925,1100,150,150,240,"Red",22);
@@ -997,7 +997,7 @@ public class Gameplay extends javax.swing.JFrame {
         Baltic = new GamePlay0.Zone(4,8,20,60,180,320,450,50,50,60,"Brown",3);
         B3 = new GamePlay0.HBuildings();
         IncomeTax = new GamePlay0.Zone(4);
-        RealRoad = new GamePlay0.Zone(25,50,100,200,200,5);
+        RealRoad = new GamePlay0.Zone(5);
         B5 = new GamePlay0.HBuildings();
         Oriental = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue",6);
         B6 = new GamePlay0.HBuildings();
@@ -1013,7 +1013,7 @@ public class Gameplay extends javax.swing.JFrame {
         communtityChestRight = new GamePlay0.Zone(31);
         pennsy = new GamePlay0.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green",32);
         B32 = new GamePlay0.VBuidings();
-        shorLline = new GamePlay0.Zone(25,50,100,200,200,33);
+        shorLline = new GamePlay0.Zone(33);
         B33 = new GamePlay0.VBuidings();
         OrangeChance = new GamePlay0.Zone(34);
         ParkPlace = new GamePlay0.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue",35);
@@ -1023,7 +1023,7 @@ public class Gameplay extends javax.swing.JFrame {
         CCT = new GamePlay0.Zone(15);
         stJames = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange",14);
         B14 = new GamePlay0.VBuidings();
-        pennsyl = new GamePlay0.Zone(25,50,100,200,200,13);
+        pennsyl = new GamePlay0.Zone(13);
         B13 = new GamePlay0.VBuidings();
         Virginnia = new GamePlay0.Zone(12,24,60,180,500,700,900,100,100,160,"Pink",12);
         B12 = new GamePlay0.VBuidings();
@@ -1286,7 +1286,7 @@ public class Gameplay extends javax.swing.JFrame {
         pacific.setPreferredSize(new java.awt.Dimension(120, 70));
         pacific.setLayout(null);
         pacific.add(B29);
-        B29.setBounds(0, 10, 16, 57);
+        B29.setBounds(0, 10, 16, 54);
 
         jPanel1.add(pacific);
         pacific.setBounds(750, 120, 120, 70);
@@ -1296,7 +1296,7 @@ public class Gameplay extends javax.swing.JFrame {
         NorthCaro.setPreferredSize(new java.awt.Dimension(120, 70));
         NorthCaro.setLayout(null);
         NorthCaro.add(B30);
-        B30.setBounds(0, 10, 16, 57);
+        B30.setBounds(0, 10, 16, 54);
 
         jPanel1.add(NorthCaro);
         NorthCaro.setBounds(750, 190, 120, 70);
@@ -1314,7 +1314,7 @@ public class Gameplay extends javax.swing.JFrame {
         pennsy.setPreferredSize(new java.awt.Dimension(120, 70));
         pennsy.setLayout(null);
         pennsy.add(B32);
-        B32.setBounds(0, 10, 16, 57);
+        B32.setBounds(0, 10, 16, 54);
 
         jPanel1.add(pennsy);
         pennsy.setBounds(750, 330, 120, 70);
@@ -1324,7 +1324,7 @@ public class Gameplay extends javax.swing.JFrame {
         shorLline.setPreferredSize(new java.awt.Dimension(120, 70));
         shorLline.setLayout(null);
         shorLline.add(B33);
-        B33.setBounds(0, 10, 16, 57);
+        B33.setBounds(0, 10, 16, 54);
 
         jPanel1.add(shorLline);
         shorLline.setBounds(750, 400, 120, 70);
@@ -1341,14 +1341,14 @@ public class Gameplay extends javax.swing.JFrame {
         ParkPlace.setPreferredSize(new java.awt.Dimension(120, 70));
         ParkPlace.setLayout(null);
         ParkPlace.add(B35);
-        B35.setBounds(0, 10, 16, 57);
+        B35.setBounds(0, 10, 16, 54);
 
         jPanel1.add(ParkPlace);
         ParkPlace.setBounds(750, 540, 120, 70);
 
         NewYork.setLayout(null);
         NewYork.add(B17);
-        B17.setBounds(110, 10, 16, 57);
+        B17.setBounds(110, 10, 16, 54);
 
         jPanel1.add(NewYork);
         NewYork.setBounds(0, 118, 120, 70);
@@ -1362,7 +1362,7 @@ public class Gameplay extends javax.swing.JFrame {
         stJames.setPreferredSize(new java.awt.Dimension(120, 70));
         stJames.setLayout(null);
         stJames.add(B14);
-        B14.setBounds(110, 10, 16, 57);
+        B14.setBounds(110, 10, 16, 54);
 
         jPanel1.add(stJames);
         stJames.setBounds(0, 328, 120, 70);
@@ -1372,7 +1372,7 @@ public class Gameplay extends javax.swing.JFrame {
         pennsyl.setPreferredSize(new java.awt.Dimension(120, 70));
         pennsyl.setLayout(null);
         pennsyl.add(B13);
-        B13.setBounds(110, 10, 16, 57);
+        B13.setBounds(110, 10, 16, 54);
 
         jPanel1.add(pennsyl);
         pennsyl.setBounds(0, 398, 120, 70);
@@ -1382,7 +1382,7 @@ public class Gameplay extends javax.swing.JFrame {
         Virginnia.setPreferredSize(new java.awt.Dimension(120, 70));
         Virginnia.setLayout(null);
         Virginnia.add(B12);
-        B12.setBounds(110, 10, 16, 57);
+        B12.setBounds(110, 10, 16, 54);
 
         jPanel1.add(Virginnia);
         Virginnia.setBounds(0, 468, 120, 70);
@@ -1391,14 +1391,14 @@ public class Gameplay extends javax.swing.JFrame {
         States.setMinimumSize(new java.awt.Dimension(120, 70));
         States.setLayout(null);
         States.add(B11);
-        B11.setBounds(110, 10, 16, 57);
+        B11.setBounds(110, 10, 16, 54);
 
         jPanel1.add(States);
         States.setBounds(0, 538, 120, 70);
 
         Tenss.setLayout(null);
         Tenss.add(B16);
-        B16.setBounds(110, 10, 16, 57);
+        B16.setBounds(110, 10, 16, 54);
 
         jPanel1.add(Tenss);
         Tenss.setBounds(0, 188, 120, 70);
@@ -1532,7 +1532,7 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(jButton1);
         jButton1.setBounds(120, 390, 100, 23);
         jPanel2.add(trade_pnl1);
-        trade_pnl1.setBounds(10, 420, 357, 180);
+        trade_pnl1.setBounds(10, 420, 355, 180);
 
         Deal_btn.setText("Deal");
         Deal_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -1541,7 +1541,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Deal_btn);
-        Deal_btn.setBounds(370, 460, 80, 25);
+        Deal_btn.setBounds(370, 460, 80, 23);
 
         NoDeal_btn.setText("NoDeal");
         NoDeal_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -1550,7 +1550,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(NoDeal_btn);
-        NoDeal_btn.setBounds(370, 530, 80, 25);
+        NoDeal_btn.setBounds(370, 530, 80, 23);
 
         Sell.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Sell.setText("Sell");
