@@ -1621,6 +1621,7 @@ public class Gameplay extends javax.swing.JFrame {
         playerPanelAccessMap.get(playerTurn).setBorder(BorderFactory.createLineBorder(Color.RED,3));
     }
     
+   
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
@@ -1647,14 +1648,18 @@ public class Gameplay extends javax.swing.JFrame {
             dice2.setDice_value(r.nextInt(6)+1);
             roll_Dice(dice1);
             roll_Dice(dice2);
-            pos.SetPlayer(playerTurn,dice1.getDice_value()+dice2.getDice_value());
-            Movement(dice1.getDice_value()+dice2.getDice_value(),player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+            pos.SetPlayer(playerTurn,/*dice1.getDice_value()+dice2.getDice_value()*/1);
+            Movement(/*dice1.getDice_value()+dice2.getDice_value()*/1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
             s.start();
             //dice1.getDice_value()+dice2.getDice_value()
         }
         else{
              player[playerTurn].setInJail(player[playerTurn].getInJail()-1);
         }
+        
+        checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
+        
+        
   
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -2248,6 +2253,45 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone ventnor;
     private GamePlay0.Zone waterWorks;
     // End of variables declaration//GEN-END:variables
+
+    private void checkIfZoneIsOwned(int pos, int id) {
+        for(int i=0; i<NumbOfPlayers; i++)
+        {
+            if(player[i].m_zonesOwnedIndexes.contains(pos))
+            {  
+                int totalBuildings = zoneMap.get(pos).getM_NumOFBuildedHouses();
+                int totalRent = 0;
+                switch(totalBuildings)
+                {
+                    case 0:
+                        totalRent = zoneMap.get(pos).getM_rent();
+                        break;
+                    case 1:
+                        totalRent = zoneMap.get(pos).getM_rentWithOneHouse();
+                        break;
+                    case 2:
+                        totalRent = zoneMap.get(pos).getM_rentWithTwoHouses();
+                        break;
+                        
+                    case 3:
+                        totalRent = zoneMap.get(pos).getM_rentWithThreeHouses();
+                        break;
+                        
+                    case 4:
+                        totalRent = zoneMap.get(pos).getM_rentWithThreeHouses();
+                        break;
+                        
+                    case 5:
+                        totalRent = zoneMap.get(pos).getM_rentWithHotel();
+                        break;
+                    
+                }
+                player[i].setM_balance(player[i].getM_balance() + totalRent);
+                player[id].setM_balance(player[id].getM_balance() - totalRent);
+                updatePlayersBalance();
+            }
+        }
+    }
 
 
 
