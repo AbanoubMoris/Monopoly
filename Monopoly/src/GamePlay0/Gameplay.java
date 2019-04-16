@@ -970,7 +970,6 @@ public class Gameplay extends javax.swing.JFrame {
         MONOMAN = new GamePlay0.Zone();
         orange = new GamePlay0.Zone();
         bluetreasure = new GamePlay0.Zone();
-        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         Trade_btn = new javax.swing.JButton();
@@ -1223,7 +1222,7 @@ public class Gameplay extends javax.swing.JFrame {
         pacific.setPreferredSize(new java.awt.Dimension(120, 70));
         pacific.setLayout(null);
         pacific.add(B29);
-        B29.setBounds(0, 10, 16, 54);
+        B29.setBounds(0, 10, 16, 57);
 
         jPanel1.add(pacific);
         pacific.setBounds(750, 120, 120, 70);
@@ -1233,7 +1232,7 @@ public class Gameplay extends javax.swing.JFrame {
         NorthCaro.setPreferredSize(new java.awt.Dimension(120, 70));
         NorthCaro.setLayout(null);
         NorthCaro.add(B30);
-        B30.setBounds(0, 10, 16, 54);
+        B30.setBounds(0, 10, 16, 57);
 
         jPanel1.add(NorthCaro);
         NorthCaro.setBounds(750, 190, 120, 70);
@@ -1251,7 +1250,7 @@ public class Gameplay extends javax.swing.JFrame {
         pennsy.setPreferredSize(new java.awt.Dimension(120, 70));
         pennsy.setLayout(null);
         pennsy.add(B32);
-        B32.setBounds(0, 10, 16, 54);
+        B32.setBounds(0, 10, 16, 57);
 
         jPanel1.add(pennsy);
         pennsy.setBounds(750, 330, 120, 70);
@@ -1261,7 +1260,7 @@ public class Gameplay extends javax.swing.JFrame {
         shorLline.setPreferredSize(new java.awt.Dimension(120, 70));
         shorLline.setLayout(null);
         shorLline.add(B33);
-        B33.setBounds(0, 10, 16, 54);
+        B33.setBounds(0, 10, 16, 57);
 
         jPanel1.add(shorLline);
         shorLline.setBounds(750, 400, 120, 70);
@@ -1278,14 +1277,14 @@ public class Gameplay extends javax.swing.JFrame {
         ParkPlace.setPreferredSize(new java.awt.Dimension(120, 70));
         ParkPlace.setLayout(null);
         ParkPlace.add(B35);
-        B35.setBounds(0, 10, 16, 54);
+        B35.setBounds(0, 10, 16, 57);
 
         jPanel1.add(ParkPlace);
         ParkPlace.setBounds(750, 540, 120, 70);
 
         NewYork.setLayout(null);
         NewYork.add(B17);
-        B17.setBounds(110, 10, 16, 54);
+        B17.setBounds(110, 10, 16, 57);
 
         jPanel1.add(NewYork);
         NewYork.setBounds(0, 118, 120, 70);
@@ -1299,7 +1298,7 @@ public class Gameplay extends javax.swing.JFrame {
         stJames.setPreferredSize(new java.awt.Dimension(120, 70));
         stJames.setLayout(null);
         stJames.add(B14);
-        B14.setBounds(110, 10, 16, 54);
+        B14.setBounds(110, 10, 16, 57);
 
         jPanel1.add(stJames);
         stJames.setBounds(0, 328, 120, 70);
@@ -1309,7 +1308,7 @@ public class Gameplay extends javax.swing.JFrame {
         pennsyl.setPreferredSize(new java.awt.Dimension(120, 70));
         pennsyl.setLayout(null);
         pennsyl.add(B13);
-        B13.setBounds(110, 10, 16, 54);
+        B13.setBounds(110, 10, 16, 57);
 
         jPanel1.add(pennsyl);
         pennsyl.setBounds(0, 398, 120, 70);
@@ -1319,7 +1318,7 @@ public class Gameplay extends javax.swing.JFrame {
         Virginnia.setPreferredSize(new java.awt.Dimension(120, 70));
         Virginnia.setLayout(null);
         Virginnia.add(B12);
-        B12.setBounds(110, 10, 16, 54);
+        B12.setBounds(110, 10, 16, 57);
 
         jPanel1.add(Virginnia);
         Virginnia.setBounds(0, 468, 120, 70);
@@ -1328,14 +1327,14 @@ public class Gameplay extends javax.swing.JFrame {
         States.setMinimumSize(new java.awt.Dimension(120, 70));
         States.setLayout(null);
         States.add(B11);
-        B11.setBounds(110, 10, 16, 54);
+        B11.setBounds(110, 10, 16, 57);
 
         jPanel1.add(States);
         States.setBounds(0, 538, 120, 70);
 
         Tenss.setLayout(null);
         Tenss.add(B16);
-        B16.setBounds(110, 10, 16, 54);
+        B16.setBounds(110, 10, 16, 57);
 
         jPanel1.add(Tenss);
         Tenss.setBounds(0, 188, 120, 70);
@@ -1381,15 +1380,6 @@ public class Gameplay extends javax.swing.JFrame {
 
         jPanel1.add(bluetreasure);
         bluetreasure.setBounds(138, 138, 133, 133);
-
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(310, 140, 73, 23);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 40, 875, 728);
@@ -1478,7 +1468,7 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(jButton1);
         jButton1.setBounds(120, 390, 100, 23);
         jPanel2.add(trade_pnl1);
-        trade_pnl1.setBounds(10, 420, 355, 180);
+        trade_pnl1.setBounds(10, 420, 357, 180);
 
         Deal_btn.setText("Deal");
         Deal_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -1487,7 +1477,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Deal_btn);
-        Deal_btn.setBounds(370, 460, 80, 23);
+        Deal_btn.setBounds(370, 460, 80, 25);
 
         NoDeal_btn.setText("NoDeal");
         NoDeal_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -1496,7 +1486,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(NoDeal_btn);
-        NoDeal_btn.setBounds(370, 530, 80, 23);
+        NoDeal_btn.setBounds(370, 530, 80, 25);
 
         Sell.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Sell.setText("Sell");
@@ -1978,11 +1968,15 @@ public class Gameplay extends javax.swing.JFrame {
                 }
                         
                         zoneMap.get(Cityidx).setM_NumOFBuildedHouses((zoneMap.get(Cityidx).getM_NumOFBuildedHouses())+1);
-                        if (ToBeBuild<=4)
+                        if (ToBeBuild<=4){
                             HB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
+                            player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()+1);
+                        }
                         else{
                             HB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), true);
                             zoneMap.get(Cityidx).setHotelBuilded(true);
+                            player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()-4);
+                            player[playerTurn].setM_numberOFHotels(player[playerTurn].getM_numberOFHotels()+1);
                         }
                         HB.setVisible(true);
                         build.replace(idx, HB);
@@ -2003,10 +1997,15 @@ public class Gameplay extends javax.swing.JFrame {
                 }
                         
                         zoneMap.get(Cityidx).setM_NumOFBuildedHouses((zoneMap.get(Cityidx).getM_NumOFBuildedHouses())+1);
-                        if(ToBeBuild<=4) VB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
+                        if(ToBeBuild<=4){
+                            VB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
+                            player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()+1);
+                        }
                         else {
                             VB.setNumAndColor(zoneMap.get(Cityidx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), true);
                             zoneMap.get(Cityidx).setHotelBuilded(true);
+                            player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()-4);
+                            player[playerTurn].setM_numberOFHotels(player[playerTurn].getM_numberOFHotels()+1);
                         }
                         VB.setVisible(true);
                         build.replace(idx, VB);
@@ -2035,12 +2034,6 @@ public class Gameplay extends javax.swing.JFrame {
 
     
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void Deal_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Deal_btnActionPerformed
         // TODO add your handling code here:
               Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn].getM_id()));
@@ -2232,7 +2225,6 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone go;
     private GamePlay0.Zone goToJail;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;

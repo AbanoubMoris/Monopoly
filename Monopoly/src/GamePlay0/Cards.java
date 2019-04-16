@@ -345,7 +345,7 @@ public class Cards extends javax.swing.JFrame {
 
     public int ApplyCardEffect(String cardType ,Player player , int playerTurn , PlayerCurrentPostion pos , int numberOfPlayers , Player[] players)
     {
-        //cardsRandomNumber = 7;
+        //cardsRandomNumber = 10;
         if(cardType == "CommunityChest")
         {
             if(cardsRandomNumber == 2)
@@ -432,9 +432,19 @@ public class Cards extends javax.swing.JFrame {
             {
                 player.setM_getOutOfJailCards(player.getM_getOutOfJailCards()+1);
             }
+            else if(cardsRandomNumber == 10)
+            {
+                int payment = (25 * player.getM_numberOfHouses()) + (100 * player.getM_numberOFHotels());
+                player.setM_balance(player.getM_balance() - payment);
+            }
             else if(cardsRandomNumber == 11)
             {
                 player.setM_balance(player.getM_balance()- 150);
+            }
+            else if(cardsRandomNumber == 14)
+            {
+                int payment = (40 * player.getM_numberOfHouses()) + (115 * player.getM_numberOFHotels());
+                player.setM_balance(player.getM_balance() - payment);
             }
             else if(cardsRandomNumber == 15)
             {
