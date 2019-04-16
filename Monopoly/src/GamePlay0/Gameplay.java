@@ -374,6 +374,19 @@ public class Gameplay extends javax.swing.JFrame {
                 displayCardInfo("src/Gameplay/img/cards/RR.png");
             }
         });
+        RailRoad.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                 try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
+                displayCardInfo("src/Gameplay/img/cards/RR.png");
+            }
+        });
+        
         
         pennsyl.addMouseListener(new MouseAdapter() {
             @Override
