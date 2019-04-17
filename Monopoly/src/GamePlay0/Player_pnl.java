@@ -18,15 +18,6 @@ public class Player_pnl extends javax.swing.JPanel {
         initComponents();
     }
 
-    public Panel getCity() {
-        return city;
-    }
-
-    public void setCity(Panel city) {
-        this.city = city;
-    }
-
-
 
     
 
@@ -65,20 +56,16 @@ public class Player_pnl extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        city = new java.awt.Panel();
         Playercolor_pnl = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ID_lbl = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Balance_lbl = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(125, 150));
         setLayout(null);
-
-        city.setLayout(null);
-        add(city);
-        city.setBounds(4, 40, 110, 80);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Player ID:");
@@ -126,6 +113,10 @@ public class Player_pnl extends javax.swing.JPanel {
         Balance_lbl.setText("jLabel3");
         add(Balance_lbl);
         Balance_lbl.setBounds(75, 120, 34, 14);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/money.png"))); // NOI18N
+        add(jLabel4);
+        jLabel4.setBounds(0, 40, 120, 80);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -133,9 +124,9 @@ public class Player_pnl extends javax.swing.JPanel {
     private javax.swing.JLabel Balance_lbl;
     private javax.swing.JLabel ID_lbl;
     private javax.swing.JPanel Playercolor_pnl;
-    private java.awt.Panel city;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

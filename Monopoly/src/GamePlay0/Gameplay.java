@@ -725,7 +725,7 @@ public class Gameplay extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         
         zoneMapInitialization();
-        playerPanelMapInitialization();
+        //playerPanelMapInitialization();
         playerPanelAccsessMapInitialization();
         SetPlayerPanels();
         DrawGamePlay(false,null);
@@ -1928,7 +1928,7 @@ public class Gameplay extends javax.swing.JFrame {
                 player[playerTurn].addZone(index);
                 player[playerTurn].setM_balance(player[playerTurn].getM_balance() - zoneMap.get(index).getM_zoneCost());
                 updatePlayersBalance();
-                addZoneToPanel(playerTurn, zoneMap.get(index).getM_index());
+                //addZoneToPanel(playerTurn, zoneMap.get(index).getM_index());
                 zoneMap.get(index).setPlayer_zone(player[playerTurn]);
                 
                 zoneMap.get(index).setImage(zoneMap.get(index).getPicPath(), false, true, player[playerTurn].getM_color());
@@ -1952,8 +1952,9 @@ public class Gameplay extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton4ActionPerformed
-
+/*
     Map<Integer, Panel> playerPanelMap = new HashMap<Integer, Panel>();
+    
     private void playerPanelMapInitialization(){
         
         playerPanelMap.put(0, player_pnl1.getCity());
@@ -1964,7 +1965,7 @@ public class Gameplay extends javax.swing.JFrame {
         playerPanelMap.put(5, player_pnl6.getCity());
    
     }
-     
+     */
     Map<Integer , Player_pnl>playerPanelAccessMap = new HashMap<Integer, Player_pnl>();
     private void playerPanelAccsessMapInitialization(){
         
@@ -1986,6 +1987,7 @@ public class Gameplay extends javax.swing.JFrame {
               y[i]=5;
           }
       }
+      /*
     private void addZoneToPanel(int id, int city){  
         
        lbl = new JLabel(String.valueOf(city)); //Lma geet a7ot city name kan btb3 null 3shan hya fadya 
@@ -2055,7 +2057,7 @@ public class Gameplay extends javax.swing.JFrame {
        this.repaint();
       
     }
-    
+    */
     private void Trade_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Trade_btnActionPerformed
         // TODO add your handling code here:
 
