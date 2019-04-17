@@ -134,7 +134,6 @@ public class Gameplay extends javax.swing.JFrame {
             zoneMap.get(cityIDx).removeAll();
             zoneMap.get(cityIDx).setImage(zoneMap.get(cityIDx).getPicPath(), true, false, null);
             zoneMap.get(cityIDx).setBought(false);
-            //jPanel1.repaint();
             
             
      }//sell
@@ -150,8 +149,8 @@ public class Gameplay extends javax.swing.JFrame {
             zoneMap.get(cityIDx).setHotelBuilded(false);
         }   
         updatePlayersBalance();
-        UpdateBuildings();
-         jPanel1.repaint();
+        UpdateBuildings(cityIDx);
+        jPanel1.repaint();
     }
     
     static int Res;
@@ -906,7 +905,6 @@ public class Gameplay extends javax.swing.JFrame {
                 int cnt = 0;
                 
                 while(true){
-                    jPanel1.removeAll();
                     
                      try {
                     SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_token_thimble_move.wav");
@@ -2187,24 +2185,32 @@ public class Gameplay extends javax.swing.JFrame {
        } 
        return false;
    }
-    public void UpdateBuildings(){
+    public void UpdateBuildings(int CityIdx){
         for (Map.Entry<Integer, Zone> entry : zoneMap.entrySet()) {
         int key = entry.getKey();
         Object value = entry.getValue();
             if ((key>0 && key<10) || (key>18&&key<28)){
-                if (build.containsKey(key) ){
-                    HBuildings HB = (HBuildings)build.get(key);
-                    HB.setNumAndColor(zoneMap.get(key).getM_NumOFBuildedHouses(), null, false);
+                try {
+                     if (build.containsKey(CityIdx)){
+                    HBuildings HB = (HBuildings)build.get(CityIdx);
+                    HB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), null, false);
                     HB.setVisible(false);
                     
                 } 
+                } catch (Exception e) {
+                }
+               
             }
             else {
-                if (build.containsKey(key) ){
-                    VBuidings VB = (VBuidings)build.get(key);
-                    VB.setNumAndColor(zoneMap.get(key).getM_NumOFBuildedHouses(), null, false);
+                try {
+                    if (build.containsKey(CityIdx) ){
+                    VBuidings VB = (VBuidings)build.get(CityIdx);
+                    VB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), null, false);
                     VB.setVisible(false);
                 } 
+                } catch (Exception e) {
+                }
+                
             }
         }
 
@@ -2338,13 +2344,14 @@ public class Gameplay extends javax.swing.JFrame {
 
     private void SellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SellActionPerformed
         // TODO add your handling code here:
+        int cityindex = 0;
         Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn].getM_id()));
       if(player[playerTurn].m_zonesOwnedIndexes.contains(z.getM_index())){
           if (z.getM_NumOFBuildedHouses()!=0)
             player[playerTurn].setM_balance(player[playerTurn].getM_balance()+ (z.getM_NumOFBuildedHouses() * z.getM_houseCost()) +z.getM_zoneCost() );
           else 
                player[playerTurn].setM_balance(player[playerTurn].getM_balance()+  +z.getM_zoneCost());
-        int cityindex =0;
+        cityindex =0;
         
                     for(int i=0;i<player[playerTurn].m_zonesOwnedIndexes.size();i++){
                         if(player[playerTurn].m_zonesOwnedIndexes.contains(i))
@@ -2357,7 +2364,7 @@ public class Gameplay extends javax.swing.JFrame {
         }
       z.setM_NumOFBuildedHouses(0);
       
-      UpdateBuildings();
+      UpdateBuildings(cityindex);
         
      
         
