@@ -28,6 +28,7 @@ public class Player {
     private int m_numberOfHouses;
     private int m_numberOFHotels;
     private int inJail;
+    private int m_railRoadsBought;
 
     public int getM_numberOfHouses() {
         return m_numberOfHouses;
@@ -63,7 +64,10 @@ public class Player {
         m_numberOfHousesOwned = new HashMap<Integer , Integer>();
         m_numberOfHouses = 0;
         m_numberOFHotels = 0;
+        m_railRoadsBought=0;
     }
+
+    
 
 
     public Player(int m_id, Color m_color, int m_balance, boolean m_inJail, boolean m_passByGo) {
@@ -78,6 +82,7 @@ public class Player {
         m_numberOfHousesOwned = new HashMap<Integer , Integer>();
         m_numberOfHouses = 0;
         m_numberOFHotels = 0;
+        m_railRoadsBought=0;
     }
 
     public int getM_getOutOfJailCards() {
@@ -123,6 +128,14 @@ public class Player {
     public void setM_balance(int m_balance) {
         this.m_balance = m_balance;
     }
+    
+    public int getM_railRoadsBought() {
+        return m_railRoadsBought;
+    }
+
+    public void setM_railRoadsBought(int m_railRoadsBought) {
+        this.m_railRoadsBought = m_railRoadsBought;
+    }
 
     public boolean isM_inJail() {
         return m_inJail;
@@ -146,6 +159,8 @@ public class Player {
            m_zonesOwnedIndexes.add(index);
         Collections.sort(m_zonesOwnedIndexes);
     }
+    
+    
     
    
 }
