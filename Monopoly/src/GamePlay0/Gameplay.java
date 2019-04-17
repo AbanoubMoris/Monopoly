@@ -33,52 +33,55 @@ import javax.swing.border.LineBorder;
 
 
 public class Gameplay extends javax.swing.JFrame {
-    public void DrawGamePlay(){
+    public void DrawGamePlay(boolean bought , Color color){
             
         this.setExtendedState(JFrame.ABORT); 
-        go.setImage("src/Gameplay/img/go.png", true);
-        jail.setImage("src/Gameplay/img/jail.png", true);
-        parking.setImage("src/Gameplay/img/free-parking.png", true);
-        goToJail.setImage("src/Gameplay/img/go-to-jail.png", true);
+        go.setImage("src/Gameplay/img/go.png", true,bought ,color);
+        jail.setImage("src/Gameplay/img/jail.png", true,bought ,color);
+        parking.setImage("src/Gameplay/img/free-parking.png", true,bought ,color);
+        goToJail.setImage("src/Gameplay/img/go-to-jail.png", true,bought ,color);
         
-        MarvinGardens.setImage("src/Gameplay/img/Untitled-15.png", true);
-        waterWorks.setImage("src/Gameplay/img/Untitled-114.png", true);
-        ventnor.setImage("src/Gameplay/img/Untitled-16.png", true);
-        Atlantic.setImage("src/Gameplay/img/Untitled-17.png", true);
-        RailRoad.setImage("src/Gameplay/img/Untitled-21.png", true);
-        Illinois.setImage("src/Gameplay/img/Untitled-18.png", true);
-        Indiana.setImage("src/Gameplay/img/Untitled-19.png", true);
-        ChanceBlue.setImage("src/Gameplay/img/chance blue.png", true);
-        Kentucky.setImage("src/Gameplay/img/20.png", true);
+        MarvinGardens.setImage("src/Gameplay/img/Untitled-15.png", true,bought ,color);
+        waterWorks.setImage("src/Gameplay/img/Untitled-114.png", true,bought ,color);
+        ventnor.setImage("src/Gameplay/img/Untitled-16.png", true,bought ,color);
+        Atlantic.setImage("src/Gameplay/img/Untitled-17.png", true,bought ,color);
+        RailRoad.setImage("src/Gameplay/img/Untitled-21.png", true,bought ,color);
+        Illinois.setImage("src/Gameplay/img/Untitled-18.png", true,bought ,color);
+        Indiana.setImage("src/Gameplay/img/Untitled-19.png", true,bought ,color);
+        ChanceBlue.setImage("src/Gameplay/img/chance blue.png", true,bought ,color);
+        Kentucky.setImage("src/Gameplay/img/20.png", true,bought ,color);
     
     
-        Mediter_Ranean.setImage("src/Gameplay/img/Untitled-1.png", true);
-        Community_Chest.setImage("src/Gameplay/img/community-chest.png", true);
-        Baltic.setImage("src/Gameplay/img/Untitled-2.png", true);
-        IncomeTax.setImage("src/Gameplay/img/24.png", true);
-        RealRoad.setImage("src/Gameplay/img/Untitled-21.png", true);
-        Oriental.setImage("src/Gameplay/img/Untitled-3.png", true);
-        ChanceRed.setImage("src/Gameplay/img/chance-red.png", true);
-        Vermont.setImage("src/Gameplay/img/Untitled-4.png", true);
-        Connecticut.setImage("src/Gameplay/img/Untitled-5.png", true);
-        pacific.setImage("src/Gameplay/img/Untitled-12.png", true);
-        NorthCaro.setImage("src/Gameplay/img/Untitled-13.png", true);
-        communtityChestRight.setImage("src/Gameplay/img/community-chest-left.png", true);
-        pennsy.setImage("src/Gameplay/img/Untitled-14.png", true);
-        shorLline.setImage("src/Gameplay/img/Untitled-121.png", true);
-        OrangeChance.setImage("src/Gameplay/img/chance-orange.png", true);
-        ParkPlace.setImage("src/Gameplay/img/Untitled-PR.png", true);
-        NewYork.setImage("src/Gameplay/img/Untitled-11.png", true);
-        Tenss.setImage("src/Gameplay/img/Untitled-10.png", true);
-        CCT.setImage("src/Gameplay/img/community-chest-right.png", true);
-        stJames.setImage("src/Gameplay/img/Untitled-9.png", true);
-        pennsyl.setImage("src/Gameplay/img/PENS.png", true);
-        Virginnia.setImage("src/Gameplay/img/Untitled-8.png", true);
-        States.setImage("src/Gameplay/img/Untitled-7.png", true);
-        MONOMAN.setImage("src/Gameplay/img/monoMan.png", false);
-        orange.setImage("src/Gameplay/img/orange-CHANCE.png", false);
-        bluetreasure.setImage("src/Gameplay/img/treasure.png", false);
-        
+        Mediter_Ranean.setImage("src/Gameplay/img/Untitled-1.png", true,bought ,color);
+        Community_Chest.setImage("src/Gameplay/img/community-chest.png", true,bought ,color);
+        Baltic.setImage("src/Gameplay/img/Untitled-2.png", true,bought ,color);
+        IncomeTax.setImage("src/Gameplay/img/24.png", true,bought ,color);
+        RealRoad.setImage("src/Gameplay/img/Untitled-21.png", true,bought ,color);
+        Oriental.setImage("src/Gameplay/img/Untitled-3.png", true,bought ,color);
+        ChanceRed.setImage("src/Gameplay/img/chance-red.png", true,bought ,color);
+        Vermont.setImage("src/Gameplay/img/Untitled-4.png", true,bought ,color);
+        Connecticut.setImage("src/Gameplay/img/Untitled-5.png", true,bought ,color);
+        pacific.setImage("src/Gameplay/img/Untitled-12.png", true,bought ,color);
+        NorthCaro.setImage("src/Gameplay/img/Untitled-13.png", true,bought ,color);
+        communtityChestRight.setImage("src/Gameplay/img/community-chest-left.png", true,bought ,color);
+        pennsy.setImage("src/Gameplay/img/Untitled-14.png", true,bought ,color);
+        shorLline.setImage("src/Gameplay/img/Untitled-121.png", true,bought ,color);
+        OrangeChance.setImage("src/Gameplay/img/chance-orange.png", true,bought ,color);
+        ParkPlace.setImage("src/Gameplay/img/Untitled-PR.png", true,bought ,color);
+        NewYork.setImage("src/Gameplay/img/Untitled-11.png", true,bought ,color);
+        Tenss.setImage("src/Gameplay/img/Untitled-10.png", true,bought ,color);
+        CCT.setImage("src/Gameplay/img/community-chest-right.png", true,bought ,color);
+        stJames.setImage("src/Gameplay/img/Untitled-9.png", true,bought ,color);
+        pennsyl.setImage("src/Gameplay/img/PENS.png", true,bought ,color);
+        Virginnia.setImage("src/Gameplay/img/Untitled-8.png", true,bought ,color);
+        States.setImage("src/Gameplay/img/Untitled-7.png", true,bought ,color);
+        MONOMAN.setImage("src/Gameplay/img/monoMan.png", false,bought ,color);
+        orange.setImage("src/Gameplay/img/orange-CHANCE.png", false,bought ,color);
+        bluetreasure.setImage("src/Gameplay/img/treasure.png", false,bought ,color);
+       
+    }
+    public void SetPlayerPanels(){
+         
         dice1.setImage("src/GamePlay/img/1.PNG", false);
         dice2.setImage("src/Gameplay/img/1.PNG", false);
         player_pnl1.setVisible(false);
@@ -90,8 +93,6 @@ public class Gameplay extends javax.swing.JFrame {
         trade_pnl1.setVisible(false);
         Deal_btn.setVisible(false);
         NoDeal_btn.setVisible(false);
-      
-   
     }
     
         private static void displayCardInfo(String Path) {
@@ -130,6 +131,10 @@ public class Gameplay extends javax.swing.JFrame {
             zoneMap.get(cityIDx).setM_NumOFBuildedHouses(0);
             zoneMap.get(cityIDx).setHotelBuilded(false);
             player[playerTurn].m_zonesOwnedIndexes.remove(new Integer(zoneMap.get(cityIDx).getM_index()));
+            zoneMap.get(cityIDx).removeAll();
+            zoneMap.get(cityIDx).setImage(zoneMap.get(cityIDx).getPicPath(), true, false, null);
+            zoneMap.get(cityIDx).setBought(false);
+            //jPanel1.repaint();
             
             
      }//sell
@@ -146,6 +151,7 @@ public class Gameplay extends javax.swing.JFrame {
         }   
         updatePlayersBalance();
         UpdateBuildings();
+         jPanel1.repaint();
     }
     
     static int Res;
@@ -715,11 +721,10 @@ public class Gameplay extends javax.swing.JFrame {
         zoneMapInitialization();
         playerPanelMapInitialization();
         playerPanelAccsessMapInitialization();
-        DrawGamePlay();
+        SetPlayerPanels();
+        DrawGamePlay(false,null);
         //*********************
-        playerTurn = 0;
         DisplayCiyInfo();
-        playerTurn=-1;
         //*********************
         initializeArray();
         
@@ -901,6 +906,7 @@ public class Gameplay extends javax.swing.JFrame {
                 int cnt = 0;
                 
                 while(true){
+                    jPanel1.removeAll();
                     
                      try {
                     SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_token_thimble_move.wav");
@@ -1222,7 +1228,6 @@ public class Gameplay extends javax.swing.JFrame {
         MONOMAN = new GamePlay0.Zone();
         orange = new GamePlay0.Zone();
         bluetreasure = new GamePlay0.Zone();
-        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         Trade_btn = new javax.swing.JButton();
@@ -1634,15 +1639,6 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel1.add(bluetreasure);
         bluetreasure.setBounds(138, 138, 133, 133);
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(640, 320, 73, 23);
-
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 40, 875, 728);
 
@@ -1955,7 +1951,9 @@ public class Gameplay extends javax.swing.JFrame {
                 addZoneToPanel(playerTurn, zoneMap.get(index).getM_index());
                 zoneMap.get(index).setPlayer_zone(player[playerTurn]);
                 
-
+                zoneMap.get(index).setImage(zoneMap.get(index).getPicPath(), false, true, player[playerTurn].getM_color());
+                
+                repaint();
 
             }
             else {
@@ -2364,11 +2362,6 @@ public class Gameplay extends javax.swing.JFrame {
      
         
     }//GEN-LAST:event_SellActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        DisplayCiyInfo();
-    }//GEN-LAST:event_jButton2ActionPerformed
             
     
     public static void main(String args[]) {
@@ -2492,7 +2485,6 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone go;
     private GamePlay0.Zone goToJail;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;

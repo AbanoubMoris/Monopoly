@@ -45,6 +45,16 @@ public class  Zone extends javax.swing.JPanel {
     private int m_NumOFBuildedHouses;
     private boolean hotelBuilded;
     private Player player_zone = null;
+    private boolean bought;
+
+    public boolean isBought() {
+        return bought;
+    }
+
+    public void setBought(boolean bought) {
+        this.bought = bought;
+    }
+    
 
     public Player getPlayer_zone() {
         return player_zone;
@@ -224,9 +234,19 @@ public class  Zone extends javax.swing.JPanel {
         this.m_color = m_color;
         this.m_index = index;
     }
-  
-    public void setImage(String path , boolean border){     
-        
+    private String PicPath;
+
+    public String getPicPath() {
+        return PicPath;
+    }
+
+    public void setPicPath(String PicPath) {
+        this.PicPath = PicPath;
+    }
+    
+    public void setImage(String path , boolean border ,boolean bought ,Color color){     
+        this.PicPath = path;
+        this.bought=bought;
         JPanel pnl = new JPanel(){
             
           public void paintComponent(Graphics g){
@@ -240,6 +260,11 @@ public class  Zone extends javax.swing.JPanel {
               }
               if (border){
                 g2.setStroke(new BasicStroke(2));
+                g2.drawRect(0, 0, this.getWidth(), this.getHeight());
+              }
+              if (bought){
+                g2.setStroke(new BasicStroke(10));
+                g2.setColor(color);
                 g2.drawRect(0, 0, this.getWidth(), this.getHeight());
               }
           }  
