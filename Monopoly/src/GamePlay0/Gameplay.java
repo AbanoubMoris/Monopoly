@@ -104,7 +104,7 @@ public class Gameplay extends javax.swing.JFrame {
     }
     
     private static int SellOptions(String Path) {
-        UIManager.put("OptionPane.yesButtonText", "Sell Buildings"); //0
+        UIManager.put("OptionPane.yesButtonText", "Sell constructions"); //0
         UIManager.put("OptionPane.noButtonText", "Sell City"); //1
         UIManager.put("OptionPane.cancelButtonText", "OK");//2
       //  int dialogResult = JOptionPane.showConfirmDialog (null, "","",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE );
@@ -131,7 +131,9 @@ public class Gameplay extends javax.swing.JFrame {
             zoneMap.get(cityIDx).setM_NumOFBuildedHouses(0);
             zoneMap.get(cityIDx).setHotelBuilded(false);
             player[playerTurn].m_zonesOwnedIndexes.remove(new Integer(zoneMap.get(cityIDx).getM_index()));
-            zoneMap.get(cityIDx).remove(2);
+            if(cityIDx == 5 || cityIDx == 13 || cityIDx == 23 || cityIDx == 33)
+                zoneMap.get(cityIDx).remove(1);
+            else zoneMap.get(cityIDx).remove(2);
             zoneMap.get(cityIDx).setImage(zoneMap.get(cityIDx).getPicPath(), true, false, null);
             zoneMap.get(cityIDx).setBought(false);
             if(cityIDx == 5 || cityIDx == 13 || cityIDx == 23 || cityIDx == 33)
@@ -746,27 +748,27 @@ public class Gameplay extends javax.swing.JFrame {
     public void IntializeBuildings(){
         build.put(1, B1);
         build.put(3, B3);
-        build.put(5,B5 );
+       // build.put(5,B5 );
         build.put(6,B6 );
         build.put(8,B8 );
         build.put(9,B9 );
         build.put(11,B11 );
         build.put(12,B12 );
-        build.put(13,B13 );
+        //build.put(13,B13 );
         build.put(14,B14 );
         build.put(16,B16 );
         build.put(17,B17 );
         build.put(19,B19 );
         build.put(21,B21 );
         build.put(22,B22 );
-        build.put(23,B23 );
+       // build.put(23,B23 );
         build.put(24,B24 );
         build.put(25,B25 );
         build.put(27,B27 );
         build.put(29,B29 );
         build.put(30,B30 );
         build.put(32,B32 );
-        build.put(33,B33 );
+        //build.put(33,B33 );
         build.put(35,B35 );
         
         /*
@@ -1177,9 +1179,8 @@ public class Gameplay extends javax.swing.JFrame {
         B25 = new GamePlay0.HBuildings();
         Atlantic = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow",24);
         B24 = new GamePlay0.HBuildings();
-        waterWorks = new GamePlay0.Zone(25,50,100,200,150,26);
+        waterWorks = new GamePlay0.Zone(4,150,26);
         RailRoad = new GamePlay0.Zone(25,50,100,200,200,23);
-        B23 = new GamePlay0.HBuildings();
         Illinois = new GamePlay0.Zone(20,40,100,300,750,925,1100,150,150,240,"Red",22);
         B22 = new GamePlay0.HBuildings();
         Indiana = new GamePlay0.Zone(18,36,90,250,700,875,1050,150,150,220,"Red",21);
@@ -1194,7 +1195,6 @@ public class Gameplay extends javax.swing.JFrame {
         B3 = new GamePlay0.HBuildings();
         IncomeTax = new GamePlay0.Zone(4);
         RealRoad = new GamePlay0.Zone(25,50,100,200,200,5);
-        B5 = new GamePlay0.HBuildings();
         Oriental = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue",6);
         B6 = new GamePlay0.HBuildings();
         ChanceRed = new GamePlay0.Zone(7);
@@ -1210,7 +1210,6 @@ public class Gameplay extends javax.swing.JFrame {
         pennsy = new GamePlay0.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green",32);
         B32 = new GamePlay0.VBuidings();
         shorLline = new GamePlay0.Zone(25,50,100,200,200,33);
-        B33 = new GamePlay0.VBuidings();
         OrangeChance = new GamePlay0.Zone(34);
         ParkPlace = new GamePlay0.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue",35);
         B35 = new GamePlay0.VBuidings();
@@ -1220,7 +1219,6 @@ public class Gameplay extends javax.swing.JFrame {
         stJames = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange",14);
         B14 = new GamePlay0.VBuidings();
         pennsyl = new GamePlay0.Zone(25,50,100,200,200,13);
-        B13 = new GamePlay0.VBuidings();
         Virginnia = new GamePlay0.Zone(12,24,60,180,500,700,900,100,100,160,"Pink",12);
         B12 = new GamePlay0.VBuidings();
         States = new GamePlay0.Zone(10,20,50,150,450,625,750,100,100,140,"Pink",11);
@@ -1352,9 +1350,6 @@ public class Gameplay extends javax.swing.JFrame {
         RailRoad.setMaximumSize(new java.awt.Dimension(70, 120));
         RailRoad.setMinimumSize(new java.awt.Dimension(70, 120));
         RailRoad.setLayout(null);
-        RailRoad.add(B23);
-        B23.setBounds(10, 110, 51, 16);
-
         jPanel1.add(RailRoad);
         RailRoad.setBounds(400, 0, 70, 120);
 
@@ -1438,9 +1433,6 @@ public class Gameplay extends javax.swing.JFrame {
         RealRoad.setMaximumSize(new java.awt.Dimension(70, 120));
         RealRoad.setMinimumSize(new java.awt.Dimension(70, 120));
         RealRoad.setLayout(null);
-        RealRoad.add(B5);
-        B5.setBounds(10, 0, 51, 16);
-
         jPanel1.add(RealRoad);
         RealRoad.setBounds(400, 608, 70, 120);
 
@@ -1518,9 +1510,6 @@ public class Gameplay extends javax.swing.JFrame {
         shorLline.setMinimumSize(new java.awt.Dimension(120, 70));
         shorLline.setPreferredSize(new java.awt.Dimension(120, 70));
         shorLline.setLayout(null);
-        shorLline.add(B33);
-        B33.setBounds(0, 10, 16, 54);
-
         jPanel1.add(shorLline);
         shorLline.setBounds(750, 400, 120, 70);
 
@@ -1566,9 +1555,6 @@ public class Gameplay extends javax.swing.JFrame {
         pennsyl.setMinimumSize(new java.awt.Dimension(120, 70));
         pennsyl.setPreferredSize(new java.awt.Dimension(120, 70));
         pennsyl.setLayout(null);
-        pennsyl.add(B13);
-        B13.setBounds(110, 10, 16, 54);
-
         jPanel1.add(pennsyl);
         pennsyl.setBounds(0, 398, 120, 70);
 
@@ -2449,14 +2435,12 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.HBuildings B1;
     private GamePlay0.VBuidings B11;
     private GamePlay0.VBuidings B12;
-    private GamePlay0.VBuidings B13;
     private GamePlay0.VBuidings B14;
     private GamePlay0.VBuidings B16;
     private GamePlay0.VBuidings B17;
     private GamePlay0.HBuildings B19;
     private GamePlay0.HBuildings B21;
     private GamePlay0.HBuildings B22;
-    private GamePlay0.HBuildings B23;
     private GamePlay0.HBuildings B24;
     private GamePlay0.HBuildings B25;
     private GamePlay0.HBuildings B27;
@@ -2464,9 +2448,7 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.HBuildings B3;
     private GamePlay0.VBuidings B30;
     private GamePlay0.VBuidings B32;
-    private GamePlay0.VBuidings B33;
     private GamePlay0.VBuidings B35;
-    private GamePlay0.HBuildings B5;
     private GamePlay0.HBuildings B6;
     private GamePlay0.HBuildings B8;
     private GamePlay0.HBuildings B9;
