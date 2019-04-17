@@ -748,6 +748,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
 
     private void NoOFplayer_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoOFplayer_btnActionPerformed
         noOFplayer_pnl.setVisible(true);
+         try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_confirm.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_NoOFplayer_btnActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed

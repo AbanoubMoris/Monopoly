@@ -5,6 +5,7 @@
  */
 package GamePlay0;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.MouseAdapter;
@@ -917,6 +918,7 @@ public class Gameplay extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                     
                     int currentX = Player_Car.get(pl).getX();
                     int currentY = Player_Car.get(pl).getY();
 
@@ -1858,11 +1860,6 @@ public class Gameplay extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
         
-        
-            
-            
-        
-        
         try {
             SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
                     } catch (IOException ex) {
@@ -1968,7 +1965,6 @@ public class Gameplay extends javax.swing.JFrame {
    
     }
      
-    
     Map<Integer , Player_pnl>playerPanelAccessMap = new HashMap<Integer, Player_pnl>();
     private void playerPanelAccsessMapInitialization(){
         
@@ -1981,7 +1977,7 @@ public class Gameplay extends javax.swing.JFrame {
    
     }
     
-      JLabel lbl;
+       JLabel lbl;
       int x[] = new int [6];
       int y[] = new int [6];
       public void initializeArray(){
@@ -1997,9 +1993,10 @@ public class Gameplay extends javax.swing.JFrame {
         for(int i=0; i<6; i++)
             if(playerPanelMap.get(i).getComponentCount() == 1)x[i] = 5;
         
-        lbl.setBounds(x[id], y[id], 100, 20);
+       lbl.setBounds(x[id], y[id], 20, 20);
        lbl.setOpaque(true);
-       this.repaint();
+      
+      
         switch (id) {
             case 0:
                 if (x[0] < 95) {
@@ -2008,6 +2005,7 @@ public class Gameplay extends javax.swing.JFrame {
                     y[0] = 20;
                     x[0] = 5;
                 }
+                
                  break;
             case 1:
                 if (x[1] < 95) {
@@ -2049,44 +2047,21 @@ public class Gameplay extends javax.swing.JFrame {
                     x[5] = 5;
                 }
                  break;
+                 
+                 
         }
-      // lbl.setBackground(z.getM_color());
       
-       
-       
-       
+       this.revalidate();
+       this.repaint();
       
     }
-    private void removeZonefromPanel(int id, int city){
-        //ab2a zabt deh ya3m el leader
-        playerPanelMap.get(id).removeAll();
-        for (int i=0 ; i<player[id].m_zonesOwnedIndexes.size();i++){
-                addZoneToPanel(id, player[id].m_zonesOwnedIndexes.get(i));
-            
-        }
-        
-  /*      
-        
-        for (Component c : playerPanelMap.get(id).getComponents()) {
-            if (c instanceof JLabel && ((JLabel)c).getText().equals(String.valueOf(city))) {
-                
-                //if (((JLabel)c).getText().equals(String.valueOf(city))){
-                    System.out.println("remove -- " + ((JLabel)c).getText() + "  ");
-                    playerPanelMap.get(id).remove(((JLabel)c));
-               // }
-                //((JLabel)c).setText("");
-            }
-}   
-*/
-         playerPanelMap.get(id).revalidate();
-         playerPanelMap.get(id).repaint();
-    }
+    
     private void Trade_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Trade_btnActionPerformed
         // TODO add your handling code here:
 
     
         if (zoneMap.get(pos.getCurrentPos(playerTurn)).getPlayer_zone() != null &&!player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))  ){
-            //Trade_btn.setEnabled(false);
+           
         Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn].getM_id()));
               Player p = z.getPlayer_zone();
          trade_pnl1.setVisible(true);
@@ -2094,8 +2069,7 @@ public class Gameplay extends javax.swing.JFrame {
          NoDeal_btn.setVisible(true);
          trade_pnl1.getId_lbl1().setText(String.valueOf(player[playerTurn].getM_id()));
          trade_pnl1.getId_lbl2().setText(String.valueOf(p.getM_id()));
-             trade_pnl1.getId_lbl1().setBackground(player[playerTurn].getM_color());
-             trade_pnl1.getId_lbl2().setBackground(p.getM_color());
+             
           trade_pnl1.validate();
           trade_pnl1.repaint();
         }
@@ -2296,30 +2270,49 @@ public class Gameplay extends javax.swing.JFrame {
     
     private void Deal_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Deal_btnActionPerformed
         // TODO add your handling code here:
-              Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn].getM_id()));
-              Player p = z.getPlayer_zone();
-   
-        if(!player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))){
-            if(p.m_zonesOwnedIndexes.contains(z.getM_index())){
-                if(player[playerTurn].getM_balance() >=  Integer.valueOf(trade_pnl1.getMoney_txt().getText())){
-                  p.setM_balance(p.getM_balance() + Integer.valueOf(trade_pnl1.getMoney_txt().getText()));
-                  player[playerTurn].setM_balance( player[playerTurn].getM_balance() - Integer.valueOf(trade_pnl1.getMoney_txt().getText()));
-                  int cityindex =0;
-                    for(int i=0;i<p.m_zonesOwnedIndexes.size();i++){
-                        if(p.m_zonesOwnedIndexes.contains(z.getM_index()))
-                            cityindex = i ;
-                    }
-                     p.m_zonesOwnedIndexes.remove(cityindex);
-                     player[playerTurn].m_zonesOwnedIndexes.add(z.getM_index());
-                } 
+        Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn].getM_id()));
+        Player p = z.getPlayer_zone();
+
+        //   if(!player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))){
+        //    if(p.m_zonesOwnedIndexes.contains(z.getM_index())){
+        if (player[playerTurn].getM_balance() >= Integer.valueOf(trade_pnl1.getMoney_txt().getText())) {
+            p.setM_balance(p.getM_balance() + Integer.valueOf(trade_pnl1.getMoney_txt().getText()));
+            player[playerTurn].setM_balance(player[playerTurn].getM_balance() - Integer.valueOf(trade_pnl1.getMoney_txt().getText()));
+            int cityindex = 0;
+            for (int i = 0; i < p.m_zonesOwnedIndexes.size(); i++) {
+                if (p.m_zonesOwnedIndexes.contains(z.getM_index())) {
+                    cityindex = i;
+                }
             }
-                     updatePlayersBalance();
-                     removeZonefromPanel(p.getM_id(),zoneMap.get(pos.getCurrentPos(playerTurn)).getM_index());
-                     addZoneToPanel(playerTurn, zoneMap.get(pos.getCurrentPos(playerTurn)).getM_index());
-        }    
-           trade_pnl1.setVisible(false);
-           Deal_btn.setVisible(false);
-           NoDeal_btn.setVisible(false);
+            p.m_zonesOwnedIndexes.remove(cityindex);
+            player[playerTurn].m_zonesOwnedIndexes.add(z.getM_index());
+            updatePlayersBalance();
+            
+            if (z.getM_index() == 5 || z.getM_index() == 13 || z.getM_index() == 23 || z.getM_index() == 33) {
+                          zoneMap.get(z.getM_index()).remove(1);
+                          zoneMap.get(z.getM_index()).setImage(z.getPicPath(), true, true, player[playerTurn].getM_color());
+            } else {
+                 zoneMap.get(z.getM_index()).remove(2);
+                 zoneMap.get(z.getM_index()).setImage(z.getPicPath(), true, true, player[playerTurn].getM_color());
+            }
+            jPanel1.repaint();
+          
+            trade_pnl1.setVisible(false);
+            Deal_btn.setVisible(false);
+            NoDeal_btn.setVisible(false);
+        } else {
+            trade_pnl1.setVisible(true);
+            Deal_btn.setVisible(true);
+            NoDeal_btn.setVisible(true);
+            try {
+                SoundEffects.PlaySound("src/Gameplay/soundEffects/you dont have enouph money.wav");
+            } catch (IOException ex) {
+                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+          //  }
+       // }    
+           
     }//GEN-LAST:event_Deal_btnActionPerformed
             
     private void NoDeal_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoDeal_btnActionPerformed
