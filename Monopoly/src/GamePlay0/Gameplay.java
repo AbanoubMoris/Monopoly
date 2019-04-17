@@ -131,7 +131,7 @@ public class Gameplay extends javax.swing.JFrame {
             zoneMap.get(cityIDx).setM_NumOFBuildedHouses(0);
             zoneMap.get(cityIDx).setHotelBuilded(false);
             player[playerTurn].m_zonesOwnedIndexes.remove(new Integer(zoneMap.get(cityIDx).getM_index()));
-            zoneMap.get(cityIDx).removeAll();
+            zoneMap.get(cityIDx).remove(2);
             zoneMap.get(cityIDx).setImage(zoneMap.get(cityIDx).getPicPath(), true, false, null);
             zoneMap.get(cityIDx).setBought(false);
             if(cityIDx == 5 || cityIDx == 13 || cityIDx == 23 || cityIDx == 33)
@@ -704,7 +704,7 @@ public class Gameplay extends javax.swing.JFrame {
             Player_Car.get(i).setBounds(go.getX(), go.getY()+(go.getWidth()-20-postion), 60, 20);
             jPanel1.add(Player_Car.get(i));
             
-            player[i].setM_balance(150);
+            player[i].setM_balance(1000);
             player[i].setM_inJail(false);
             player[i].setM_passByGo(false);
         }
@@ -2232,10 +2232,11 @@ public class Gameplay extends javax.swing.JFrame {
                     if ((currentBalance > HouseCost) && BuidHotel(playerTurn)) {
 
                         int ToBeBuild = zoneMap.get(Cityidx).getM_NumOFBuildedHouses() + 1;
+                        System.out.println(ToBeBuild);
 
                         if (((idx > 0 && idx < 10) || (idx > 18 && idx < 28)) && (!zoneMap.get(Cityidx).isHotelBuilded())) {
                             HBuildings HB = (HBuildings) build.get(idx);
-
+                            
                             if (ToBeBuild <= 5 && BuidHotel(playerTurn)) {
                                 try {
                                     SoundEffects.PlaySound("src/Gameplay/soundEffects/zapsplat_impacts_wood.wav");
@@ -2262,6 +2263,7 @@ public class Gameplay extends javax.swing.JFrame {
                             if (!zoneMap.get(Cityidx).isHotelBuilded()) {
 
                                 VBuidings VB = (VBuidings) build.get(idx);
+                                
                                 if (ToBeBuild <= 5 && BuidHotel(playerTurn) == true) {
                                     try {
                                         SoundEffects.PlaySound("src/Gameplay/soundEffects/zapsplat_impacts_wood.wav");
