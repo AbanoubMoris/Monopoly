@@ -156,7 +156,7 @@ public class Gameplay extends javax.swing.JFrame {
             zoneMap.get(cityIDx).setHotelBuilded(false);
         }   
         updatePlayersBalance();
-        UpdateBuildings(cityIDx);
+        UpdateBuildings(cityIDx,null);
         jPanel1.repaint();
     }
     
@@ -2149,7 +2149,7 @@ public class Gameplay extends javax.swing.JFrame {
        } 
        return false;
    }
-    public void UpdateBuildings(int CityIdx){
+    public void UpdateBuildings(int CityIdx , Color color){
         for (Map.Entry<Integer, Zone> entry : zoneMap.entrySet()) {
         int key = entry.getKey();
         Object value = entry.getValue();
@@ -2157,9 +2157,12 @@ public class Gameplay extends javax.swing.JFrame {
                 try {
                      if (build.containsKey(CityIdx)){
                     HBuildings HB = (HBuildings)build.get(CityIdx);
-                    HB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), null, false);
-                    HB.setVisible(false);
-                    
+                    //HB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
+                    HB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), color, false);
+                    if (color !=null)
+                        HB.setVisible(true);
+                    else 
+                        HB.setVisible(false);
                 } 
                 } catch (Exception e) {
                 }
@@ -2169,15 +2172,18 @@ public class Gameplay extends javax.swing.JFrame {
                 try {
                     if (build.containsKey(CityIdx) ){
                     VBuidings VB = (VBuidings)build.get(CityIdx);
-                    VB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), null, false);
-                    VB.setVisible(false);
+                    VB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), color, false);
+                    if (color !=null)
+                        VB.setVisible(true);
+                    else 
+                        VB.setVisible(false);
                 } 
                 } catch (Exception e) {
                 }
                 
             }
         }
-
+        repaint();
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -2295,6 +2301,7 @@ public class Gameplay extends javax.swing.JFrame {
                  zoneMap.get(z.getM_index()).remove(2);
                  zoneMap.get(z.getM_index()).setImage(z.getPicPath(), true, true, player[playerTurn].getM_color());
             }
+            UpdateBuildings(z.getM_index(),player[playerTurn].getM_color());
             jPanel1.repaint();
           
             trade_pnl1.setVisible(false);
