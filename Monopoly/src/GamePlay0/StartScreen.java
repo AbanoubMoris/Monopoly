@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Timer;
 
 public class StartScreen extends javax.swing.JFrame {
     Thread s;
@@ -14,6 +15,8 @@ public class StartScreen extends javax.swing.JFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         setBackground(new Color(0,0,0,0));
+        
+       
         
         Update();
         s.start();
@@ -35,6 +38,7 @@ public class StartScreen extends javax.swing.JFrame {
                     try {
                         NewJFrame1 NF =  new NewJFrame1();
                         NF.setVisible(true);
+                        setVisible(false);
                         
                         
                     } catch (InterruptedException ex) {
@@ -43,8 +47,9 @@ public class StartScreen extends javax.swing.JFrame {
                    
                 }
                 
-       
+                
             }
+            
              }});  
     }
 

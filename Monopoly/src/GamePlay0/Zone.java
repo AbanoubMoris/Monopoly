@@ -245,11 +245,7 @@ public class  Zone extends javax.swing.JPanel {
           }  
           
         };
-        //JButton btn = new JButton();
-       // this.add(btn);
         this.add(pnl);
-        
-  
         pnl.setBounds(0, 0, this.getWidth(), this.getHeight());
         
       //  btn.setBounds(0, 0, 100, 100);

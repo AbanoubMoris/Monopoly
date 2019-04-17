@@ -93,6 +93,62 @@ public class Gameplay extends javax.swing.JFrame {
       
    
     }
+    
+        private static void displayCardInfo(String Path) {
+        JOptionPane.showConfirmDialog(null,
+                        getCardInfoPanel(Path),
+                        "Card Info  ",
+                        JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.PLAIN_MESSAGE);
+    }
+    
+    private static int SellOptions(String Path) {
+        UIManager.put("OptionPane.yesButtonText", "Sell Buildings"); //0
+        UIManager.put("OptionPane.noButtonText", "Sell City"); //1
+        UIManager.put("OptionPane.cancelButtonText", "OK");//2
+      //  int dialogResult = JOptionPane.showConfirmDialog (null, "","",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE );
+        
+        int dialogResult = JOptionPane.showConfirmDialog(null,
+                        getCardInfoPanel(Path),
+                        "Card Info  ",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.PLAIN_MESSAGE);
+        System.out.println(dialogResult);
+        return dialogResult;
+    }
+    private void SetSellOption(int Res , int cityIDx){
+        
+        if (Res == 1) {
+            player[playerTurn].setM_balance(player[playerTurn].getM_balance() 
+                    + (zoneMap.get(cityIDx).getM_zoneCost()/2)
+                    + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses()*zoneMap.get(cityIDx).getM_houseCost())/2);
+            
+            player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()
+                    - zoneMap.get(cityIDx).getM_NumOFBuildedHouses());
+            player[playerTurn].setM_numberOFHotels(player[playerTurn].getM_numberOFHotels()-1);
+            
+            zoneMap.get(cityIDx).setM_NumOFBuildedHouses(0);
+            zoneMap.get(cityIDx).setHotelBuilded(false);
+            player[playerTurn].m_zonesOwnedIndexes.remove(new Integer(zoneMap.get(cityIDx).getM_index()));
+            
+            
+     }//sell
+        else if (Res == 0){
+            player[playerTurn].setM_balance(player[playerTurn].getM_balance() 
+                    + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses()*zoneMap.get(cityIDx).getM_houseCost())/2);
+            
+            player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()
+                    - zoneMap.get(cityIDx).getM_NumOFBuildedHouses());
+            player[playerTurn].setM_numberOFHotels(player[playerTurn].getM_numberOFHotels()-1);
+            
+            zoneMap.get(cityIDx).setM_NumOFBuildedHouses(0);
+            zoneMap.get(cityIDx).setHotelBuilded(false);
+        }   
+        updatePlayersBalance();
+        UpdateBuildings();
+    }
+    
+    static int Res;
     public void DisplayCiyInfo(){
         
         // cards info mouse events
@@ -105,7 +161,13 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/MarvinGardens.png");
+                if (turn>0 &&  player[playerTurn].m_zonesOwnedIndexes.contains(MarvinGardens.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/MarvinGardens.png");
+                    SetSellOption(Res,MarvinGardens.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/MarvinGardens.png");
+                
             }
         });
         
@@ -118,7 +180,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/VentorAvenue.png");
+                if (turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(ventnor.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/VentorAvenue.png");
+                    SetSellOption(Res,ventnor.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/VentorAvenue.png");
             }
         });
         
@@ -131,7 +198,13 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/AtlanticAvenue.png");
+
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Atlantic.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/AtlanticAvenue.png");
+                    SetSellOption(Res,Atlantic.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/AtlanticAvenue.png");
             }
         });
        
@@ -145,7 +218,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/IllinoisAvenue.png");
+                if (turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(Illinois.getM_index())){
+                    Res =  SellOptions("src/Gameplay/img/cards/IllinoisAvenue.png");
+                    SetSellOption(Res,Illinois.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/IllinoisAvenue.png");
             }
         });
         
@@ -158,7 +236,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/IndianaAvenue.png");
+                 if (turn > 0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Indiana.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/IndianaAvenue.png");
+                    SetSellOption(Res,Indiana.getM_index());
+                 }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/IndianaAvenue.png");
             }
         });
         
@@ -171,7 +254,13 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/KentuckyAvenue.png");
+                 if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Kentucky.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/KentuckyAvenue.png");
+                    SetSellOption(Res,Kentucky.getM_index());
+                 }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/KentuckyAvenue.png");
+                
             }
         });
         
@@ -184,7 +273,13 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/MediteraneanAvenue.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Mediter_Ranean.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/MediteraneanAvenue.png");
+                    SetSellOption(Res,Mediter_Ranean.getM_index());
+                }
+                    
+                else
+                    displayCardInfo("src/Gameplay/img/cards/MediteraneanAvenue.png");
             }
         });
         
@@ -197,7 +292,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/BalticAvenue.png");
+                 if (turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(Baltic.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/BalticAvenue.png");
+                    SetSellOption(Res,Baltic.getM_index());
+                 }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/BalticAvenue.png");
             }
         });
         
@@ -211,7 +311,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/OrientalAvenue.png");
+                 if ( turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Oriental.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/OrientalAvenue.png");
+                     SetSellOption(Res,Oriental.getM_index());
+                 }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/OrientalAvenue.png");
             }
         });
         
@@ -224,7 +329,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/VermontAvenue.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Vermont.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/VermontAvenue.png");
+                     SetSellOption(Res,Vermont.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/VermontAvenue.png");
             }
         });
         
@@ -237,7 +347,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/ConnectCutAvenue.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Connecticut.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/ConnectCutAvenue.png");
+                    SetSellOption(Res,Connecticut.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/ConnectCutAvenue.png");
             }
         });
         
@@ -250,7 +365,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/PacificAvenue.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pacific.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/PacificAvenue.png");
+                    SetSellOption(Res,pacific.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/PacificAvenue.png");
             }
         });
         
@@ -263,7 +383,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/NorthCarolina.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(NorthCaro.getM_index())){
+                    Res =SellOptions("src/Gameplay/img/cards/NorthCarolina.png");
+                    SetSellOption(Res,NorthCaro.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/NorthCarolina.png");
             }
         });
         
@@ -276,7 +401,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/Pensylvania.png");
+                if (turn!=0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pennsy.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/Pensylvania.png");
+                    SetSellOption(Res,pennsy.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/Pensylvania.png");
             }
         });
         
@@ -291,7 +421,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/ParkPlace.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(ParkPlace.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/ParkPlace.png");
+                    SetSellOption(Res,ParkPlace.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/ParkPlace.png");
             }
         });
         
@@ -304,7 +439,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/NewYorkAvenue.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(NewYork.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/NewYorkAvenue.png");
+                    SetSellOption(Res,NewYork.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/NewYorkAvenue.png");
             }
         });
         
@@ -317,7 +457,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/TennesseeAvenue.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Tenss.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/TennesseeAvenue.png");
+                    SetSellOption(Res,Tenss.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/TennesseeAvenue.png");
             }
         });
         
@@ -330,7 +475,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/StJamesPlace.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(stJames.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/StJamesPlace.png");
+                    SetSellOption(Res,stJames.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/StJamesPlace.png");
             }
         });
         
@@ -345,7 +495,13 @@ public class Gameplay extends javax.swing.JFrame {
                 }
         
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/VirginiaAvenue.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Virginnia.getM_index())){
+                    Res =SellOptions("src/Gameplay/img/cards/VirginiaAvenue.png");
+                    SetSellOption(Res,Virginnia.getM_index());
+                }
+                    
+                else
+                    displayCardInfo("src/Gameplay/img/cards/VirginiaAvenue.png");
             }
         });
         
@@ -358,7 +514,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/StatesAvenue.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(States.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/StatesAvenue.png");
+                    SetSellOption(Res,States.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/StatesAvenue.png");
             }
         });
         
@@ -371,7 +532,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/RR.png");
+                if (turn >0  &&player[playerTurn].m_zonesOwnedIndexes.contains(RealRoad.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/RR.png");
+                    SetSellOption(Res,RealRoad.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/RR.png");
             }
         });
         RailRoad.addMouseListener(new MouseAdapter() {
@@ -383,7 +549,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/RR.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(RailRoad)){
+                    Res = SellOptions("src/Gameplay/img/cards/RR.png");
+                    SetSellOption(Res,RailRoad.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/RR.png");
             }
         });
         
@@ -397,7 +568,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/PR.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pennsyl.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/PR.png");
+                    SetSellOption(Res,pennsyl.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/PR.png");
             }
         });
         
@@ -410,7 +586,12 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/SL.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(shorLline.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/SL.png");
+                    SetSellOption(Res,shorLline.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/SL.png");
             }
         });
         waterWorks.addMouseListener(new MouseAdapter() {
@@ -422,11 +603,17 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                displayCardInfo("src/Gameplay/img/cards/WW.png");
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(waterWorks.getM_index())){
+                    Res = SellOptions("src/Gameplay/img/cards/WW.png");
+                    SetSellOption(Res,waterWorks.getM_index());
+                }
+                else
+                    displayCardInfo("src/Gameplay/img/cards/WW.png");
             }
         });
     
         //this.repaint();
+        
     }
 
    
@@ -436,7 +623,7 @@ public class Gameplay extends javax.swing.JFrame {
     
     //JButton btn1;
     //JButton btn2;
-    int playerTurn = -1;
+    static int playerTurn = -1;
     int turn = 0;
     public int getPlayerTurn() {
         return playerTurn;
@@ -523,14 +710,17 @@ public class Gameplay extends javax.swing.JFrame {
         initComponents();
        
 
-        
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         
         zoneMapInitialization();
         playerPanelMapInitialization();
         playerPanelAccsessMapInitialization();
         DrawGamePlay();
+        //*********************
+        playerTurn = 0;
         DisplayCiyInfo();
+        playerTurn=-1;
+        //*********************
         initializeArray();
         
         IntializePlayers(NumOfPlayers, player);   
@@ -578,7 +768,7 @@ public class Gameplay extends javax.swing.JFrame {
         
     }
     
-     public void DrawPlayers_pnl(int NumOfPlayers){
+    public void DrawPlayers_pnl(int NumOfPlayers){
         
          if(NumOfPlayers == 2){
             player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
@@ -686,9 +876,7 @@ public class Gameplay extends javax.swing.JFrame {
             player_pnl6.setVisible(true);
          }
      }   
-        
-    
-        
+          
     private void PassByGo(){
         player[playerTurn].setM_balance(player[playerTurn].getM_balance()+200);
         updatePlayersBalance();
@@ -1034,6 +1222,7 @@ public class Gameplay extends javax.swing.JFrame {
         MONOMAN = new GamePlay0.Zone();
         orange = new GamePlay0.Zone();
         bluetreasure = new GamePlay0.Zone();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         Trade_btn = new javax.swing.JButton();
@@ -1445,6 +1634,15 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel1.add(bluetreasure);
         bluetreasure.setBounds(138, 138, 133, 133);
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(640, 320, 73, 23);
+
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 40, 875, 728);
 
@@ -1756,6 +1954,8 @@ public class Gameplay extends javax.swing.JFrame {
                 updatePlayersBalance();
                 addZoneToPanel(playerTurn, zoneMap.get(index).getM_index());
                 zoneMap.get(index).setPlayer_zone(player[playerTurn]);
+                
+
 
             }
             else {
@@ -2164,6 +2364,11 @@ public class Gameplay extends javax.swing.JFrame {
      
         
     }//GEN-LAST:event_SellActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        DisplayCiyInfo();
+    }//GEN-LAST:event_jButton2ActionPerformed
             
     
     public static void main(String args[]) {
@@ -2201,14 +2406,6 @@ public class Gameplay extends javax.swing.JFrame {
         
         
         
-    }
-    
-    private static void displayCardInfo(String Path) {
-        JOptionPane.showConfirmDialog(null,
-                        getCardInfoPanel(Path),
-                        "Card Info  ",
-                        JOptionPane.DEFAULT_OPTION,
-                        JOptionPane.PLAIN_MESSAGE);
     }
 
     private static JPanel getCardInfoPanel(String Path) {
@@ -2295,6 +2492,7 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone go;
     private GamePlay0.Zone goToJail;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
