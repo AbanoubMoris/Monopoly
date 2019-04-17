@@ -29,6 +29,8 @@ public class Player {
     private int m_numberOFHotels;
     private int inJail;
     private int m_railRoadsBought;
+    private boolean m_isBankrupted;
+    private boolean m_isWinner;
 
     public int getM_numberOfHouses() {
         return m_numberOfHouses;
@@ -65,6 +67,8 @@ public class Player {
         m_numberOfHouses = 0;
         m_numberOFHotels = 0;
         m_railRoadsBought=0;
+        m_isBankrupted = false;
+        m_isWinner = false;
     }
 
     
@@ -83,6 +87,8 @@ public class Player {
         m_numberOfHouses = 0;
         m_numberOFHotels = 0;
         m_railRoadsBought=0;
+        m_isBankrupted = false;
+        m_isWinner = false;
     }
 
     public int getM_getOutOfJailCards() {
@@ -152,6 +158,24 @@ public class Player {
     public void setM_passByGo(boolean m_passByGo) {
         this.m_passByGo = m_passByGo;
     }
+
+    public boolean isM_isBankrupted() {
+        return m_isBankrupted;
+    }
+
+    public void setM_isBankrupted(boolean m_isBankrupted) {
+        this.m_isBankrupted = m_isBankrupted;
+    }
+
+    public boolean isM_isWinner() {
+        return m_isWinner;
+    }
+
+    public void setM_isWinner(boolean m_isWinner) {
+        this.m_isWinner = m_isWinner;
+    }
+    
+    
     
     public void addZone(int index)
     {

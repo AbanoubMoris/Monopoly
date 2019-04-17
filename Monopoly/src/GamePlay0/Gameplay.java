@@ -704,7 +704,7 @@ public class Gameplay extends javax.swing.JFrame {
             Player_Car.get(i).setBounds(go.getX(), go.getY()+(go.getWidth()-20-postion), 60, 20);
             jPanel1.add(Player_Car.get(i));
             
-            player[i].setM_balance(1500);
+            player[i].setM_balance(150);
             player[i].setM_inJail(false);
             player[i].setM_passByGo(false);
         }
@@ -1852,13 +1852,11 @@ public class Gameplay extends javax.swing.JFrame {
                     }
                 
                 }
-            // return them to default
             UIManager.put("OptionPane.cancelButtonText", "Cancel");
             UIManager.put("OptionPane.noButtonText", "No");
             UIManager.put("OptionPane.yesButtonText", "Yes");
             
-           // playerTurn++;
-           // playerTurn%=NumbOfPlayers;   
+          
     }
     
     private void turnIndicator()
@@ -1872,6 +1870,13 @@ public class Gameplay extends javax.swing.JFrame {
     
    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        
+        
+            
+            
+        
+        
         try {
             SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
                     } catch (IOException ex) {
@@ -1907,8 +1912,8 @@ public class Gameplay extends javax.swing.JFrame {
         }
         
         checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
-        
-        
+        checkBankruptcy();
+        if(player[playerTurn].isM_isBankrupted())showPlayerDecisionPanel();
   
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -2396,6 +2401,46 @@ public class Gameplay extends javax.swing.JFrame {
 
         return panel;
     }
+    
+    private JPanel playerDecisionPanel()
+    {
+        JPanel panel = new JPanel();
+        panel.setBorder(new LineBorder(Color.black, 10));
+        return panel;
+    }
+    
+    private void showPlayerDecisionPanel()
+    {
+              
+                UIManager.put("OptionPane.noButtonText", "Leave Game");
+                UIManager.put("OptionPane.yesButtonText", "Sell City or Buildings");
+                
+                    int input = JOptionPane.showConfirmDialog(playerDecisionPanel(),"You Are Bankrupted Decide Wether To Sell City Or Leave The Game!" ,"DECIDE!" , JOptionPane.YES_NO_OPTION , JOptionPane.PLAIN_MESSAGE);
+
+                    if(input==0)
+                    {
+                        
+                    }
+                    else if(input==1)
+                    {
+                        
+                    }
+            UIManager.put("OptionPane.noButtonText", "No");
+            UIManager.put("OptionPane.yesButtonText", "Yes");
+            
+          
+    }
+    
+    private void checkBankruptcy (){
+        for(int i=0; i<NumbOfPlayers; i++)
+        {
+            if(player[i].getM_balance()<0){
+                player[i].setM_isBankrupted(true);
+            }
+        }
+        
+    }
+    
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GamePlay0.Zone Atlantic;
