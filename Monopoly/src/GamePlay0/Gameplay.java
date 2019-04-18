@@ -720,7 +720,7 @@ public class Gameplay extends javax.swing.JFrame {
     }
     public Gameplay(int NumOfPlayers , Player[] player ) throws IOException {
         initComponents();
-       
+        setBackground(new Color(0,0,0,0));
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         
@@ -1181,8 +1181,8 @@ public class Gameplay extends javax.swing.JFrame {
         B25 = new GamePlay0.HBuildings();
         Atlantic = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow",24);
         B24 = new GamePlay0.HBuildings();
-        waterWorks = new GamePlay0.Zone(4,150,26);
-        RailRoad = new GamePlay0.Zone(25,50,100,200,200,23);
+        waterWorks = new GamePlay0.Zone(26);
+        RailRoad = new GamePlay0.Zone(23);
         Illinois = new GamePlay0.Zone(20,40,100,300,750,925,1100,150,150,240,"Red",22);
         B22 = new GamePlay0.HBuildings();
         Indiana = new GamePlay0.Zone(18,36,90,250,700,875,1050,150,150,220,"Red",21);
@@ -1196,7 +1196,7 @@ public class Gameplay extends javax.swing.JFrame {
         Baltic = new GamePlay0.Zone(4,8,20,60,180,320,450,50,50,60,"Brown",3);
         B3 = new GamePlay0.HBuildings();
         IncomeTax = new GamePlay0.Zone(4);
-        RealRoad = new GamePlay0.Zone(25,50,100,200,200,5);
+        RealRoad = new GamePlay0.Zone(5);
         Oriental = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue",6);
         B6 = new GamePlay0.HBuildings();
         ChanceRed = new GamePlay0.Zone(7);
@@ -1211,7 +1211,7 @@ public class Gameplay extends javax.swing.JFrame {
         communtityChestRight = new GamePlay0.Zone(31);
         pennsy = new GamePlay0.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green",32);
         B32 = new GamePlay0.VBuidings();
-        shorLline = new GamePlay0.Zone(25,50,100,200,200,33);
+        shorLline = new GamePlay0.Zone(33);
         OrangeChance = new GamePlay0.Zone(34);
         ParkPlace = new GamePlay0.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue",35);
         B35 = new GamePlay0.VBuidings();
@@ -1220,7 +1220,7 @@ public class Gameplay extends javax.swing.JFrame {
         CCT = new GamePlay0.Zone(15);
         stJames = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange",14);
         B14 = new GamePlay0.VBuidings();
-        pennsyl = new GamePlay0.Zone(25,50,100,200,200,13);
+        pennsyl = new GamePlay0.Zone(13);
         Virginnia = new GamePlay0.Zone(12,24,60,180,500,700,900,100,100,160,"Pink",12);
         B12 = new GamePlay0.VBuidings();
         States = new GamePlay0.Zone(10,20,50,150,450,625,750,100,100,140,"Pink",11);
@@ -1246,7 +1246,16 @@ public class Gameplay extends javax.swing.JFrame {
         trade_pnl1 = new GamePlay0.trade_pnl();
         Deal_btn = new javax.swing.JButton();
         NoDeal_btn = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1738,21 +1747,45 @@ public class Gameplay extends javax.swing.JFrame {
         getContentPane().add(jPanel2);
         jPanel2.setBounds(893, 40, 463, 717);
 
-        jPanel3.setBackground(new java.awt.Color(255, 153, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/Untitled222.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1370, 40);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1370, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/Vmoney.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(1360, 200, 30, 90);
 
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 1370, 40);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/Vmoney.png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(870, 10, 30, 220);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/Vmoney.png"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(870, 180, 30, 220);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/Vmoney.png"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(870, 360, 30, 220);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/Vmoney.png"))); // NOI18N
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(870, 550, 30, 220);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/Vmoney.png"))); // NOI18N
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(1350, 580, 30, 220);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/Vmoney.png"))); // NOI18N
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(1350, 410, 30, 220);
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/Vmoney.png"))); // NOI18N
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(1350, 250, 30, 220);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/Vmoney.png"))); // NOI18N
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(1350, 0, 30, 220);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2490,9 +2523,18 @@ public class Gameplay extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private GamePlay0.Zone jail;
     private GamePlay0.Zone orange;
     private GamePlay0.Zone pacific;
