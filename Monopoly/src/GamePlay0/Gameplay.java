@@ -120,7 +120,7 @@ public class Gameplay extends javax.swing.JFrame {
     }
     private void SetSellOption(int Res , int cityIDx){
         
-        if (player[playerTurn]!=null && Res == 1) {
+        if (Res == 1) {
             player[playerTurn].setM_balance(player[playerTurn].getM_balance() 
                     + (zoneMap.get(cityIDx).getM_zoneCost()/2)
                     + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses()*zoneMap.get(cityIDx).getM_houseCost())/2);
@@ -144,7 +144,7 @@ public class Gameplay extends javax.swing.JFrame {
             
             
      }//sell
-        else if (player[playerTurn]!=null && Res == 0){
+        else if (Res == 0){
             player[playerTurn].setM_balance(player[playerTurn].getM_balance() 
                     + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses()*zoneMap.get(cityIDx).getM_houseCost())/2);
             
@@ -173,7 +173,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null && turn>0 &&  player[playerTurn].m_zonesOwnedIndexes.contains(MarvinGardens.getM_index())){
+                if (turn>0 &&  player[playerTurn].m_zonesOwnedIndexes.contains(MarvinGardens.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/MarvinGardens.png");
                     SetSellOption(Res,MarvinGardens.getM_index());
                 }
@@ -192,7 +192,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null && turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(ventnor.getM_index())){
+                if (turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(ventnor.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/VentorAvenue.png");
                     SetSellOption(Res,ventnor.getM_index());
                 }
@@ -211,7 +211,7 @@ public class Gameplay extends javax.swing.JFrame {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
 
-                if ( player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Atlantic.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Atlantic.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/AtlanticAvenue.png");
                     SetSellOption(Res,Atlantic.getM_index());
                 }
@@ -230,7 +230,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null && turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(Illinois.getM_index())){
+                if (turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(Illinois.getM_index())){
                     Res =  SellOptions("src/Gameplay/img/cards/IllinoisAvenue.png");
                     SetSellOption(Res,Illinois.getM_index());
                 }
@@ -248,7 +248,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                 if (player[playerTurn]!=null && turn > 0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Indiana.getM_index())){
+                 if (turn > 0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Indiana.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/IndianaAvenue.png");
                     SetSellOption(Res,Indiana.getM_index());
                  }
@@ -266,7 +266,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                 if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Kentucky.getM_index())){
+                 if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Kentucky.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/KentuckyAvenue.png");
                     SetSellOption(Res,Kentucky.getM_index());
                  }
@@ -285,7 +285,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Mediter_Ranean.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Mediter_Ranean.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/MediteraneanAvenue.png");
                     SetSellOption(Res,Mediter_Ranean.getM_index());
                 }
@@ -304,7 +304,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                 if (player[playerTurn]!=null &&turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(Baltic.getM_index())){
+                 if (turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(Baltic.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/BalticAvenue.png");
                     SetSellOption(Res,Baltic.getM_index());
                  }
@@ -323,7 +323,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                 if (player[playerTurn]!=null && turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Oriental.getM_index())){
+                 if ( turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Oriental.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/OrientalAvenue.png");
                      SetSellOption(Res,Oriental.getM_index());
                  }
@@ -341,7 +341,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Vermont.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Vermont.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/VermontAvenue.png");
                      SetSellOption(Res,Vermont.getM_index());
                 }
@@ -359,7 +359,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Connecticut.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Connecticut.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/ConnectCutAvenue.png");
                     SetSellOption(Res,Connecticut.getM_index());
                 }
@@ -377,7 +377,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pacific.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pacific.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/PacificAvenue.png");
                     SetSellOption(Res,pacific.getM_index());
                 }
@@ -395,7 +395,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(NorthCaro.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(NorthCaro.getM_index())){
                     Res =SellOptions("src/Gameplay/img/cards/NorthCarolina.png");
                     SetSellOption(Res,NorthCaro.getM_index());
                 }
@@ -413,7 +413,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn!=0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pennsy.getM_index())){
+                if (turn!=0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pennsy.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/Pensylvania.png");
                     SetSellOption(Res,pennsy.getM_index());
                 }
@@ -433,7 +433,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(ParkPlace.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(ParkPlace.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/ParkPlace.png");
                     SetSellOption(Res,ParkPlace.getM_index());
                 }
@@ -451,7 +451,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(NewYork.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(NewYork.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/NewYorkAvenue.png");
                     SetSellOption(Res,NewYork.getM_index());
                 }
@@ -469,7 +469,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Tenss.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Tenss.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/TennesseeAvenue.png");
                     SetSellOption(Res,Tenss.getM_index());
                 }
@@ -487,7 +487,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(stJames.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(stJames.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/StJamesPlace.png");
                     SetSellOption(Res,stJames.getM_index());
                 }
@@ -507,7 +507,7 @@ public class Gameplay extends javax.swing.JFrame {
                 }
         
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Virginnia.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Virginnia.getM_index())){
                     Res =SellOptions("src/Gameplay/img/cards/VirginiaAvenue.png");
                     SetSellOption(Res,Virginnia.getM_index());
                 }
@@ -526,7 +526,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(States.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(States.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/StatesAvenue.png");
                     SetSellOption(Res,States.getM_index());
                 }
@@ -544,7 +544,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn >0  &&player[playerTurn].m_zonesOwnedIndexes.contains(RealRoad.getM_index())){
+                if (turn >0  &&player[playerTurn].m_zonesOwnedIndexes.contains(RealRoad.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/RR.png");
                     SetSellOption(Res,RealRoad.getM_index());
                 }
@@ -561,7 +561,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(RailRoad)){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(RailRoad)){
                     Res = SellOptions("src/Gameplay/img/cards/RR.png");
                     SetSellOption(Res,RailRoad.getM_index());
                 }
@@ -580,7 +580,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pennsyl.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pennsyl.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/PR.png");
                     SetSellOption(Res,pennsyl.getM_index());
                 }
@@ -598,7 +598,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(shorLline.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(shorLline.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/SL.png");
                     SetSellOption(Res,shorLline.getM_index());
                 }
@@ -615,7 +615,7 @@ public class Gameplay extends javax.swing.JFrame {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (player[playerTurn]!=null &&turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(waterWorks.getM_index())){
+                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(waterWorks.getM_index())){
                     Res = SellOptions("src/Gameplay/img/cards/WW.png");
                     SetSellOption(Res,waterWorks.getM_index());
                 }
@@ -707,7 +707,7 @@ public class Gameplay extends javax.swing.JFrame {
             Player_Car.get(i).setBounds(go.getX(), go.getY()+(go.getWidth()-20-postion), 60, 20);
             jPanel1.add(Player_Car.get(i));
             
-            player[i].setM_balance(300);
+            player[i].setM_balance(1000);
             player[i].setM_inJail(false);
             player[i].setM_passByGo(false);
         }
@@ -720,7 +720,7 @@ public class Gameplay extends javax.swing.JFrame {
     }
     public Gameplay(int NumOfPlayers , Player[] player ) throws IOException {
         initComponents();
-        setBackground(new Color(0,0,0,50));
+        setBackground(new Color(0,0,0,0));
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         
@@ -742,14 +742,7 @@ public class Gameplay extends javax.swing.JFrame {
         
         B1.setNumAndColor(3, Color.yellow , true);
         IntializeBuildings();
-       /* 
-        for (int i=1;i<NumbOfPlayers-1;i++){
-                                player[i]=player[i+1];
-                                Player_Car.remove(1);
-        }
-        NumbOfPlayers--;
-        */
-       
+        
     }
     private Map<Integer , Object> build = new HashMap<Integer,Object>();
     
@@ -896,19 +889,15 @@ public class Gameplay extends javax.swing.JFrame {
      }   
           
     private void PassByGo(){
-        if (player[playerTurn]!=null ){
         player[playerTurn].setM_balance(player[playerTurn].getM_balance()+200);
         updatePlayersBalance();
-        }
     } 
     private void GoToJail(){
         //int currentPos = pos.getCurrentPos(playerTurn);
-        if (player[playerTurn]!=null ){
         pos.SetPlayer(playerTurn,18); 
         player[playerTurn].setInJail(2);
         Movement(18,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
         s.start();
-        }
     }
      
     public void Movement(int NumOfSteps , int x ,int y , int pl){
@@ -929,15 +918,9 @@ public class Gameplay extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                     int currentX = 0;
-                     int currentY = 0;
-                    try {
-                        currentX = Player_Car.get(pl).getX();
-                        currentY = Player_Car.get(pl).getY();
-                    } catch (Exception e) {
-                        System.out.println("Game Over");
-                    }
-                    
+                     
+                    int currentX = Player_Car.get(pl).getX();
+                    int currentY = Player_Car.get(pl).getY();
 
                     //UP
                     if(currentX + (parking.getHeight() - currentX) > x && currentX < jPanel1.getWidth() && currentY == y){
@@ -1066,14 +1049,14 @@ public class Gameplay extends javax.swing.JFrame {
 
     
     private void DrawingCards(String cardType){
-        if(player[playerTurn]!=null &&cardType == "Community Chest")
+        if(cardType == "Community Chest")
         {
             try {
             SoundEffects.PlaySound("src/Gameplay/soundEffects/104207086-game-treasure-06.wav");
                     } catch (IOException ex) {
             Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
         }
-            if( card.displayCommunityChestCards()>=-1)
+            if(card.displayCommunityChestCards()>=-1)
             {
                 int currentPos = pos.getCurrentPos(playerTurn);
                 int randomNumber = card.ApplyCardEffect("CommunityChest", player[playerTurn],playerTurn,pos,NumbOfPlayers , player);
@@ -1094,7 +1077,7 @@ public class Gameplay extends javax.swing.JFrame {
                 updatePlayersBalance();
             }
         }
-        else if(player[playerTurn]!=null && cardType == "Chance")
+        else if(cardType == "Chance")
         {
             if(card.displayChanceCards()>=-1)
             {
@@ -1168,25 +1151,18 @@ public class Gameplay extends javax.swing.JFrame {
     }
     
     private void updatePlayersBalance(){
-        if (player[0]!=null){
         player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
         player_pnl1.setBalance_lbl(player_pnl1.getBalance_lbl());
-        }if (player[1]!=null){
         player_pnl2.getBalance_lbl().setText(String.valueOf(player[1].getM_balance()));
         player_pnl2.setBalance_lbl(player_pnl2.getBalance_lbl());
-        }if (player[2]!=null){
         player_pnl3.getBalance_lbl().setText(String.valueOf(player[2].getM_balance()));
         player_pnl3.setBalance_lbl(player_pnl3.getBalance_lbl());
-        }if (player[3]!=null){
         player_pnl4.getBalance_lbl().setText(String.valueOf(player[3].getM_balance()));
         player_pnl4.setBalance_lbl(player_pnl4.getBalance_lbl());
-        }if (player[4]!=null){
         player_pnl5.getBalance_lbl().setText(String.valueOf(player[4].getM_balance()));
         player_pnl5.setBalance_lbl(player_pnl5.getBalance_lbl());
-        }if (player[5]!=null){
         player_pnl6.getBalance_lbl().setText(String.valueOf(player[5].getM_balance()));
         player_pnl6.setBalance_lbl(player_pnl6.getBalance_lbl());
-        }
     }
     
     
@@ -1840,10 +1816,8 @@ public class Gameplay extends javax.swing.JFrame {
     //go to jail , pay 200 income tax
     private void someConditions()
     {
-        if (player[playerTurn]!=null ){
-        if( pos.getCurrentPos(player[playerTurn].getM_id()) == 4)player[playerTurn].setM_balance(player[playerTurn].getM_balance()- 200);
+        if(pos.getCurrentPos(player[playerTurn].getM_id()) == 4)player[playerTurn].setM_balance(player[playerTurn].getM_balance()- 200);
         updatePlayersBalance();
-        }
     }
     
     private JPanel jailPanel()
@@ -1853,7 +1827,8 @@ public class Gameplay extends javax.swing.JFrame {
         return panel;
     }
     
-    private void showJailPanel(){
+    private void showJailPanel()
+    {
                 UIManager.put("OptionPane.cancelButtonText", "Skip Turn");
                 UIManager.put("OptionPane.noButtonText", "Use Card");
                 UIManager.put("OptionPane.yesButtonText", "Pay 50$");
@@ -1861,7 +1836,7 @@ public class Gameplay extends javax.swing.JFrame {
                 {
                     int input = JOptionPane.showConfirmDialog(jailPanel(),"Pay 50$ to get out of jail or Use a \"Get Out of Jail\" card or Skip your turn" ,"You Are In Jail!" , JOptionPane.YES_NO_CANCEL_OPTION , JOptionPane.PLAIN_MESSAGE);
 
-                    if(player[playerTurn]!=null && input==0)
+                    if(input==0)
                     {
                         if(player[playerTurn].getM_balance()>=50)
                         {
@@ -1879,7 +1854,7 @@ public class Gameplay extends javax.swing.JFrame {
                         }
                         }
                     }
-                    else if(player[playerTurn]!=null && input==1)
+                    else if(input==1)
                     {
                         if(player[playerTurn].getM_getOutOfJailCards()>0)
                         {
@@ -1905,37 +1880,32 @@ public class Gameplay extends javax.swing.JFrame {
           
     }
     
-    private void turnIndicator(){
-        if (player[playerTurn]!=null ){
+    private void turnIndicator()
+    {
         for(int i=0; i<NumbOfPlayers; i++)
         {
             playerPanelAccessMap.get(i).setBorder(null);
         }
         playerPanelAccessMap.get(playerTurn).setBorder(BorderFactory.createLineBorder(Color.RED,3));
     }
-    }
+    
    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        turn++;
-        playerTurn++;
-        try {
-        playerTurn%=NumbOfPlayers;}
-        catch (Exception e) {
-        }
-        if (player[playerTurn]!=null ){
         
         try {
             SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
                     } catch (IOException ex) {
             Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
         
+        turn++;
+        playerTurn++;
+        playerTurn%=NumbOfPlayers;
         turnIndicator();
         
         //in jail
-        if(player[playerTurn]!=null && player[playerTurn].getInJail()>0)
+        if(player[playerTurn].getInJail()>0)
         {
             showJailPanel();
         }
@@ -1959,9 +1929,9 @@ public class Gameplay extends javax.swing.JFrame {
         
         checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
         checkBankruptcy();
-        if(player[playerTurn].isM_isBankrupted()) showPlayerDecisionPanel();
+        if(player[playerTurn].isM_isBankrupted())showPlayerDecisionPanel();
   
-        }   
+        
     }//GEN-LAST:event_jButton3ActionPerformed
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -2472,28 +2442,22 @@ public class Gameplay extends javax.swing.JFrame {
 
                     if(input==0)
                     {
-                       
+                        
                     }
-                    
                     else if(input==1)
                     {
-                       player[playerTurn] = null;
-                       NumbOfPlayers--;         
-                       playerTurn++; 
+                        
                     }
-                    
-                    
-                    
             UIManager.put("OptionPane.noButtonText", "No");
             UIManager.put("OptionPane.yesButtonText", "Yes");
             
-         jPanel1.repaint();
+          
     }
     
     private void checkBankruptcy (){
         for(int i=0; i<NumbOfPlayers; i++)
         {
-            if(player[i]!=null && player[i].getM_balance()<0){
+            if(player[i].getM_balance()<0){
                 player[i].setM_isBankrupted(true);
             }
         }
@@ -2594,7 +2558,7 @@ public class Gameplay extends javax.swing.JFrame {
     private void checkIfZoneIsOwned(int position, int id) {
         for(int i=0; i<NumbOfPlayers; i++)
         {
-            if(player[i]!=null &&player[i].m_zonesOwnedIndexes.contains(position))
+            if(player[i].m_zonesOwnedIndexes.contains(position))
             {  
                 int totalBuildings = zoneMap.get(position).getM_NumOFBuildedHouses();
                 int totalRent = 0;
