@@ -31,7 +31,16 @@ public class Player {
     private int m_railRoadsBought;
     private boolean m_isBankrupted;
     private boolean m_isWinner;
+    private boolean m_isLoser;
 
+    public boolean isM_isLoser() {
+        return m_isLoser;
+    }
+
+    public void setM_isLoser(boolean m_isLoser) {
+        this.m_isLoser = m_isLoser;
+    }
+    
     public int getM_numberOfHouses() {
         return m_numberOfHouses;
     }
@@ -69,6 +78,7 @@ public class Player {
         m_railRoadsBought=0;
         m_isBankrupted = false;
         m_isWinner = false;
+        m_isLoser = false;
     }
 
     
@@ -89,6 +99,7 @@ public class Player {
         m_railRoadsBought=0;
         m_isBankrupted = false;
         m_isWinner = false;
+        m_isLoser = false;
     }
 
     public int getM_getOutOfJailCards() {

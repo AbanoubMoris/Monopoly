@@ -115,7 +115,7 @@ public class Gameplay extends javax.swing.JFrame {
                         "Card Info  ",
                         JOptionPane.YES_NO_CANCEL_OPTION,
                         JOptionPane.PLAIN_MESSAGE);
-        System.out.println(dialogResult);
+        
         return dialogResult;
     }
     private void SetSellOption(int Res , int cityIDx){
@@ -707,7 +707,7 @@ public class Gameplay extends javax.swing.JFrame {
             Player_Car.get(i).setBounds(go.getX(), go.getY()+(go.getWidth()-20-postion), 60, 20);
             jPanel1.add(Player_Car.get(i));
             
-            player[i].setM_balance(1000);
+            player[i].setM_balance(300);
             player[i].setM_inJail(false);
             player[i].setM_passByGo(false);
         }
@@ -1890,8 +1890,27 @@ public class Gameplay extends javax.swing.JFrame {
     }
     
    
+    public int WhoIsNext(){
+            int i=playerTurn,cnt=0;
+            i%=NumbOfPlayers;
+            while(true){
+                if(!player[i].isM_isLoser()){
+                    return i;
+                }
+                i++;
+                cnt++;
+                if(cnt>NumbOfPlayers) return 1000;
+            }
+        }
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
+        turn++;
+        playerTurn++;
+        playerTurn = WhoIsNext();
+        playerTurn%=NumbOfPlayers;
+        System.out.println(playerTurn + " -- " + player[playerTurn].isM_isLoser());
+        if (!player[playerTurn].isM_isLoser()){
         
         try {
             SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
@@ -1899,8 +1918,56 @@ public class Gameplay extends javax.swing.JFrame {
             Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        turn++;
-        playerTurn++;
+        
+        
+        
+        turnIndicator();
+        
+        //in jail
+        if(player[playerTurn].getInJail()>0)
+        {
+            showJailPanel();
+        }
+        
+        if(player[playerTurn].getInJail()==0)
+        {
+            Random r = new Random();
+            Random z = new Random();
+            dice1.setDice_value(r.nextInt(6)+1);
+            dice2.setDice_value(r.nextInt(6)+1);
+            roll_Dice(dice1);
+            roll_Dice(dice2);
+            pos.SetPlayer(playerTurn,/*dice1.getDice_value()+dice2.getDice_value()*/1);
+            Movement(/*dice1.getDice_value()+dice2.getDice_value()*/1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
+            s.start();
+            //dice1.getDice_value()+dice2.getDice_value()
+        }
+        else{
+             player[playerTurn].setInJail(player[playerTurn].getInJail()-1);
+        }
+        
+        checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
+        checkBankruptcy();
+        if(player[playerTurn].isM_isBankrupted())showPlayerDecisionPanel();
+        
+  
+        }
+        
+        
+        else {
+            playerTurn++;
+            playerTurn = WhoIsNext();
+            playerTurn%=NumbOfPlayers;
+            
+            
+            try {
+            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
+                    } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
         playerTurn%=NumbOfPlayers;
         turnIndicator();
         
@@ -1930,8 +1997,10 @@ public class Gameplay extends javax.swing.JFrame {
         checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
         checkBankruptcy();
         if(player[playerTurn].isM_isBankrupted())showPlayerDecisionPanel();
+        
   
         
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -1943,14 +2012,14 @@ public class Gameplay extends javax.swing.JFrame {
             if(player[i].m_zonesOwnedIndexes.contains(index))
             {
                 
-               System.out.println("owned");
+               //System.out.println("owned");
                isOwned = true; 
                break;
             }
         }
         if(!isOwned)
         {
-            System.out.println(RealRoad.getM_zoneCost());
+            
             if(zoneMap.get(index).getM_zoneCost()!=0 && player[playerTurn].getM_balance() >= zoneMap.get(index).getM_zoneCost() )
             {
                 try {
@@ -2020,77 +2089,6 @@ public class Gameplay extends javax.swing.JFrame {
               y[i]=5;
           }
       }
-      /*
-    private void addZoneToPanel(int id, int city){  
-        
-       lbl = new JLabel(String.valueOf(city)); //Lma geet a7ot city name kan btb3 null 3shan hya fadya 
-        playerPanelMap.get(id).add(lbl);
-        for(int i=0; i<6; i++)
-            if(playerPanelMap.get(i).getComponentCount() == 1)x[i] = 5;
-        
-       lbl.setBounds(x[id], y[id], 20, 20);
-       lbl.setOpaque(true);
-      
-      
-        switch (id) {
-            case 0:
-                if (x[0] < 95) {
-                    x[0] += 20;
-                } else {
-                    y[0] = 20;
-                    x[0] = 5;
-                }
-                
-                 break;
-            case 1:
-                if (x[1] < 95) {
-                    x[1] += 20;
-                } else {
-                    y[1] = 20;
-                    x[1] = 5;
-                }
-                 break;
-            case 2:
-                if (x[2] < 95) {
-                    x[2] += 20;
-                } else {
-                    y[2] = 20;
-                    x[2] = 5;
-                }
-                break;
-            case 3:
-                if (x[3] < 95) {
-                    x[3] += 20;
-                } else {
-                    y[3] = 20;
-                    x[3] = 5;
-                }
-                break;
-            case 4:
-                if (x[4] < 95) {
-                    x[4] += 20;
-                } else {
-                    y[4] = 20;
-                    x[4] = 5;
-                }
-                break;
-            case 5:
-                if (x[5] < 95) {
-                    x[5] += 20;
-                } else {
-                    y[5] = 20;
-                    x[5] = 5;
-                }
-                 break;
-                 
-                 
-        }
-      
-       this.revalidate();
-       this.repaint();
-      
-    }
-    */
     private void Trade_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Trade_btnActionPerformed
         // TODO add your handling code here:
 
@@ -2233,7 +2231,7 @@ public class Gameplay extends javax.swing.JFrame {
                     if ((currentBalance > HouseCost) && BuidHotel(playerTurn)) {
 
                         int ToBeBuild = zoneMap.get(Cityidx).getM_NumOFBuildedHouses() + 1;
-                        System.out.println(ToBeBuild);
+                       
 
                         if (((idx > 0 && idx < 10) || (idx > 18 && idx < 28)) && (!zoneMap.get(Cityidx).isHotelBuilded())) {
                             HBuildings HB = (HBuildings) build.get(idx);
@@ -2446,7 +2444,7 @@ public class Gameplay extends javax.swing.JFrame {
                     }
                     else if(input==1)
                     {
-                        
+                        player[playerTurn].setM_isLoser(true);
                     }
             UIManager.put("OptionPane.noButtonText", "No");
             UIManager.put("OptionPane.yesButtonText", "Yes");
@@ -2601,7 +2599,7 @@ public class Gameplay extends javax.swing.JFrame {
                     }
                 }else if(pos.getCurrentPos(id) == 26){
                     totalRent = zoneMap.get(position).getM_rent()*(dice1.getDice_value() + dice2.getDice_value());
-                    System.out.println(dice1.getDice_value() + dice2.getDice_value());
+                    
                 }
                 player[i].setM_balance(player[i].getM_balance() + totalRent);
                 player[id].setM_balance(player[id].getM_balance() - totalRent);
