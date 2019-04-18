@@ -1899,7 +1899,7 @@ public class Gameplay extends javax.swing.JFrame {
                 }
                 i++;
                 cnt++;
-                if(cnt>NumbOfPlayers) return 1000;
+                if(cnt>NumbOfPlayers) return 7; //any prime number
             }
         }
     
