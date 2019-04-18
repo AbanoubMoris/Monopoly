@@ -1890,7 +1890,7 @@ public class Gameplay extends javax.swing.JFrame {
     }
     
    boolean WinnerWinner = false;
-    public int WhoIsNext(){
+    private int WhoIsNext(){
             int i=playerTurn,cnt=0,idx=0;
             i%=NumbOfPlayers;
             while(true){
@@ -1930,10 +1930,6 @@ public class Gameplay extends javax.swing.JFrame {
                     } catch (IOException ex) {
             Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-        
         turnIndicator();
         
         //in jail
@@ -1965,55 +1961,7 @@ public class Gameplay extends javax.swing.JFrame {
         
   
         }
-        
-        
-        else {
-            playerTurn++;
-            playerTurn = WhoIsNext();
-            playerTurn%=NumbOfPlayers;
-            
-            
-            try {
-            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
-                    } catch (IOException ex) {
-            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        
-        playerTurn%=NumbOfPlayers;
-        turnIndicator();
-        
-        //in jail
-        if(player[playerTurn].getInJail()>0)
-        {
-            showJailPanel();
-        }
-        
-        if(player[playerTurn].getInJail()==0)
-        {
-            Random r = new Random();
-            Random z = new Random();
-            dice1.setDice_value(r.nextInt(6)+1);
-            dice2.setDice_value(r.nextInt(6)+1);
-            roll_Dice(dice1);
-            roll_Dice(dice2);
-            pos.SetPlayer(playerTurn,/*dice1.getDice_value()+dice2.getDice_value()*/1);
-            Movement(/*dice1.getDice_value()+dice2.getDice_value()*/1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
-            s.start();
-            //dice1.getDice_value()+dice2.getDice_value()
-        }
-        else{
-             player[playerTurn].setInJail(player[playerTurn].getInJail()-1);
-        }
-        
-        checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
-        checkBankruptcy();
-        if(player[playerTurn].isM_isBankrupted())showPlayerDecisionPanel();
-        
-  
-        
-        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
