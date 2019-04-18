@@ -1889,9 +1889,9 @@ public class Gameplay extends javax.swing.JFrame {
         playerPanelAccessMap.get(playerTurn).setBorder(BorderFactory.createLineBorder(Color.RED,3));
     }
     
-   
+   boolean WinnerWinner = false;
     public int WhoIsNext(){
-            int i=playerTurn,cnt=0;
+            int i=playerTurn,cnt=0,idx=0;
             i%=NumbOfPlayers;
             while(true){
                 if(!player[i].isM_isLoser()){
@@ -1899,15 +1899,28 @@ public class Gameplay extends javax.swing.JFrame {
                 }
                 i++;
                 cnt++;
-                if(cnt>NumbOfPlayers) return 7; //any prime number
+                if(cnt>NumbOfPlayers) {
+                   return 0;
+                } 
             }
         }
+    private boolean ISAWinner(){
+        int cnt=0;
+        for (int i=0;i<NumbOfPlayers;i++){
+            if(player[i].isM_isLoser()) cnt++;
+        }
+        if(cnt == NumbOfPlayers-1) {
+            return true;
+        }
+        return false;
+    }
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         turn++;
         playerTurn++;
         playerTurn = WhoIsNext();
+        if (ISAWinner()) System.out.println("Winner");
         playerTurn%=NumbOfPlayers;
         System.out.println(playerTurn + " -- " + player[playerTurn].isM_isLoser());
         if (!player[playerTurn].isM_isLoser()){
