@@ -902,7 +902,7 @@ public class Gameplay extends javax.swing.JFrame {
      
     public void Movement(int NumOfSteps , int x ,int y , int pl){
 
-       jButton3.setEnabled(false);
+       Roll_btn.setEnabled(false);
        int width = 65;
        int height = 20;
         s = new Thread ( new Runnable() {
@@ -1035,7 +1035,7 @@ public class Gameplay extends javax.swing.JFrame {
                         }
                         someConditions();
                         //System.out.println(pl + " -- " + pos.getCurrentPos(pl));
-                        jButton3.setEnabled(true);
+                        Roll_btn.setEnabled(true);
                         cnt=0;
                         break;
                     }
@@ -1231,9 +1231,9 @@ public class Gameplay extends javax.swing.JFrame {
         orange = new GamePlay0.Zone();
         bluetreasure = new GamePlay0.Zone();
         jPanel2 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        BuyCity_btn = new javax.swing.JButton();
         Trade_btn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        Roll_btn = new javax.swing.JButton();
         dice2 = new GamePlay0.Dice();
         dice1 = new GamePlay0.Dice();
         player_pnl1 = new GamePlay0.Player_pnl();
@@ -1242,7 +1242,7 @@ public class Gameplay extends javax.swing.JFrame {
         player_pnl4 = new GamePlay0.Player_pnl();
         player_pnl5 = new GamePlay0.Player_pnl();
         player_pnl6 = new GamePlay0.Player_pnl();
-        jButton1 = new javax.swing.JButton();
+        Build_btn = new javax.swing.JButton();
         trade_pnl1 = new GamePlay0.trade_pnl();
         Deal_btn = new javax.swing.JButton();
         NoDeal_btn = new javax.swing.JButton();
@@ -1484,7 +1484,7 @@ public class Gameplay extends javax.swing.JFrame {
         pacific.setPreferredSize(new java.awt.Dimension(120, 70));
         pacific.setLayout(null);
         pacific.add(B29);
-        B29.setBounds(0, 10, 16, 54);
+        B29.setBounds(0, 10, 16, 57);
 
         jPanel1.add(pacific);
         pacific.setBounds(750, 120, 120, 70);
@@ -1494,7 +1494,7 @@ public class Gameplay extends javax.swing.JFrame {
         NorthCaro.setPreferredSize(new java.awt.Dimension(120, 70));
         NorthCaro.setLayout(null);
         NorthCaro.add(B30);
-        B30.setBounds(0, 10, 16, 54);
+        B30.setBounds(0, 10, 16, 57);
 
         jPanel1.add(NorthCaro);
         NorthCaro.setBounds(750, 190, 120, 70);
@@ -1512,7 +1512,7 @@ public class Gameplay extends javax.swing.JFrame {
         pennsy.setPreferredSize(new java.awt.Dimension(120, 70));
         pennsy.setLayout(null);
         pennsy.add(B32);
-        B32.setBounds(0, 10, 16, 54);
+        B32.setBounds(0, 10, 16, 57);
 
         jPanel1.add(pennsy);
         pennsy.setBounds(750, 330, 120, 70);
@@ -1536,14 +1536,14 @@ public class Gameplay extends javax.swing.JFrame {
         ParkPlace.setPreferredSize(new java.awt.Dimension(120, 70));
         ParkPlace.setLayout(null);
         ParkPlace.add(B35);
-        B35.setBounds(0, 10, 16, 54);
+        B35.setBounds(0, 10, 16, 57);
 
         jPanel1.add(ParkPlace);
         ParkPlace.setBounds(750, 540, 120, 70);
 
         NewYork.setLayout(null);
         NewYork.add(B17);
-        B17.setBounds(110, 10, 16, 54);
+        B17.setBounds(110, 10, 16, 57);
 
         jPanel1.add(NewYork);
         NewYork.setBounds(0, 118, 120, 70);
@@ -1557,7 +1557,7 @@ public class Gameplay extends javax.swing.JFrame {
         stJames.setPreferredSize(new java.awt.Dimension(120, 70));
         stJames.setLayout(null);
         stJames.add(B14);
-        B14.setBounds(110, 10, 16, 54);
+        B14.setBounds(110, 10, 16, 57);
 
         jPanel1.add(stJames);
         stJames.setBounds(0, 328, 120, 70);
@@ -1574,7 +1574,7 @@ public class Gameplay extends javax.swing.JFrame {
         Virginnia.setPreferredSize(new java.awt.Dimension(120, 70));
         Virginnia.setLayout(null);
         Virginnia.add(B12);
-        B12.setBounds(110, 10, 16, 54);
+        B12.setBounds(110, 10, 16, 57);
 
         jPanel1.add(Virginnia);
         Virginnia.setBounds(0, 468, 120, 70);
@@ -1583,14 +1583,14 @@ public class Gameplay extends javax.swing.JFrame {
         States.setMinimumSize(new java.awt.Dimension(120, 70));
         States.setLayout(null);
         States.add(B11);
-        B11.setBounds(110, 10, 16, 54);
+        B11.setBounds(110, 10, 16, 57);
 
         jPanel1.add(States);
         States.setBounds(0, 538, 120, 70);
 
         Tenss.setLayout(null);
         Tenss.add(B16);
-        B16.setBounds(110, 10, 16, 54);
+        B16.setBounds(110, 10, 16, 57);
 
         jPanel1.add(Tenss);
         Tenss.setBounds(0, 188, 120, 70);
@@ -1644,15 +1644,15 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 102, 0), new java.awt.Color(255, 0, 51), new java.awt.Color(255, 102, 102), new java.awt.Color(204, 0, 102)));
         jPanel2.setLayout(null);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setText("BuyCity");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        BuyCity_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BuyCity_btn.setText("BuyCity");
+        BuyCity_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BuyCity_btnActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4);
-        jButton4.setBounds(10, 390, 90, 23);
+        jPanel2.add(BuyCity_btn);
+        BuyCity_btn.setBounds(10, 390, 90, 23);
 
         Trade_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Trade_btn.setText("Trade");
@@ -1664,15 +1664,15 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(Trade_btn);
         Trade_btn.setBounds(240, 390, 90, 23);
 
-        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton3.setText("Roll Dice");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Roll_btn.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Roll_btn.setText("Roll Dice");
+        Roll_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                Roll_btnActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3);
-        jButton3.setBounds(190, 680, 90, 30);
+        jPanel2.add(Roll_btn);
+        Roll_btn.setBounds(190, 680, 90, 30);
 
         javax.swing.GroupLayout dice2Layout = new javax.swing.GroupLayout(dice2);
         dice2.setLayout(dice2Layout);
@@ -1714,17 +1714,17 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(player_pnl6);
         player_pnl6.setBounds(320, 200, 120, 150);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("Build");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Build_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Build_btn.setText("Build");
+        Build_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Build_btnActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(120, 390, 100, 23);
+        jPanel2.add(Build_btn);
+        Build_btn.setBounds(120, 390, 100, 23);
         jPanel2.add(trade_pnl1);
-        trade_pnl1.setBounds(10, 420, 355, 180);
+        trade_pnl1.setBounds(10, 420, 357, 180);
 
         Deal_btn.setText("Deal");
         Deal_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -1733,7 +1733,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Deal_btn);
-        Deal_btn.setBounds(370, 460, 80, 23);
+        Deal_btn.setBounds(370, 460, 80, 25);
 
         NoDeal_btn.setText("NoDeal");
         NoDeal_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -1742,7 +1742,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(NoDeal_btn);
-        NoDeal_btn.setBounds(370, 530, 80, 23);
+        NoDeal_btn.setBounds(370, 530, 80, 25);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(893, 40, 463, 717);
@@ -1890,7 +1890,7 @@ public class Gameplay extends javax.swing.JFrame {
     }
     
    
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void Roll_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Roll_btnActionPerformed
         
         
         try {
@@ -1932,8 +1932,8 @@ public class Gameplay extends javax.swing.JFrame {
         if(player[playerTurn].isM_isBankrupted())showPlayerDecisionPanel();
   
         
-    }//GEN-LAST:event_jButton3ActionPerformed
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_Roll_btnActionPerformed
+    private void BuyCity_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyCity_btnActionPerformed
         // TODO add your handling code here:
         
         boolean isOwned = false;
@@ -1984,7 +1984,7 @@ public class Gameplay extends javax.swing.JFrame {
         }
         
         
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_BuyCity_btnActionPerformed
 /*
     Map<Integer, Panel> playerPanelMap = new HashMap<Integer, Panel>();
     
@@ -2095,7 +2095,7 @@ public class Gameplay extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     
-        if (zoneMap.get(pos.getCurrentPos(playerTurn)).getPlayer_zone() != null &&!player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))  ){
+        if (zoneMap.get(pos.getCurrentPos(playerTurn)).getPlayer_zone() != null && !player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))){
            
         Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn].getM_id()));
               Player p = z.getPlayer_zone();
@@ -2104,10 +2104,10 @@ public class Gameplay extends javax.swing.JFrame {
          NoDeal_btn.setVisible(true);
          trade_pnl1.getId_lbl1().setText(String.valueOf(player[playerTurn].getM_id()));
          trade_pnl1.getId_lbl2().setText(String.valueOf(p.getM_id()));
-             
-          trade_pnl1.validate();
-          trade_pnl1.repaint();
         }
+        
+         trade_pnl1.validate();
+          trade_pnl1.repaint();
     }//GEN-LAST:event_Trade_btnActionPerformed
             
     
@@ -2221,7 +2221,7 @@ public class Gameplay extends javax.swing.JFrame {
         repaint();
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Build_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Build_btnActionPerformed
         // TODO add your handling code here:
         int idx = pos.getCurrentPos(playerTurn);
         if (idx != 5 && idx != 13 && idx != 23 && idx != 33) {
@@ -2305,7 +2305,7 @@ public class Gameplay extends javax.swing.JFrame {
         
     updatePlayersBalance();
     repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Build_btnActionPerformed
 
     
     
@@ -2316,7 +2316,7 @@ public class Gameplay extends javax.swing.JFrame {
 
         //   if(!player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))){
         //    if(p.m_zonesOwnedIndexes.contains(z.getM_index())){
-        if (player[playerTurn].getM_balance() >= Integer.valueOf(trade_pnl1.getMoney_txt().getText())) {
+        if (player[playerTurn].getM_balance() >= Integer.valueOf(trade_pnl1.getMoney_txt().getText())  && Integer.valueOf(trade_pnl1.getMoney_txt().getText()) > 0) {
             p.setM_balance(p.getM_balance() + Integer.valueOf(trade_pnl1.getMoney_txt().getText()));
             player[playerTurn].setM_balance(player[playerTurn].getM_balance() - Integer.valueOf(trade_pnl1.getMoney_txt().getText()));
             int cityindex = 0;
@@ -2488,6 +2488,8 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.HBuildings B8;
     private GamePlay0.HBuildings B9;
     private GamePlay0.Zone Baltic;
+    private javax.swing.JButton Build_btn;
+    private javax.swing.JButton BuyCity_btn;
     private GamePlay0.Zone CCT;
     private GamePlay0.Zone ChanceBlue;
     private GamePlay0.Zone ChanceRed;
@@ -2509,6 +2511,7 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone ParkPlace;
     private GamePlay0.Zone RailRoad;
     private GamePlay0.Zone RealRoad;
+    private javax.swing.JButton Roll_btn;
     private GamePlay0.Zone States;
     private GamePlay0.Zone Tenss;
     private javax.swing.JButton Trade_btn;
@@ -2520,9 +2523,6 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Dice dice2;
     private GamePlay0.Zone go;
     private GamePlay0.Zone goToJail;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
