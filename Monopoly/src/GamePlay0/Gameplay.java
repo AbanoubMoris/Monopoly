@@ -8,11 +8,14 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.Panel;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -749,6 +752,12 @@ public class Gameplay extends javax.swing.JFrame {
         }
 
     }
+    private void DisEnabelEveryThing(){
+        BuyCity_btn.setEnabled(false);
+        jButton3.setEnabled(false);
+        Build_btn.setEnabled(false);
+        Trade_btn.setEnabled(false);
+    }
     
     public Gameplay(){
         initComponents();
@@ -756,8 +765,9 @@ public class Gameplay extends javax.swing.JFrame {
     }
     public Gameplay(int NumOfPlayers , Player[] player ) throws IOException {
         initComponents();
-        setBackground(new Color(0,0,0,0));
-
+        //setBackground(new Color(0,0,0,70));
+        
+               
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         
         zoneMapInitialization();
@@ -778,7 +788,7 @@ public class Gameplay extends javax.swing.JFrame {
         
         B1.setNumAndColor(3, Color.yellow , true);
         IntializeBuildings();
-        
+  
     }
     private Map<Integer , Object> build = new HashMap<Integer,Object>();
     
@@ -1206,6 +1216,7 @@ public class Gameplay extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gameOver1 = new GamePlay0.GameOver();
         jPanel1 = new javax.swing.JPanel();
         go = new GamePlay0.Zone(0);
         jail = new GamePlay0.Zone(10);
@@ -1308,6 +1319,8 @@ public class Gameplay extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(null);
+        getContentPane().add(gameOver1);
+        gameOver1.setBounds(0, -730, 1366, 768);
 
         jPanel1.setBackground(new java.awt.Color(204, 218, 242));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 800));
@@ -1849,6 +1862,8 @@ public class Gameplay extends javax.swing.JFrame {
         getContentPane().add(jPanel2);
         jPanel2.setBounds(893, 40, 463, 717);
 
+        jLabel1.setBackground(new java.awt.Color(153, 255, 153));
+        jLabel1.setForeground(new java.awt.Color(204, 255, 153));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/Untitled222.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1370, 40);
@@ -2577,10 +2592,37 @@ public class Gameplay extends javax.swing.JFrame {
 
                 }
                }
-           
+           gameOver1.setLocation(new Point(0,0));
+           DisEnabelEveryThing();
+            try {
+                restartApplication();
+            } catch (IOException ex) {
+                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }
     } 
-   
+
+    public void restartApplication() throws IOException, URISyntaxException
+{
+  final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
+  final File currentJar = new File(NewJFrame1.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+
+  /* is it a jar file? */
+  if(!currentJar.getName().endsWith(".jar"))
+    return;
+
+  /* Build command: java -jar application.jar */
+  final ArrayList<String> command = new ArrayList<String>();
+  command.add(javaBin);
+  command.add("-jar");
+  command.add(currentJar.getPath());
+
+  final ProcessBuilder builder = new ProcessBuilder(command);
+  builder.start();
+  System.exit(0);
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GamePlay0.Zone Atlantic;
     private GamePlay0.HBuildings B1;
@@ -2636,6 +2678,7 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone communtityChestRight;
     private GamePlay0.Dice dice1;
     private GamePlay0.Dice dice2;
+    private GamePlay0.GameOver gameOver1;
     private GamePlay0.Zone go;
     private GamePlay0.Zone goToJail;
     private javax.swing.JButton jButton3;
