@@ -243,7 +243,7 @@ public class Cards extends javax.swing.JFrame {
         {
             randomNumber = 4;
         }
-        if(randomNumber == 13) // chance 3 makes the player advance to BoardWalk which is not on our board
+        if(randomNumber == 13 || randomNumber==6) // chance 3 makes the player advance to BoardWalk which is not on our board
         {
             randomNumber = 11;
         }

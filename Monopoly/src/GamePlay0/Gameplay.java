@@ -139,10 +139,15 @@ public class Gameplay extends javax.swing.JFrame {
             player[playerTurn].setM_balance(player[playerTurn].getM_balance() 
                     + (zoneMap.get(cityIDx).getM_zoneCost()/2)
                     + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses()*zoneMap.get(cityIDx).getM_houseCost())/2);
-            
-            player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()
+            if(zoneMap.get(cityIDx).getM_NumOFBuildedHouses()==5)
+            {
+                player[playerTurn].setM_numberOFHotels(player[playerTurn].getM_numberOFHotels()-1);
+            }
+            else
+            {
+                player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()
                     - zoneMap.get(cityIDx).getM_NumOFBuildedHouses());
-            player[playerTurn].setM_numberOFHotels(player[playerTurn].getM_numberOFHotels()-1);
+            }
             
             zoneMap.get(cityIDx).setM_NumOFBuildedHouses(0);
             zoneMap.get(cityIDx).setHotelBuilded(false);
@@ -162,9 +167,15 @@ public class Gameplay extends javax.swing.JFrame {
             player[playerTurn].setM_balance(player[playerTurn].getM_balance()
                     + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses() * zoneMap.get(cityIDx).getM_houseCost()) / 2);
 
-            player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()
+            if(zoneMap.get(cityIDx).getM_NumOFBuildedHouses()==5)
+            {
+                player[playerTurn].setM_numberOFHotels(player[playerTurn].getM_numberOFHotels()-1);
+            }
+            else
+            {
+                player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()
                     - zoneMap.get(cityIDx).getM_NumOFBuildedHouses());
-            player[playerTurn].setM_numberOFHotels(player[playerTurn].getM_numberOFHotels() - 1);
+            }
 
             zoneMap.get(cityIDx).setM_NumOFBuildedHouses(0);
             zoneMap.get(cityIDx).setHotelBuilded(false);
@@ -1058,7 +1069,9 @@ public class Gameplay extends javax.swing.JFrame {
                         else if (pos.getCurrentPos(pl)==28){
                              GoToJail();
                         }
+                        //checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
                         someConditions();
+                        
                         //System.out.println(pl + " -- " + pos.getCurrentPos(pl));
                         jButton3.setEnabled(true);
                         cnt=0;
@@ -1125,24 +1138,22 @@ public class Gameplay extends javax.swing.JFrame {
                     pos.SetPlayer(playerTurn,(49-currentPos)%36);   
                     Movement((49-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
                     s.start();
+                    checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
+                    
                 }
                 else if(randomNumber==4 && currentPos == 20)
                 {
                     pos.SetPlayer(playerTurn,(59-currentPos)%36);   
                     Movement((59-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
                     s.start();
+                    checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
                 }
                 else if(randomNumber==4 && currentPos == 34)
                 {
                     pos.SetPlayer(playerTurn,(41-currentPos)%36);   
                     Movement((41-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
                     s.start();
-                }
-                else if(randomNumber==6)
-                {
-                    pos.SetPlayer(playerTurn,(62-currentPos)%36);   
-                    Movement((62-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
-                    s.start();
+                    checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
                 }
                 else if(randomNumber==9)
                 {
@@ -1206,8 +1217,8 @@ public class Gameplay extends javax.swing.JFrame {
         B25 = new GamePlay0.HBuildings();
         Atlantic = new GamePlay0.Zone(22,44,110,330,800,975,1150,150,150,260,"Yellow",24);
         B24 = new GamePlay0.HBuildings();
-        waterWorks = new GamePlay0.Zone(26);
-        RailRoad = new GamePlay0.Zone(23);
+        waterWorks = new GamePlay0.Zone(4,150,26);
+        RailRoad = new GamePlay0.Zone(25,50,100,200,200,23);
         Illinois = new GamePlay0.Zone(20,40,100,300,750,925,1100,150,150,240,"Red",22);
         B22 = new GamePlay0.HBuildings();
         Indiana = new GamePlay0.Zone(18,36,90,250,700,875,1050,150,150,220,"Red",21);
@@ -1221,7 +1232,7 @@ public class Gameplay extends javax.swing.JFrame {
         Baltic = new GamePlay0.Zone(4,8,20,60,180,320,450,50,50,60,"Brown",3);
         B3 = new GamePlay0.HBuildings();
         IncomeTax = new GamePlay0.Zone(4);
-        RealRoad = new GamePlay0.Zone(5);
+        RealRoad = new GamePlay0.Zone(25,50,100,200,200,5);
         Oriental = new GamePlay0.Zone(6,12,30,90,270,400,550,50,50,100,"Light Blue",6);
         B6 = new GamePlay0.HBuildings();
         ChanceRed = new GamePlay0.Zone(7);
@@ -1236,7 +1247,7 @@ public class Gameplay extends javax.swing.JFrame {
         communtityChestRight = new GamePlay0.Zone(31);
         pennsy = new GamePlay0.Zone(28,56,150,450,1000,1200,1400,200,200,320,"Green",32);
         B32 = new GamePlay0.VBuidings();
-        shorLline = new GamePlay0.Zone(33);
+        shorLline = new GamePlay0.Zone(25,50,100,200,200,33);
         OrangeChance = new GamePlay0.Zone(34);
         ParkPlace = new GamePlay0.Zone(35,44,175,500,1100,1300,1500,200,200,350,"Dark Blue",35);
         B35 = new GamePlay0.VBuidings();
@@ -1245,7 +1256,7 @@ public class Gameplay extends javax.swing.JFrame {
         CCT = new GamePlay0.Zone(15);
         stJames = new GamePlay0.Zone(14,28,70,200,550,750,950,50,50,180,"Orange",14);
         B14 = new GamePlay0.VBuidings();
-        pennsyl = new GamePlay0.Zone(13);
+        pennsyl = new GamePlay0.Zone(25,50,100,200,200,13);
         Virginnia = new GamePlay0.Zone(12,24,60,180,500,700,900,100,100,160,"Pink",12);
         B12 = new GamePlay0.VBuidings();
         States = new GamePlay0.Zone(10,20,50,150,450,625,750,100,100,140,"Pink",11);
@@ -1521,7 +1532,7 @@ public class Gameplay extends javax.swing.JFrame {
         pacific.setPreferredSize(new java.awt.Dimension(120, 70));
         pacific.setLayout(null);
         pacific.add(B29);
-        B29.setBounds(0, 10, 16, 54);
+        B29.setBounds(0, 10, 16, 57);
 
         jPanel1.add(pacific);
         pacific.setBounds(750, 120, 120, 70);
@@ -1531,7 +1542,7 @@ public class Gameplay extends javax.swing.JFrame {
         NorthCaro.setPreferredSize(new java.awt.Dimension(120, 70));
         NorthCaro.setLayout(null);
         NorthCaro.add(B30);
-        B30.setBounds(0, 10, 16, 54);
+        B30.setBounds(0, 10, 16, 57);
 
         jPanel1.add(NorthCaro);
         NorthCaro.setBounds(750, 190, 120, 70);
@@ -1549,7 +1560,7 @@ public class Gameplay extends javax.swing.JFrame {
         pennsy.setPreferredSize(new java.awt.Dimension(120, 70));
         pennsy.setLayout(null);
         pennsy.add(B32);
-        B32.setBounds(0, 10, 16, 54);
+        B32.setBounds(0, 10, 16, 57);
 
         jPanel1.add(pennsy);
         pennsy.setBounds(750, 330, 120, 70);
@@ -1573,14 +1584,14 @@ public class Gameplay extends javax.swing.JFrame {
         ParkPlace.setPreferredSize(new java.awt.Dimension(120, 70));
         ParkPlace.setLayout(null);
         ParkPlace.add(B35);
-        B35.setBounds(0, 10, 16, 54);
+        B35.setBounds(0, 10, 16, 57);
 
         jPanel1.add(ParkPlace);
         ParkPlace.setBounds(750, 540, 120, 70);
 
         NewYork.setLayout(null);
         NewYork.add(B17);
-        B17.setBounds(110, 10, 16, 54);
+        B17.setBounds(110, 10, 16, 57);
 
         jPanel1.add(NewYork);
         NewYork.setBounds(0, 118, 120, 70);
@@ -1594,7 +1605,7 @@ public class Gameplay extends javax.swing.JFrame {
         stJames.setPreferredSize(new java.awt.Dimension(120, 70));
         stJames.setLayout(null);
         stJames.add(B14);
-        B14.setBounds(110, 10, 16, 54);
+        B14.setBounds(110, 10, 16, 57);
 
         jPanel1.add(stJames);
         stJames.setBounds(0, 328, 120, 70);
@@ -1611,7 +1622,7 @@ public class Gameplay extends javax.swing.JFrame {
         Virginnia.setPreferredSize(new java.awt.Dimension(120, 70));
         Virginnia.setLayout(null);
         Virginnia.add(B12);
-        B12.setBounds(110, 10, 16, 54);
+        B12.setBounds(110, 10, 16, 57);
 
         jPanel1.add(Virginnia);
         Virginnia.setBounds(0, 468, 120, 70);
@@ -1620,14 +1631,14 @@ public class Gameplay extends javax.swing.JFrame {
         States.setMinimumSize(new java.awt.Dimension(120, 70));
         States.setLayout(null);
         States.add(B11);
-        B11.setBounds(110, 10, 16, 54);
+        B11.setBounds(110, 10, 16, 57);
 
         jPanel1.add(States);
         States.setBounds(0, 538, 120, 70);
 
         Tenss.setLayout(null);
         Tenss.add(B16);
-        B16.setBounds(110, 10, 16, 54);
+        B16.setBounds(110, 10, 16, 57);
 
         jPanel1.add(Tenss);
         Tenss.setBounds(0, 188, 120, 70);
@@ -1768,7 +1779,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Deal_btn);
-        Deal_btn.setBounds(370, 460, 80, 23);
+        Deal_btn.setBounds(370, 460, 80, 25);
 
         NoDeal_btn.setText("NoDeal");
         NoDeal_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -1777,7 +1788,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(NoDeal_btn);
-        NoDeal_btn.setBounds(370, 590, 80, 23);
+        NoDeal_btn.setBounds(370, 590, 80, 25);
 
         winner_lbl1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         winner_lbl1.setText("Winner");
@@ -1833,7 +1844,7 @@ public class Gameplay extends javax.swing.JFrame {
         jPanel2.add(winnerpic_lbl0);
         winnerpic_lbl0.setBounds(10, 160, 120, 50);
         jPanel2.add(trade_pnl1);
-        trade_pnl1.setBounds(10, 450, 355, 180);
+        trade_pnl1.setBounds(10, 450, 356, 180);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(893, 40, 463, 717);
@@ -2040,7 +2051,6 @@ public class Gameplay extends javax.swing.JFrame {
             dice2.setDice_value(r.nextInt(6)+1);
             roll_Dice(dice1);
             roll_Dice(dice2);
-            
             pos.SetPlayer(playerTurn,/*dice1.getDice_value()+dice2.getDice_value()*/1);
             Movement(/*dice1.getDice_value()+dice2.getDice_value()*/1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
             s.start();
@@ -2501,8 +2511,6 @@ public class Gameplay extends javax.swing.JFrame {
               
             player[playerTurn].setM_isLoser(true);
         turn++;
-        playerTurn++;
-        playerTurn = WhoIsNext();
        
             SetPanelToWinner();
             
@@ -2729,7 +2737,6 @@ public class Gameplay extends javax.swing.JFrame {
             }
         }
     }
-
 
 
 
