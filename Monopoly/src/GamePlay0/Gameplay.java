@@ -1272,15 +1272,6 @@ public class Gameplay extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         dice2 = new GamePlay0.Dice();
         dice1 = new GamePlay0.Dice();
-        player_pnl1 = new GamePlay0.Player_pnl();
-        player_pnl2 = new GamePlay0.Player_pnl();
-        player_pnl3 = new GamePlay0.Player_pnl();
-        player_pnl4 = new GamePlay0.Player_pnl();
-        player_pnl5 = new GamePlay0.Player_pnl();
-        player_pnl6 = new GamePlay0.Player_pnl();
-        Build_btn = new javax.swing.JButton();
-        Deal_btn = new javax.swing.JButton();
-        NoDeal_btn = new javax.swing.JButton();
         winner_lbl1 = new javax.swing.JLabel();
         winnerpic_lbl1 = new javax.swing.JLabel();
         winner_lbl2 = new javax.swing.JLabel();
@@ -1293,6 +1284,15 @@ public class Gameplay extends javax.swing.JFrame {
         winnerpic_lbl5 = new javax.swing.JLabel();
         winner_lbl0 = new javax.swing.JLabel();
         winnerpic_lbl0 = new javax.swing.JLabel();
+        player_pnl1 = new GamePlay0.Player_pnl();
+        player_pnl2 = new GamePlay0.Player_pnl();
+        player_pnl3 = new GamePlay0.Player_pnl();
+        player_pnl4 = new GamePlay0.Player_pnl();
+        player_pnl5 = new GamePlay0.Player_pnl();
+        player_pnl6 = new GamePlay0.Player_pnl();
+        Build_btn = new javax.swing.JButton();
+        Deal_btn = new javax.swing.JButton();
+        NoDeal_btn = new javax.swing.JButton();
         trade_pnl1 = new GamePlay0.trade_pnl();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -1532,7 +1532,7 @@ public class Gameplay extends javax.swing.JFrame {
         pacific.setPreferredSize(new java.awt.Dimension(120, 70));
         pacific.setLayout(null);
         pacific.add(B29);
-        B29.setBounds(0, 10, 16, 57);
+        B29.setBounds(0, 10, 16, 54);
 
         jPanel1.add(pacific);
         pacific.setBounds(750, 120, 120, 70);
@@ -1542,7 +1542,7 @@ public class Gameplay extends javax.swing.JFrame {
         NorthCaro.setPreferredSize(new java.awt.Dimension(120, 70));
         NorthCaro.setLayout(null);
         NorthCaro.add(B30);
-        B30.setBounds(0, 10, 16, 57);
+        B30.setBounds(0, 10, 16, 54);
 
         jPanel1.add(NorthCaro);
         NorthCaro.setBounds(750, 190, 120, 70);
@@ -1560,7 +1560,7 @@ public class Gameplay extends javax.swing.JFrame {
         pennsy.setPreferredSize(new java.awt.Dimension(120, 70));
         pennsy.setLayout(null);
         pennsy.add(B32);
-        B32.setBounds(0, 10, 16, 57);
+        B32.setBounds(0, 10, 16, 54);
 
         jPanel1.add(pennsy);
         pennsy.setBounds(750, 330, 120, 70);
@@ -1584,14 +1584,14 @@ public class Gameplay extends javax.swing.JFrame {
         ParkPlace.setPreferredSize(new java.awt.Dimension(120, 70));
         ParkPlace.setLayout(null);
         ParkPlace.add(B35);
-        B35.setBounds(0, 10, 16, 57);
+        B35.setBounds(0, 10, 16, 54);
 
         jPanel1.add(ParkPlace);
         ParkPlace.setBounds(750, 540, 120, 70);
 
         NewYork.setLayout(null);
         NewYork.add(B17);
-        B17.setBounds(110, 10, 16, 57);
+        B17.setBounds(110, 10, 16, 54);
 
         jPanel1.add(NewYork);
         NewYork.setBounds(0, 118, 120, 70);
@@ -1605,7 +1605,7 @@ public class Gameplay extends javax.swing.JFrame {
         stJames.setPreferredSize(new java.awt.Dimension(120, 70));
         stJames.setLayout(null);
         stJames.add(B14);
-        B14.setBounds(110, 10, 16, 57);
+        B14.setBounds(110, 10, 16, 54);
 
         jPanel1.add(stJames);
         stJames.setBounds(0, 328, 120, 70);
@@ -1622,7 +1622,7 @@ public class Gameplay extends javax.swing.JFrame {
         Virginnia.setPreferredSize(new java.awt.Dimension(120, 70));
         Virginnia.setLayout(null);
         Virginnia.add(B12);
-        B12.setBounds(110, 10, 16, 57);
+        B12.setBounds(110, 10, 16, 54);
 
         jPanel1.add(Virginnia);
         Virginnia.setBounds(0, 468, 120, 70);
@@ -1631,14 +1631,14 @@ public class Gameplay extends javax.swing.JFrame {
         States.setMinimumSize(new java.awt.Dimension(120, 70));
         States.setLayout(null);
         States.add(B11);
-        B11.setBounds(110, 10, 16, 57);
+        B11.setBounds(110, 10, 16, 54);
 
         jPanel1.add(States);
         States.setBounds(0, 538, 120, 70);
 
         Tenss.setLayout(null);
         Tenss.add(B16);
-        B16.setBounds(110, 10, 16, 57);
+        B16.setBounds(110, 10, 16, 54);
 
         jPanel1.add(Tenss);
         Tenss.setBounds(0, 188, 120, 70);
@@ -1749,18 +1749,72 @@ public class Gameplay extends javax.swing.JFrame {
 
         jPanel2.add(dice1);
         dice1.setBounds(140, 640, 70, 60);
+
+        winner_lbl1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        winner_lbl1.setText("Winner");
+        jPanel2.add(winner_lbl1);
+        winner_lbl1.setBounds(200, 0, 50, 33);
+
+        winnerpic_lbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
+        jPanel2.add(winnerpic_lbl1);
+        winnerpic_lbl1.setBounds(160, 0, 120, 50);
+
+        winner_lbl2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        winner_lbl2.setText("Winner");
+        jPanel2.add(winner_lbl2);
+        winner_lbl2.setBounds(360, 0, 50, 33);
+
+        winnerpic_lbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
+        jPanel2.add(winnerpic_lbl2);
+        winnerpic_lbl2.setBounds(320, 0, 120, 50);
+
+        winner_lbl3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        winner_lbl3.setText("Winner");
+        jPanel2.add(winner_lbl3);
+        winner_lbl3.setBounds(50, 220, 50, 33);
+
+        winnerpic_lbl3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
+        jPanel2.add(winnerpic_lbl3);
+        winnerpic_lbl3.setBounds(10, 220, 120, 50);
+
+        winner_lbl4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        winner_lbl4.setText("Winner");
+        jPanel2.add(winner_lbl4);
+        winner_lbl4.setBounds(200, 220, 50, 33);
+
+        winnerpic_lbl4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
+        jPanel2.add(winnerpic_lbl4);
+        winnerpic_lbl4.setBounds(160, 220, 120, 50);
+
+        winner_lbl5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        winner_lbl5.setText("Winner");
+        jPanel2.add(winner_lbl5);
+        winner_lbl5.setBounds(360, 220, 50, 33);
+
+        winnerpic_lbl5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
+        jPanel2.add(winnerpic_lbl5);
+        winnerpic_lbl5.setBounds(320, 220, 120, 50);
+
+        winner_lbl0.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        winner_lbl0.setText("Winner");
+        jPanel2.add(winner_lbl0);
+        winner_lbl0.setBounds(50, 0, 50, 33);
+
+        winnerpic_lbl0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
+        jPanel2.add(winnerpic_lbl0);
+        winnerpic_lbl0.setBounds(10, 0, 120, 50);
         jPanel2.add(player_pnl1);
-        player_pnl1.setBounds(10, 10, 120, 150);
+        player_pnl1.setBounds(10, 30, 120, 150);
         jPanel2.add(player_pnl2);
-        player_pnl2.setBounds(160, 10, 120, 150);
+        player_pnl2.setBounds(160, 30, 120, 150);
         jPanel2.add(player_pnl3);
-        player_pnl3.setBounds(320, 10, 120, 150);
+        player_pnl3.setBounds(320, 30, 120, 150);
         jPanel2.add(player_pnl4);
-        player_pnl4.setBounds(10, 210, 120, 150);
+        player_pnl4.setBounds(10, 250, 120, 150);
         jPanel2.add(player_pnl5);
-        player_pnl5.setBounds(160, 210, 120, 150);
+        player_pnl5.setBounds(160, 250, 120, 150);
         jPanel2.add(player_pnl6);
-        player_pnl6.setBounds(320, 210, 120, 150);
+        player_pnl6.setBounds(320, 250, 120, 150);
 
         Build_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Build_btn.setText("Build");
@@ -1779,7 +1833,7 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Deal_btn);
-        Deal_btn.setBounds(370, 460, 80, 25);
+        Deal_btn.setBounds(370, 460, 80, 23);
 
         NoDeal_btn.setText("NoDeal");
         NoDeal_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -1788,63 +1842,9 @@ public class Gameplay extends javax.swing.JFrame {
             }
         });
         jPanel2.add(NoDeal_btn);
-        NoDeal_btn.setBounds(370, 590, 80, 25);
-
-        winner_lbl1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        winner_lbl1.setText("Winner");
-        jPanel2.add(winner_lbl1);
-        winner_lbl1.setBounds(200, 160, 50, 33);
-
-        winnerpic_lbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
-        jPanel2.add(winnerpic_lbl1);
-        winnerpic_lbl1.setBounds(160, 160, 120, 50);
-
-        winner_lbl2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        winner_lbl2.setText("Winner");
-        jPanel2.add(winner_lbl2);
-        winner_lbl2.setBounds(360, 160, 50, 33);
-
-        winnerpic_lbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
-        jPanel2.add(winnerpic_lbl2);
-        winnerpic_lbl2.setBounds(320, 160, 120, 50);
-
-        winner_lbl3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        winner_lbl3.setText("Winner");
-        jPanel2.add(winner_lbl3);
-        winner_lbl3.setBounds(50, 360, 50, 33);
-
-        winnerpic_lbl3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
-        jPanel2.add(winnerpic_lbl3);
-        winnerpic_lbl3.setBounds(10, 360, 120, 50);
-
-        winner_lbl4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        winner_lbl4.setText("Winner");
-        jPanel2.add(winner_lbl4);
-        winner_lbl4.setBounds(200, 360, 50, 33);
-
-        winnerpic_lbl4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
-        jPanel2.add(winnerpic_lbl4);
-        winnerpic_lbl4.setBounds(160, 360, 120, 50);
-
-        winner_lbl5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        winner_lbl5.setText("Winner");
-        jPanel2.add(winner_lbl5);
-        winner_lbl5.setBounds(360, 360, 50, 33);
-
-        winnerpic_lbl5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
-        jPanel2.add(winnerpic_lbl5);
-        winnerpic_lbl5.setBounds(320, 360, 120, 50);
-
-        winner_lbl0.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        winner_lbl0.setText("Winner");
-        jPanel2.add(winner_lbl0);
-        winner_lbl0.setBounds(50, 160, 50, 33);
-
-        winnerpic_lbl0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GamePlay/img/player_win.png"))); // NOI18N
-        jPanel2.add(winnerpic_lbl0);
-        winnerpic_lbl0.setBounds(10, 160, 120, 50);
+        NoDeal_btn.setBounds(370, 590, 80, 23);
         jPanel2.add(trade_pnl1);
-        trade_pnl1.setBounds(10, 450, 356, 180);
+        trade_pnl1.setBounds(10, 450, 355, 180);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(893, 40, 463, 717);
