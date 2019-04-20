@@ -15,7 +15,6 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -82,6 +81,8 @@ public class Gameplay extends javax.swing.JFrame {
         MONOMAN.setImage("src/Gameplay/img/monoMan.png", false,bought ,color);
         orange.setImage("src/Gameplay/img/orange-CHANCE.png", false,bought ,color);
         bluetreasure.setImage("src/Gameplay/img/treasure.png", false,bought ,color);
+        PlayAgainBtn.setVisible(false);
+        Exit.setVisible(false);
        
         trade_pnl1.setVisible(false);
         Deal_btn.setVisible(false);
@@ -1216,6 +1217,8 @@ public class Gameplay extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PlayAgainBtn = new javax.swing.JButton();
+        Exit = new javax.swing.JButton();
         gameOver1 = new GamePlay0.GameOver();
         jPanel1 = new javax.swing.JPanel();
         go = new GamePlay0.Zone(0);
@@ -1319,6 +1322,30 @@ public class Gameplay extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(null);
+
+        PlayAgainBtn.setBackground(new java.awt.Color(153, 0, 0));
+        PlayAgainBtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        PlayAgainBtn.setForeground(new java.awt.Color(255, 153, 0));
+        PlayAgainBtn.setText("Play Again");
+        PlayAgainBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlayAgainBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PlayAgainBtn);
+        PlayAgainBtn.setBounds(780, 0, 190, 37);
+
+        Exit.setBackground(new java.awt.Color(153, 0, 0));
+        Exit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Exit.setForeground(new java.awt.Color(255, 153, 0));
+        Exit.setText("EXIT");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Exit);
+        Exit.setBounds(580, 0, 190, 37);
         getContentPane().add(gameOver1);
         gameOver1.setBounds(0, -730, 1366, 768);
 
@@ -2432,6 +2459,18 @@ public class Gameplay extends javax.swing.JFrame {
         Deal_btn.setVisible(false);
         NoDeal_btn.setVisible(false);
     }//GEN-LAST:event_NoDeal_btnActionPerformed
+
+    private void PlayAgainBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayAgainBtnActionPerformed
+        // TODO add your handling code here:
+        StartScreen sc = new StartScreen();
+        sc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_PlayAgainBtnActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_ExitActionPerformed
             
     
     public static void main(String args[]) {
@@ -2594,35 +2633,12 @@ public class Gameplay extends javax.swing.JFrame {
                }
            gameOver1.setLocation(new Point(0,0));
            DisEnabelEveryThing();
-            try {
-                restartApplication();
-            } catch (IOException ex) {
-                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           PlayAgainBtn.setVisible(true);
+           PlayAgainBtn.setLocation(new Point(620,629));
+           Exit.setLocation(new Point(620,629+PlayAgainBtn.getHeight()+10));
             }
     } 
-
-    public void restartApplication() throws IOException, URISyntaxException
-{
-  final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
-  final File currentJar = new File(NewJFrame1.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-
-  /* is it a jar file? */
-  if(!currentJar.getName().endsWith(".jar"))
-    return;
-
-  /* Build command: java -jar application.jar */
-  final ArrayList<String> command = new ArrayList<String>();
-  command.add(javaBin);
-  command.add("-jar");
-  command.add(currentJar.getPath());
-
-  final ProcessBuilder builder = new ProcessBuilder(command);
-  builder.start();
-  System.exit(0);
-}
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GamePlay0.Zone Atlantic;
     private GamePlay0.HBuildings B1;
@@ -2654,6 +2670,7 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone Community_Chest;
     private GamePlay0.Zone Connecticut;
     private javax.swing.JButton Deal_btn;
+    private javax.swing.JButton Exit;
     private GamePlay0.Zone Illinois;
     private GamePlay0.Zone IncomeTax;
     private GamePlay0.Zone Indiana;
@@ -2667,6 +2684,7 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone OrangeChance;
     private GamePlay0.Zone Oriental;
     private GamePlay0.Zone ParkPlace;
+    private javax.swing.JButton PlayAgainBtn;
     private GamePlay0.Zone RailRoad;
     private GamePlay0.Zone RealRoad;
     private GamePlay0.Zone States;
