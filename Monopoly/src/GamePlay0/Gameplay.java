@@ -138,8 +138,9 @@ public class Gameplay extends javax.swing.JFrame {
     }
     
     private void SetSellOption(int Res , int cityIDx){
-        
-        if (Res == 1) {
+          
+         
+        if (Res == 1) {//sell
             player[playerTurn].setM_balance(player[playerTurn].getM_balance() 
                     + (zoneMap.get(cityIDx).getM_zoneCost()/2)
                     + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses()*zoneMap.get(cityIDx).getM_houseCost())/2);
@@ -165,8 +166,9 @@ public class Gameplay extends javax.swing.JFrame {
             {
                 player[playerTurn].setM_railRoadsBought(player[playerTurn].getM_railRoadsBought()-1);
             }
+           
             
-     }//sell
+     }
         else if (Res == 0){
             player[playerTurn].setM_balance(player[playerTurn].getM_balance()
                     + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses() * zoneMap.get(cityIDx).getM_houseCost()) / 2);
@@ -183,23 +185,31 @@ public class Gameplay extends javax.swing.JFrame {
 
             zoneMap.get(cityIDx).setM_NumOFBuildedHouses(0);
             zoneMap.get(cityIDx).setHotelBuilded(false);
+          
+            }
            
-        }
+          
+        
          if (player[playerTurn].getM_balance() > 0 || player[playerTurn].m_zonesOwnedIndexes.size() > 0 || player[playerTurn].getM_numberOfHouses()> 0)
                 player[playerTurn].setM_isBankrupted(false);
             else {
                 player[playerTurn].setM_isLoser(true);
-}
+               }
+         
+        if(player[playerTurn].m_zonesOwnedIndexes.size()>0 && player[playerTurn].getM_balance()< 0){
+               showPlayerDecisionPanel();
+           }
+        
         updatePlayersBalance();
         UpdateBuildings(cityIDx,null);
         jPanel1.repaint();
         
-        
+               
+         
+    
         SetPanelToWinner();
-
     
     }
-    
     static int Res;
     public void DisplayCiyInfo(){
         
@@ -1970,12 +1980,12 @@ public class Gameplay extends javax.swing.JFrame {
         panel.setBorder(new LineBorder(Color.black, 10));
         return panel;
     }
-    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void showJailPanel()
     {
-                UIManager.put("OptionPane.cancelButtonText", "Skip Turn");
-                UIManager.put("OptionPane.noButtonText", "Use Card");
-                UIManager.put("OptionPane.yesButtonText", "Pay 50$");
+                UIManager.put("OptionPane.cancelButtonText", "Skip Turn");//2
+                UIManager.put("OptionPane.noButtonText", "Use Card");//1
+                UIManager.put("OptionPane.yesButtonText", "Pay 50$");//0
                 while(true)
                 {
                     int input = JOptionPane.showConfirmDialog(jailPanel(),"Pay 50$ to get out of jail or Use a \"Get Out of Jail\" card or Skip your turn" ,"You Are In Jail!" , JOptionPane.YES_NO_CANCEL_OPTION , JOptionPane.PLAIN_MESSAGE);
@@ -2063,9 +2073,14 @@ public class Gameplay extends javax.swing.JFrame {
 
         turn++;
         playerTurn++;
+        
+    /*   if(player[playerTurn].m_zonesOwnedIndexes.size() > 0 && player[playerTurn].getM_balance()< 0){
+               showPlayerDecisionPanel();
+           }*/
+       //else{
         playerTurn = WhoIsNext();
-      
         playerTurn%=NumbOfPlayers;
+        
         System.out.println(playerTurn + " -- " + player[playerTurn].isM_isLoser());
         if (!player[playerTurn].isM_isLoser()){
         
@@ -2107,8 +2122,9 @@ public class Gameplay extends javax.swing.JFrame {
         if(player[playerTurn].isM_isBankrupted()) showPlayerDecisionPanel();
         
   
+     //   }
+        
         }
-
     }//GEN-LAST:event_jButton3ActionPerformed
     private void BuyCity_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyCity_btnActionPerformed
         // TODO add your handling code here:
@@ -2539,21 +2555,23 @@ public class Gameplay extends javax.swing.JFrame {
         panel.setBorder(new LineBorder(Color.black, 10));
         return panel;
     }
-    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void showPlayerDecisionPanel() {
-
-        UIManager.put("OptionPane.noButtonText", "Leave Game");
-        UIManager.put("OptionPane.yesButtonText", "Sell City or Buildings");
+     
+        UIManager.put("OptionPane.noButtonText", "Leave Game"); //1
+        UIManager.put("OptionPane.yesButtonText", "Sell City or Buildings");//0
 
         int input = JOptionPane.showConfirmDialog(playerDecisionPanel(), "You Are Bankrupted Decide Wether To Sell City Or Leave The Game!", "DECIDE!", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
 
         if (input == 0) {
-           
-
+           if(player[playerTurn].m_zonesOwnedIndexes.size() > 0){
+               
+           }
+           else
+               player[playerTurn].setM_isLoser(true);
         }
         else if (input == 1) {
-          
-        int x = playerTurn;
+               int x = playerTurn;
                 for(int i=0 ;i<player[x].m_zonesOwnedIndexes.size();i++){
                     int v = player[x].m_zonesOwnedIndexes.get(i);
                     zoneMap.get(v).remove(2);
@@ -2564,15 +2582,19 @@ public class Gameplay extends javax.swing.JFrame {
                    player[x].m_zonesOwnedIndexes.removeAll( player[x].m_zonesOwnedIndexes);
               
             player[playerTurn].setM_isLoser(true);
-        turn++;
-       
+            turn++;
+            
+        }
+        
             SetPanelToWinner();
             
          playerTurn%=NumbOfPlayers;
+        
         UIManager.put("OptionPane.noButtonText", "No");
         UIManager.put("OptionPane.yesButtonText", "Yes");
          jPanel1.repaint();
-    }
+        
+    
     }
     private void checkBankruptcy (){
         for(int i=0; i<NumbOfPlayers; i++)
