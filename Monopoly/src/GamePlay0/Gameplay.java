@@ -201,7 +201,7 @@ public class Gameplay extends javax.swing.JFrame {
            }
         
         updatePlayersBalance();
-        UpdateBuildings(cityIDx,null);
+        UpdateBuildings(cityIDx,player[playerTurn].getM_color());
         jPanel1.repaint();
         
                
