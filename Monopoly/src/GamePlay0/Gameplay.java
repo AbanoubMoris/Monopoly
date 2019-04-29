@@ -141,6 +141,7 @@ public class Gameplay extends javax.swing.JFrame {
           
          
         if (Res == 1) {//sell
+            UpdateBuildings(cityIDx,null);
             player[playerTurn].setM_balance(player[playerTurn].getM_balance() 
                     + (zoneMap.get(cityIDx).getM_zoneCost()/2)
                     + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses()*zoneMap.get(cityIDx).getM_houseCost())/2);
@@ -170,6 +171,7 @@ public class Gameplay extends javax.swing.JFrame {
             
      }
         else if (Res == 0){
+            UpdateBuildings(cityIDx,null);
             player[playerTurn].setM_balance(player[playerTurn].getM_balance()
                     + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses() * zoneMap.get(cityIDx).getM_houseCost()) / 2);
 
@@ -201,7 +203,7 @@ public class Gameplay extends javax.swing.JFrame {
            }
         
         updatePlayersBalance();
-        UpdateBuildings(cityIDx,player[playerTurn].getM_color());
+        
         jPanel1.repaint();
         
                
