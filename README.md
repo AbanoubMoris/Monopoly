@@ -1,4 +1,9 @@
 # Monopoly
+<img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/6.PNG" alt="alt text" width="350" height="250"><img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/1.PNG" alt="alt text" width="350" height="250">
+<img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/2.PNG" alt="alt text" width="350" height="250">
+<img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/3.PNG" alt="alt text" width="350" height="250">
+<img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/5.PNG" alt="alt text" width="350" height="250">
+<img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/4.PNG" alt="alt text" width="350" height="250">
 
 ## Description
 ### ❖ The rules are the same as the standard monopoly game:
