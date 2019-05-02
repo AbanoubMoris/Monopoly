@@ -1,9 +1,0 @@
-GamePlay0.Community_Chest_Draw
-GamePlay0.Cards$1
-GamePlay0.Cards
-GamePlay0.Cards$2
-GamePlay0.CardsDraw
-GamePlay0.Cards$3
-GamePlay0.ChanceCards
-GamePlay0.Cards$4
-GamePlay0.ImageLabel

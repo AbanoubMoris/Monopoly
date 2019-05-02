@@ -224,6 +224,7 @@ public class Gameplay extends javax.swing.JFrame {
     public void DisplayCiyInfo(){
         
         // cards info mouse events
+
         MarvinGardens.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

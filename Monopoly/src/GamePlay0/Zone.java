@@ -190,6 +190,7 @@ public class Zone extends pic{
     public JPanel getPanel(){
         return this;
     }
+    /*
     public void setImage(String path , boolean border ,boolean bought ,Color color){     
         this.PicPath = path;
         this.bought=bought;
@@ -219,4 +220,5 @@ public class Zone extends pic{
         this.add(pnl);
         pnl.setBounds(0, 0, this.getWidth(), this.getHeight());
     }
+*/
 }
