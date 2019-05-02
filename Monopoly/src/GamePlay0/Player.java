@@ -1,16 +1,8 @@
-
 package GamePlay0;
-/**
- *
- * @author Ramez
- */
-import java.util.Map;
+
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
+
 public class Player {
     private int m_id;
     private Color m_color;

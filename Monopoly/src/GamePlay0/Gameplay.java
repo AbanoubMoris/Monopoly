@@ -1,37 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GamePlay0;
-import Buildings.HBuildings;
-import Buildings.VBuidings;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Image;
-import java.awt.Panel;
-import java.awt.Point;
-import java.awt.Toolkit;
+
+import Buildings.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class Gameplay extends javax.swing.JFrame {
@@ -71,14 +51,12 @@ public class Gameplay extends javax.swing.JFrame {
   
     }
     
-    public void DrawGamePlay(boolean bought , Color color){
-            
+    public void DrawGamePlay(boolean bought , Color color){      
         this.setExtendedState(JFrame.ABORT); 
         go.setImage("src/Gameplay/img/go.png", true,bought ,color);
         jail.setImage("src/Gameplay/img/jail.png", true,bought ,color);
         parking.setImage("src/Gameplay/img/free-parking.png", true,bought ,color);
         goToJail.setImage("src/Gameplay/img/go-to-jail.png", true,bought ,color);
-        
         MarvinGardens.setImage("src/Gameplay/img/Untitled-15.png", true,bought ,color);
         waterWorks.setImage("src/Gameplay/img/Untitled-114.png", true,bought ,color);
         ventnor.setImage("src/Gameplay/img/Untitled-16.png", true,bought ,color);
@@ -88,8 +66,6 @@ public class Gameplay extends javax.swing.JFrame {
         Indiana.setImage("src/Gameplay/img/Untitled-19.png", true,bought ,color);
         ChanceBlue.setImage("src/Gameplay/img/chance blue.png", true,bought ,color);
         Kentucky.setImage("src/Gameplay/img/20.png", true,bought ,color);
-    
-    
         Mediter_Ranean.setImage("src/Gameplay/img/Untitled-1.png", true,bought ,color);
         Community_Chest.setImage("src/Gameplay/img/community-chest.png", true,bought ,color);
         Baltic.setImage("src/Gameplay/img/Untitled-2.png", true,bought ,color);
@@ -116,13 +92,14 @@ public class Gameplay extends javax.swing.JFrame {
         MONOMAN.setImage("src/Gameplay/img/monoMan.png", false,bought ,color);
         orange.setImage("src/Gameplay/img/orange-CHANCE.png", false,bought ,color);
         bluetreasure.setImage("src/Gameplay/img/treasure.png", false,bought ,color);
+        
         PlayAgainBtn.setVisible(false);
         Exit.setVisible(false);
-       
         trade_pnl1.setVisible(false);
         Deal_btn.setVisible(false);
         NoDeal_btn.setVisible(false);
     }
+
     public void SetPlayerPanels(){
          
         dice1.setImage("src/GamePlay/img/1.PNG", false);
@@ -133,8 +110,7 @@ public class Gameplay extends javax.swing.JFrame {
         player_pnl4.setVisible(false);
         player_pnl5.setVisible(false);
         player_pnl6.setVisible(false);
-       
-        
+ 
         winner_lbl0.setVisible(false);
         winnerpic_lbl0.setVisible(false);
         winner_lbl1.setVisible(false);
@@ -148,6 +124,7 @@ public class Gameplay extends javax.swing.JFrame {
         winner_lbl5.setVisible(false);
         winnerpic_lbl5.setVisible(false);
     }
+    
     private static void displayCardInfo(String Path) {
         JOptionPane.showConfirmDialog(null,
                         getCardInfoPanel(Path),
@@ -710,9 +687,7 @@ public class Gameplay extends javax.swing.JFrame {
         //this.repaint();
         
     }
-    public int getPlayerTurn() {
-        return playerTurn;
-    } 
+    
     public void zoneMapInitialization(){
         zoneMap = new HashMap<Integer, Zone>();
         zoneMap.put(0, go);

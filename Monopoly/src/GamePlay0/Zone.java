@@ -1,13 +1,17 @@
 package GamePlay0;
-import java.awt.*;
-import java.io.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.JPanel;
 
-public class  Zone extends javax.swing.JPanel {
-   
+public class Zone extends pic{
     private int m_rent;
     private int m_rentWithColorSet;
     private int m_rentWithOneHouse;
@@ -25,8 +29,6 @@ public class  Zone extends javax.swing.JPanel {
     private Player player_zone = null;
     private boolean bought;
     private String PicPath;
-    
-    
     public Zone() {
         this.m_rent = 0;
         this.m_rentWithColorSet = 0;
@@ -80,7 +82,7 @@ public class  Zone extends javax.swing.JPanel {
         this.m_index = index;
     }
     
-    public boolean isBought() {
+        public boolean isBought() {
         return bought;
     }
     public void setBought(boolean bought) {
@@ -217,27 +219,4 @@ public class  Zone extends javax.swing.JPanel {
         this.add(pnl);
         pnl.setBounds(0, 0, this.getWidth(), this.getHeight());
     }
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        setBackground(new java.awt.Color(255, 153, 102));
-        setPreferredSize(new java.awt.Dimension(90, 120));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 96, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
 }
