@@ -221,6 +221,7 @@ public class Gameplay extends javax.swing.JFrame {
         SetPanelToWinner();
     
     }
+    
     public void DisplayCiyInfo(){
         
         // cards info mouse events

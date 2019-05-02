@@ -1,6 +1,4 @@
-
 package GamePlay0;
-
 public class Dice extends pic{
     private int dice_value;
     

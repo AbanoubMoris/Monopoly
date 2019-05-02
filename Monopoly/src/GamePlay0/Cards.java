@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GamePlay0;
 
 /**
@@ -57,7 +53,6 @@ class ImageLabel extends JLabel{
 
 class CardsDraw{
 
-    
     private String m_title;
     private String m_description;
     private String m_imgPath;
@@ -103,12 +98,8 @@ class CardsDraw{
     public void setM_imgPath(String m_imgPath) {
         this.m_imgPath = m_imgPath;
     }
-    
-    
-    
-    
+ 
 }
-
 
 class ChanceCards extends CardsDraw{
     private Map<Integer, CardsDraw> m_chanceCards;
