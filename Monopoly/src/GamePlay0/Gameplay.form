@@ -221,7 +221,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.HBuildings" name="B27">
+            <Component class="Buildings.HBuildings" name="B27">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="110" width="-1" height="-1"/>
@@ -252,7 +252,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.HBuildings" name="B25">
+            <Component class="Buildings.HBuildings" name="B25">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="110" width="-1" height="-1"/>
@@ -283,7 +283,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.HBuildings" name="B24">
+            <Component class="Buildings.HBuildings" name="B24">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="110" width="-1" height="-1"/>
@@ -358,7 +358,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.HBuildings" name="B22">
+            <Component class="Buildings.HBuildings" name="B22">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="110" width="-1" height="-1"/>
@@ -389,7 +389,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.HBuildings" name="B21">
+            <Component class="Buildings.HBuildings" name="B21">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="110" width="-1" height="-1"/>
@@ -447,7 +447,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.HBuildings" name="B19">
+            <Component class="Buildings.HBuildings" name="B19">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="110" width="-1" height="-1"/>
@@ -478,7 +478,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.HBuildings" name="B1">
+            <Component class="Buildings.HBuildings" name="B1">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="0" width="-1" height="-1"/>
@@ -540,7 +540,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.HBuildings" name="B3">
+            <Component class="Buildings.HBuildings" name="B3">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="0" width="-1" height="-1"/>
@@ -615,7 +615,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.HBuildings" name="B6">
+            <Component class="Buildings.HBuildings" name="B6">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="0" width="-1" height="-1"/>
@@ -668,7 +668,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.HBuildings" name="B8">
+            <Component class="Buildings.HBuildings" name="B8">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="0" width="-1" height="-1"/>
@@ -702,7 +702,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.HBuildings" name="B9">
+            <Component class="Buildings.HBuildings" name="B9">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="0" width="-1" height="-1"/>
@@ -730,7 +730,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.VBuidings" name="B29">
+            <Component class="Buildings.VBuidings" name="B29">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="0" y="10" width="-1" height="-1"/>
@@ -764,7 +764,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.VBuidings" name="B30">
+            <Component class="Buildings.VBuidings" name="B30">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="0" y="10" width="-1" height="-1"/>
@@ -824,7 +824,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.VBuidings" name="B32">
+            <Component class="Buildings.VBuidings" name="B32">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="0" y="10" width="-1" height="-1"/>
@@ -908,7 +908,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.VBuidings" name="B35">
+            <Component class="Buildings.VBuidings" name="B35">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="0" y="10" width="-1" height="-1"/>
@@ -931,7 +931,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.VBuidings" name="B17">
+            <Component class="Buildings.VBuidings" name="B17">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="110" y="10" width="-1" height="-1"/>
@@ -979,7 +979,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.VBuidings" name="B14">
+            <Component class="Buildings.VBuidings" name="B14">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="110" y="10" width="-1" height="-1"/>
@@ -1038,7 +1038,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.VBuidings" name="B12">
+            <Component class="Buildings.VBuidings" name="B12">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="110" y="10" width="-1" height="-1"/>
@@ -1069,7 +1069,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.VBuidings" name="B11">
+            <Component class="Buildings.VBuidings" name="B11">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="110" y="10" width="-1" height="-1"/>
@@ -1092,7 +1092,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="GamePlay0.VBuidings" name="B16">
+            <Component class="Buildings.VBuidings" name="B16">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="110" y="10" width="-1" height="-1"/>

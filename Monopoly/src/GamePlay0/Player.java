@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GamePlay0;
 /**
  *
@@ -33,6 +29,34 @@ public class Player {
     private boolean m_isWinner;
     private boolean m_isLoser;
 
+    
+    public Player() {
+        inJail=0;
+        m_getOutOfJailCards = 0;
+        m_inJail = false;
+        m_zonesOwnedIndexes = new ArrayList<Integer>();
+        m_numberOfHousesOwned = new HashMap<Integer , Integer>();
+        m_numberOfHouses = 0;
+        m_numberOFHotels = 0;
+        m_railRoadsBought=0;
+        m_isBankrupted = false;
+        m_isWinner = false;
+        m_isLoser = false;
+    }
+    public Player(int m_id, Color m_color, int m_balance, boolean m_inJail, boolean m_passByGo) {
+        this();
+        this.m_id = m_id;
+        this.m_color = m_color;
+        this.m_balance = m_balance;
+        this.m_inJail = m_inJail;
+        this.m_passByGo = m_passByGo;
+    }
+
+    public void addZone(int index){
+        if(!m_zonesOwnedIndexes.contains(index))
+           m_zonesOwnedIndexes.add(index);
+        Collections.sort(m_zonesOwnedIndexes);
+    }
     public boolean isM_isLoser() {
         return m_isLoser;
     }
@@ -65,43 +89,6 @@ public class Player {
         this.inJail = inJail;
     }
 
-
-
-    public Player() {
-        inJail=0;
-        m_getOutOfJailCards = 0;
-        m_inJail = false;
-        m_zonesOwnedIndexes = new ArrayList<Integer>();
-        m_numberOfHousesOwned = new HashMap<Integer , Integer>();
-        m_numberOfHouses = 0;
-        m_numberOFHotels = 0;
-        m_railRoadsBought=0;
-        m_isBankrupted = false;
-        m_isWinner = false;
-        m_isLoser = false;
-    }
-
-    
-
-
-    public Player(int m_id, Color m_color, int m_balance, boolean m_inJail, boolean m_passByGo) {
-        inJail=0;
-        this.m_id = m_id;
-        this.m_color = m_color;
-        this.m_balance = m_balance;
-        this.m_inJail = m_inJail;
-        this.m_passByGo = m_passByGo;
-        m_getOutOfJailCards = 0;
-        m_zonesOwnedIndexes = new ArrayList<Integer>();
-        m_numberOfHousesOwned = new HashMap<Integer , Integer>();
-        m_numberOfHouses = 0;
-        m_numberOFHotels = 0;
-        m_railRoadsBought=0;
-        m_isBankrupted = false;
-        m_isWinner = false;
-        m_isLoser = false;
-    }
-
     public int getM_getOutOfJailCards() {
         return m_getOutOfJailCards;
     }
@@ -109,8 +96,6 @@ public class Player {
     public void setM_getOutOfJailCards(int m_getOutOfJailCards) {
         this.m_getOutOfJailCards = m_getOutOfJailCards;
     }
-
-    
 
     public int getM_carXY() {
         return m_carXY;
@@ -120,8 +105,6 @@ public class Player {
         this.m_carXY = m_carXY;
     }
 
-
-    
     public int getM_id() {
         return m_id;
     }
@@ -185,17 +168,6 @@ public class Player {
     public void setM_isWinner(boolean m_isWinner) {
         this.m_isWinner = m_isWinner;
     }
-    
-    
-    
-    public void addZone(int index)
-    {
-        if(!m_zonesOwnedIndexes.contains(index))
-           m_zonesOwnedIndexes.add(index);
-        Collections.sort(m_zonesOwnedIndexes);
-    }
-    
-    
-    
-   
+
+ 
 }

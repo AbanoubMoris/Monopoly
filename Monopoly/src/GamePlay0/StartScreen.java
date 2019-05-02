@@ -1,6 +1,4 @@
-
 package GamePlay0;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -9,7 +7,8 @@ import java.util.logging.Logger;
 import javax.swing.Timer;
 
 public class StartScreen extends javax.swing.JFrame {
-    Thread s;
+    private Thread s;
+    
     public StartScreen() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -52,8 +51,7 @@ public class StartScreen extends javax.swing.JFrame {
             
              }});  
     }
-
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

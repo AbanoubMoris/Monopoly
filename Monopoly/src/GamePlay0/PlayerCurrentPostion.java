@@ -1,7 +1,5 @@
 package GamePlay0;
 
-
-
 public class PlayerCurrentPostion {
     private int Zone_Index;
     private String []Zones;
@@ -25,17 +23,12 @@ public class PlayerCurrentPostion {
         char []chCurrrent = currpos.toCharArray();
         chCurrrent[playerID] = '0';
         Zones[currentPos[playerID]] = String.valueOf(chCurrrent);
-        
-        //System.out.println(Zones[currentPos[playerID]]);
-        
         String nextpos = Zones[(NumOfSteps + currentPos[playerID])%36];
         char []chNext = nextpos.toCharArray();
         chNext[playerID] = '1';
         
         Zones[(NumOfSteps + currentPos[playerID])%36] = String.valueOf(chNext);
-        
         currentPos[playerID] = (NumOfSteps + currentPos[playerID])%36;
-        //System.out.println(Zones[currentPos[playerID]]);
     }
 
     public int getCurrentPos(int playerID) {

@@ -10,12 +10,13 @@ import javax.swing.colorchooser.ColorSelectionModel;
 public class NewJFrame1 extends javax.swing.JFrame {
     private int NumOfPlayer ;
     private Player[] player ;
+    private boolean hint = false;
     
     
     public NewJFrame1() throws InterruptedException {
         initComponents();
-
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
         player = new Player[6];
         for (int i=0;i<6;i++){
             player[i] = new Player();
@@ -24,12 +25,12 @@ public class NewJFrame1 extends javax.swing.JFrame {
         
        noOFplayer_pnl.setVisible(false);
        jColorChooser1.setVisible(false);
-        player1_btn.setVisible(false);
-        player2_btn.setVisible(false);
-        player3_btn.setVisible(false);
-        player4_btn.setVisible(false);
-        player5_btn.setVisible(false);
-        player6_btn.setVisible(false);
+       player1_btn.setVisible(false);
+       player2_btn.setVisible(false);
+       player3_btn.setVisible(false);
+       player4_btn.setVisible(false);
+       player5_btn.setVisible(false);
+       player6_btn.setVisible(false);
        pic1.setImage("src/Gameplay/img/monopoly.png", false);
        pic2.setImage("src/Gameplay/img/hat.png", false);
        pic3.setImage("src/Gameplay/img/hat.png", false);
@@ -58,7 +59,6 @@ public class NewJFrame1 extends javax.swing.JFrame {
       
     }    
     public int getNumOfPlayer() {
-
         return NumOfPlayer;
     }
     
@@ -646,7 +646,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_jColorChooser1MouseClicked
-     boolean hint=false;
+
     public void setplayerColor(int idx){
          Color color =  jColorChooser1.getColor();
          System.out.println(color);

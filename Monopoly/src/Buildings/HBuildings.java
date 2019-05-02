@@ -1,4 +1,4 @@
-package GamePlay0;
+package Buildings;
 
 import java.awt.Color;
 

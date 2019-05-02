@@ -1,5 +1,4 @@
-
-package GamePlay0;
+package Buildings;
 
 import java.awt.Color;
 
@@ -21,7 +20,7 @@ public class VBuidings extends javax.swing.JPanel {
         Rent3.setVisible(false); 
         Rent4.setVisible(false); 
     }
-     public void setNumAndColor(int NumOfHouses , Color color , boolean ISHotel){
+    public void setNumAndColor(int NumOfHouses , Color color , boolean ISHotel){
          
         this.NumOfHouses = NumOfHouses;
         this.isHotel = ISHotel;
