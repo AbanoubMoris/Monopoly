@@ -7,6 +7,15 @@
 <img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/5.PNG" alt="alt text" width="350" height="250">
 <img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/4.PNG" alt="alt text" width="350" height="250">
 
+## Developers List
+
+| Name             | Account                                                      |
+| ---------------- | ------------------------------------------------------------ |
+| Thomas Khaled    | [@ThomasKhaled](https://github.com/ThomasKhaled)             |
+| Ramez Nabil      | [@RamezNabil](https://github.com/RamezNabil)                 |
+| Abanoub Lotfy    | [@AbanoOoub](https://github.com/AbanoOoub)                   |
+| Abanoub Moris    | [@AbanoubMoris](https://github.com/AbanoubMoris)             |
+
 ## Description
 ### ❖ The rules are the same as the standard monopoly game:
    - The board consists of a number of fields (cities, train stations, chances, etc).
