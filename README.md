@@ -1,4 +1,6 @@
 # Monopoly
+[![HitCount](http://hits.dwyl.io/Abanoub_moris/Monopoly.svg)](http://hits.dwyl.io/Abanoub_moris/Monopoly)
+
 <img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/6.PNG" alt="alt text" width="350" height="250"><img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/1.PNG" alt="alt text" width="350" height="250">
 <img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/2.PNG" alt="alt text" width="350" height="250">
 <img src="https://github.com/AbanoubMoris/Monopoly/blob/master/ScreenShots/3.PNG" alt="alt text" width="350" height="250">
