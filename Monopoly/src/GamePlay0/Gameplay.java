@@ -15,93 +15,62 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class Gameplay extends javax.swing.JFrame {
-    
+
     private Thread s;
     private PlayerCurrentPostion pos;
     static int playerTurn = -1;
     private int turn = 0;
-    private static int Res;
-    private Map<Integer,Zone> zoneMap;
+    private static int Res; //****************
+    private Map<Integer, Zone> zoneMap;
     private int NumbOfPlayers;
     private Player[] player;
     private static ArrayList<JButton> Player_Car;
-    private Map<Integer , Object> build ;
-    private boolean WinnerWinner ;
-    private Map<Integer , Player_pnl>playerPanelAccessMap;
-    
-    
-    public Gameplay(){
+    private Map<Integer, Object> build;
+    private boolean WinnerWinner;
+    private Map<Integer, Player_pnl> playerPanelAccessMap;
+    private DrawGamePlay draw;
+    private zoneEvents events;
+
+    private static Gameplay singleToneGameplay;
+
+    public Gameplay() throws IOException {
+        System.out.println("new insts");
         initComponents();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         WinnerWinner = false;
+        draw = new DrawGamePlay();
+
     }
-    public Gameplay(int NumOfPlayers , Player[] player ) throws IOException {
-        this();
-        this.NumbOfPlayers = NumOfPlayers;
+
+    public void setNumbOfPlayers(int NumbOfPlayers) {
+        this.NumbOfPlayers = NumbOfPlayers;
+
+    }
+
+    public void setPlayer(Player[] player) throws IOException {
         this.player = player;
+
         pos = new PlayerCurrentPostion();
         zoneMapInitialization();
         playerPanelAccsessMapInitialization();
         SetPlayerPanels();
-        DrawGamePlay(false,null);
-        DisplayCiyInfo();
-        IntializePlayers(NumOfPlayers, player);   
-        DrawPlayers_pnl(NumOfPlayers);    
+        //DrawGamePlay(false, null);
+        draw.DrawGamePlay(false, null);
+
+        //DisplayCiyInfo();
+        // zoneEvents events = new zoneEvents();
+        events = new zoneEvents();
+        events.DisplayCiyInfo();
+
+        IntializePlayers(NumbOfPlayers, player);
+        DrawPlayers_pnl(NumbOfPlayers);
+
         IntializeBuildings();
-  
-    }
-    
-    public void DrawGamePlay(boolean bought , Color color){      
-        this.setExtendedState(JFrame.ABORT); 
-        go.setImage("src/Gameplay/img/go.png", true,bought ,color);
-        jail.setImage("src/Gameplay/img/jail.png", true,bought ,color);
-        parking.setImage("src/Gameplay/img/free-parking.png", true,bought ,color);
-        goToJail.setImage("src/Gameplay/img/go-to-jail.png", true,bought ,color);
-        MarvinGardens.setImage("src/Gameplay/img/Untitled-15.png", true,bought ,color);
-        waterWorks.setImage("src/Gameplay/img/Untitled-114.png", true,bought ,color);
-        ventnor.setImage("src/Gameplay/img/Untitled-16.png", true,bought ,color);
-        Atlantic.setImage("src/Gameplay/img/Untitled-17.png", true,bought ,color);
-        RailRoad.setImage("src/Gameplay/img/Untitled-21.png", true,bought ,color);
-        Illinois.setImage("src/Gameplay/img/Untitled-18.png", true,bought ,color);
-        Indiana.setImage("src/Gameplay/img/Untitled-19.png", true,bought ,color);
-        ChanceBlue.setImage("src/Gameplay/img/chance blue.png", true,bought ,color);
-        Kentucky.setImage("src/Gameplay/img/20.png", true,bought ,color);
-        Mediter_Ranean.setImage("src/Gameplay/img/Untitled-1.png", true,bought ,color);
-        Community_Chest.setImage("src/Gameplay/img/community-chest.png", true,bought ,color);
-        Baltic.setImage("src/Gameplay/img/Untitled-2.png", true,bought ,color);
-        IncomeTax.setImage("src/Gameplay/img/24.png", true,bought ,color);
-        RealRoad.setImage("src/Gameplay/img/Untitled-21.png", true,bought ,color);
-        Oriental.setImage("src/Gameplay/img/Untitled-3.png", true,bought ,color);
-        ChanceRed.setImage("src/Gameplay/img/chance-red.png", true,bought ,color);
-        Vermont.setImage("src/Gameplay/img/Untitled-4.png", true,bought ,color);
-        Connecticut.setImage("src/Gameplay/img/Untitled-5.png", true,bought ,color);
-        pacific.setImage("src/Gameplay/img/Untitled-12.png", true,bought ,color);
-        NorthCaro.setImage("src/Gameplay/img/Untitled-13.png", true,bought ,color);
-        communtityChestRight.setImage("src/Gameplay/img/community-chest-left.png", true,bought ,color);
-        pennsy.setImage("src/Gameplay/img/Untitled-14.png", true,bought ,color);
-        shorLline.setImage("src/Gameplay/img/Untitled-121.png", true,bought ,color);
-        OrangeChance.setImage("src/Gameplay/img/chance-orange.png", true,bought ,color);
-        ParkPlace.setImage("src/Gameplay/img/Untitled-PR.png", true,bought ,color);
-        NewYork.setImage("src/Gameplay/img/Untitled-11.png", true,bought ,color);
-        Tenss.setImage("src/Gameplay/img/Untitled-10.png", true,bought ,color);
-        CCT.setImage("src/Gameplay/img/community-chest-right.png", true,bought ,color);
-        stJames.setImage("src/Gameplay/img/Untitled-9.png", true,bought ,color);
-        pennsyl.setImage("src/Gameplay/img/PENS.png", true,bought ,color);
-        Virginnia.setImage("src/Gameplay/img/Untitled-8.png", true,bought ,color);
-        States.setImage("src/Gameplay/img/Untitled-7.png", true,bought ,color);
-        MONOMAN.setImage("src/Gameplay/img/monoMan.png", false,bought ,color);
-        orange.setImage("src/Gameplay/img/orange-CHANCE.png", false,bought ,color);
-        bluetreasure.setImage("src/Gameplay/img/treasure.png", false,bought ,color);
-        
-        PlayAgainBtn.setVisible(false);
-        Exit.setVisible(false);
-        trade_pnl1.setVisible(false);
-        Deal_btn.setVisible(false);
-        NoDeal_btn.setVisible(false);
+
     }
 
-    public void SetPlayerPanels(){
-         
+    public void SetPlayerPanels() {
+
         dice1.setImage("src/GamePlay/img/1.PNG", false);
         dice2.setImage("src/Gameplay/img/1.PNG", false);
         player_pnl1.setVisible(false);
@@ -110,7 +79,7 @@ public class Gameplay extends javax.swing.JFrame {
         player_pnl4.setVisible(false);
         player_pnl5.setVisible(false);
         player_pnl6.setVisible(false);
- 
+
         winner_lbl0.setVisible(false);
         winnerpic_lbl0.setVisible(false);
         winner_lbl1.setVisible(false);
@@ -123,574 +92,19 @@ public class Gameplay extends javax.swing.JFrame {
         winnerpic_lbl4.setVisible(false);
         winner_lbl5.setVisible(false);
         winnerpic_lbl5.setVisible(false);
-    }
-    
-    private static void displayCardInfo(String Path) {
-        JOptionPane.showConfirmDialog(null,
-                        getCardInfoPanel(Path),
-                        "Card Info  ",
-                        JOptionPane.DEFAULT_OPTION,
-                        JOptionPane.PLAIN_MESSAGE);
-    }
-    private static int SellOptions(String Path) {
-        UIManager.put("OptionPane.yesButtonText", "Sell constructions"); //0
-        UIManager.put("OptionPane.noButtonText", "Sell City"); //1
-        UIManager.put("OptionPane.cancelButtonText", "OK");//2
-      //  int dialogResult = JOptionPane.showConfirmDialog (null, "","",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE );
-        
-        int dialogResult = JOptionPane.showConfirmDialog(null,
-                        getCardInfoPanel(Path),
-                        "Card Info  ",
-                        JOptionPane.YES_NO_CANCEL_OPTION,
-                        JOptionPane.PLAIN_MESSAGE);
-        
-        return dialogResult;
-    }
-    private void SetSellOption(int Res , int cityIDx){
-          
-         
-        if (Res == 1) {//sell
-            UpdateBuildings(cityIDx,null);
-            player[playerTurn].setM_balance(player[playerTurn].getM_balance() 
-                    + (zoneMap.get(cityIDx).getM_zoneCost()/2)
-                    + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses()*zoneMap.get(cityIDx).getM_houseCost())/2);
-            if(zoneMap.get(cityIDx).getM_NumOFBuildedHouses()==5)
-            {
-                player[playerTurn].setM_numberOFHotels(player[playerTurn].getM_numberOFHotels()-1);
-            }
-            else
-            {
-                player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()
-                    - zoneMap.get(cityIDx).getM_NumOFBuildedHouses());
-            }
-            
-            zoneMap.get(cityIDx).setM_NumOFBuildedHouses(0);
-            zoneMap.get(cityIDx).setHotelBuilded(false);
-            player[playerTurn].m_zonesOwnedIndexes.remove(new Integer(zoneMap.get(cityIDx).getM_index()));
-            if(cityIDx == 5 || cityIDx == 13 || cityIDx == 23 || cityIDx == 33)
-                zoneMap.get(cityIDx).remove(1);
-            else zoneMap.get(cityIDx).remove(2);
-            zoneMap.get(cityIDx).setImage(zoneMap.get(cityIDx).getPicPath(), true, false, null);
-            zoneMap.get(cityIDx).setBought(false);
-            if(cityIDx == 5 || cityIDx == 13 || cityIDx == 23 || cityIDx == 33)
-            {
-                player[playerTurn].setM_railRoadsBought(player[playerTurn].getM_railRoadsBought()-1);
-            }
-           
-            
-     }
-        else if (Res == 0){
-            UpdateBuildings(cityIDx,null);
-            player[playerTurn].setM_balance(player[playerTurn].getM_balance()
-                    + (zoneMap.get(cityIDx).getM_NumOFBuildedHouses() * zoneMap.get(cityIDx).getM_houseCost()) / 2);
 
-            if(zoneMap.get(cityIDx).getM_NumOFBuildedHouses()==5)
-            {
-                player[playerTurn].setM_numberOFHotels(player[playerTurn].getM_numberOFHotels()-1);
-            }
-            else
-            {
-                player[playerTurn].setM_numberOfHouses(player[playerTurn].getM_numberOfHouses()
-                    - zoneMap.get(cityIDx).getM_NumOFBuildedHouses());
-            }
-
-            zoneMap.get(cityIDx).setM_NumOFBuildedHouses(0);
-            zoneMap.get(cityIDx).setHotelBuilded(false);
-          
-            }
-           
-          
-        
-         if (player[playerTurn].getM_balance() > 0 || player[playerTurn].m_zonesOwnedIndexes.size() > 0 || player[playerTurn].getM_numberOfHouses()> 0)
-                player[playerTurn].setM_isBankrupted(false);
-            else {
-                player[playerTurn].setM_isLoser(true);
-               }
-         
-        if(player[playerTurn].m_zonesOwnedIndexes.size()>0 && player[playerTurn].getM_balance()< 0){
-               showPlayerDecisionPanel();
-           }
-        
-        updatePlayersBalance();
-        
-        jPanel1.repaint();
-        
-               
-         
-    
-        SetPanelToWinner();
-    
+        PlayAgainBtn.setVisible(false);
+        Exit.setVisible(false);
+        trade_pnl1.setVisible(false);
+        Deal_btn.setVisible(false);
+        NoDeal_btn.setVisible(false);
     }
-    
-    public void DisplayCiyInfo(){
-        
-        // cards info mouse events
 
-        MarvinGardens.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&  player[playerTurn].m_zonesOwnedIndexes.contains(MarvinGardens.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/MarvinGardens.png");
-                    SetSellOption(Res,MarvinGardens.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/MarvinGardens.png");
-                
-            }
-        });
-        
-        ventnor.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(ventnor.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/VentorAvenue.png");
-                    SetSellOption(Res,ventnor.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/VentorAvenue.png");
-            }
-        });
-        
-        Atlantic.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Atlantic.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/AtlanticAvenue.png");
-                    SetSellOption(Res,Atlantic.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/AtlanticAvenue.png");
-            }
-        });
-       
-        
-        Illinois.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(Illinois.getM_index())){
-                    Res =  SellOptions("src/Gameplay/img/cards/IllinoisAvenue.png");
-                    SetSellOption(Res,Illinois.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/IllinoisAvenue.png");
-            }
-        });
-        
-        Indiana.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                 if (turn > 0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Indiana.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/IndianaAvenue.png");
-                    SetSellOption(Res,Indiana.getM_index());
-                 }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/IndianaAvenue.png");
-            }
-        });
-        
-        Kentucky.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                 if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Kentucky.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/KentuckyAvenue.png");
-                    SetSellOption(Res,Kentucky.getM_index());
-                 }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/KentuckyAvenue.png");
-                
-            }
-        });
-        
-        Mediter_Ranean.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Mediter_Ranean.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/MediteraneanAvenue.png");
-                    SetSellOption(Res,Mediter_Ranean.getM_index());
-                }
-                    
-                else
-                    displayCardInfo("src/Gameplay/img/cards/MediteraneanAvenue.png");
-            }
-        });
-        
-        Baltic.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                 if (turn>0 && player[playerTurn].m_zonesOwnedIndexes.contains(Baltic.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/BalticAvenue.png");
-                    SetSellOption(Res,Baltic.getM_index());
-                 }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/BalticAvenue.png");
-            }
-        });
-        
-        
-        Oriental.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                 if ( turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Oriental.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/OrientalAvenue.png");
-                     SetSellOption(Res,Oriental.getM_index());
-                 }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/OrientalAvenue.png");
-            }
-        });
-        
-        Vermont.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Vermont.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/VermontAvenue.png");
-                     SetSellOption(Res,Vermont.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/VermontAvenue.png");
-            }
-        });
-        
-        Connecticut.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Connecticut.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/ConnectCutAvenue.png");
-                    SetSellOption(Res,Connecticut.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/ConnectCutAvenue.png");
-            }
-        });
-        
-        pacific.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pacific.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/PacificAvenue.png");
-                    SetSellOption(Res,pacific.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/PacificAvenue.png");
-            }
-        });
-        
-        NorthCaro.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(NorthCaro.getM_index())){
-                    Res =SellOptions("src/Gameplay/img/cards/NorthCarolina.png");
-                    SetSellOption(Res,NorthCaro.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/NorthCarolina.png");
-            }
-        });
-        
-        pennsy.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn!=0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pennsy.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/Pensylvania.png");
-                    SetSellOption(Res,pennsy.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/Pensylvania.png");
-            }
-        });
-        
-       
-        
-        ParkPlace.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(ParkPlace.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/ParkPlace.png");
-                    SetSellOption(Res,ParkPlace.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/ParkPlace.png");
-            }
-        });
-        
-        NewYork.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(NewYork.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/NewYorkAvenue.png");
-                    SetSellOption(Res,NewYork.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/NewYorkAvenue.png");
-            }
-        });
-        
-        Tenss.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Tenss.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/TennesseeAvenue.png");
-                    SetSellOption(Res,Tenss.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/TennesseeAvenue.png");
-            }
-        });
-        
-        stJames.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(stJames.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/StJamesPlace.png");
-                    SetSellOption(Res,stJames.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/StJamesPlace.png");
-            }
-        });
-        
-        
-        Virginnia.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(Virginnia.getM_index())){
-                    Res =SellOptions("src/Gameplay/img/cards/VirginiaAvenue.png");
-                    SetSellOption(Res,Virginnia.getM_index());
-                }
-                    
-                else
-                    displayCardInfo("src/Gameplay/img/cards/VirginiaAvenue.png");
-            }
-        });
-        
-        States.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(States.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/StatesAvenue.png");
-                    SetSellOption(Res,States.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/StatesAvenue.png");
-            }
-        });
-        
-        RealRoad.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn >0  &&player[playerTurn].m_zonesOwnedIndexes.contains(RealRoad.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/RR.png");
-                    SetSellOption(Res,RealRoad.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/RR.png");
-            }
-        });
-        RailRoad.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(RailRoad)){
-                    Res = SellOptions("src/Gameplay/img/cards/RR.png");
-                    SetSellOption(Res,RailRoad.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/RR.png");
-            }
-        });
-        
-        
-        pennsyl.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(pennsyl.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/PR.png");
-                    SetSellOption(Res,pennsyl.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/PR.png");
-            }
-        });
-        
-        shorLline.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(shorLline.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/SL.png");
-                    SetSellOption(Res,shorLline.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/SL.png");
-            }
-        });
-        waterWorks.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_select.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(waterWorks.getM_index())){
-                    Res = SellOptions("src/Gameplay/img/cards/WW.png");
-                    SetSellOption(Res,waterWorks.getM_index());
-                }
-                else
-                    displayCardInfo("src/Gameplay/img/cards/WW.png");
-            }
-        });
-    
-        //this.repaint();
-        
+    public Player[] getPlayer() {
+        return player;
     }
-    
-    public void zoneMapInitialization(){
+
+    public void zoneMapInitialization() {
         zoneMap = new HashMap<Integer, Zone>();
         zoneMap.put(0, go);
         zoneMap.put(1, Mediter_Ranean);
@@ -728,333 +142,323 @@ public class Gameplay extends javax.swing.JFrame {
         zoneMap.put(33, shorLline);
         zoneMap.put(34, OrangeChance);
         zoneMap.put(35, ParkPlace);
-        
-        
+
     }
-    
+
     public Map<Integer, Zone> getZoneMap() {
         return zoneMap;
     }
 
-    public void IntializePlayers(int NumOfPlayers , Player []player){
+    public void IntializePlayers(int NumOfPlayers, Player[] player) {
         Player_Car = new ArrayList<>();
-        for (int i=0;i<NumOfPlayers;i++){
+        for (int i = 0; i < NumOfPlayers; i++) {
             Player_Car.add(new JButton());
             Player_Car.get(i).setBackground(player[i].getM_color());
-            int postion = (i)*20;
+            int postion = (i) * 20;
             player[i].setM_carXY(postion);
-            Player_Car.get(i).setBounds(go.getX(), go.getY()+(go.getWidth()-20-postion), 60, 20);
+            Player_Car.get(i).setBounds(go.getX(), go.getY() + (go.getWidth() - 20 - postion), 60, 20);
             jPanel1.add(Player_Car.get(i));
-            
+
             player[i].setM_balance(300);
             player[i].setM_inJail(false);
             player[i].setM_passByGo(false);
         }
 
     }
-    private void DisEnabelEveryThing(){
+
+    private void DisEnabelEveryThing() {
         BuyCity_btn.setEnabled(false);
         jButton3.setEnabled(false);
         Build_btn.setEnabled(false);
         Trade_btn.setEnabled(false);
     }
 
-    public void IntializeBuildings(){
-        build = new HashMap<Integer,Object>();
+    public void IntializeBuildings() {
+        build = new HashMap<Integer, Object>();
         build.put(1, B1);
         build.put(3, B3);
-       // build.put(5,B5 );
-        build.put(6,B6 );
-        build.put(8,B8 );
-        build.put(9,B9 );
-        build.put(11,B11 );
-        build.put(12,B12 );
+        // build.put(5,B5 );
+        build.put(6, B6);
+        build.put(8, B8);
+        build.put(9, B9);
+        build.put(11, B11);
+        build.put(12, B12);
         //build.put(13,B13 );
-        build.put(14,B14 );
-        build.put(16,B16 );
-        build.put(17,B17 );
-        build.put(19,B19 );
-        build.put(21,B21 );
-        build.put(22,B22 );
-       // build.put(23,B23 );
-        build.put(24,B24 );
-        build.put(25,B25 );
-        build.put(27,B27 );
-        build.put(29,B29 );
-        build.put(30,B30 );
-        build.put(32,B32 );
+        build.put(14, B14);
+        build.put(16, B16);
+        build.put(17, B17);
+        build.put(19, B19);
+        build.put(21, B21);
+        build.put(22, B22);
+        // build.put(23,B23 );
+        build.put(24, B24);
+        build.put(25, B25);
+        build.put(27, B27);
+        build.put(29, B29);
+        build.put(30, B30);
+        build.put(32, B32);
         //build.put(33,B33 );
-        build.put(35,B35 );
-        
+        build.put(35, B35);
+
         /*
-        VBuidings vb =  (VBuidings)build.get(32); 
-        vb.getNumOfHouses();
-        */
-        
+         VBuidings vb =  (VBuidings)build.get(32); 
+         vb.getNumOfHouses();
+         */
     }
-    
-    public void DrawPlayers_pnl(int NumOfPlayers){
-         if(NumOfPlayers == 2){
+
+    public void DrawPlayers_pnl(int NumOfPlayers) {
+        if (NumOfPlayers == 2) {
             player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
-            player_pnl1.getID_lbl().setText(String.valueOf( player[0].getM_id()));
+            player_pnl1.getID_lbl().setText(String.valueOf(player[0].getM_id()));
             player_pnl1.getPlayercolor_pnl().setBackground(player[0].getM_color());
             player_pnl1.setVisible(true);
-            
+
             player_pnl2.getBalance_lbl().setText(String.valueOf(player[1].getM_balance()));
-            player_pnl2.getID_lbl().setText(String.valueOf( player[1].getM_id()));
+            player_pnl2.getID_lbl().setText(String.valueOf(player[1].getM_id()));
             player_pnl2.getPlayercolor_pnl().setBackground(player[1].getM_color());
             player_pnl2.setVisible(true);
-        }
-        else if(NumOfPlayers == 3){
+        } else if (NumOfPlayers == 3) {
             player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
             player_pnl1.getID_lbl().setText(String.valueOf(player[0].getM_id()));
             player_pnl1.getPlayercolor_pnl().setBackground(player[0].getM_color());
             player_pnl1.setVisible(true);
-           
-            player_pnl2.getBalance_lbl().setText(String.valueOf( player[1].getM_balance()));
+
+            player_pnl2.getBalance_lbl().setText(String.valueOf(player[1].getM_balance()));
             player_pnl2.getID_lbl().setText(String.valueOf(player[1].getM_id()));
             player_pnl2.getPlayercolor_pnl().setBackground(player[1].getM_color());
             player_pnl2.setVisible(true);
-            
-            player_pnl3.getBalance_lbl().setText(String.valueOf( player[2].getM_balance()));
+
+            player_pnl3.getBalance_lbl().setText(String.valueOf(player[2].getM_balance()));
             player_pnl3.getID_lbl().setText(String.valueOf(player[2].getM_id()));
             player_pnl3.getPlayercolor_pnl().setBackground(player[2].getM_color());
             player_pnl3.setVisible(true);
-        }
-         else if(NumOfPlayers == 4){
+        } else if (NumOfPlayers == 4) {
             player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
             player_pnl1.getID_lbl().setText(String.valueOf(player[0].getM_id()));
             player_pnl1.getPlayercolor_pnl().setBackground(player[0].getM_color());
             player_pnl1.setVisible(true);
-           
-            player_pnl2.getBalance_lbl().setText(String.valueOf( player[1].getM_balance()));
+
+            player_pnl2.getBalance_lbl().setText(String.valueOf(player[1].getM_balance()));
             player_pnl2.getID_lbl().setText(String.valueOf(player[1].getM_id()));
             player_pnl2.getPlayercolor_pnl().setBackground(player[1].getM_color());
             player_pnl2.setVisible(true);
-            
-            player_pnl3.getBalance_lbl().setText(String.valueOf( player[2].getM_balance()));
+
+            player_pnl3.getBalance_lbl().setText(String.valueOf(player[2].getM_balance()));
             player_pnl3.getID_lbl().setText(String.valueOf(player[2].getM_id()));
             player_pnl3.getPlayercolor_pnl().setBackground(player[2].getM_color());
             player_pnl3.setVisible(true);
-            
-            player_pnl4.getBalance_lbl().setText(String.valueOf( player[3].getM_balance()));
+
+            player_pnl4.getBalance_lbl().setText(String.valueOf(player[3].getM_balance()));
             player_pnl4.getID_lbl().setText(String.valueOf(player[3].getM_id()));
             player_pnl4.getPlayercolor_pnl().setBackground(player[3].getM_color());
             player_pnl4.setVisible(true);
-        }
-         else if(NumOfPlayers == 5){
+        } else if (NumOfPlayers == 5) {
             player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
             player_pnl1.getID_lbl().setText(String.valueOf(player[0].getM_id()));
             player_pnl1.getPlayercolor_pnl().setBackground(player[0].getM_color());
             player_pnl1.setVisible(true);
-           
+
             player_pnl2.setVisible(true);
-            player_pnl2.getBalance_lbl().setText(String.valueOf( player[1].getM_balance()));
+            player_pnl2.getBalance_lbl().setText(String.valueOf(player[1].getM_balance()));
             player_pnl2.getID_lbl().setText(String.valueOf(player[1].getM_id()));
             player_pnl2.getPlayercolor_pnl().setBackground(player[1].getM_color());
-            
-            player_pnl3.getBalance_lbl().setText(String.valueOf( player[2].getM_balance()));
+
+            player_pnl3.getBalance_lbl().setText(String.valueOf(player[2].getM_balance()));
             player_pnl3.getID_lbl().setText(String.valueOf(player[2].getM_id()));
             player_pnl3.getPlayercolor_pnl().setBackground(player[2].getM_color());
             player_pnl3.setVisible(true);
-            
-            player_pnl4.getBalance_lbl().setText(String.valueOf( player[3].getM_balance()));
+
+            player_pnl4.getBalance_lbl().setText(String.valueOf(player[3].getM_balance()));
             player_pnl4.getID_lbl().setText(String.valueOf(player[3].getM_id()));
             player_pnl4.getPlayercolor_pnl().setBackground(player[3].getM_color());
             player_pnl4.setVisible(true);
-            
-            player_pnl5.getBalance_lbl().setText(String.valueOf( player[4].getM_balance()));
+
+            player_pnl5.getBalance_lbl().setText(String.valueOf(player[4].getM_balance()));
             player_pnl5.getID_lbl().setText(String.valueOf(player[4].getM_id()));
             player_pnl5.getPlayercolor_pnl().setBackground(player[4].getM_color());
             player_pnl5.setVisible(true);
-        }
-         else if(NumOfPlayers == 6){
+        } else if (NumOfPlayers == 6) {
             player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
             player_pnl1.getID_lbl().setText(String.valueOf(player[0].getM_id()));
             player_pnl1.getPlayercolor_pnl().setBackground(player[0].getM_color());
             player_pnl1.setVisible(true);
-           
-            player_pnl2.getBalance_lbl().setText(String.valueOf( player[1].getM_balance()));
+
+            player_pnl2.getBalance_lbl().setText(String.valueOf(player[1].getM_balance()));
             player_pnl2.getID_lbl().setText(String.valueOf(player[1].getM_id()));
             player_pnl2.getPlayercolor_pnl().setBackground(player[1].getM_color());
             player_pnl2.setVisible(true);
-            
-            player_pnl3.getBalance_lbl().setText(String.valueOf( player[2].getM_balance()));
+
+            player_pnl3.getBalance_lbl().setText(String.valueOf(player[2].getM_balance()));
             player_pnl3.getID_lbl().setText(String.valueOf(player[2].getM_id()));
             player_pnl3.getPlayercolor_pnl().setBackground(player[2].getM_color());
             player_pnl3.setVisible(true);
-            
-            player_pnl4.getBalance_lbl().setText(String.valueOf( player[3].getM_balance()));
+
+            player_pnl4.getBalance_lbl().setText(String.valueOf(player[3].getM_balance()));
             player_pnl4.getID_lbl().setText(String.valueOf(player[3].getM_id()));
             player_pnl4.getPlayercolor_pnl().setBackground(player[3].getM_color());
             player_pnl4.setVisible(true);
-            
-            player_pnl5.getBalance_lbl().setText(String.valueOf( player[4].getM_balance()));
+
+            player_pnl5.getBalance_lbl().setText(String.valueOf(player[4].getM_balance()));
             player_pnl5.getID_lbl().setText(String.valueOf(player[4].getM_id()));
             player_pnl5.getPlayercolor_pnl().setBackground(player[4].getM_color());
             player_pnl5.setVisible(true);
-            
-            player_pnl6.getBalance_lbl().setText(String.valueOf( player[5].getM_balance()));
+
+            player_pnl6.getBalance_lbl().setText(String.valueOf(player[5].getM_balance()));
             player_pnl6.getID_lbl().setText(String.valueOf(player[5].getM_id()));
             player_pnl6.getPlayercolor_pnl().setBackground(player[5].getM_color());
             player_pnl6.setVisible(true);
-         }
-     }   
-          
-    private void PassByGo(){
-        player[playerTurn].setM_balance(player[playerTurn].getM_balance()+200);
+        }
+    }
+
+    private void PassByGo() {
+        player[playerTurn].setM_balance(player[playerTurn].getM_balance() + 200);
         updatePlayersBalance();
-    } 
-    private void GoToJail(){
+    }
+
+    private void GoToJail() {
         //int currentPos = pos.getCurrentPos(playerTurn);
-        pos.SetPlayer(playerTurn,18); 
+        pos.SetPlayer(playerTurn, 18);
         player[playerTurn].setInJail(2);
-        Movement(18,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+        Movement(18, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
         s.start();
     }
-    
-    public void Movement(int NumOfSteps , int x ,int y , int pl){
 
-       jButton3.setEnabled(false);
-       int width = 65;
-       int height = 20;
-        s = new Thread ( new Runnable() {
-            
+    public void Movement(int NumOfSteps, int x, int y, int pl) {
+
+        jButton3.setEnabled(false);
+        int width = 65;
+        int height = 20;
+        s = new Thread(new Runnable() {
+
             public void run() {
 
                 int cnt = 0;
-                
-                while(true){
-                    
-                     try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_token_thimble_move.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                     
+
+                while (true) {
+
+                    try {
+                        SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_token_thimble_move.wav");
+                    } catch (IOException ex) {
+                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                     int currentX = Player_Car.get(pl).getX();
                     int currentY = Player_Car.get(pl).getY();
 
                     //UP
-                    if(currentX + (parking.getHeight() - currentX) > x && currentX < jPanel1.getWidth() && currentY == y){
-                    for (int i=Player_Car.get(pl).getX();i<currentX+70;i++){
-                    if(Player_Car.get(pl).getX()+10>=goToJail.getX()){
-                        Player_Car.get(pl).setBounds(goToJail.getX() + (goToJail.getWidth()-height-x) , goToJail.getY()+goToJail.getWidth()-width , height , width);
-                        //cnt--;
-                        break;
-                        
-                    }
-                    else
-                        Player_Car.get(pl).setBounds(i, y, width, height);
-                    
-                    try {
-                        Thread.sleep(1);
-                        
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                    } 
-                }
-                   
-                    } 
-                    
-                    
-                    //LEFT
-                    if(currentY>=y && currentY<=jPanel1.getHeight() && currentX == x){
-                        for (int i=Player_Car.get(pl).getY() ; i>currentY-70 ;i--){
-                            if(Player_Car.get(pl).getY()<=(parking.getWidth())) {
-                                Player_Car.get(pl).setBounds(parking.getX()+(parking.getWidth()-width), y, width , height);
+                    if (currentX + (parking.getHeight() - currentX) > x && currentX < jPanel1.getWidth() && currentY == y) {
+                        for (int i = Player_Car.get(pl).getX(); i < currentX + 70; i++) {
+                            if (Player_Car.get(pl).getX() + 10 >= goToJail.getX()) {
+                                Player_Car.get(pl).setBounds(goToJail.getX() + (goToJail.getWidth() - height - x), goToJail.getY() + goToJail.getWidth() - width, height, width);
                                 //cnt--;
                                 break;
+
+                            } else {
+                                Player_Car.get(pl).setBounds(i, y, width, height);
                             }
-                            else
-                                Player_Car.get(pl).setBounds(Player_Car.get(pl).getX(), i, height, width);
-                    
+
                             try {
                                 Thread.sleep(1);
-                                } catch (InterruptedException ex) {
-                                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);} 
+
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+
+                    }
+
+                    //LEFT
+                    if (currentY >= y && currentY <= jPanel1.getHeight() && currentX == x) {
+                        for (int i = Player_Car.get(pl).getY(); i > currentY - 70; i--) {
+                            if (Player_Car.get(pl).getY() <= (parking.getWidth())) {
+                                Player_Car.get(pl).setBounds(parking.getX() + (parking.getWidth() - width), y, width, height);
+                                //cnt--;
+                                break;
+                            } else {
+                                Player_Car.get(pl).setBounds(Player_Car.get(pl).getX(), i, height, width);
+                            }
+
+                            try {
+                                Thread.sleep(1);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         }
                     }
-                   //RIGHT
-                    if(currentY + (goToJail.getWidth() - currentY )>=y && currentY<=go.getY()+go.getHeight() && currentX==go.getX()+(go.getWidth()-height-x)){
-                        
-                        for (int i=currentY ; i < currentY+70 ; i++){
-                            if(Player_Car.get(pl).getY()>go.getY()-5){
-                                Player_Car.get(pl).setBounds(go.getX(), go.getY()+(go.getWidth()-height-y), width, height);
+                    //RIGHT
+                    if (currentY + (goToJail.getWidth() - currentY) >= y && currentY <= go.getY() + go.getHeight() && currentX == go.getX() + (go.getWidth() - height - x)) {
+
+                        for (int i = currentY; i < currentY + 70; i++) {
+                            if (Player_Car.get(pl).getY() > go.getY() - 5) {
+                                Player_Car.get(pl).setBounds(go.getX(), go.getY() + (go.getWidth() - height - y), width, height);
                                 //cnt--;
                                 break;
                             }
                             Player_Car.get(pl).setBounds(currentX, i, height, width);
-                            
+
                             try {
-                        Thread.sleep(1);
-                        
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                    } 
+                                Thread.sleep(1);
+
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         }
-                        
+
                     }
-               //Down
-                   // System.out.println(currentX + " " + (go.getX()+go.getWidth()) + " " + currentY + " " + (go.getY()+(go.getHeight()-height-y)));
-                    if (currentX>=0 && currentX<=(go.getX()+go.getWidth()) && currentY == (go.getY()+(go.getHeight()-height-y))){
-                       for (int i=currentX ; i>currentX-70 ; i--){
-                           if (Player_Car.get(pl).getX() <= x){
-                               Player_Car.get(pl).setBounds(x, jail.getY() , height,width);
-                               cnt--;
-                               break;
-                           }
-                           else
-                           Player_Car.get(pl).setBounds(i, currentY, width,height);
-                           
-                                try {
-                        Thread.sleep(1);
-                        
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                    } 
-                           
-                       }
-                   }
-                    
+                    //Down
+                    // System.out.println(currentX + " " + (go.getX()+go.getWidth()) + " " + currentY + " " + (go.getY()+(go.getHeight()-height-y)));
+                    if (currentX >= 0 && currentX <= (go.getX() + go.getWidth()) && currentY == (go.getY() + (go.getHeight() - height - y))) {
+                        for (int i = currentX; i > currentX - 70; i--) {
+                            if (Player_Car.get(pl).getX() <= x) {
+                                Player_Car.get(pl).setBounds(x, jail.getY(), height, width);
+                                cnt--;
+                                break;
+                            } else {
+                                Player_Car.get(pl).setBounds(i, currentY, width, height);
+                            }
+
+                            try {
+                                Thread.sleep(1);
+
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+
+                        }
+                    }
 
                     cnt++;
-                    
-                     //if pass by go
+
+                    //if pass by go
                     //(pos.getCurrentPos(pl)-cnt)%36==0
-                    if ((pos.getCurrentPos(pl)-cnt)%36==0 && (turn-1)!=playerTurn && player[playerTurn].getInJail()==0)
-                    {
+                    if ((pos.getCurrentPos(pl) - cnt) % 36 == 0 && (turn - 1) != playerTurn && player[playerTurn].getInJail() == 0) {
                         PassByGo();
                     }
-                    
-                    
-                    if(cnt == NumOfSteps)
-                    {
+
+                    if (cnt == NumOfSteps) {
                         try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_token_thimble_move.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                        if (pos.getCurrentPos(pl) == 2 || pos.getCurrentPos(pl) == 15 || pos.getCurrentPos(pl) == 31) 
-                        {
+                            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_token_thimble_move.wav");
+                        } catch (IOException ex) {
+                            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        if (pos.getCurrentPos(pl) == 2 || pos.getCurrentPos(pl) == 15 || pos.getCurrentPos(pl) == 31) {
                             DrawingCards("Community Chest");
-                        }
-                        else if (pos.getCurrentPos(pl) == 7 || pos.getCurrentPos(pl) == 20 || pos.getCurrentPos(pl) == 34) {
+                        } else if (pos.getCurrentPos(pl) == 7 || pos.getCurrentPos(pl) == 20 || pos.getCurrentPos(pl) == 34) {
                             DrawingCards("Chance");
-                        }
-                        else if (pos.getCurrentPos(pl)==10) player[playerTurn].setInJail(2);
-                        else if (pos.getCurrentPos(pl)==28){
-                             GoToJail();
+                        } else if (pos.getCurrentPos(pl) == 10) {
+                            player[playerTurn].setInJail(2);
+                        } else if (pos.getCurrentPos(pl) == 28) {
+                            GoToJail();
                         }
                         //checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
                         someConditions();
-                        
+
                         //System.out.println(pl + " -- " + pos.getCurrentPos(pl));
                         jButton3.setEnabled(true);
-                        cnt=0;
+                        cnt = 0;
                         break;
                     }
-                    jPanel1.repaint();  
+                    jPanel1.repaint();
                 }
 
                 // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -1062,107 +466,86 @@ public class Gameplay extends javax.swing.JFrame {
         });
     }
 
-    private void DrawingCards(String cardType){
-        if(cardType == "Community Chest")
-        {
+    private void DrawingCards(String cardType) {
+        if (cardType == "Community Chest") {
             try {
-            SoundEffects.PlaySound("src/Gameplay/soundEffects/104207086-game-treasure-06.wav");
-                    } catch (IOException ex) {
-            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            if(card.displayCommunityChestCards()>=-1)
-            {
+                SoundEffects.PlaySound("src/Gameplay/soundEffects/104207086-game-treasure-06.wav");
+            } catch (IOException ex) {
+                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (card.displayCommunityChestCards() >= -1) {
                 int currentPos = pos.getCurrentPos(playerTurn);
-                int randomNumber = card.ApplyCardEffect("CommunityChest", player[playerTurn],playerTurn,pos,NumbOfPlayers , player);
-                if(randomNumber==1)
-                {
-                    pos.SetPlayer(playerTurn,(36-currentPos)%36);   
-                    Movement((36-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                int randomNumber = card.ApplyCardEffect("CommunityChest", player[playerTurn], playerTurn, pos, NumbOfPlayers, player);
+                if (randomNumber == 1) {
+                    pos.SetPlayer(playerTurn, (36 - currentPos) % 36);
+                    Movement((36 - currentPos) % 36, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                     s.start();
-                }
-                else if(randomNumber==7)
-                {
-                    pos.SetPlayer(playerTurn,(46-currentPos)%36);   
-                    Movement((46-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                } else if (randomNumber == 7) {
+                    pos.SetPlayer(playerTurn, (46 - currentPos) % 36);
+                    Movement((46 - currentPos) % 36, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                     //player[playerTurn].setM_inJail(true);
                     player[playerTurn].setInJail(2);
                     s.start();
                 }
                 updatePlayersBalance();
             }
-        }
-        else if(cardType == "Chance")
-        {
-            if(card.displayChanceCards()>=-1)
-            {
+        } else if (cardType == "Chance") {
+            if (card.displayChanceCards() >= -1) {
                 int currentPos = pos.getCurrentPos(playerTurn);
-                int randomNumber = card.ApplyCardEffect("Chance", player[playerTurn],playerTurn,pos,NumbOfPlayers , player);
-                if(randomNumber==1)
-                {
-                    pos.SetPlayer(playerTurn,(36-currentPos)%36);   
-                    Movement((36-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                int randomNumber = card.ApplyCardEffect("Chance", player[playerTurn], playerTurn, pos, NumbOfPlayers, player);
+                if (randomNumber == 1) {
+                    pos.SetPlayer(playerTurn, (36 - currentPos) % 36);
+                    Movement((36 - currentPos) % 36, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                     s.start();
-                }
-                else if(randomNumber==2)
-                {
-                    pos.SetPlayer(playerTurn,(58-currentPos)%36);   
-                    Movement((58-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                } else if (randomNumber == 2) {
+                    pos.SetPlayer(playerTurn, (58 - currentPos) % 36);
+                    Movement((58 - currentPos) % 36, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                     s.start();
-                }
-                else if(randomNumber==4 && currentPos == 7)
-                {
-                    pos.SetPlayer(playerTurn,(49-currentPos)%36);   
-                    Movement((49-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                } else if (randomNumber == 4 && currentPos == 7) {
+                    pos.SetPlayer(playerTurn, (49 - currentPos) % 36);
+                    Movement((49 - currentPos) % 36, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                     s.start();
-                    checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
-                    
-                }
-                else if(randomNumber==4 && currentPos == 20)
-                {
-                    pos.SetPlayer(playerTurn,(59-currentPos)%36);   
-                    Movement((59-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()), playerTurn);
+
+                } else if (randomNumber == 4 && currentPos == 20) {
+                    pos.SetPlayer(playerTurn, (59 - currentPos) % 36);
+                    Movement((59 - currentPos) % 36, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                     s.start();
-                    checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
-                }
-                else if(randomNumber==4 && currentPos == 34)
-                {
-                    pos.SetPlayer(playerTurn,(41-currentPos)%36);   
-                    Movement((41-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()), playerTurn);
+                } else if (randomNumber == 4 && currentPos == 34) {
+                    pos.SetPlayer(playerTurn, (41 - currentPos) % 36);
+                    Movement((41 - currentPos) % 36, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                     s.start();
-                    checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
-                }
-                else if(randomNumber==9)
-                {
-                    pos.SetPlayer(playerTurn,(46-currentPos)%36);   
-                    Movement((46-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                    checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()), playerTurn);
+                } else if (randomNumber == 9) {
+                    pos.SetPlayer(playerTurn, (46 - currentPos) % 36);
+                    Movement((46 - currentPos) % 36, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                     //player[playerTurn].setM_inJail(true);
                     player[playerTurn].setInJail(2);
                     s.start();
-                }
-                else if(randomNumber==12 && currentPos == 7)
-                {
-                    pos.SetPlayer(playerTurn,(59-currentPos)%36);   
-                    Movement((59-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                } else if (randomNumber == 12 && currentPos == 7) {
+                    pos.SetPlayer(playerTurn, (59 - currentPos) % 36);
+                    Movement((59 - currentPos) % 36, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                     s.start();
-                }
-                else if(randomNumber==12 && currentPos == 20)
-                {
-                    pos.SetPlayer(playerTurn,(41-currentPos)%36);   
-                    Movement((41-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                } else if (randomNumber == 12 && currentPos == 20) {
+                    pos.SetPlayer(playerTurn, (41 - currentPos) % 36);
+                    Movement((41 - currentPos) % 36, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                     s.start();
-                }
-                else if(randomNumber==12 && currentPos == 34)
-                {
-                    pos.SetPlayer(playerTurn,(59-currentPos)%36);   
-                    Movement((59-currentPos)%36,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn); 
+                } else if (randomNumber == 12 && currentPos == 34) {
+                    pos.SetPlayer(playerTurn, (59 - currentPos) % 36);
+                    Movement((59 - currentPos) % 36, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                     s.start();
                 }
                 updatePlayersBalance();
             }
         }
     }
-    
-    private void updatePlayersBalance(){
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void updatePlayersBalance() {
         player_pnl1.getBalance_lbl().setText(String.valueOf(player[0].getM_balance()));
         player_pnl1.setBalance_lbl(player_pnl1.getBalance_lbl());
         player_pnl2.getBalance_lbl().setText(String.valueOf(player[1].getM_balance()));
@@ -1176,7 +559,7 @@ public class Gameplay extends javax.swing.JFrame {
         player_pnl6.getBalance_lbl().setText(String.valueOf(player[5].getM_balance()));
         player_pnl6.setBalance_lbl(player_pnl6.getBalance_lbl());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1898,9 +1281,9 @@ public class Gameplay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     Cards card = new Cards();
-    
-    public void roll_Dice(Dice d){
-         switch(d.getDice_value()){
+
+    public void roll_Dice(Dice d) {
+        switch (d.getDice_value()) {
             case 1:
                 d.setImage("src/Gameplay/img/1.PNG", false);
                 break;
@@ -1918,182 +1301,161 @@ public class Gameplay extends javax.swing.JFrame {
                 break;
             case 6:
                 d.setImage("src/Gameplay/img/6.PNG", false);
-                break;    
+                break;
         }
     }
+
     //go to jail , pay 200 income tax
-    private void someConditions()
-    {
-        if(pos.getCurrentPos(player[playerTurn].getM_id()) == 4)player[playerTurn].setM_balance(player[playerTurn].getM_balance()- 200);
+    private void someConditions() {
+        if (pos.getCurrentPos(player[playerTurn].getM_id()) == 4) {
+            player[playerTurn].setM_balance(player[playerTurn].getM_balance() - 200);
+        }
         updatePlayersBalance();
     }
-    
-    private JPanel jailPanel(){
+
+    private JPanel jailPanel() {
         JPanel panel = new JPanel();
         panel.setBorder(new LineBorder(Color.black, 10));
         return panel;
     }
-    private void showJailPanel(){
-                UIManager.put("OptionPane.cancelButtonText", "Skip Turn");//2
-                UIManager.put("OptionPane.noButtonText", "Use Card");//1
-                UIManager.put("OptionPane.yesButtonText", "Pay 50$");//0
-                while(true)
-                {
-                    int input = JOptionPane.showConfirmDialog(jailPanel(),"Pay 50$ to get out of jail or Use a \"Get Out of Jail\" card or Skip your turn" ,"You Are In Jail!" , JOptionPane.YES_NO_CANCEL_OPTION , JOptionPane.PLAIN_MESSAGE);
 
-                    if(input==0)
-                    {
-                        if(player[playerTurn].getM_balance()>=50)
-                        {
-                            player[playerTurn].setInJail(0);
-                            player[playerTurn].setM_balance(player[playerTurn].getM_balance()-50);
-                            updatePlayersBalance();
-                            break;
-                        }
-                        else
-                        {
-                            try {
-                            SoundEffects.PlaySound("src/Gameplay/soundEffects/you dont have enouph money.wav");
-                        } catch (IOException ex) {
-                            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        }
+    private void showJailPanel() {
+        UIManager.put("OptionPane.cancelButtonText", "Skip Turn");//2
+        UIManager.put("OptionPane.noButtonText", "Use Card");//1
+        UIManager.put("OptionPane.yesButtonText", "Pay 50$");//0
+        while (true) {
+            int input = JOptionPane.showConfirmDialog(jailPanel(), "Pay 50$ to get out of jail or Use a \"Get Out of Jail\" card or Skip your turn", "You Are In Jail!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+            if (input == 0) {
+                if (player[playerTurn].getM_balance() >= 50) {
+                    player[playerTurn].setInJail(0);
+                    player[playerTurn].setM_balance(player[playerTurn].getM_balance() - 50);
+                    updatePlayersBalance();
+                    break;
+                } else {
+                    try {
+                        SoundEffects.PlaySound("src/Gameplay/soundEffects/you dont have enouph money.wav");
+                    } catch (IOException ex) {
+                        Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    else if(input==1)
-                    {
-                        if(player[playerTurn].getM_getOutOfJailCards()>0)
-                        {
-                            player[playerTurn].setInJail(0);
-                            player[playerTurn].setM_getOutOfJailCards(player[playerTurn].getM_getOutOfJailCards()-1);
-                            break;
-                        }
-                        else
-                        {
-                            JOptionPane.showMessageDialog(null, "You Dont Have Cards");
-                        }
-                    }
-                    else
-                    {
-                        break;
-                    }
-                
                 }
-            UIManager.put("OptionPane.cancelButtonText", "Cancel");
-            UIManager.put("OptionPane.noButtonText", "No");
-            UIManager.put("OptionPane.yesButtonText", "Yes");
-            
-          
+            } else if (input == 1) {
+                if (player[playerTurn].getM_getOutOfJailCards() > 0) {
+                    player[playerTurn].setInJail(0);
+                    player[playerTurn].setM_getOutOfJailCards(player[playerTurn].getM_getOutOfJailCards() - 1);
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(null, "You Dont Have Cards");
+                }
+            } else {
+                break;
+            }
+
+        }
+        UIManager.put("OptionPane.cancelButtonText", "Cancel");
+        UIManager.put("OptionPane.noButtonText", "No");
+        UIManager.put("OptionPane.yesButtonText", "Yes");
+
     }
-    
-    private void turnIndicator(){
-        for(int i=0; i<NumbOfPlayers; i++)
-        {
+
+    private void turnIndicator() {
+        for (int i = 0; i < NumbOfPlayers; i++) {
             playerPanelAccessMap.get(i).setBorder(null);
         }
-        playerPanelAccessMap.get(playerTurn).setBorder(BorderFactory.createLineBorder(Color.RED,3));
+        playerPanelAccessMap.get(playerTurn).setBorder(BorderFactory.createLineBorder(Color.RED, 3));
     }
 
-    private int WhoIsNext(){
-            int i=playerTurn,cnt=0,idx=0;
-            i%=NumbOfPlayers;
-            while(true){
-                if(!player[i].isM_isLoser()){
-                    return i;
-                }
-                i++;
-                cnt++;
-                if(cnt>NumbOfPlayers) {
-                   return 0;
-                } 
+    private int WhoIsNext() {
+        int i = playerTurn, cnt = 0, idx = 0;
+        i %= NumbOfPlayers;
+        while (true) {
+            if (!player[i].isM_isLoser()) {
+                return i;
+            }
+            i++;
+            cnt++;
+            if (cnt > NumbOfPlayers) {
+                return 0;
             }
         }
-    private boolean ISAWinner(){
-        int cnt=0;
-        for (int i=0;i<NumbOfPlayers;i++){
-            if(player[i].isM_isLoser()) cnt++;
+    }
+
+    private boolean ISAWinner() {
+        int cnt = 0;
+        for (int i = 0; i < NumbOfPlayers; i++) {
+            if (player[i].isM_isLoser()) {
+                cnt++;
+            }
         }
-        if(cnt == NumbOfPlayers-1) {
+        if (cnt == NumbOfPlayers - 1) {
             return true;
         }
         return false;
     }
-    
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         turn++;
         playerTurn++;
-        
-    /*   if(player[playerTurn].m_zonesOwnedIndexes.size() > 0 && player[playerTurn].getM_balance()< 0){
-               showPlayerDecisionPanel();
-           }*/
-       //else{
+
         playerTurn = WhoIsNext();
-        playerTurn%=NumbOfPlayers;
-        
-        if (!player[playerTurn].isM_isLoser()){
-        
-        try {
-            SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
-                    } catch (IOException ex) {
-            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        turnIndicator();
-        
-        //in jail
-        if(player[playerTurn].getInJail()>0)
-        {
-            showJailPanel();
-        }
-        
-        if(player[playerTurn].getInJail()==0)
-        {
-           
-                
-            
-            Random r = new Random();
-         
-            dice1.setDice_value(r.nextInt(6)+1);
-            dice2.setDice_value(r.nextInt(6)+1);
-            roll_Dice(dice1);
-            roll_Dice(dice2);
-            pos.SetPlayer(playerTurn,/*dice1.getDice_value()+dice2.getDice_value()*/1);
-            Movement(/*dice1.getDice_value()+dice2.getDice_value()*/1,player[playerTurn].getM_carXY(),player[playerTurn].getM_carXY() ,playerTurn);
-            s.start();
-            //dice1.getDice_value()+dice2.getDice_value()
-        }
-        else{
-             player[playerTurn].setInJail(player[playerTurn].getInJail()-1);
-        }
-        
-        checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()) , playerTurn);
-        checkBankruptcy();
-        if(player[playerTurn].isM_isBankrupted()) showPlayerDecisionPanel();
-        
-  
-     //   }
-        
+        playerTurn %= NumbOfPlayers;
+
+        if (!player[playerTurn].isM_isLoser()) {
+
+            try {
+                SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_dice_end_1.wav");
+            } catch (IOException ex) {
+                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            turnIndicator();
+
+            //in jail
+            if (player[playerTurn].getInJail() > 0) {
+                showJailPanel();
+            }
+
+            if (player[playerTurn].getInJail() == 0) {
+
+                Random r = new Random();
+
+                dice1.setDice_value(r.nextInt(6) + 1);
+                dice2.setDice_value(r.nextInt(6) + 1);
+                roll_Dice(dice1);
+                roll_Dice(dice2);
+                pos.SetPlayer(playerTurn,/*dice1.getDice_value()+dice2.getDice_value()*/ 1);
+                Movement(/*dice1.getDice_value()+dice2.getDice_value()*/1, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
+                s.start();
+                //dice1.getDice_value()+dice2.getDice_value()
+            } else {
+                player[playerTurn].setInJail(player[playerTurn].getInJail() - 1);
+            }
+
+            checkIfZoneIsOwned(pos.getCurrentPos(player[playerTurn].getM_id()), playerTurn);
+            checkBankruptcy();
+            if (player[playerTurn].isM_isBankrupted()) {
+                showPlayerDecisionPanel();
+            }
+
+            //   }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
     private void BuyCity_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyCity_btnActionPerformed
         // TODO add your handling code here:
-        
+
         boolean isOwned = false;
         int index = pos.getCurrentPos(playerTurn);
-        for(int i=0; i<NumbOfPlayers; i++)
-        {
-            if(player[i].m_zonesOwnedIndexes.contains(index))
-            {
-                
-               //System.out.println("owned");
-               isOwned = true; 
-               break;
+        for (int i = 0; i < NumbOfPlayers; i++) {
+            if (player[i].m_zonesOwnedIndexes.contains(index)) {
+
+                //System.out.println("owned");
+                isOwned = true;
+                break;
             }
         }
-        if(!isOwned)
-        {
-            
-            if(zoneMap.get(index).getM_zoneCost()!=0 && player[playerTurn].getM_balance() >= zoneMap.get(index).getM_zoneCost() )
-            {
+        if (!isOwned) {
+
+            if (zoneMap.get(index).getM_zoneCost() != 0 && player[playerTurn].getM_balance() >= zoneMap.get(index).getM_zoneCost()) {
                 try {
                     SoundEffects.PlaySound("src/Gameplay/soundEffects/Cash Register.wav");
                 } catch (IOException ex) {
@@ -2104,30 +1466,28 @@ public class Gameplay extends javax.swing.JFrame {
                 updatePlayersBalance();
                 //addZoneToPanel(playerTurn, zoneMap.get(index).getM_index());
                 zoneMap.get(index).setPlayer_zone(player[playerTurn]);
-                
+
                 zoneMap.get(index).setImage(zoneMap.get(index).getPicPath(), false, true, player[playerTurn].getM_color());
-                
-                if(index == 5 || index == 13 || index == 23 || index == 33)
-                {
-                    player[playerTurn].setM_railRoadsBought(player[playerTurn].getM_railRoadsBought()+1);
+
+                if (index == 5 || index == 13 || index == 23 || index == 33) {
+                    player[playerTurn].setM_railRoadsBought(player[playerTurn].getM_railRoadsBought() + 1);
                 }
-                
+
                 repaint();
 
-            }
-            else {
-                 try {
+            } else {
+                try {
                     SoundEffects.PlaySound("src/Gameplay/soundEffects/you dont have enouph money.wav");
                 } catch (IOException ex) {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
-        
-        
+
+
     }//GEN-LAST:event_BuyCity_btnActionPerformed
 
-    private void playerPanelAccsessMapInitialization(){
+    private void playerPanelAccsessMapInitialization() {
         playerPanelAccessMap = new HashMap<Integer, Player_pnl>();
         playerPanelAccessMap.put(0, player_pnl1);
         playerPanelAccessMap.put(1, player_pnl2);
@@ -2135,9 +1495,9 @@ public class Gameplay extends javax.swing.JFrame {
         playerPanelAccessMap.put(3, player_pnl4);
         playerPanelAccessMap.put(4, player_pnl5);
         playerPanelAccessMap.put(5, player_pnl6);
-   
+
     }
-    
+
     private static JPanel getCardInfoPanel(String Path) {
         JPanel panel = new JPanel();
 
@@ -2148,91 +1508,93 @@ public class Gameplay extends javax.swing.JFrame {
             img = ImageIO.read(imgFile);
             panel.setBorder(new LineBorder(Color.black, 7));
 
-        } catch(MalformedURLException mue) {
+        } catch (MalformedURLException mue) {
             mue.printStackTrace();
-        } catch(IOException ioe) {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
-        } 
+        }
 
         JLabel label = new JLabel(new ImageIcon(img));
         panel.add(label);
-        
 
         return panel;
     }
-    private JPanel playerDecisionPanel(){
+
+    private JPanel playerDecisionPanel() {
         JPanel panel = new JPanel();
         panel.setBorder(new LineBorder(Color.black, 10));
         return panel;
     }
-    private void showPlayerDecisionPanel() {
-     
+
+    public void showPlayerDecisionPanel() {
+
         UIManager.put("OptionPane.noButtonText", "Leave Game"); //1
         UIManager.put("OptionPane.yesButtonText", "Sell City or Buildings");//0
 
         int input = JOptionPane.showConfirmDialog(playerDecisionPanel(), "You Are Bankrupted Decide Wether To Sell City Or Leave The Game!", "DECIDE!", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
 
         if (input == 0) {
-           if(player[playerTurn].m_zonesOwnedIndexes.size() > 0){
-               
-           }
-           else
-               player[playerTurn].setM_isLoser(true);
-        }
-        else if (input == 1) {
-               int x = playerTurn;
-                for(int i=0 ;i<player[x].m_zonesOwnedIndexes.size();i++){
-                    int v = player[x].m_zonesOwnedIndexes.get(i);
-                    zoneMap.get(v).remove(2);
-                    zoneMap.get(v).setImage(zoneMap.get(v).getPicPath(), true, false, null);
-                    zoneMap.get(v).setPlayer_zone(null);  // 3lshan a5li ay 7d tani mmkn yshtreha
-                     jPanel1.repaint();
-                 }
-                   player[x].m_zonesOwnedIndexes.removeAll( player[x].m_zonesOwnedIndexes);
-              
+            if (player[playerTurn].m_zonesOwnedIndexes.size() > 0) {
+
+            } else {
+                player[playerTurn].setM_isLoser(true);
+            }
+        } else if (input == 1) {
+            int x = playerTurn;
+            for (int i = 0; i < player[x].m_zonesOwnedIndexes.size(); i++) {
+                int v = player[x].m_zonesOwnedIndexes.get(i);
+                zoneMap.get(v).remove(2);
+                zoneMap.get(v).setImage(zoneMap.get(v).getPicPath(), true, false, null);
+                zoneMap.get(v).setPlayer_zone(null);  // 3lshan a5li ay 7d tani mmkn yshtreha
+                jPanel1.repaint();
+            }
+            player[x].m_zonesOwnedIndexes.removeAll(player[x].m_zonesOwnedIndexes);
+
             player[playerTurn].setM_isLoser(true);
             turn++;
-            
+
         }
-        
-            SetPanelToWinner();
-            
-         playerTurn%=NumbOfPlayers;
-        
+
+        SetPanelToWinner();
+
+        playerTurn %= NumbOfPlayers;
+
         UIManager.put("OptionPane.noButtonText", "No");
         UIManager.put("OptionPane.yesButtonText", "Yes");
-         jPanel1.repaint();
-        
-    
+        jPanel1.repaint();
+
     }
-    private void checkBankruptcy (){
-        for(int i=0; i<NumbOfPlayers; i++)
-        {
-            if(player[i].getM_balance()<0){
+
+    private void checkBankruptcy() {
+        for (int i = 0; i < NumbOfPlayers; i++) {
+            if (player[i].getM_balance() < 0) {
                 player[i].setM_isBankrupted(true);
             }
         }
-        
+
     }
-    public int finally_winner(){
-            int index = -1;
-        if(ISAWinner()){
-            for(int i=0;i<NumbOfPlayers;i++){
-                if(!player[i].isM_isLoser())
+
+    public int finally_winner() {
+        int index = -1;
+        if (ISAWinner()) {
+            for (int i = 0; i < NumbOfPlayers; i++) {
+                if (!player[i].isM_isLoser()) {
                     index = i;
+                }
             }
         }
         return index;
     }
-    public void SetPanelToWinner(){
+
+    public void SetPanelToWinner() {
         if (ISAWinner()) {
-                try {
-                    SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_wingame.wav");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-                }
-               int y = finally_winner();
-               if(y!=-1){
+            try {
+                SoundEffects.PlaySound("src/Gameplay/soundEffects/snd_sys_wingame.wav");
+            } catch (IOException ex) {
+                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int y = finally_winner();
+            if (y != -1) {
                 switch (y) {
                     case 0:
                         winner_lbl0.setVisible(true);
@@ -2260,141 +1622,159 @@ public class Gameplay extends javax.swing.JFrame {
                         break;
 
                 }
-               }
-           gameOver1.setLocation(new Point(0,0));
-           DisEnabelEveryThing();
-           PlayAgainBtn.setVisible(true);
-           PlayAgainBtn.setLocation(new Point(620,629));
-           Exit.setLocation(new Point(620,629+PlayAgainBtn.getHeight()+10));
             }
-    } 
-    public boolean BuidHotel(int playerTurn ){
-       for (int i=0;i<player[playerTurn].m_zonesOwnedIndexes.size();i++){
-           try {
-              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==1 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==3){
-                  if (pos.getCurrentPos(playerTurn) == 1 || pos.getCurrentPos(playerTurn) == 3)
-                  return true;
-              }
-              
+            gameOver1.setLocation(new Point(0, 0));
+            DisEnabelEveryThing();
+            PlayAgainBtn.setVisible(true);
+            PlayAgainBtn.setLocation(new Point(620, 629));
+            Exit.setLocation(new Point(620, 629 + PlayAgainBtn.getHeight() + 10));
+        }
+    }
 
-           } catch (Exception e) {
-           }
-           try {
-              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==6 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==8 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==9){
-                  if (pos.getCurrentPos(playerTurn) == 6 || pos.getCurrentPos(playerTurn) == 8 || pos.getCurrentPos(playerTurn) == 9)
-                  return true;}
+    public boolean BuidHotel(int playerTurn) {
+        for (int i = 0; i < player[playerTurn].m_zonesOwnedIndexes.size(); i++) {
+            try {
+                if (player[playerTurn].m_zonesOwnedIndexes.get(i) == 1 && player[playerTurn].m_zonesOwnedIndexes.get(i + 1) == 3) {
+                    if (pos.getCurrentPos(playerTurn) == 1 || pos.getCurrentPos(playerTurn) == 3) {
+                        return true;
+                    }
+                }
 
-           } catch (Exception e) {
-           }
-           try {
-              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==11 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==12){
-                  if (pos.getCurrentPos(playerTurn) == 11 || pos.getCurrentPos(playerTurn) == 12)
-                  return true;}
+            } catch (Exception e) {
+            }
+            try {
+                if (player[playerTurn].m_zonesOwnedIndexes.get(i) == 6 && player[playerTurn].m_zonesOwnedIndexes.get(i + 1) == 8 && player[playerTurn].m_zonesOwnedIndexes.get(i + 2) == 9) {
+                    if (pos.getCurrentPos(playerTurn) == 6 || pos.getCurrentPos(playerTurn) == 8 || pos.getCurrentPos(playerTurn) == 9) {
+                        return true;
+                    }
+                }
 
-           } catch (Exception e) {
-           }
-           try {
-             if (player[playerTurn].m_zonesOwnedIndexes.get(i)==14 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==16 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==17){
-                 if (pos.getCurrentPos(playerTurn) == 14 || pos.getCurrentPos(playerTurn) == 16 || pos.getCurrentPos(playerTurn) == 17)
-                 return true;}
+            } catch (Exception e) {
+            }
+            try {
+                if (player[playerTurn].m_zonesOwnedIndexes.get(i) == 11 && player[playerTurn].m_zonesOwnedIndexes.get(i + 1) == 12) {
+                    if (pos.getCurrentPos(playerTurn) == 11 || pos.getCurrentPos(playerTurn) == 12) {
+                        return true;
+                    }
+                }
 
-           } catch (Exception e) {
-           }
-           try {
-               if (player[playerTurn].m_zonesOwnedIndexes.get(i)==19 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==21 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==22){
-                   if (pos.getCurrentPos(playerTurn) == 19 || pos.getCurrentPos(playerTurn) == 21 || pos.getCurrentPos(playerTurn) == 22)
-                   return true;}
+            } catch (Exception e) {
+            }
+            try {
+                if (player[playerTurn].m_zonesOwnedIndexes.get(i) == 14 && player[playerTurn].m_zonesOwnedIndexes.get(i + 1) == 16 && player[playerTurn].m_zonesOwnedIndexes.get(i + 2) == 17) {
+                    if (pos.getCurrentPos(playerTurn) == 14 || pos.getCurrentPos(playerTurn) == 16 || pos.getCurrentPos(playerTurn) == 17) {
+                        return true;
+                    }
+                }
 
-           } catch (Exception e) {
-           }
-           try {
-                if (player[playerTurn].m_zonesOwnedIndexes.get(i)==24 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==25 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==27){
-                    if (pos.getCurrentPos(playerTurn) == 24 || pos.getCurrentPos(playerTurn) == 25 || pos.getCurrentPos(playerTurn) == 27)
-                    return true;}
+            } catch (Exception e) {
+            }
+            try {
+                if (player[playerTurn].m_zonesOwnedIndexes.get(i) == 19 && player[playerTurn].m_zonesOwnedIndexes.get(i + 1) == 21 && player[playerTurn].m_zonesOwnedIndexes.get(i + 2) == 22) {
+                    if (pos.getCurrentPos(playerTurn) == 19 || pos.getCurrentPos(playerTurn) == 21 || pos.getCurrentPos(playerTurn) == 22) {
+                        return true;
+                    }
+                }
 
-           } catch (Exception e) {
-           }
-           try {
-              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==29 && player[playerTurn].m_zonesOwnedIndexes.get(i+1)==30 && player[playerTurn].m_zonesOwnedIndexes.get(i+2)==32){
-                  if (pos.getCurrentPos(playerTurn) == 29 || pos.getCurrentPos(playerTurn) == 30 || pos.getCurrentPos(playerTurn) == 32)
-                  return true;}
+            } catch (Exception e) {
+            }
+            try {
+                if (player[playerTurn].m_zonesOwnedIndexes.get(i) == 24 && player[playerTurn].m_zonesOwnedIndexes.get(i + 1) == 25 && player[playerTurn].m_zonesOwnedIndexes.get(i + 2) == 27) {
+                    if (pos.getCurrentPos(playerTurn) == 24 || pos.getCurrentPos(playerTurn) == 25 || pos.getCurrentPos(playerTurn) == 27) {
+                        return true;
+                    }
+                }
 
-           } catch (Exception e) {
-           }
-           try {
-              if (player[playerTurn].m_zonesOwnedIndexes.get(i)==35){
-                  if (pos.getCurrentPos(playerTurn) == 35)
-                  return true;}
+            } catch (Exception e) {
+            }
+            try {
+                if (player[playerTurn].m_zonesOwnedIndexes.get(i) == 29 && player[playerTurn].m_zonesOwnedIndexes.get(i + 1) == 30 && player[playerTurn].m_zonesOwnedIndexes.get(i + 2) == 32) {
+                    if (pos.getCurrentPos(playerTurn) == 29 || pos.getCurrentPos(playerTurn) == 30 || pos.getCurrentPos(playerTurn) == 32) {
+                        return true;
+                    }
+                }
 
-           } catch (Exception e) {
-           }
-           try {
-              if ((player[playerTurn].m_zonesOwnedIndexes.get(i)==5&&pos.getCurrentPos(playerTurn) == 5) ||
-                      (player[playerTurn].m_zonesOwnedIndexes.get(i)==13 && pos.getCurrentPos(playerTurn) == 13)||
-                      (player[playerTurn].m_zonesOwnedIndexes.get(i)==23 && pos.getCurrentPos(playerTurn) == 23)||
-                      (player[playerTurn].m_zonesOwnedIndexes.get(i)==33 && pos.getCurrentPos(playerTurn) == 33)){
-                  
-                  return true;}
+            } catch (Exception e) {
+            }
+            try {
+                if (player[playerTurn].m_zonesOwnedIndexes.get(i) == 35) {
+                    if (pos.getCurrentPos(playerTurn) == 35) {
+                        return true;
+                    }
+                }
 
-           } catch (Exception e) {
-           }
-       } 
-       return false;
-   }
-    public void UpdateBuildings(int CityIdx , Color color){
+            } catch (Exception e) {
+            }
+            try {
+                if ((player[playerTurn].m_zonesOwnedIndexes.get(i) == 5 && pos.getCurrentPos(playerTurn) == 5)
+                        || (player[playerTurn].m_zonesOwnedIndexes.get(i) == 13 && pos.getCurrentPos(playerTurn) == 13)
+                        || (player[playerTurn].m_zonesOwnedIndexes.get(i) == 23 && pos.getCurrentPos(playerTurn) == 23)
+                        || (player[playerTurn].m_zonesOwnedIndexes.get(i) == 33 && pos.getCurrentPos(playerTurn) == 33)) {
+
+                    return true;
+                }
+
+            } catch (Exception e) {
+            }
+        }
+        return false;
+    }
+
+    public void UpdateBuildings(int CityIdx, Color color) {
         for (Map.Entry<Integer, Zone> entry : zoneMap.entrySet()) {
-        int key = entry.getKey();
-        Object value = entry.getValue();
-            if ((key>0 && key<10) || (key>18&&key<28)){
+            int key = entry.getKey();
+            Object value = entry.getValue();
+            if ((key > 0 && key < 10) || (key > 18 && key < 28)) {
                 try {
-                     if (build.containsKey(CityIdx)){
-                    HBuildings HB = (HBuildings)build.get(CityIdx);
-                    //HB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
-                    HB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), color, false);
-                    if (color !=null && zoneMap.get(CityIdx).getM_NumOFBuildedHouses() > 0)
-                        HB.setVisible(true);
-                    else 
-                        HB.setVisible(false);
-                } 
+                    if (build.containsKey(CityIdx)) {
+                        HBuildings HB = (HBuildings) build.get(CityIdx);
+                        //HB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), player[playerTurn].getM_color(), false);
+                        HB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), color, false);
+                        if (color != null && zoneMap.get(CityIdx).getM_NumOFBuildedHouses() > 0) {
+                            HB.setVisible(true);
+                        } else {
+                            HB.setVisible(false);
+                        }
+                    }
                 } catch (Exception e) {
                 }
-               
-            }
-            else {
+
+            } else {
                 try {
-                    if (build.containsKey(CityIdx) ){
-                    VBuidings VB = (VBuidings)build.get(CityIdx);
-                    VB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), color, false);
-                    if (color !=null && zoneMap.get(CityIdx).getM_NumOFBuildedHouses() > 0)
-                        VB.setVisible(true);
-                    else 
-                        VB.setVisible(false);
-                } 
+                    if (build.containsKey(CityIdx)) {
+                        VBuidings VB = (VBuidings) build.get(CityIdx);
+                        VB.setNumAndColor(zoneMap.get(CityIdx).getM_NumOFBuildedHouses(), color, false);
+                        if (color != null && zoneMap.get(CityIdx).getM_NumOFBuildedHouses() > 0) {
+                            VB.setVisible(true);
+                        } else {
+                            VB.setVisible(false);
+                        }
+                    }
                 } catch (Exception e) {
                 }
-                
+
             }
         }
         repaint();
     }
-    
-    
+
+
     private void Trade_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Trade_btnActionPerformed
         // TODO add your handling code here:
 
         Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn].getM_id()));
-              Player p = z.getPlayer_zone();
-    
-     if (z.getPlayer_zone() != null &&!player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))  ){
-           
-         trade_pnl1.setVisible(true);
-         Deal_btn.setVisible(true);
-         NoDeal_btn.setVisible(true);
-         trade_pnl1.getId_lbl1().setText(String.valueOf(player[playerTurn].getM_id()));
-         trade_pnl1.getId_lbl2().setText(String.valueOf(p.getM_id()));
-             
-          trade_pnl1.validate();
-          trade_pnl1.repaint();
+        Player p = z.getPlayer_zone();
+
+        if (z.getPlayer_zone() != null && !player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))) {
+
+            trade_pnl1.setVisible(true);
+            Deal_btn.setVisible(true);
+            NoDeal_btn.setVisible(true);
+            trade_pnl1.getId_lbl1().setText(String.valueOf(player[playerTurn].getM_id()));
+            trade_pnl1.getId_lbl2().setText(String.valueOf(p.getM_id()));
+
+            trade_pnl1.validate();
+            trade_pnl1.repaint();
         }
     }//GEN-LAST:event_Trade_btnActionPerformed
 
@@ -2410,11 +1790,10 @@ public class Gameplay extends javax.swing.JFrame {
                     if ((currentBalance > HouseCost) && BuidHotel(playerTurn)) {
 
                         int ToBeBuild = zoneMap.get(Cityidx).getM_NumOFBuildedHouses() + 1;
-                       
 
                         if (((idx > 0 && idx < 10) || (idx > 18 && idx < 28)) && (!zoneMap.get(Cityidx).isHotelBuilded())) {
                             HBuildings HB = (HBuildings) build.get(idx);
-                            
+
                             if (ToBeBuild <= 5 && BuidHotel(playerTurn)) {
                                 try {
                                     SoundEffects.PlaySound("src/Gameplay/soundEffects/zapsplat_impacts_wood.wav");
@@ -2441,7 +1820,7 @@ public class Gameplay extends javax.swing.JFrame {
                             if (!zoneMap.get(Cityidx).isHotelBuilded()) {
 
                                 VBuidings VB = (VBuidings) build.get(idx);
-                                
+
                                 if (ToBeBuild <= 5 && BuidHotel(playerTurn) == true) {
                                     try {
                                         SoundEffects.PlaySound("src/Gameplay/soundEffects/zapsplat_impacts_wood.wav");
@@ -2478,63 +1857,62 @@ public class Gameplay extends javax.swing.JFrame {
                 }
             }
         }
-        
-        
-    updatePlayersBalance();
-    repaint();
+
+        updatePlayersBalance();
+        repaint();
     }//GEN-LAST:event_Build_btnActionPerformed
 
     private void Deal_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Deal_btnActionPerformed
         // TODO add your handling code here:
-        
+
         Zone z = zoneMap.get(pos.getCurrentPos(player[playerTurn].getM_id()));
         Player p = z.getPlayer_zone();
 
-   //  if(!player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))){
-       if(p.m_zonesOwnedIndexes.contains(z.getM_index())){
-        if (player[playerTurn].getM_balance() >= Integer.valueOf(trade_pnl1.getMoney_txt().getText())) {
-            p.setM_balance(p.getM_balance() + Integer.valueOf(trade_pnl1.getMoney_txt().getText()));
-            player[playerTurn].setM_balance(player[playerTurn].getM_balance() - Integer.valueOf(trade_pnl1.getMoney_txt().getText()));
-            int cityindex = 0;
-            for (int i = 0; i < p.m_zonesOwnedIndexes.size(); i++) {
-                if (p.m_zonesOwnedIndexes.contains(z.getM_index())) {
-                    cityindex = i;
+        //  if(!player[playerTurn].m_zonesOwnedIndexes.contains(pos.getCurrentPos(player[playerTurn].getM_id()))){
+        if (p.m_zonesOwnedIndexes.contains(z.getM_index())) {
+            if (player[playerTurn].getM_balance() >= Integer.valueOf(trade_pnl1.getMoney_txt().getText())) {
+                p.setM_balance(p.getM_balance() + Integer.valueOf(trade_pnl1.getMoney_txt().getText()));
+                player[playerTurn].setM_balance(player[playerTurn].getM_balance() - Integer.valueOf(trade_pnl1.getMoney_txt().getText()));
+                int cityindex = 0;
+                for (int i = 0; i < p.m_zonesOwnedIndexes.size(); i++) {
+                    if (p.m_zonesOwnedIndexes.contains(z.getM_index())) {
+                        cityindex = i;
+                    }
+                }
+                p.m_zonesOwnedIndexes.remove(cityindex);
+                player[playerTurn].addZone(z.getM_index());
+                zoneMap.get(z.getM_index()).setPlayer_zone(player[playerTurn]);
+
+                updatePlayersBalance();
+
+                if (z.getM_index() == 5 || z.getM_index() == 13 || z.getM_index() == 23 || z.getM_index() == 33) {
+                    zoneMap.get(z.getM_index()).remove(1);
+                    zoneMap.get(z.getM_index()).setImage(z.getPicPath(), true, true, player[playerTurn].getM_color());
+                } else {
+                    zoneMap.get(z.getM_index()).remove(2);
+                    zoneMap.get(z.getM_index()).setImage(z.getPicPath(), true, true, player[playerTurn].getM_color());
+                }
+                UpdateBuildings(z.getM_index(), player[playerTurn].getM_color());
+                jPanel1.repaint();
+
+                trade_pnl1.setVisible(false);
+                Deal_btn.setVisible(false);
+                NoDeal_btn.setVisible(false);
+            } else {
+                trade_pnl1.setVisible(true);
+                Deal_btn.setVisible(true);
+                NoDeal_btn.setVisible(true);
+                try {
+                    SoundEffects.PlaySound("src/Gameplay/soundEffects/you dont have enouph money.wav");
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            p.m_zonesOwnedIndexes.remove(cityindex);
-           player[playerTurn].addZone(z.getM_index());
-           zoneMap.get(z.getM_index()).setPlayer_zone(player[playerTurn]);
-           
-            updatePlayersBalance();
-            
-            if (z.getM_index() == 5 || z.getM_index() == 13 || z.getM_index() == 23 || z.getM_index() == 33) {
-                          zoneMap.get(z.getM_index()).remove(1);
-                          zoneMap.get(z.getM_index()).setImage(z.getPicPath(), true, true, player[playerTurn].getM_color());
-            } else {
-                 zoneMap.get(z.getM_index()).remove(2);
-                 zoneMap.get(z.getM_index()).setImage(z.getPicPath(), true, true, player[playerTurn].getM_color());
-            }
-            UpdateBuildings(z.getM_index(),player[playerTurn].getM_color());
-            jPanel1.repaint();
-          
-            trade_pnl1.setVisible(false);
-            Deal_btn.setVisible(false);
-            NoDeal_btn.setVisible(false);
-        } else {
-            trade_pnl1.setVisible(true);
-            Deal_btn.setVisible(true);
-            NoDeal_btn.setVisible(true);
-            try {
-                SoundEffects.PlaySound("src/Gameplay/soundEffects/you dont have enouph money.wav");
-            } catch (IOException ex) {
-                Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
-           }
-       // }    
-           
+        // }    
+
     }//GEN-LAST:event_Deal_btnActionPerformed
-            
+
     private void NoDeal_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoDeal_btnActionPerformed
         // TODO add your handling code here:
         trade_pnl1.setVisible(false);
@@ -2553,12 +1931,10 @@ public class Gameplay extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_ExitActionPerformed
-            
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        
-      
+
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -2584,16 +1960,175 @@ public class Gameplay extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Gameplay().setVisible(true);
+                try {
+                    new Gameplay().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
-        
-        
-        
+
     }
 
-    
-   
+    public Zone getAtlantic() {
+        return Atlantic;
+    }
+
+    public Zone getBaltic() {
+        return Baltic;
+    }
+
+    public Zone getCCT() {
+        return CCT;
+    }
+
+    public Zone getChanceBlue() {
+        return ChanceBlue;
+    }
+
+    public Zone getChanceRed() {
+        return ChanceRed;
+    }
+
+    public Zone getCommunity_Chest() {
+        return Community_Chest;
+    }
+
+    public Zone getConnecticut() {
+        return Connecticut;
+    }
+
+    public Zone getIllinois() {
+        return Illinois;
+    }
+
+    public Zone getIncomeTax() {
+        return IncomeTax;
+    }
+
+    public Zone getIndiana() {
+        return Indiana;
+    }
+
+    public Zone getKentucky() {
+        return Kentucky;
+    }
+
+    public Zone getMONOMAN() {
+        return MONOMAN;
+    }
+
+    public Zone getMarvinGardens() {
+        return MarvinGardens;
+    }
+
+    public Zone getMediter_Ranean() {
+        return Mediter_Ranean;
+    }
+
+    public Zone getNewYork() {
+        return NewYork;
+    }
+
+    public Zone getNorthCaro() {
+        return NorthCaro;
+    }
+
+    public Zone getOrangeChance() {
+        return OrangeChance;
+    }
+
+    public Zone getOriental() {
+        return Oriental;
+    }
+
+    public Zone getParkPlace() {
+        return ParkPlace;
+    }
+
+    public Zone getRailRoad() {
+        return RailRoad;
+    }
+
+    public Zone getRealRoad() {
+        return RealRoad;
+    }
+
+    public Zone getStates() {
+        return States;
+    }
+
+    public Zone getTenss() {
+        return Tenss;
+    }
+
+    public Zone getVermont() {
+        return Vermont;
+    }
+
+    public Zone getVirginnia() {
+        return Virginnia;
+    }
+
+    public Zone getBluetreasure() {
+        return bluetreasure;
+    }
+
+    public Zone getCommuntityChestRight() {
+        return communtityChestRight;
+    }
+
+    public Zone getGo() {
+        return go;
+    }
+
+    public Zone getGoToJail() {
+        return goToJail;
+    }
+
+    public Zone getJail() {
+        return jail;
+    }
+
+    public Zone getOrange() {
+        return orange;
+    }
+
+    public Zone getPacific() {
+        return pacific;
+    }
+
+    public Zone getParking() {
+        return parking;
+    }
+
+    public Zone getPennsy() {
+        return pennsy;
+    }
+
+    public Zone getPennsyl() {
+        return pennsyl;
+    }
+
+    public Zone getShorLline() {
+        return shorLline;
+    }
+
+    public Zone getStJames() {
+        return stJames;
+    }
+
+    public Zone getVentnor() {
+        return ventnor;
+    }
+
+    public Zone getWaterWorks() {
+        return waterWorks;
+    }
+
+    public int getTurn() {
+        return turn;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GamePlay0.Zone Atlantic;
     private Buildings.HBuildings B1;
@@ -2700,23 +2235,21 @@ public class Gameplay extends javax.swing.JFrame {
 
     // i = owner , id = elly bydfa3 el rent
     private void checkIfZoneIsOwned(int position, int id) {
-        for(int i=0; i<NumbOfPlayers; i++)
-        {
-            if(player[i].m_zonesOwnedIndexes.contains(position))
-            {  
+        for (int i = 0; i < NumbOfPlayers; i++) {
+            if (player[i].m_zonesOwnedIndexes.contains(position)) {
                 int totalBuildings = zoneMap.get(position).getM_NumOFBuildedHouses();
                 int totalRent = 0;
-                if(pos.getCurrentPos(player[id].getM_id()) == 5 || pos.getCurrentPos(player[id].getM_id()) == 13 || pos.getCurrentPos(player[id].getM_id()) == 23 || pos.getCurrentPos(player[id].getM_id()) == 33){
-                    if(player[i].getM_railRoadsBought() == 1)
+                if (pos.getCurrentPos(player[id].getM_id()) == 5 || pos.getCurrentPos(player[id].getM_id()) == 13 || pos.getCurrentPos(player[id].getM_id()) == 23 || pos.getCurrentPos(player[id].getM_id()) == 33) {
+                    if (player[i].getM_railRoadsBought() == 1) {
                         totalRent = zoneMap.get(position).getM_rent();
-                   else if(player[i].getM_railRoadsBought() == 2)
+                    } else if (player[i].getM_railRoadsBought() == 2) {
                         totalRent = zoneMap.get(position).getM_rentWithColorSet();
-                   else if(player[i].getM_railRoadsBought() == 3)
+                    } else if (player[i].getM_railRoadsBought() == 3) {
                         totalRent = zoneMap.get(position).getM_rentWithOneHouse();
-                   else if(player[i].getM_railRoadsBought() == 4)
+                    } else if (player[i].getM_railRoadsBought() == 4) {
                         totalRent = zoneMap.get(position).getM_rentWithTwoHouses();
-                }
-                else if (pos.getCurrentPos(player[id].getM_id()) != 26) {
+                    }
+                } else if (pos.getCurrentPos(player[id].getM_id()) != 26) {
                     switch (totalBuildings) {
                         case 0:
                             totalRent = zoneMap.get(position).getM_rent();
@@ -2743,9 +2276,9 @@ public class Gameplay extends javax.swing.JFrame {
                             totalRent = zoneMap.get(position).getM_rentWithHotel();
                             break;
                     }
-                }else if(pos.getCurrentPos(id) == 26){
-                    totalRent = zoneMap.get(position).getM_rent()*(dice1.getDice_value() + dice2.getDice_value());
-                    
+                } else if (pos.getCurrentPos(id) == 26) {
+                    totalRent = zoneMap.get(position).getM_rent() * (dice1.getDice_value() + dice2.getDice_value());
+
                 }
                 player[i].setM_balance(player[i].getM_balance() + totalRent);
                 player[id].setM_balance(player[id].getM_balance() - totalRent);
@@ -2754,8 +2287,4 @@ public class Gameplay extends javax.swing.JFrame {
         }
     }
 
-
-
 }
-
-

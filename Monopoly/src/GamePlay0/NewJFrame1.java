@@ -876,13 +876,19 @@ public class NewJFrame1 extends javax.swing.JFrame {
            player[1].setM_color(Color.GRAY);
            
         }
+        Gameplay g;
         try {
-           Gameplay g = new Gameplay(NumOfPlayer , player);
+            g = SingletoneGamePlay.getInstance();
+            g.setNumbOfPlayers(NumOfPlayer);
+            System.out.println(NumOfPlayer + "dsfgsdfgdf");
+            g.setPlayer(player);
             g.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        g.setVisible(true);
+            g.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
             this.dispose();
     }//GEN-LAST:event_start_btnActionPerformed
 
