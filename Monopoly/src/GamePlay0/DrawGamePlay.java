@@ -13,7 +13,7 @@ public class DrawGamePlay {
     
     public void DrawGamePlay(boolean bought , Color color) throws IOException{      
         
-        g = SingletoneGamePlay.getInstance();
+        g = SingletoneGamePlay.getInstance(false);
         
         g.getGo().setImage("src/Gameplay/img/go.png", true,bought ,color);
         

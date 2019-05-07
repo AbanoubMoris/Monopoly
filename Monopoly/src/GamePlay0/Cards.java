@@ -154,8 +154,6 @@ class Community_Chest_Draw extends CardsDraw
     try
     {
       
-       
-       
     CardsDraw card1 = new CardsDraw("ps2cc1.jpg" ,200); // advance to Go and gain 200$
     CardsDraw card2 = new CardsDraw("ps2cc2.jpg" ,200); // gain 200$
     CardsDraw card3 = new CardsDraw("ps2cc3.jpg" ,50);// lose 50$

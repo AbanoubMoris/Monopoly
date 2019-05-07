@@ -11,7 +11,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
     private int NumOfPlayer ;
     private Player[] player ;
     private boolean hint = false;
-    
+    private boolean isPlayAgain;
+
+    public void setIsPlayAgain(boolean isPlayAgain) {
+        this.isPlayAgain = isPlayAgain;
+    }
     
     public NewJFrame1() throws InterruptedException {
         initComponents();
@@ -878,10 +882,14 @@ public class NewJFrame1 extends javax.swing.JFrame {
         }
         Gameplay g;
         try {
-            g = SingletoneGamePlay.getInstance();
+            //if (isPlayAgain) 
+           //     g = new Gameplay();
+           // else
+            g = SingletoneGamePlay.getInstance(isPlayAgain);
+            
             g.setNumbOfPlayers(NumOfPlayer);
-            System.out.println(NumOfPlayer + "dsfgsdfgdf");
             g.setPlayer(player);
+            
             g.setExtendedState(JFrame.MAXIMIZED_BOTH);
             g.setVisible(true);
         } catch (IOException ex) {

@@ -1,4 +1,3 @@
-
 package GamePlay0;
 
 import static GamePlay0.Gameplay.playerTurn;
@@ -27,32 +26,18 @@ public class zoneEvents {
     private Map<Integer, Zone> zoneMap;
     private static int Res;
     private int turn;
+    private static DesitionPanel destion;
     
     
     public zoneEvents() throws IOException{
-       g = SingletoneGamePlay.getInstance();
+       g = SingletoneGamePlay.getInstance(false);
+       destion = new SellOption();
        UpdateData();
     }
     private void UpdateData(){
         player = g.getPlayer();
         zoneMap = g.getZoneMap();
         turn = 1;
-    }
-    
-    private static int SellOptions(String Path) {
-        
-        UIManager.put("OptionPane.yesButtonText", "Sell constructions"); //0
-        UIManager.put("OptionPane.noButtonText", "Sell City"); //1
-        UIManager.put("OptionPane.cancelButtonText", "OK");//2
-        //  int dialogResult = JOptionPane.showConfirmDialog (null, "","",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE );
-
-        int dialogResult = JOptionPane.showConfirmDialog(null,
-                getCardInfoPanel(Path),
-                "Card Info  ",
-                JOptionPane.YES_NO_CANCEL_OPTION,
-                JOptionPane.PLAIN_MESSAGE);
-
-        return dialogResult;
     }
     private static JPanel getCardInfoPanel(String Path) {
         JPanel panel = new JPanel();
@@ -75,6 +60,17 @@ public class zoneEvents {
 
         return panel;
     }
+    
+    private static void displayCardInfo(String Path) {
+        JOptionPane.showConfirmDialog(null,
+                
+                getCardInfoPanel(Path),
+                "Card Info  ",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+    }
+    
+
     private void SetSellOption(int Res, int cityIDx) {
 
         if (Res == 1) {//sell
@@ -137,17 +133,11 @@ public class zoneEvents {
         g.SetPanelToWinner();
 
     }
-    private static void displayCardInfo(String Path) {
-        JOptionPane.showConfirmDialog(null,
-                getCardInfoPanel(Path),
-                "Card Info  ",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.PLAIN_MESSAGE);
-    }
+    
+
     
     public void DisplayCiyInfo() {
         UpdateData();
-        System.out.println(turn + "************");
         // cards info mouse events
         g.getMarvinGardens().addMouseListener(new MouseAdapter() {
             @Override
@@ -159,8 +149,8 @@ public class zoneEvents {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getMarvinGardens().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/MarvinGardens.png");
+                if (turn > 1 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getMarvinGardens().getM_index())) {
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/MarvinGardens.png");
                     SetSellOption(Res, g.getMarvinGardens().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/MarvinGardens.png");
@@ -178,8 +168,8 @@ public class zoneEvents {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getVentnor().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/VentorAvenue.png");
+                if (turn > 1 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getVentnor().getM_index())) {
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/VentorAvenue.png");
                     SetSellOption(Res, g.getVentnor().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/VentorAvenue.png");
@@ -197,8 +187,8 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
 
-                if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getAtlantic().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/AtlanticAvenue.png");
+                if (turn > 1 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getAtlantic().getM_index())) {
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/AtlanticAvenue.png");
                     SetSellOption(Res, g.getAtlantic().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/AtlanticAvenue.png");
@@ -215,8 +205,8 @@ public class zoneEvents {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getIllinois().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/IllinoisAvenue.png");
+                if (turn > 1 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getIllinois().getM_index())) {
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/IllinoisAvenue.png");
                     SetSellOption(Res, g.getIllinois().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/IllinoisAvenue.png");
@@ -233,8 +223,8 @@ public class zoneEvents {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getIndiana().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/IndianaAvenue.png");
+                if (turn > 1 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getIndiana().getM_index())) {
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/IndianaAvenue.png");
                     SetSellOption(Res, g.getIndiana().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/IndianaAvenue.png");
@@ -252,7 +242,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getKentucky().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/KentuckyAvenue.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/KentuckyAvenue.png");
                     SetSellOption(Res, g.getKentucky().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/KentuckyAvenue.png");
@@ -270,8 +260,9 @@ public class zoneEvents {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getMediter_Ranean().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/MediteraneanAvenue.png");
+                
+                if (turn > 1 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getMediter_Ranean().getM_index())) {
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/MediteraneanAvenue.png");
                     SetSellOption(Res, g.getMediter_Ranean().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/MediteraneanAvenue.png");
@@ -289,7 +280,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getBaltic().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/BalticAvenue.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/BalticAvenue.png");
                     SetSellOption(Res, g.getBaltic().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/BalticAvenue.png");
@@ -307,7 +298,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getOriental().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/OrientalAvenue.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/OrientalAvenue.png");
                     SetSellOption(Res, g.getOriental().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/OrientalAvenue.png");
@@ -325,7 +316,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getVermont().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/VermontAvenue.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/VermontAvenue.png");
                     SetSellOption(Res, g.getVermont().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/VermontAvenue.png");
@@ -343,7 +334,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getConnecticut().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/ConnectCutAvenue.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/ConnectCutAvenue.png");
                     SetSellOption(Res, g.getConnecticut().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/ConnectCutAvenue.png");
@@ -361,7 +352,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getPacific().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/PacificAvenue.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/PacificAvenue.png");
                     SetSellOption(Res, g.getPacific().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/PacificAvenue.png");
@@ -379,7 +370,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn>0 &&player[playerTurn].m_zonesOwnedIndexes.contains(g.getNorthCaro().getM_index())){
-                    Res =SellOptions("src/Gameplay/img/cards/NorthCarolina.png");
+                    Res =destion.displayCardInfo("src/Gameplay/img/cards/NorthCarolina.png");
                     SetSellOption(Res,g.getNorthCaro().getM_index());
                 }
                 else
@@ -399,7 +390,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn != 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getPennsy().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/Pensylvania.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/Pensylvania.png");
                     SetSellOption(Res, g.getPennsy().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/Pensylvania.png");
@@ -417,7 +408,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getParkPlace().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/ParkPlace.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/ParkPlace.png");
                     SetSellOption(Res, g.getParkPlace().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/ParkPlace.png");
@@ -435,7 +426,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getNewYork().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/NewYorkAvenue.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/NewYorkAvenue.png");
                     SetSellOption(Res, g.getNewYork().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/NewYorkAvenue.png");
@@ -453,7 +444,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getTenss().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/TennesseeAvenue.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/TennesseeAvenue.png");
                     SetSellOption(Res, g.getTenss().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/TennesseeAvenue.png");
@@ -470,8 +461,8 @@ public class zoneEvents {
                     Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getStJames().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/StJamesPlace.png");
+                if (turn > 1 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getStJames().getM_index())) {
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/StJamesPlace.png");
                     SetSellOption(Res, g.getStJames().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/StJamesPlace.png");
@@ -489,8 +480,8 @@ public class zoneEvents {
                 }
 
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
-                if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getVirginnia().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/VirginiaAvenue.png");
+                if (turn > 1 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getVirginnia().getM_index())) {
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/VirginiaAvenue.png");
                     SetSellOption(Res, g.getVirginnia().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/VirginiaAvenue.png");
@@ -508,7 +499,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getStates().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/StatesAvenue.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/StatesAvenue.png");
                     SetSellOption(Res, g.getStates().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/StatesAvenue.png");
@@ -526,7 +517,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getRealRoad().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/RR.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/RR.png");
                     SetSellOption(Res, g.getRealRoad().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/RR.png");
@@ -543,7 +534,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getRailRoad())) {
-                    Res = SellOptions("src/Gameplay/img/cards/RR.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/RR.png");
                     SetSellOption(Res, g.getRailRoad().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/RR.png");
@@ -561,7 +552,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getPennsyl().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/PR.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/PR.png");
                     SetSellOption(Res, g.getPennsyl().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/PR.png");
@@ -579,7 +570,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getShorLline().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/SL.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/SL.png");
                     SetSellOption(Res, g.getShorLline().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/SL.png");
@@ -596,7 +587,7 @@ public class zoneEvents {
                 }
                 super.mouseClicked(e); //To change body of generated methods, choose Tools | Templates.
                 if (turn > 0 && player[playerTurn].m_zonesOwnedIndexes.contains(g.getWaterWorks().getM_index())) {
-                    Res = SellOptions("src/Gameplay/img/cards/WW.png");
+                    Res = destion.displayCardInfo("src/Gameplay/img/cards/WW.png");
                     SetSellOption(Res, g.getWaterWorks().getM_index());
                 } else {
                     displayCardInfo("src/Gameplay/img/cards/WW.png");

@@ -9,11 +9,14 @@ public class SingletoneGamePlay {
     private SingletoneGamePlay(){
         
     }
-    public static Gameplay getInstance() throws IOException{
-
-        if (singleInstance == null) 
+    public static Gameplay getInstance(boolean isPlayAgain) throws IOException{
+        if (singleInstance == null || isPlayAgain) 
             singleInstance = new Gameplay();
+        
         return singleInstance;
     }
+
+    
+    
            
 }

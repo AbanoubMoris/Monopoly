@@ -34,7 +34,6 @@ public class Gameplay extends javax.swing.JFrame {
     private static Gameplay singleToneGameplay;
 
     public Gameplay() throws IOException {
-        System.out.println("new insts");
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         WinnerWinner = false;
@@ -175,6 +174,7 @@ public class Gameplay extends javax.swing.JFrame {
 
     public void IntializeBuildings() {
         build = new HashMap<Integer, Object>();
+        
         build.put(1, B1);
         build.put(3, B3);
         // build.put(5,B5 );
@@ -1313,18 +1313,21 @@ public class Gameplay extends javax.swing.JFrame {
         updatePlayersBalance();
     }
 
-    private JPanel jailPanel() {
+    public JPanel jailPanel() {
         JPanel panel = new JPanel();
         panel.setBorder(new LineBorder(Color.black, 10));
         return panel;
     }
-
-    private void showJailPanel() {
-        UIManager.put("OptionPane.cancelButtonText", "Skip Turn");//2
-        UIManager.put("OptionPane.noButtonText", "Use Card");//1
-        UIManager.put("OptionPane.yesButtonText", "Pay 50$");//0
+    
+   
+    private void showJailPanel() throws IOException {
+      //  UIManager.put("OptionPane.cancelButtonText", "Skip Turn");//2
+        //UIManager.put("OptionPane.noButtonText", "Use Card");//1
+        //UIManager.put("OptionPane.yesButtonText", "Pay 50$");//0
+        DesitionPanel jailOpt = new JailOption();
         while (true) {
-            int input = JOptionPane.showConfirmDialog(jailPanel(), "Pay 50$ to get out of jail or Use a \"Get Out of Jail\" card or Skip your turn", "You Are In Jail!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            int input = jailOpt.displayCardInfo("");
+           // int input = JOptionPane.showConfirmDialog(jailPanel(), "Pay 50$ to get out of jail or Use a \"Get Out of Jail\" card or Skip your turn", "You Are In Jail!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
             if (input == 0) {
                 if (player[playerTurn].getM_balance() >= 50) {
@@ -1357,14 +1360,12 @@ public class Gameplay extends javax.swing.JFrame {
         UIManager.put("OptionPane.yesButtonText", "Yes");
 
     }
-
     private void turnIndicator() {
         for (int i = 0; i < NumbOfPlayers; i++) {
             playerPanelAccessMap.get(i).setBorder(null);
         }
         playerPanelAccessMap.get(playerTurn).setBorder(BorderFactory.createLineBorder(Color.RED, 3));
     }
-
     private int WhoIsNext() {
         int i = playerTurn, cnt = 0, idx = 0;
         i %= NumbOfPlayers;
@@ -1379,7 +1380,6 @@ public class Gameplay extends javax.swing.JFrame {
             }
         }
     }
-
     private boolean ISAWinner() {
         int cnt = 0;
         for (int i = 0; i < NumbOfPlayers; i++) {
@@ -1412,7 +1412,11 @@ public class Gameplay extends javax.swing.JFrame {
 
             //in jail
             if (player[playerTurn].getInJail() > 0) {
-                showJailPanel();
+                try {
+                    showJailPanel();
+                } catch (IOException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
             if (player[playerTurn].getInJail() == 0) {
@@ -1757,8 +1761,7 @@ public class Gameplay extends javax.swing.JFrame {
         }
         repaint();
     }
-
-
+    
     private void Trade_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Trade_btnActionPerformed
         // TODO add your handling code here:
 
@@ -1792,6 +1795,7 @@ public class Gameplay extends javax.swing.JFrame {
                         int ToBeBuild = zoneMap.get(Cityidx).getM_NumOFBuildedHouses() + 1;
 
                         if (((idx > 0 && idx < 10) || (idx > 18 && idx < 28)) && (!zoneMap.get(Cityidx).isHotelBuilded())) {
+                            
                             HBuildings HB = (HBuildings) build.get(idx);
 
                             if (ToBeBuild <= 5 && BuidHotel(playerTurn)) {
@@ -1909,8 +1913,6 @@ public class Gameplay extends javax.swing.JFrame {
                 }
             }
         }
-        // }    
-
     }//GEN-LAST:event_Deal_btnActionPerformed
 
     private void NoDeal_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoDeal_btnActionPerformed
@@ -1922,7 +1924,9 @@ public class Gameplay extends javax.swing.JFrame {
 
     private void PlayAgainBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayAgainBtnActionPerformed
         // TODO add your handling code here:
+        //SingletoneGamePlay.setSingleInstance(null);
         StartScreen sc = new StartScreen();
+        sc.setIsPlayAgain(true);
         sc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_PlayAgainBtnActionPerformed

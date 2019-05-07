@@ -8,13 +8,18 @@ import javax.swing.Timer;
 
 public class StartScreen extends javax.swing.JFrame {
     private Thread s;
+    private boolean isPlayAgain;
+
+    public void setIsPlayAgain(boolean isPlayAgain) {
+        this.isPlayAgain = isPlayAgain;
+    }
     
     public StartScreen() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         setBackground(new Color(0,0,0,0));
-        
+        isPlayAgain = false;
        
         
         Update();
@@ -36,6 +41,7 @@ public class StartScreen extends javax.swing.JFrame {
                 if (i>100) {
                     try {
                         NewJFrame1 NF =  new NewJFrame1();
+                        NF.setIsPlayAgain(isPlayAgain);
                         NF.setVisible(true);
                         setVisible(false);
                         
