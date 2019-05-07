@@ -1,4 +1,5 @@
-package GamePlay0;
+package NewGame;
+import GamePlay0.NewJFrame1;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;

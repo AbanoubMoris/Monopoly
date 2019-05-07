@@ -1,6 +1,12 @@
 package GamePlay0;
 
+import Playerpkg.PlayerCurrentPostion;
+import NewGame.StartScreen;
+import Playerpkg.JailOption;
+import Playerpkg.Player;
+import Playerpkg.DesitionPanel;
 import Buildings.*;
+import SaveAndLoadGame.SaveGame;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -93,7 +99,7 @@ public class Gameplay extends javax.swing.JFrame {
         winnerpic_lbl5.setVisible(false);
 
         PlayAgainBtn.setVisible(false);
-        Exit.setVisible(false);
+        Exit.setVisible(true);
         trade_pnl1.setVisible(false);
         Deal_btn.setVisible(false);
         NoDeal_btn.setVisible(false);
@@ -158,7 +164,7 @@ public class Gameplay extends javax.swing.JFrame {
             Player_Car.get(i).setBounds(go.getX(), go.getY() + (go.getWidth() - 20 - postion), 60, 20);
             jPanel1.add(Player_Car.get(i));
 
-            player[i].setM_balance(300);
+            player[i].setM_balance(200);
             player[i].setM_inJail(false);
             player[i].setM_passByGo(false);
         }
@@ -564,9 +570,10 @@ public class Gameplay extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Save = new javax.swing.JButton();
         PlayAgainBtn = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
-        gameOver1 = new GamePlay0.GameOver();
+        gameOver1 = new NewGame.GameOver();
         jPanel1 = new javax.swing.JPanel();
         go = new GamePlay0.Zone(0);
         jail = new GamePlay0.Zone(10);
@@ -669,6 +676,18 @@ public class Gameplay extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(null);
+
+        Save.setBackground(new java.awt.Color(153, 0, 0));
+        Save.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Save.setForeground(new java.awt.Color(255, 153, 0));
+        Save.setText("Save Game");
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Save);
+        Save.setBounds(980, 0, 190, 37);
 
         PlayAgainBtn.setBackground(new java.awt.Color(153, 0, 0));
         PlayAgainBtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -1427,7 +1446,7 @@ public class Gameplay extends javax.swing.JFrame {
                 dice2.setDice_value(r.nextInt(6) + 1);
                 roll_Dice(dice1);
                 roll_Dice(dice2);
-                pos.SetPlayer(playerTurn,/*dice1.getDice_value()+dice2.getDice_value()*/ 1);
+                pos.SetPlayer(playerTurn,/*dice1.getDice_value()+dice2.getDice_value()*/1);
                 Movement(/*dice1.getDice_value()+dice2.getDice_value()*/1, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                 s.start();
                 //dice1.getDice_value()+dice2.getDice_value()
@@ -1936,6 +1955,16 @@ public class Gameplay extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_ExitActionPerformed
 
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+        try {
+            // TODO add your handling code here:
+            SaveGame save = new SaveGame(player, NumbOfPlayers, pos);
+            save.SaveToFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_SaveActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
 
@@ -2181,6 +2210,7 @@ public class Gameplay extends javax.swing.JFrame {
     private javax.swing.JButton PlayAgainBtn;
     private GamePlay0.Zone RailRoad;
     private GamePlay0.Zone RealRoad;
+    private javax.swing.JButton Save;
     private GamePlay0.Zone States;
     private GamePlay0.Zone Tenss;
     private javax.swing.JButton Trade_btn;
@@ -2190,7 +2220,7 @@ public class Gameplay extends javax.swing.JFrame {
     private GamePlay0.Zone communtityChestRight;
     private GamePlay0.Dice dice1;
     private GamePlay0.Dice dice2;
-    private GamePlay0.GameOver gameOver1;
+    private NewGame.GameOver gameOver1;
     private GamePlay0.Zone go;
     private GamePlay0.Zone goToJail;
     private javax.swing.JButton jButton3;

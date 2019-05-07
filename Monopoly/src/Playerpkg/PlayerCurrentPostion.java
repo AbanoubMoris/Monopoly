@@ -1,4 +1,6 @@
-package GamePlay0;
+package Playerpkg;
+
+import Playerpkg.Player;
 
 public class PlayerCurrentPostion {
     private int Zone_Index;

@@ -1,4 +1,4 @@
-package GamePlay0;
+package NewGame;
 
 import java.awt.Color;
 import java.io.File;

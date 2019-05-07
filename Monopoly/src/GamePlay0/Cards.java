@@ -8,6 +8,8 @@ package GamePlay0;
 
 
 
+import Playerpkg.PlayerCurrentPostion;
+import Playerpkg.Player;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;

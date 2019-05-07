@@ -1,4 +1,4 @@
-package GamePlay0;
+package Playerpkg;
 
 import java.awt.Color;
 import java.util.*;
@@ -42,6 +42,14 @@ public class Player {
         this.m_balance = m_balance;
         this.m_inJail = m_inJail;
         this.m_passByGo = m_passByGo;
+    }
+
+    public ArrayList<Integer> getM_zonesOwnedIndexes() {
+        return m_zonesOwnedIndexes;
+    }
+
+    public Map<Integer, Integer> getM_numberOfHousesOwned() {
+        return m_numberOfHousesOwned;
     }
 
     public void addZone(int index){

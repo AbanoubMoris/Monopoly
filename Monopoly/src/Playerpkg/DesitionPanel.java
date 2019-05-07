@@ -1,4 +1,4 @@
-package GamePlay0;
+package Playerpkg;
 
 import javax.swing.JOptionPane;
 

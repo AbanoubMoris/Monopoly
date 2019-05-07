@@ -1,5 +1,8 @@
 package GamePlay0;
 
+import Playerpkg.SellOption;
+import Playerpkg.Player;
+import Playerpkg.DesitionPanel;
 import static GamePlay0.Gameplay.playerTurn;
 import java.awt.Color;
 import java.awt.Image;

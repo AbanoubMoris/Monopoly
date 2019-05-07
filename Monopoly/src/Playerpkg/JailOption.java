@@ -1,7 +1,9 @@
 
-package GamePlay0;
+package Playerpkg;
 
-import static GamePlay0.SellOption.getCardInfoPanel;
+import GamePlay0.Gameplay;
+import GamePlay0.SingletoneGamePlay;
+import static Playerpkg.SellOption.getCardInfoPanel;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;

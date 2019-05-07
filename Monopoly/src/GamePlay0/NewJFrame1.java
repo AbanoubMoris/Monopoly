@@ -1,4 +1,5 @@
 package GamePlay0;
+import Playerpkg.Player;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -760,7 +761,8 @@ public class NewJFrame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_NoOFplayer_btnActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        this.dispose();
+        //this.dispose();
+        System.exit(0);
         
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -877,8 +879,9 @@ public class NewJFrame1 extends javax.swing.JFrame {
         if(!jRadioButton2.isSelected()&&!jRadioButton3.isSelected()&&!jRadioButton4.isSelected()&&!jRadioButton5.isSelected()&&!jRadioButton6.isSelected())
         {  NumOfPlayer = 2 ;
            player[0].setM_color(Color.WHITE);
+           player[0].setM_id(0);
            player[1].setM_color(Color.GRAY);
-           
+           player[1].setM_id(1);
         }
         Gameplay g;
         try {
