@@ -1,6 +1,10 @@
 package GamePlay0;
 import Playerpkg.Player;
+import java.awt.AWTException;
 import java.awt.Color;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -118,6 +122,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
         pic23 = new GamePlay0.pic();
         pic24 = new GamePlay0.pic();
         pic1 = new GamePlay0.pic();
+        DetectDice = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -572,6 +577,13 @@ public class NewJFrame1 extends javax.swing.JFrame {
             .addGap(0, 223, Short.MAX_VALUE)
         );
 
+        DetectDice.setText("Detecting Dice With Camera");
+        DetectDice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DetectDiceActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -586,24 +598,30 @@ public class NewJFrame1 extends javax.swing.JFrame {
                             .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(noOFplayer_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(player1_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(46, 46, 46)
-                                        .addComponent(player2_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(55, 55, 55)
-                                        .addComponent(player3_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(player4_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(46, 46, 46)
-                                        .addComponent(player5_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(55, 55, 55)
-                                        .addComponent(player6_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGap(37, 37, 37)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(player1_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(46, 46, 46)
+                                                .addComponent(player2_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(55, 55, 55)
+                                                .addComponent(player3_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(player4_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(46, 46, 46)
+                                                .addComponent(player5_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(55, 55, 55)
+                                                .addComponent(player6_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DetectDice, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(92, 92, 92))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addComponent(pic1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -624,11 +642,14 @@ public class NewJFrame1 extends javax.swing.JFrame {
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(noOFplayer_pnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
+                                .addGap(11, 11, 11)
+                                .addComponent(noOFplayer_pnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(DetectDice)
+                                .addGap(4, 4, 4)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(player1_btn)
                                     .addComponent(player2_btn)
@@ -892,6 +913,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
             
             g.setNumbOfPlayers(NumOfPlayer);
             g.setPlayer(player);
+            g.setDetectDice(DetectDice.isSelected());
             
             g.setExtendedState(JFrame.MAXIMIZED_BOTH);
             g.setVisible(true);
@@ -902,6 +924,37 @@ public class NewJFrame1 extends javax.swing.JFrame {
         
             this.dispose();
     }//GEN-LAST:event_start_btnActionPerformed
+    File file = new File("detectIt.exe");     
+    void DetectDice() throws IOException{
+       
+       if (! file.exists()) {
+            throw new IllegalArgumentException("The file " + "detectIt.exe" + " does not exist");
+        }
+        Process p = Runtime.getRuntime().exec(file.getAbsolutePath());
+    }
+    Process p ;
+    Robot r;
+    private void DetectDiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DetectDiceActionPerformed
+        if (DetectDice.isSelected()){
+            DetectDice.setEnabled(false);
+        try {
+            p = Runtime.getRuntime().exec(file.getAbsolutePath());
+        } catch (IOException ex) {
+            Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+        else {
+            p.destroy();
+            Robot r;
+            try {
+                r = new Robot();
+                r.keyPress(KeyEvent.VK_ESCAPE);
+            } catch (AWTException ex) {
+                Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_DetectDiceActionPerformed
 
     
     
@@ -942,6 +995,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton DetectDice;
     private javax.swing.JLabel Hint_lbl;
     private javax.swing.JButton NoOFplayer_btn;
     private javax.swing.JButton jButton8;

@@ -11,7 +11,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.util.*;
 import java.util.logging.Level;
@@ -36,16 +38,27 @@ public class Gameplay extends javax.swing.JFrame {
     private Map<Integer, Player_pnl> playerPanelAccessMap;
     private DrawGamePlay draw;
     private zoneEvents events;
+    private boolean DetectDice;
 
+    public boolean isDetectDice() {
+        return DetectDice;
+    }
+
+    public void setDetectDice(boolean DetectDice) {
+        this.DetectDice = DetectDice;
+    }
+    
     private static Gameplay singleToneGameplay;
-
+    
+    
     public Gameplay() throws IOException {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         WinnerWinner = false;
         draw = new DrawGamePlay();
-
+        
     }
+
 
     public void setNumbOfPlayers(int NumbOfPlayers) {
         this.NumbOfPlayers = NumbOfPlayers;
@@ -330,8 +343,7 @@ public class Gameplay extends javax.swing.JFrame {
     }
 
     public void Movement(int NumOfSteps, int x, int y, int pl) {
-
-        jButton3.setEnabled(false);
+        
         int width = 65;
         int height = 20;
         s = new Thread(new Runnable() {
@@ -1119,7 +1131,7 @@ public class Gameplay extends javax.swing.JFrame {
         Trade_btn.setBounds(260, 420, 90, 23);
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton3.setText("Roll Dice");
+        jButton3.setText("IS Rolled ?");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -1411,7 +1423,20 @@ public class Gameplay extends javax.swing.JFrame {
         }
         return false;
     }
-
+     private int readFile() throws FileNotFoundException {
+       int num = 0;
+       try {
+         File file = new File("Roll.txt");
+         Scanner scanner = new Scanner(file);
+         while (scanner.hasNextLine()) {
+           num = Integer.valueOf(scanner.nextLine());
+         }
+         scanner.close();
+       } catch (FileNotFoundException e) {
+         e.printStackTrace();
+       }
+       return num;
+     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         turn++;
@@ -1442,14 +1467,37 @@ public class Gameplay extends javax.swing.JFrame {
 
                 Random r = new Random();
 
-                dice1.setDice_value(r.nextInt(6) + 1);
+                if (isDetectDice()){
+                try {
+                    if (readFile()!=0){
+                        if (readFile()>6){
+                            dice1.setDice_value(6);
+                            dice2.setDice_value(12-6);
+                        }
+                        else if(readFile()<=6){
+                            dice1.setDice_value(1);
+                            dice2.setDice_value(readFile()-1);
+                        }
+                        roll_Dice(dice1);
+                        roll_Dice(dice2);
+                        pos.SetPlayer(playerTurn,dice1.getDice_value()+dice2.getDice_value());
+                        Movement(dice1.getDice_value()+dice2.getDice_value(), player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
+                        s.start();
+                    }
+                    //dice1.getDice_value()+dice2.getDice_value()
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Gameplay.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                }
+                else {
+                    dice1.setDice_value(r.nextInt(6) + 1);
                 dice2.setDice_value(r.nextInt(6) + 1);
                 roll_Dice(dice1);
                 roll_Dice(dice2);
-                pos.SetPlayer(playerTurn,/*dice1.getDice_value()+dice2.getDice_value()*/1);
-                Movement(/*dice1.getDice_value()+dice2.getDice_value()*/1, player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
+                pos.SetPlayer(playerTurn,dice1.getDice_value()+dice2.getDice_value());
+                Movement(dice1.getDice_value()+dice2.getDice_value(), player[playerTurn].getM_carXY(), player[playerTurn].getM_carXY(), playerTurn);
                 s.start();
-                //dice1.getDice_value()+dice2.getDice_value()
+                }
             } else {
                 player[playerTurn].setInJail(player[playerTurn].getInJail() - 1);
             }
