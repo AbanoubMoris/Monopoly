@@ -1490,6 +1490,7 @@ public class Gameplay extends javax.swing.JFrame {
                 }
                 }
                 else {
+                    jButton3.setText("Roll Dice");
                     dice1.setDice_value(r.nextInt(6) + 1);
                 dice2.setDice_value(r.nextInt(6) + 1);
                 roll_Dice(dice1);
